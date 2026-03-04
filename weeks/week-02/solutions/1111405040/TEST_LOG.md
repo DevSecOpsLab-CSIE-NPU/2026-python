@@ -160,24 +160,24 @@ OK
 ### 完成的修改
 
 #### Task 1（12 個測試通過）
-- ✅ 實作 `deduplicate()` - 使用 set 追蹤、保留順序
-- ✅ 實作 `sort_ascending()` - 使用 sorted()
-- ✅ 實作 `sort_descending()` - 使用 sorted(reverse=True)
-- ✅ 實作 `filter_evens()` - 列表推導式
-- ✅ 實作 `sequence_clean()` 和 `format_output()` - 整合各函式
+- 實作 `deduplicate()` - 使用 set 追蹤、保留順序
+- 實作 `sort_ascending()` - 使用 sorted()
+- 實作 `sort_descending()` - 使用 sorted(reverse=True)
+- 實作 `filter_evens()` - 列表推導式
+- 實作 `sequence_clean()` 和 `format_output()` - 整合各函式
 
 #### Task 2（7 個測試通過）
-- ✅ 實作 `parse_student()` - 字串分割與型別轉換
-- ✅ 實作 `sort_students()` - 使用 lambda 多鍵排序
-- ✅ 實作 `format_student()` - 字串格式化
-- ✅ 正確處理邊界情況（k > n, k = 0）
+- 實作 `parse_student()` - 字串分割與型別轉換
+- 實作 `sort_students()` - 使用 lambda 多鍵排序
+- 實作 `format_student()` - 字串格式化
+- 正確處理邊界情況（k > n, k = 0）
 
 #### Task 3（9 個測試通過）
-- ✅ 實作 `parse_log_entry()` - 字串分割
-- ✅ 實作 `count_user_events()` - defaultdict 計數
-- ✅ 實作 `find_top_action()` - Counter.most_common()
-- ✅ 實作 `sort_users_by_count()` - 多鍵排序
-- ✅ 實作 `log_summary()` - 整合各函式
+- 實作 `parse_log_entry()` - 字串分割
+- 實作 `count_user_events()` - defaultdict 計數
+- 實作 `find_top_action()` - Counter.most_common()
+- 實作 `sort_users_by_count()` - 多鍵排序
+- 實作 `log_summary()` - 整合各函式
 
 ---
 
@@ -221,4 +221,4 @@ OK
 | **Green** | 27 | 0 | 100% |
 | **Refactor** | 27 | 0 | 100% |
 
-✅ **TDD 流程成功完成**：從完全失敗 → 全部通過 → 代碼優化
+**TDD 流程成功完成**：從完全失敗 → 全部通過 → 代碼優化
