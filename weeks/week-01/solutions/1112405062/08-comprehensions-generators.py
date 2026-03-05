@@ -8,3 +8,4 @@ lookup = {k: v for k, v in pairs}
 
 # 生成器表達式
 squares_sum = sum(n * n for n in nums)
+  
