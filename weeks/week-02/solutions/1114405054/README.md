@@ -1,8 +1,7 @@
-# Week 02 §@·~ - 1114405054
-## °õ¦æÀô¹Ò
+ï»¿# Week 02 ä½œæ¥­ - 1114405054
+
+## åŸ·è¡Œç’°å¢ƒ
 - Python 3.12+
-## °õ¦æ«ü¥O
+
+## æ¸¬è©¦æŒ‡ä»¤
 py -m unittest discover -s tests -p 'test_*.py' -v
-## ¸ê®Æµ²ºc¿ï¾Ü
-- Task 1: dict.fromkeys (¥h­«)
-- Task 3: Counter (²Î­p)

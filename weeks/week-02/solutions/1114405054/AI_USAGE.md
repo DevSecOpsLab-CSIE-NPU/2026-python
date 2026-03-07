@@ -1,5 +1,5 @@
-# AI ¨Ï¥Î¬ö¿ý
-- ¸ß°Ý AI ¸Ñ¨M Windows PowerShell ·h²¾ÀÉ®×«ü¥O°ÝÃD¡C
-- °Ñ¦Ò AI «ØÄ³¨Ï¥Î dict.fromkeys ¶i¦æ Task 1 ªº«O§Ç¥h­«¡C
-- ¨Ï¥Î AI ¨ó§U³]­p Task 2 ªº¦h­«±ø¥ó±Æ§Ç (score, age, name) ÅÞ¿è¡C
-- ­×¥¿ AI ´£¨Ñªº Linux «ü¥O¡A§ï¥Î Windows ¬Û®e«ü¥O¡C
+ï»¿# AI ä½¿ç”¨ç´€éŒ„ (AI_USAGE.md)
+
+- è©¢å• AI è§£æ±º Windows PowerShell æ¬ç§»æŒ‡ä»¤å•é¡Œã€‚
+- åƒè€ƒ AI å»ºè­°ä½¿ç”¨ dict.fromkeys é€²è¡Œä¿åºåŽ»é‡ã€‚
+- ä¿®æ­£ AI æä¾›çš„ Linux æŒ‡ä»¤ï¼Œæ”¹ç”¨ Windows ç›¸å®¹æŒ‡ä»¤ã€‚
