@@ -74,4 +74,4 @@
   - `top_action: None 0`
 - 是否通過: PASS
 - 對應測試函式: `tests/test_task3.py::test_case2_empty`
-- 關鍵修改點: `summarize` 在 `action_count` 為空時回傳 `(None, 0)`，避免空資料時拋例外。
+- 關鍵修改點: `summarize` 在 `action_count` 為空時回傳 `("None", 0)`，避免空資料時拋例外。
