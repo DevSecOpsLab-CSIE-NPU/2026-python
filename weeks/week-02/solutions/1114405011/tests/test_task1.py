@@ -1,4 +1,4 @@
-﻿import pathlib
+import pathlib
 import sys
 import unittest
 
@@ -6,7 +6,7 @@ THIS_FILE = pathlib.Path(__file__).resolve()
 SOLUTION_DIR = THIS_FILE.parent.parent
 sys.path.insert(0, str(SOLUTION_DIR))
 
-from task1_sequence_clean import format_output, parse_input, process_numbers
+from task1_sequence_clean import parse_input, process_numbers, format_output
 
 
 class TestTask1(unittest.TestCase):
