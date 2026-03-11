@@ -1,0 +1,54 @@
+﻿week 03-1114405011-林煉棠
+ 檔案索引
+產生時間: 2026-03-12 00:57:13
+
+[題號 100]
+- q100.py
+- q100-easy.py
+- q100-Hand-typed.py
+- test_q100.py
+- test_q100_hand_typed.py
+- LOG:
+  - logs/test_results.txt
+  - logs/test_results_hand_typed.txt
+
+[題號 118]
+- q118.py
+- q118-easy.py
+- q118-Hand-typed.py
+- test_q118.py
+- test_q118_hand_typed.py
+- LOG:
+  - logs/test_results_q118.txt
+  - logs/test_results_q118_hand_typed.txt
+
+[題號 272]
+- q272.py
+- q272-easy.py
+- q272-Hand-typed.py
+- test_q272.py
+- test_q272_hand_typed.py
+- LOG:
+  - logs/test_results_q272.txt
+  - logs/test_results_q272_hand_typed.txt
+
+[題號 299]
+- q299.py
+- q299-easy.py
+- q299-Hand-typed.py
+- test_q299.py
+- test_q299_hand_typed.py
+- LOG:
+  - logs/test_results_q299.txt
+  - logs/test_results_q299_hand_typed.txt
+
+[題號 490]
+- q490.py
+- q490-easy.py
+- q490-Hand-typed.py
+- test_q490.py
+- test_q490_hand_typed.py
+- LOG:
+  - logs/test_results_q490.txt
+  - logs/test_results_q490_hand_typed.txt
+
