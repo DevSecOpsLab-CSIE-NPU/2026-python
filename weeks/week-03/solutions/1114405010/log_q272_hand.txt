@@ -1,0 +1,7 @@
+test_multi_line (test_q272.TestQ272) ... ok
+test_single_line (test_q272.TestQ272) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK

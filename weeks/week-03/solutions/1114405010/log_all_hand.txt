@@ -1,0 +1,12 @@
+test_sample (test_q100.TestQ100) ... ok
+test_sample (test_q118.TestQ118) ... ok
+test_multi_line (test_q272.TestQ272) ... ok
+test_single_line (test_q272.TestQ272) ... ok
+test_sample (test_q299.TestQ299) ... ok
+test_hello_world (test_q490.TestQ490) ... ok
+test_with_spaces (test_q490.TestQ490) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.001s
+
+OK

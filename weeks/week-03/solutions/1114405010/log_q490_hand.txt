@@ -1,0 +1,7 @@
+test_hello_world (test_q490.TestQ490) ... ok
+test_with_spaces (test_q490.TestQ490) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK
