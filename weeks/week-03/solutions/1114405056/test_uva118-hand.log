@@ -1,0 +1,7 @@
+test_sample_case (test_uva118.TestUVA118) ... ok
+test_scent_prevents_second_loss (test_uva118.TestUVA118) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.070s
+
+OK
