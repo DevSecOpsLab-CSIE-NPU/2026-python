@@ -1,0 +1,14 @@
+測試時間: 2026-03-11 14:36:21
+執行指令: /usr/bin/python3 weeks/week-03/solutions/1114405012/test_question_118.py -v
+
+test_robot_can_be_lost_and_leave_scent (__main__.TestQuestion118) ... ok
+test_sample_input_output (__main__.TestQuestion118) ... ok
+test_scent_prevents_repeated_loss (__main__.TestQuestion118) ... ok
+test_solve_ignores_blank_lines (__main__.TestQuestion118) ... ok
+test_turn_left_from_north (__main__.TestQuestion118) ... ok
+test_turn_right_from_west (__main__.TestQuestion118) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.000s
+
+OK

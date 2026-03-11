@@ -1,0 +1,28 @@
+測試時間: 2026-03-11 14:42:22
+執行指令: /usr/bin/python3 weeks/week-03/solutions/1114405012/test_question_490.py -v
+
+test_empty_input (__main__.TestQuestion490) ... ok
+test_preserve_leading_spaces_after_rotation (__main__.TestQuestion490) ... ok
+test_rotate_uneven_lines (__main__.TestQuestion490) ... ok
+test_sample_input_output (__main__.TestQuestion490) ... FAIL
+test_single_line_input (__main__.TestQuestion490) ... ok
+
+======================================================================
+FAIL: test_sample_input_output (__main__.TestQuestion490)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yehallen/2026-python/weeks/week-03/solutions/1114405012/test_question_490.py", line 27, in test_sample_input_output
+    self.assertEqual(
+AssertionError: 'WH\nOE\nRL\nLL\nDO' != 'WH\nEO\nLR\nLL\nOD'
+  WH
+- OE
+- RL
++ EO
++ LR
+  LL
+- DO+ OD
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.002s
+
+FAILED (failures=1)

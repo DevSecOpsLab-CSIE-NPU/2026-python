@@ -1,0 +1,13 @@
+測試時間: 2026-03-11 14:42:13
+執行指令: /usr/bin/python3 weeks/week-03/solutions/1114405012/test_question_299.py -v
+
+test_count_swaps_reversed_train (__main__.TestQuestion299) ... ok
+test_count_swaps_sorted_train (__main__.TestQuestion299) ... ok
+test_multiple_cases_with_blank_lines (__main__.TestQuestion299) ... ok
+test_sample_input_output (__main__.TestQuestion299) ... ok
+test_zero_length_train (__main__.TestQuestion299) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+OK

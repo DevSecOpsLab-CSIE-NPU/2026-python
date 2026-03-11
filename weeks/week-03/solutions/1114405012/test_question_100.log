@@ -1,0 +1,14 @@
+測試時間: 2026-03-11 14:29:11
+執行指令: /usr/bin/python3 weeks/week-03/solutions/1114405012/test_question_100.py -v
+
+test_cycle_length_of_1 (__main__.TestQuestion100) ... ok
+test_cycle_length_of_22 (__main__.TestQuestion100) ... ok
+test_max_cycle_length_with_normal_order (__main__.TestQuestion100) ... ok
+test_max_cycle_length_with_reverse_order (__main__.TestQuestion100) ... ok
+test_solve_ignores_blank_lines (__main__.TestQuestion100) ... ok
+test_solve_sample_input (__main__.TestQuestion100) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.002s
+
+OK
