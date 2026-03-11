@@ -1,0 +1,58 @@
+test_q100_hand (test_hand_week03.TestHandWeek03) ... FAIL
+test_q118_hand (test_hand_week03.TestHandWeek03) ... FAIL
+test_q272_hand (test_hand_week03.TestHandWeek03) ... ok
+test_q299_hand (test_hand_week03.TestHandWeek03) ... ERROR
+test_q490_hand (test_hand_week03.TestHandWeek03) ... ERROR
+
+======================================================================
+ERROR: test_q299_hand (test_hand_week03.TestHandWeek03)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\1114405007\2026-python\weeks\week-03\solutions\1114405007\test_hand_week03.py", line 83, in test_q299_hand
+    self.assertEqual(run_script("q299.hand.py", src), expected)
+  File "D:\1114405007\2026-python\weeks\week-03\solutions\1114405007\test_hand_week03.py", line 18, in run_script
+    result = subprocess.run(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python39\lib\subprocess.py", line 528, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['C:\\Users\\User\\AppData\\Local\\Programs\\Python\\Python39\\python.exe', 'D:\\1114405007\\2026-python\\weeks\\week-03\\solutions\\1114405007\\q299.hand.py']' returned non-zero exit status 1.
+
+======================================================================
+ERROR: test_q490_hand (test_hand_week03.TestHandWeek03)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\1114405007\2026-python\weeks\week-03\solutions\1114405007\test_hand_week03.py", line 94, in test_q490_hand
+    self.assertEqual(run_script("q490.hand.py", src), expected)
+  File "D:\1114405007\2026-python\weeks\week-03\solutions\1114405007\test_hand_week03.py", line 18, in run_script
+    result = subprocess.run(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python39\lib\subprocess.py", line 528, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['C:\\Users\\User\\AppData\\Local\\Programs\\Python\\Python39\\python.exe', 'D:\\1114405007\\2026-python\\weeks\\week-03\\solutions\\1114405007\\q490.hand.py']' returned non-zero exit status 1.
+
+======================================================================
+FAIL: test_q100_hand (test_hand_week03.TestHandWeek03)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\1114405007\2026-python\weeks\week-03\solutions\1114405007\test_hand_week03.py", line 44, in test_q100_hand
+    self.assertEqual(run_script("q100.hand.py", src), expected)
+AssertionError: '' != '1 10 20\n100 200 125\n201 210 89\n900 1000 174'
++ 1 10 20
++ 100 200 125
++ 201 210 89
++ 900 1000 174
+
+======================================================================
+FAIL: test_q118_hand (test_hand_week03.TestHandWeek03)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\1114405007\2026-python\weeks\week-03\solutions\1114405007\test_hand_week03.py", line 61, in test_q118_hand
+    self.assertEqual(run_script("q118.hand.py", src), expected)
+AssertionError: '1 1 E\n2 2 N\n0 3 E LOST' != '1 1 E\n3 3 N LOST\n2 3 S'
+  1 1 E
+- 2 2 N
+- 0 3 E LOST+ 3 3 N LOST
++ 2 3 S
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.101s
+
+FAILED (failures=2, errors=2)
