@@ -10,7 +10,7 @@
 
 | # | 題名 | 難度 | 題目檔 |
 |---|------|------|------|
-| 100 | UVA 100 | ⭐ | [QUESTION-100.md](./QUESTION-100.md) |
+| 100 | UVA 100 | ⭐ | [QUESTION-100.md ](./QUESTION-100.md) |
 | 118 | UVA 118 | ⭐ | [QUESTION-118.md](./QUESTION-118.md) |
 | 272 | UVA 272 | ⭐ | [QUESTION-272.md](./QUESTION-272.md) |
 | 299 | UVA 299 | ⭐ | [QUESTION-299.md](./QUESTION-299.md) |
