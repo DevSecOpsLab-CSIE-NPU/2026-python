@@ -11,7 +11,7 @@ Return the top-k records as formatted lines.
 from __future__ import annotations
 
 from typing import Iterable, List, Tuple
-
+ 
 
 def parse_student_line(line: str) -> Tuple[str, int, int]:
     """Parse a single student record line into (name, score, age)."""

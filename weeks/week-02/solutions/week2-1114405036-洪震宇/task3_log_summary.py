@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from collections import Counter
 from typing import Iterable, List, Tuple
-
+ 
 
 def parse_log_line(line: str) -> Tuple[str, str]:
     """Parse a log line into (user, action)."""

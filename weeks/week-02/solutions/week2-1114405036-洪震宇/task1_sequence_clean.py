@@ -15,7 +15,7 @@ from __future__ import annotations
 
 from typing import Iterable, List, Tuple
 
-
+ 
 def parse_integers(line: str) -> List[int]:
     """Parse a whitespace-separated line into integers.
 
