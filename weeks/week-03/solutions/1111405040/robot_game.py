@@ -15,7 +15,6 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 import sys
-import time
 
 from robot_core import MOVE_STEP, RobotState, RobotWorld
 
@@ -49,11 +48,14 @@ class RobotGameApp:
         self.world = RobotWorld(width=width, height=height)
         self.cell_size = cell_size
         self.margin = 20
-        self.sidebar_width = 350
+        # 中文字串較長，右側資訊欄保留較寬空間。
+        self.sidebar_width = 420
+        # 確保右側 HUD 文字有足夠垂直空間完整顯示。
+        self.hud_min_height = 640
         self.grid_width_px = (width + 1) * cell_size
         self.grid_height_px = (height + 1) * cell_size
         self.screen_width = self.grid_width_px + self.sidebar_width + self.margin * 2
-        self.screen_height = self.grid_height_px + self.margin * 2
+        self.screen_height = max(self.grid_height_px + self.margin * 2, self.hud_min_height)
 
         self.robot = RobotState(x=0, y=0, direction="N", lost=False)
         self.robot_id = 1
@@ -66,8 +68,63 @@ class RobotGameApp:
         self.last_replay_tick = 0
         self.replay_interval_ms = 320
         self.message = "準備完成"
+        self._fonts_ready = False
 
         ASSETS_DIR.mkdir(parents=True, exist_ok=True)
+
+    def _load_cjk_font(self, size: int, bold: bool = False) -> pygame.font.Font:
+        """
+        載入支援繁體中文的字型。
+
+        優先順序：
+        1. 系統字型名稱（例如 Microsoft JhengHei、Noto Sans CJK）
+        2. Windows 常見字型檔（msjh.ttc 等）
+        3. pygame 預設字型（最後保底）
+        """
+        # pygame 回傳的字型名稱通常是小寫且去除空白。
+        available_fonts = set(pygame.font.get_fonts())
+        candidate_sysfonts = [
+            "microsoftjhenghei",
+            "microsoftjhengheiui",
+            "pingfangtc",
+            "notosanscjktc",
+            "notosanstc",
+            "arialunicode",
+            "simhei",
+        ]
+
+        for name in candidate_sysfonts:
+            if name in available_fonts:
+                font = pygame.font.SysFont(name, size, bold=bold)
+                return font
+
+        candidate_files = [
+            r"C:\Windows\Fonts\msjh.ttc",
+            r"C:\Windows\Fonts\msjhbd.ttc",
+            r"C:\Windows\Fonts\msyh.ttc",
+            r"C:\Windows\Fonts\mingliu.ttc",
+            r"C:\Windows\Fonts\kaiu.ttf",
+        ]
+        for font_path in candidate_files:
+            if Path(font_path).exists():
+                try:
+                    font = pygame.font.Font(font_path, size)
+                    if bold:
+                        font.set_bold(True)
+                    return font
+                except Exception:
+                    continue
+
+        return pygame.font.SysFont(None, size, bold=bold)
+
+    def _ensure_fonts(self) -> None:
+        """只在第一次繪製前初始化字型。"""
+        if self._fonts_ready:
+            return
+        self.hud_small_font = self._load_cjk_font(size=16, bold=False)
+        self.hud_text_font = self._load_cjk_font(size=18, bold=False)
+        self.hud_title_font = self._load_cjk_font(size=28, bold=True)
+        self._fonts_ready = True
 
     def world_to_screen(self, x: int, y: int) -> tuple[int, int]:
         """將世界座標轉為畫面座標（左下為原點）。"""
@@ -225,7 +282,7 @@ class RobotGameApp:
         base_x = self.margin + self.grid_width_px + 20
         y = self.margin
 
-        def draw_line(text: str, color=(230, 230, 230), gap=28):
+        def draw_line(text: str, color=(230, 230, 230), gap=24):
             nonlocal y
             label = text_font.render(text, True, color)
             surface.blit(label, (base_x, y))
@@ -233,7 +290,7 @@ class RobotGameApp:
 
         title = title_font.render("Robot Lost MVP", True, (255, 255, 255))
         surface.blit(title, (base_x, y))
-        y += 40
+        y += 36
 
         draw_line(f"Robot #{self.robot_id}")
         draw_line(f"位置: ({snapshot.x}, {snapshot.y})")
@@ -241,7 +298,7 @@ class RobotGameApp:
         draw_line(f"狀態: {'LOST' if snapshot.lost else 'ALIVE'}")
         draw_line(f"scent 數量: {len(snapshot.scents)}")
         draw_line(f"最近指令: {snapshot.command}")
-        y += 10
+        y += 6
 
         draw_line("操作鍵：", color=(255, 220, 150))
         draw_line("L/R/F: 單步操作")
@@ -250,7 +307,7 @@ class RobotGameApp:
         draw_line("P: 回放")
         draw_line("G: 匯出 replay.gif（選配）")
         draw_line("ESC: 離開")
-        y += 10
+        y += 6
 
         commands = "".join(self.command_history[-28:])
         draw_line(f"History: {commands if commands else '(空)'}", color=(200, 255, 200))
@@ -260,14 +317,11 @@ class RobotGameApp:
         surface.fill((25, 28, 35))
         self.draw_grid(surface)
         snapshot = self.current_snapshot()
+        self._ensure_fonts()
 
-        font = pygame.font.SysFont("consolas", 18)
-        title_font = pygame.font.SysFont("consolas", 28, bold=True)
-        text_font = pygame.font.SysFont("consolas", 20)
-
-        self.draw_scents(surface, snapshot, font)
+        self.draw_scents(surface, snapshot, self.hud_small_font)
         self.draw_robot(surface, snapshot)
-        self.draw_hud(surface, snapshot, title_font, text_font)
+        self.draw_hud(surface, snapshot, self.hud_title_font, self.hud_text_font)
 
     def run(self) -> None:
         pygame.init()
