@@ -11,12 +11,12 @@ from robot_core import Robot, execute_instruction
 MAP_W = 5
 MAP_H = 5
 MARGIN = 20
-BOTTOM_PANEL_HEIGHT = 150
-SIDE_PANEL_MIN_WIDTH = 320
+BOTTOM_PANEL_HEIGHT = 160
+SIDE_PANEL_MIN_WIDTH = 400
 
 # 固定視窗大小
-WINDOW_WIDTH = 1020
-WINDOW_HEIGHT = 680
+WINDOW_WIDTH = 1120
+WINDOW_HEIGHT = 720
 
 # ===== 顏色 =====
 WHITE = (255, 255, 255)
@@ -34,10 +34,12 @@ screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 pygame.display.set_caption("Robot Lost")
 clock = pygame.time.Clock()
 
-font = pygame.font.SysFont("microsoftjhenghei", 28)
+font = pygame.font.SysFont("microsoftjhenghei", 30)
 small_font = pygame.font.SysFont("microsoftjhenghei", 22)
-tiny_font = pygame.font.SysFont("microsoftjhenghei", 20)
-scent_font = pygame.font.SysFont("arial", 20, bold=True)
+tiny_font = pygame.font.SysFont("consolas", 22)   # 等寬字體，矩陣較整齊
+mini_font = pygame.font.SysFont("microsoftjhenghei", 18)
+coord_font = pygame.font.SysFont("microsoftjhenghei", 18)
+scent_font = pygame.font.SysFont("arial", 18, bold=True)
 
 # ===== 載入圖片 =====
 BASE_DIR = os.path.dirname(__file__)
@@ -89,7 +91,7 @@ def get_layout():
     grid_size = max(grid_size, 360)
 
     cell_size = grid_size // (MAP_W + 1)
-    cell_size = max(cell_size, 45)
+    cell_size = max(cell_size, 50)
 
     grid_width = cell_size * (MAP_W + 1)
     grid_height = cell_size * (MAP_H + 1)
@@ -139,7 +141,7 @@ def draw_grid():
             )
             pygame.draw.rect(screen, GRAY, rect, 1)
 
-            coord_text = small_font.render(f"{x},{y}", True, BLACK)
+            coord_text = coord_font.render(f"{x},{y}", True, BLACK)
             text_rect = coord_text.get_rect(center=(sx, sy))
             screen.blit(coord_text, text_rect)
 
@@ -182,7 +184,7 @@ def draw_robot(current_robot):
     else:
         angle = 90
 
-    robot_size = max(36, int(cell_size * 0.75))
+    robot_size = max(38, int(cell_size * 0.72))
     robot_img = pygame.transform.scale(robot_img_original, (robot_size, robot_size))
     rotated_img = pygame.transform.rotate(robot_img, angle)
     rect = rotated_img.get_rect(center=(sx, sy))
@@ -215,30 +217,42 @@ def draw_side_panel(current_robot):
     pygame.draw.rect(screen, LIGHT_BLUE, (panel_x, panel_y, panel_w, panel_h))
     pygame.draw.rect(screen, BLACK, (panel_x, panel_y, panel_w, panel_h), 2)
 
+    # 標題
     title = font.render("10x10 字串矩陣", True, BLACK)
-    screen.blit(title, (panel_x + 15, panel_y + 15))
+    screen.blit(title, (panel_x + 16, panel_y + 12))
 
     snapshot = get_grid_snapshot(current_robot, scents, 10, 10)
 
-    start_y = panel_y + 60
-    for i, row in enumerate(snapshot):
-        row_text = " ".join(row)
-        img = tiny_font.render(row_text, True, BLACK)
-        screen.blit(img, (panel_x + 15, start_y + i * 24))
+    # ===== 矩陣顯示區 =====
+    matrix_top = panel_y + 58
+    line_height = 26
 
-    scent_title = small_font.render("scent 容器內容：", True, BLACK)
-    screen.blit(scent_title, (panel_x + 15, start_y + 10 * 24 + 20))
+    for i, row in enumerate(snapshot):
+        row_text = "".join(row)
+        img = tiny_font.render(row_text, True, BLACK)
+        screen.blit(img, (panel_x + 18, matrix_top + i * line_height))
+
+    # ===== scent 區 =====
+    scent_block_top = matrix_top + 10 * line_height + 22
+
+    scent_title = small_font.render("scent 容器內容", True, BLACK)
+    screen.blit(scent_title, (panel_x + 16, scent_block_top))
 
     scent_list = sorted(list(scents))
     if not scent_list:
-        empty_text = tiny_font.render("[]", True, BLACK)
-        screen.blit(empty_text, (panel_x + 15, start_y + 10 * 24 + 50))
+        empty_text = mini_font.render("[]", True, BLACK)
+        screen.blit(empty_text, (panel_x + 20, scent_block_top + 34))
     else:
-        for idx, item in enumerate(scent_list[:8]):
-            line = tiny_font.render(str(item), True, BLACK)
-            screen.blit(line, (panel_x + 15, start_y + 10 * 24 + 50 + idx * 24))
+        for idx, item in enumerate(scent_list[:6]):
+            line = mini_font.render(str(item), True, BLACK)
+            screen.blit(line, (panel_x + 20, scent_block_top + 34 + idx * 22))
 
-    legend_y = panel_y + panel_h - 120
+    # ===== 圖例區 =====
+    legend_top = scent_block_top + 170
+
+    legend_title = small_font.render("圖例", True, BLACK)
+    screen.blit(legend_title, (panel_x + 16, legend_top))
+
     legends = [
         ". = 空格",
         "S = scent",
@@ -246,40 +260,44 @@ def draw_side_panel(current_robot):
         "X = LOST 位置",
     ]
     for i, text in enumerate(legends):
-        img = tiny_font.render(text, True, BLACK)
-        screen.blit(img, (panel_x + 15, legend_y + i * 24))
+        img = mini_font.render(text, True, BLACK)
+        screen.blit(img, (panel_x + 20, legend_top + 34 + i * 22))
 
 
 def draw_status(current_robot):
     layout = get_layout()
-    base_y = layout["status_top"] + 10
+    base_y = layout["status_top"] + 8
 
+    # 第 1 行：位置 / 方向 / 狀態
     status_text = (
-        f"位置: ({current_robot.x}, {current_robot.y})   "
-        f"方向: {current_robot.direction}   "
+        f"位置: ({current_robot.x}, {current_robot.y})    "
+        f"方向: {current_robot.direction}    "
         f"狀態: {'LOST' if current_robot.lost else '正常'}"
     )
     status_img = font.render(status_text, True, BLACK)
     screen.blit(status_img, (20, base_y))
 
-    hint_line_1 = "操作: L左轉  R右轉  F前進  N新機器人"
-    hint_line_2 = "      C清除scent  P重播  G輸出GIF  ESC離開"
+    # 第 2 行：操作說明
+    hint_line_1 = "L 左轉    R 右轉    F 前進    N 新機器人"
+    hint_line_2 = "C 清除 scent    P 重播    G 輸出 GIF    ESC 離開"
 
     hint_img_1 = small_font.render(hint_line_1, True, BLACK)
     hint_img_2 = small_font.render(hint_line_2, True, BLACK)
-    screen.blit(hint_img_1, (20, base_y + 38))
-    screen.blit(hint_img_2, (20, base_y + 66))
+    screen.blit(hint_img_1, (20, base_y + 42))
+    screen.blit(hint_img_2, (20, base_y + 72))
 
-    history_show = command_history[-30:] if command_history else "（尚無）"
+    # 第 3 行：指令紀錄
+    history_show = command_history[-28:] if command_history else "（尚無）"
     history_text = small_font.render(f"指令紀錄: {history_show}", True, BLUE)
-    screen.blit(history_text, (20, base_y + 98))
+    screen.blit(history_text, (20, base_y + 104))
 
+    # 右下角：scent 數量 / 重播模式
     scent_text = small_font.render(f"scent 數量: {len(scents)}", True, GREEN)
-    screen.blit(scent_text, (WINDOW_WIDTH - 250, base_y))
+    screen.blit(scent_text, (WINDOW_WIDTH - 220, base_y + 4))
 
     if replay_mode:
         replay_text = small_font.render("重播模式中", True, BLUE)
-        screen.blit(replay_text, (WINDOW_WIDTH - 250, base_y + 34))
+        screen.blit(replay_text, (WINDOW_WIDTH - 220, base_y + 36))
 
 
 def record_frame():
