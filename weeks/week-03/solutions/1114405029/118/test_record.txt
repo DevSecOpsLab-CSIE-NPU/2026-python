@@ -1,0 +1,19 @@
+UVA 118 測試執行紀錄
+日期: 2026-03-14
+目錄: d:\python\2026-python\weeks\week-03\solutions\1114405029\118
+
+[執行命令]
+python -m unittest -v test_uva118.py
+
+[測試輸出]
+test_sample (test_uva118.TestUVA118.test_sample) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test
+
+OK
+
+[結論]
+1. test_uva118.py 已同時測試 uva118.py 與 uva118_easy.py。
+2. 兩個版本皆通過全部測試。
+3. 已涵蓋官方範例情境。

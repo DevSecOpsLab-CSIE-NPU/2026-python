@@ -1,0 +1,26 @@
+UVA 490 測試執行紀錄
+日期: 2026-03-14
+目錄: d:\python\2026-python\weeks\week-03\solutions\1114405029\490
+
+[執行命令]
+python -m unittest -v test_uva490.py
+
+[測試輸出]
+test_basic_hello_world (test_uva490.TestUVA490.test_basic_hello_world)
+基本案例：兩行同長文字旋轉。 ... ok
+test_empty_input (test_uva490.TestUVA490.test_empty_input)
+空輸入應輸出空字串。 ... ok
+test_internal_spaces_preserved (test_uva490.TestUVA490.test_internal_spaces_preserved)
+驗證行內空白與補空白是否被正確保留。 ... ok
+test_uneven_line_lengths (test_uva490.TestUVA490.test_uneven_line_lengths)
+長度不一致案例：驗證補空白後旋轉。 ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.341s
+
+OK
+
+[結論]
+1. test_uva490.py 已同時測試 uva490.py 與 uva490-easy.py。
+2. 兩個版本皆通過全部測試。
+3. 已涵蓋基本旋轉、長度不一致補空白、行內空白保留與空輸入四種情境。

@@ -1,0 +1,20 @@
+UVA 299 測試執行紀錄
+日期: 2026-03-14
+目錄: d:\python\2026-python\weeks\week-03\solutions\1114405029\299
+
+[執行命令]
+python -m unittest -v test_uva299.py
+
+[測試輸出]
+test_basic_case (test_uva299.TestUVA299.test_basic_case) ... ok
+test_reverse_case (test_uva299.TestUVA299.test_reverse_case) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests
+
+OK
+
+[結論]
+1. test_uva299.py 已同時測試 uva299.py 與 uva299_easy.py。
+2. 兩個版本皆通過全部測試。
+3. 已涵蓋基本排序與完全反序兩種情境。

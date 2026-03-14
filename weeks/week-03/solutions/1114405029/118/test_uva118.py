@@ -1,4 +1,4 @@
-"""UVA 299 單元測試（含繁體中文註解）。"""
+"""UVA 118 單元測試（含繁體中文註解）。"""
 
 import subprocess
 import sys
@@ -7,11 +7,10 @@ from pathlib import Path
 
 
 BASE_DIR = Path(__file__).resolve().parent
-SCRIPTS = [BASE_DIR / "uva299.py", BASE_DIR / "uva299_easy.py"]
+SCRIPTS = [BASE_DIR / "uva118.py", BASE_DIR / "uva118_easy.py"]
 
 
 def run_script(script_path, input_text):
-    """執行指定腳本並回傳輸出結果"""
     completed = subprocess.run(
         [sys.executable, str(script_path)],
         input=input_text,
@@ -21,25 +20,31 @@ def run_script(script_path, input_text):
     return completed.stdout
 
 
-class TestUVA299(unittest.TestCase):
+class TestUVA118(unittest.TestCase):
 
     def assert_all_scripts(self, input_text, expected_output):
-        """同時測試兩個版本程式"""
         for script in SCRIPTS:
             with self.subTest(script=script.name):
                 output = run_script(script, input_text)
                 self.assertEqual(output, expected_output)
 
-    def test_basic_case(self):
-        """基本案例測試"""
-        input_text = "1\n3\n1 3 2\n"
-        expected_output = "Optimal train swapping takes 1 swaps.\n"
-        self.assert_all_scripts(input_text, expected_output)
+    def test_sample(self):
+        input_text = (
+            "5 3\n"
+            "1 1 E\n"
+            "RFRFRFRF\n"
+            "3 2 N\n"
+            "FRRFLLFFRRFLL\n"
+            "0 3 W\n"
+            "LLFFFLFLFL\n"
+        )
 
-    def test_reverse_case(self):
-        """完全反序案例"""
-        input_text = "1\n3\n3 2 1\n"
-        expected_output = "Optimal train swapping takes 3 swaps.\n"
+        expected_output = (
+            "1 1 E\n"
+            "3 3 N LOST\n"
+            "2 3 S\n"
+        )
+
         self.assert_all_scripts(input_text, expected_output)
 
 
