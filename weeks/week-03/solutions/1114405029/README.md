@@ -72,7 +72,7 @@ Example test cases include:
 
 Run tests with:
 
-pytest tests
+python -m unittest discover -s tests -p "test_*.py" -v
 
 ---
 
