@@ -4,7 +4,7 @@ import unittest
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
-from robot_core import Robot, execute_commands
+from robot_core import Robot, execute_instruction
 
 
 class TestRobotScent(unittest.TestCase):
@@ -13,7 +13,7 @@ class TestRobotScent(unittest.TestCase):
         robot = Robot(0, 0, "S")
         scents = set()
 
-        execute_commands(robot, "F", 5, 5, scents)
+        execute_instruction(robot, "F", 5, 5, scents)
 
         self.assertTrue(robot.lost)
         self.assertEqual((robot.x, robot.y, robot.direction), (0, 0, "S"))
@@ -22,7 +22,7 @@ class TestRobotScent(unittest.TestCase):
         scents = set()
         robot = Robot(0, 0, "S")
 
-        execute_commands(robot, "F", 5, 5, scents)
+        execute_instruction(robot, "F", 5, 5, scents)
 
         self.assertIn((0, 0, "S"), scents)
 
@@ -30,10 +30,10 @@ class TestRobotScent(unittest.TestCase):
         scents = set()
 
         robot1 = Robot(0, 0, "S")
-        execute_commands(robot1, "F", 5, 5, scents)
+        execute_instruction(robot1, "F", 5, 5, scents)
 
         robot2 = Robot(0, 0, "S")
-        execute_commands(robot2, "F", 5, 5, scents)
+        execute_instruction(robot2, "F", 5, 5, scents)
 
         self.assertFalse(robot2.lost)
         self.assertEqual((robot2.x, robot2.y, robot2.direction), (0, 0, "S"))
@@ -42,7 +42,7 @@ class TestRobotScent(unittest.TestCase):
         scents = {(0, 0, "S")}
         robot = Robot(0, 0, "W")
 
-        execute_commands(robot, "F", 5, 5, scents)
+        execute_instruction(robot, "F", 5, 5, scents)
 
         self.assertTrue(robot.lost)
         self.assertIn((0, 0, "W"), scents)
@@ -51,7 +51,7 @@ class TestRobotScent(unittest.TestCase):
         scents = {(0, 0, "S")}
         robot = Robot(0, 0, "S")
 
-        execute_commands(robot, "F", 5, 5, scents)
+        execute_instruction(robot, "F", 5, 5, scents)
 
         self.assertFalse(robot.lost)
         self.assertEqual((robot.x, robot.y, robot.direction), (0, 0, "S"))
@@ -60,7 +60,8 @@ class TestRobotScent(unittest.TestCase):
         scents = {(0, 0, "S")}
         robot = Robot(0, 0, "S")
 
-        execute_commands(robot, "FR", 5, 5, scents)
+        for c in "FR":
+            execute_instruction(robot, c, 5, 5, scents)
 
         self.assertFalse(robot.lost)
         self.assertEqual((robot.x, robot.y, robot.direction), (0, 0, "W"))
@@ -69,7 +70,8 @@ class TestRobotScent(unittest.TestCase):
         scents = set()
         robot = Robot(0, 0, "S")
 
-        execute_commands(robot, "FLFRF", 5, 5, scents)
+        for c in "FLFRF":
+            execute_instruction(robot, c, 5, 5, scents)
 
         self.assertTrue(robot.lost)
         self.assertEqual((robot.x, robot.y, robot.direction), (0, 0, "S"))
@@ -78,7 +80,7 @@ class TestRobotScent(unittest.TestCase):
         scents = set()
         robot = Robot(1, 1, "N")
 
-        execute_commands(robot, "F", 5, 5, scents)
+        execute_instruction(robot, "F", 5, 5, scents)
 
         self.assertFalse(robot.lost)
         self.assertEqual(len(scents), 0)
@@ -87,10 +89,10 @@ class TestRobotScent(unittest.TestCase):
         scents = set()
 
         robot1 = Robot(0, 0, "S")
-        execute_commands(robot1, "F", 5, 5, scents)
+        execute_instruction(robot1, "F", 5, 5, scents)
 
         robot2 = Robot(0, 0, "S")
-        execute_commands(robot2, "F", 5, 5, scents)
+        execute_instruction(robot2, "F", 5, 5, scents)
 
         self.assertEqual(len(scents), 1)
         self.assertIn((0, 0, "S"), scents)
@@ -99,10 +101,10 @@ class TestRobotScent(unittest.TestCase):
         scents = set()
 
         robot1 = Robot(0, 0, "S")
-        execute_commands(robot1, "F", 5, 5, scents)
+        execute_instruction(robot1, "F", 5, 5, scents)
 
         robot2 = Robot(5, 5, "N")
-        execute_commands(robot2, "F", 5, 5, scents)
+        execute_instruction(robot2, "F", 5, 5, scents)
 
         self.assertIn((0, 0, "S"), scents)
         self.assertIn((5, 5, "N"), scents)
