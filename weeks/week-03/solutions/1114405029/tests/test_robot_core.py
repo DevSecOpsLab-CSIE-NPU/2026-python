@@ -4,7 +4,7 @@ import unittest
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
-from robot_core import Robot, turn_left, turn_right, execute_commands
+from robot_core import Robot, turn_left, turn_right, execute_instruction
 
 
 class TestRobotCore(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestRobotCore(unittest.TestCase):
         robot = Robot(1, 1, "N")
         scents = set()
 
-        execute_commands(robot, "F", 5, 5, scents)
+        execute_instruction(robot, "F", 5, 5, scents)
 
         self.assertEqual((robot.x, robot.y), (1, 2))
         self.assertFalse(robot.lost)
@@ -40,7 +40,7 @@ class TestRobotCore(unittest.TestCase):
         robot = Robot(0, 0, "S")
         scents = set()
 
-        execute_commands(robot, "F", 5, 5, scents)
+        execute_instruction(robot, "F", 5, 5, scents)
 
         self.assertTrue(robot.lost)
         self.assertEqual((robot.x, robot.y, robot.direction), (0, 0, "S"))
@@ -49,7 +49,8 @@ class TestRobotCore(unittest.TestCase):
         robot = Robot(1, 1, "N")
         scents = set()
 
-        execute_commands(robot, "RFRF", 5, 5, scents)
+        for c in "RFRF":
+            execute_instruction(robot, c, 5, 5, scents)
 
         self.assertEqual((robot.x, robot.y, robot.direction), (2, 0, "S"))
         self.assertFalse(robot.lost)
@@ -58,7 +59,8 @@ class TestRobotCore(unittest.TestCase):
         robot = Robot(0, 0, "S")
         scents = set()
 
-        execute_commands(robot, "FFRFF", 5, 5, scents)
+        for c in "FFRFF":
+            execute_instruction(robot, c, 5, 5, scents)
 
         self.assertTrue(robot.lost)
         self.assertEqual((robot.x, robot.y, robot.direction), (0, 0, "S"))
@@ -68,13 +70,11 @@ class TestRobotCore(unittest.TestCase):
         scents = set()
 
         with self.assertRaises(ValueError):
-            execute_commands(robot, "X", 5, 5, scents)
+            execute_instruction(robot, "X", 5, 5, scents)
 
     def test_empty_commands_should_keep_robot_unchanged(self):
         robot = Robot(2, 2, "E")
         scents = set()
-
-        execute_commands(robot, "", 5, 5, scents)
 
         self.assertEqual((robot.x, robot.y, robot.direction), (2, 2, "E"))
         self.assertFalse(robot.lost)

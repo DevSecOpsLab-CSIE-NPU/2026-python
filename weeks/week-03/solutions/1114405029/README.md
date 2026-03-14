@@ -23,6 +23,9 @@ The following interactive features are implemented:
   - Robot direction
   - LOST status
   - Scent count
+- Fixed window size for consistent layout
+- GIF export of replay
+- User command history display
 
 Keyboard controls:
 
@@ -32,6 +35,7 @@ F = move forward
 N = spawn new robot  
 C = clear scent markers  
 P = replay previous actions  
+G = export replay GIF  
 ESC = quit program
 
 ---
@@ -44,7 +48,7 @@ Python 3.11+
 
 Install dependency:
 
-pip install pygame
+pip install pygame imageio
 
 Run the program:
 
@@ -60,8 +64,8 @@ Unit tests are implemented for the core robot logic.
 
 Test files:
 
-tests/test_robot_core.py  
-tests/test_robot_scent.py
+- tests/test_robot_core.py  
+- tests/test_robot_scent.py
 
 Example test cases include:
 
@@ -83,6 +87,7 @@ python -m unittest discover -s tests -p "test_*.py" -v
 scents = set()
 
 Reason:
+
 - Fast lookup of scent positions
 - Prevent duplicate scent entries
 - Efficient O(1) membership checking
@@ -91,24 +96,22 @@ Each scent stores:
 
 (x, y, direction)
 
----
-
 2. Using a list for replay frames
 
 replay_frames = []
 
 Reason:
+
 - Stores historical robot states
 - Allows sequential playback
 - Maintains chronological order
-
----
 
 3. Robot class
 
 class Robot
 
 Reason:
+
 - Encapsulates robot state (x, y, direction, lost)
 - Improves readability
 - Makes movement logic modular
@@ -137,7 +140,7 @@ After installing pygame the program ran correctly.
 
 ![Gameplay](assets/gameplay.png)
 
-The screenshot shows the grid world, robot position, scent markers and status HUD.
+The screenshot shows the grid world, robot position, scent markers, user command history, and status HUD.
 
 ---
 
@@ -153,33 +156,34 @@ Press:
 
 P
 
-to start replay mode.
+to start replay mode. Press:
 
-During replay the program sequentially loads stored states and reconstructs the robot movements and scent events.
+G
 
-This replay system acts as an equivalent alternative to generating a replay.gif.
+to export the replay as a GIF.  
+
+During replay the program sequentially loads stored states and reconstructs the robot movements, scent events, and user command history.  
+
+This replay system acts as an equivalent alternative to generating `replay.gif` manually.
 
 ---
 
 # Project Structure
 
 1114405029/
-
-robot_core.py  
-robot_game.py  
-
-assets/  
-robot.png  
-gameplay.png  
-
-tests/  
-test_robot_core.py  
-test_robot_scent.py  
-
-TEST_CASES.md  
-TEST_LOG.md  
-AI_USAGE.md  
-README.md
+├── robot_core.py  
+├── robot_game.py  
+├── assets/  
+│   ├── robot.png  
+│   ├── gameplay.png  
+│   └── replay.gif
+├── tests/  
+│   ├── test_robot_core.py  
+│   └── test_robot_scent.py  
+├── TEST_CASES.md  
+├── TEST_LOG.md  
+├── AI_USAGE.md  
+└── README.md
 
 ---
 
@@ -187,11 +191,14 @@ README.md
 
 This project demonstrates:
 
-- grid simulation
-- robot state management
-- scent rule implementation
-- pygame visualization
-- replay functionality
-- test-driven robot logic
+- grid simulation  
+- robot state management  
+- scent rule implementation  
+- pygame visualization  
+- replay functionality  
+- user command history tracking  
+- fixed window size for consistent layout  
+- GIF export of replay  
+- test-driven robot logic  
 
-The system recreates the Robot Lost problem with interactive visualization.
+The system recreates the Robot Lost problem with interactive visualization and improved usability.
