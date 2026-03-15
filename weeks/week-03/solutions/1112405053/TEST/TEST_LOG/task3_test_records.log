@@ -1,0 +1,50 @@
+=== task3_AI.py test run at 2026-03-15 15:47:30 ===
+[PASS] sample_case
+input:
+"To be or not to be," quoth the Bard, "that
+is the question".
+The programming
+contestant replied: "I must disagree.
+To `C' or not to `C', that is The Question!"
+expected:
+``To be or not to be,'' quoth the Bard, ``that
+is the question''.
+The programming
+contestant replied: ``I must disagree.
+To `C' or not to `C', that is The Question!''
+actual:
+``To be or not to be,'' quoth the Bard, ``that
+is the question''.
+The programming
+contestant replied: ``I must disagree.
+To `C' or not to `C', that is The Question!''
+----------------------------------------
+[PASS] no_quotes
+input:
+Plain text only.
+No replacement needed.
+expected:
+Plain text only.
+No replacement needed.
+actual:
+Plain text only.
+No replacement needed.
+----------------------------------------
+[PASS] single_pair
+input:
+She said, "hello".
+expected:
+She said, ``hello''.
+actual:
+She said, ``hello''.
+----------------------------------------
+[PASS] multiple_pairs_same_line
+input:
+"A" "B" "C"
+expected:
+``A'' ``B'' ``C''
+actual:
+``A'' ``B'' ``C''
+----------------------------------------
+Summary: 4/4 passed
+

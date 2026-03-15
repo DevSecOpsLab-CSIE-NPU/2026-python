@@ -1,0 +1,236 @@
+=== task2_AI.py test run at 2026-03-15 15:43:35 ===
+[PASS] sample_case
+input:
+5 3
+1 1 E
+RFRFRFRF
+3 2 N
+FRRFLLFFRRFLL
+0 3 W
+LLFFFLFLFL
+expected:
+1 1 E
+3 3 N LOST
+2 3 S
+actual:
+1 1 E
+3 3 N LOST
+2 3 S
+----------------------------------------
+[PASS] single_robot_lost
+input:
+2 2
+2 2 N
+F
+expected:
+2 2 N LOST
+actual:
+2 2 N LOST
+----------------------------------------
+[PASS] scent_prevents_repeat_loss
+input:
+2 2
+2 2 N
+F
+2 2 N
+F
+expected:
+2 2 N LOST
+2 2 N
+actual:
+2 2 N LOST
+2 2 N
+----------------------------------------
+[FAIL] turn_and_move_mix
+input:
+4 4
+0 0 N
+FFRFF
+1 2 E
+RFLFF
+expected:
+2 2 E
+1 0 S
+actual:
+2 2 E
+3 1 E
+----------------------------------------
+Summary: 3/4 passed
+
+=== task2_AI.py test run at 2026-03-15 15:44:16 ===
+[PASS] sample_case
+input:
+5 3
+1 1 E
+RFRFRFRF
+3 2 N
+FRRFLLFFRRFLL
+0 3 W
+LLFFFLFLFL
+expected:
+1 1 E
+3 3 N LOST
+2 3 S
+actual:
+1 1 E
+3 3 N LOST
+2 3 S
+----------------------------------------
+[PASS] single_robot_lost
+input:
+2 2
+2 2 N
+F
+expected:
+2 2 N LOST
+actual:
+2 2 N LOST
+----------------------------------------
+[PASS] scent_prevents_repeat_loss
+input:
+2 2
+2 2 N
+F
+2 2 N
+F
+expected:
+2 2 N LOST
+2 2 N
+actual:
+2 2 N LOST
+2 2 N
+----------------------------------------
+[FAIL] turn_and_move_mix
+input:
+4 4
+0 0 N
+FFRFF
+1 2 E
+RFLFF
+expected:
+2 2 E
+	3 1 E
+actual:
+2 2 E
+3 1 E
+----------------------------------------
+Summary: 3/4 passed
+
+=== task2_AI.py test run at 2026-03-15 15:44:35 ===
+[PASS] sample_case
+input:
+5 3
+1 1 E
+RFRFRFRF
+3 2 N
+FRRFLLFFRRFLL
+0 3 W
+LLFFFLFLFL
+expected:
+1 1 E
+3 3 N LOST
+2 3 S
+actual:
+1 1 E
+3 3 N LOST
+2 3 S
+----------------------------------------
+[PASS] single_robot_lost
+input:
+2 2
+2 2 N
+F
+expected:
+2 2 N LOST
+actual:
+2 2 N LOST
+----------------------------------------
+[PASS] scent_prevents_repeat_loss
+input:
+2 2
+2 2 N
+F
+2 2 N
+F
+expected:
+2 2 N LOST
+2 2 N
+actual:
+2 2 N LOST
+2 2 N
+----------------------------------------
+[FAIL] turn_and_move_mix
+input:
+4 4
+0 0 N
+FFRFF
+1 2 E
+RFLFF
+expected:
+2 2 E
+	3 1 E
+actual:
+2 2 E
+3 1 E
+----------------------------------------
+Summary: 3/4 passed
+
+=== task2_AI.py test run at 2026-03-15 15:45:00 ===
+[PASS] sample_case
+input:
+5 3
+1 1 E
+RFRFRFRF
+3 2 N
+FRRFLLFFRRFLL
+0 3 W
+LLFFFLFLFL
+expected:
+1 1 E
+3 3 N LOST
+2 3 S
+actual:
+1 1 E
+3 3 N LOST
+2 3 S
+----------------------------------------
+[PASS] single_robot_lost
+input:
+2 2
+2 2 N
+F
+expected:
+2 2 N LOST
+actual:
+2 2 N LOST
+----------------------------------------
+[PASS] scent_prevents_repeat_loss
+input:
+2 2
+2 2 N
+F
+2 2 N
+F
+expected:
+2 2 N LOST
+2 2 N
+actual:
+2 2 N LOST
+2 2 N
+----------------------------------------
+[PASS] turn_and_move_mix
+input:
+4 4
+0 0 N
+FFRFF
+1 2 E
+RFLFF
+expected:
+2 2 E
+3 1 E
+actual:
+2 2 E
+3 1 E
+----------------------------------------
+Summary: 4/4 passed
+
