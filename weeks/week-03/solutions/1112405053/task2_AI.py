@@ -57,7 +57,7 @@ def solve() -> None:
                     scent.add((x, y))
                     lost = True
                     break
-
+ 
                 # 合法前進就更新位置
                 x, y = nx, ny
 

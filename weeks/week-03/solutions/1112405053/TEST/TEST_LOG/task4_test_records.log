@@ -21,7 +21,7 @@ Optimal train swapping takes 1 swaps.
 input:
 1
 5
-1 2 3 4 5
+1 2 3 4 5 
 expected:
 Optimal train swapping takes 0 swaps.
 actual:

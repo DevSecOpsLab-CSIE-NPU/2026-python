@@ -22,7 +22,7 @@ def expected_sequence(start: int) -> str:
 		if current % 2 == 1:
 			current = 3 * current + 1
 		else:
-			current //= 2
+			current //= 2 
 
 	return "\n".join(values)
 

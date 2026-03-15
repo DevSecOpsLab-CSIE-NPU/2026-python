@@ -22,7 +22,7 @@ TEST_CASES = [
 		"input": "Plain text only.\nNo replacement needed.\n",
 		"expected": "Plain text only.\nNo replacement needed.\n",
 	},
-	{
+	{ 
 		"name": "single_pair",
 		"input": 'She said, "hello".\n',
 		"expected": "She said, ``hello''.\n",

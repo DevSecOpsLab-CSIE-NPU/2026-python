@@ -41,7 +41,7 @@ She said, ``hello''.
 [PASS] multiple_pairs_same_line
 input:
 "A" "B" "C"
-expected:
+expected: 
 ``A'' ``B'' ``C''
 actual:
 ``A'' ``B'' ``C''

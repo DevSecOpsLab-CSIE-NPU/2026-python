@@ -21,7 +21,7 @@ def main() -> None:
 			# 非雙引號字元原樣保留
 			output_parts.append(ch)
 
-	# 輸出轉換後結果
+	# 輸出轉換後結果 
 	sys.stdout.write("".join(output_parts))
 
 

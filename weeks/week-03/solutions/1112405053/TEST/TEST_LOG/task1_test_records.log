@@ -16,7 +16,7 @@ actual:
 [PASS] input = 3
 expected:
 3
-10
+10 
 5
 16
 8

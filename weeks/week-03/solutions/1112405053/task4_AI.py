@@ -30,7 +30,7 @@ def main() -> None:
 		length = data[idx]
 		idx += 1
 
-		# 接著讀 L 個車廂編號
+		# 接著讀 L 個車廂編號 
 		train = data[idx:idx + length]
 		idx += length
 

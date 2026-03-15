@@ -17,7 +17,7 @@ def solve() -> None:
         "S": (0, -1),
         "W": (-1, 0),
     }
-
+ 
     out = []
     i = 1
     while i + 1 < len(lines):

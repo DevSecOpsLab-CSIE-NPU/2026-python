@@ -20,7 +20,7 @@ TEST_CASES = [
 4
 4 3 2 1
 2
-2 1
+2 1 
 """,
 		"expected": """Optimal train swapping takes 1 swaps.
 Optimal train swapping takes 6 swaps.

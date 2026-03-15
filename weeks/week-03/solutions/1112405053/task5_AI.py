@@ -22,7 +22,7 @@ def main() -> None:
 	# 測資筆數
 	t = data[0]
 	index = 1
-	# 儲存最終輸出行
+	# 儲存最終輸出行 
 	out = []
 
 	for _ in range(t):

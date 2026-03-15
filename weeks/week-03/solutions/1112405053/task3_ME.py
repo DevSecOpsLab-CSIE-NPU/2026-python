@@ -16,7 +16,7 @@ def main() -> None:
 			output_parts.append(ch)
 
 	sys.stdout.write("".join(output_parts))
-
+ 
 
 if __name__ == "__main__":
 	main()
