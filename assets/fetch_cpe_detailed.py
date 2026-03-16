@@ -4,12 +4,12 @@ CPE 題目爬蟲 - 從 ZeroJudge 爬取詳細內容
 為 Week 03-13 的所有題目建立完整的 QUESTION-{#}.md 檔案
 """
 
+import html
 import requests
 from bs4 import BeautifulSoup
-import re
 import time
 from pathlib import Path
-from typing import Dict, Optional, Tuple
+from typing import Dict, Optional
 
 # 題號到週次的映射
 PROBLEM_TO_WEEK = {
@@ -137,8 +137,25 @@ PROBLEM_TO_ZJ_ID = {
     12019: "c012",
 }
 
-PROJECT_ROOT = Path(__file__).parent
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 WEEKS_DIR = PROJECT_ROOT / "weeks"
+
+
+def clean_text(text: str) -> str:
+    """清理 ZeroJudge 擷取文字中的多餘空白與 HTML 實體。"""
+    cleaned = html.unescape(text)
+    lines = [line.strip() for line in cleaned.splitlines()]
+    return "\n".join(line for line in lines if line)
+
+
+def extract_title(soup: BeautifulSoup, zj_id: str) -> str:
+    """從頁面標題萃取題號與題名。"""
+    title_node = soup.find("title")
+    if not title_node:
+        return f"ZeroJudge Problem {zj_id}"
+
+    title_text = title_node.get_text(strip=True)
+    return title_text.split(" - ")[0].strip() or f"ZeroJudge Problem {zj_id}"
 
 
 def fetch_zerojudge_content(zj_id: str) -> Optional[Dict[str, str]]:
@@ -147,33 +164,40 @@ def fetch_zerojudge_content(zj_id: str) -> Optional[Dict[str, str]]:
     print(f"  爬取 {url}...", end=" ", flush=True)
 
     try:
-        response = requests.get(url, timeout=10)
+        response = requests.get(
+            url,
+            headers={
+                "User-Agent": (
+                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                    "AppleWebKit/537.36 (KHTML, like Gecko) "
+                    "Chrome/133.0.0.0 Safari/537.36"
+                )
+            },
+            timeout=10,
+        )
+        response.raise_for_status()
         response.encoding = "utf-8"
         soup = BeautifulSoup(response.text, "html.parser")
 
-        # 尋找題目內容區塊
-        content_divs = soup.find_all("div", class_="problem-content")
+        description_div = soup.find("div", id="problem_content")
+        input_div = soup.find("div", id="problem_theinput")
+        output_div = soup.find("div", id="problem_theoutput")
 
-        if not content_divs:
+        if not any([description_div, input_div, output_div]):
             print("❌ 找不到內容")
             return None
 
-        content_text = ""
-        for div in content_divs:
-            content_text += div.get_text(separator="\n")
-
-        # 分段提取資訊
-        title = soup.find("h1")
-        title_text = (
-            title.get_text(strip=True) if title else f"ZeroJudge Problem {zj_id}"
-        )
-
-        # 通過分隔符提取各段內容
         sections = {
-            "title": title_text,
-            "description": extract_section(content_text, "題目敘述|題目描述|Problem"),
-            "input": extract_section(content_text, "輸入|Input"),
-            "output": extract_section(content_text, "輸出|Output"),
+            "title": extract_title(soup, zj_id),
+            "description": clean_text(
+                description_div.get_text("\n", strip=True) if description_div else ""
+            ),
+            "input": clean_text(
+                input_div.get_text("\n", strip=True) if input_div else ""
+            ),
+            "output": clean_text(
+                output_div.get_text("\n", strip=True) if output_div else ""
+            ),
         }
 
         print("✅")
@@ -182,48 +206,6 @@ def fetch_zerojudge_content(zj_id: str) -> Optional[Dict[str, str]]:
     except Exception as e:
         print(f"❌ {e}")
         return None
-
-
-def extract_section(text: str, pattern: str) -> str:
-    """從文本中提取特定段落"""
-    lines = text.split("\n")
-
-    # 尋找起始行
-    start_idx = -1
-    for i, line in enumerate(lines):
-        if re.search(pattern, line, re.IGNORECASE):
-            start_idx = i + 1
-            break
-
-    if start_idx < 0:
-        return ""
-
-    # 收集內容直到下一個段落標題
-    result_lines = []
-    for i in range(start_idx, len(lines)):
-        line = lines[i].strip()
-
-        # 停止條件：遇到下一個章節標題
-        if i > start_idx and any(
-            keyword in line
-            for keyword in [
-                "輸入",
-                "輸出",
-                "樣本輸入",
-                "樣本輸出",
-                "Input",
-                "Output",
-                "Sample",
-                "限制",
-                "Constraints",
-            ]
-        ):
-            break
-
-        if line:
-            result_lines.append(line)
-
-    return "\n".join(result_lines)[:500]  # 限制在 500 字
 
 
 def generate_question_markdown(
