@@ -1,0 +1,13 @@
+Command:
+py -3 -m unittest -v test_solution_948.py
+
+Output:
+test_ambiguous_answer_returns_zero (test_solution_948.FakeCoinTests) ... ok
+test_sample_case (test_solution_948.FakeCoinTests) ... ok
+test_single_unique_heavier_coin (test_solution_948.FakeCoinTests) ... ok
+test_single_unique_lighter_coin (test_solution_948.FakeCoinTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+OK

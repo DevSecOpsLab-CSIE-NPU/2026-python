@@ -1,0 +1,11 @@
+Command:
+py -3 -m unittest -v test_solution_10019.py
+
+Output:
+test_known_values (test_solution_10019.FunnyEncryptionTests) ... ok
+test_zero_value (test_solution_10019.FunnyEncryptionTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK

@@ -1,0 +1,11 @@
+Command:
+py -3 -m unittest -v test_solution_10008.py
+
+Output:
+test_count_and_sort_letters (test_solution_10008.CryptanalysisTests) ... ok
+test_ignore_non_letters (test_solution_10008.CryptanalysisTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK
