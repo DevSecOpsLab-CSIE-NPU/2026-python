@@ -1,0 +1,17 @@
+test_ignore_non_letters_and_merge_cases (test_question_10008.TestQuestion10008) ... ok
+test_sort_by_frequency_then_letter (test_question_10008.TestQuestion10008) ... ok
+test_large_numbers (test_question_10019.TestQuestion10019) ... ok
+test_multiple_pairs_until_eof (test_question_10019.TestQuestion10019) ... ok
+test_long_carry_chain (test_question_10035.TestQuestion10035) ... ok
+test_sample_cases (test_question_10035.TestQuestion10035) ... ok
+test_sample_cases (test_question_10038.TestQuestion10038) ... ok
+test_single_value_and_duplicate_difference (test_question_10038.TestQuestion10038) ... ok
+test_genuine_reference_coin_can_remove_ambiguity (test_question_948.TestQuestion948) ... ok
+test_sample_cases (test_question_948.TestQuestion948) ... ok
+test_single_unbalanced_weighing_is_still_ambiguous (test_question_948.TestQuestion948) ... ok
+test_unweighed_remaining_coin_is_unique_answer (test_question_948.TestQuestion948) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.618s
+
+OK
