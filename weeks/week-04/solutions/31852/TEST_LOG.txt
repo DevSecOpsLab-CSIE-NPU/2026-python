@@ -1,0 +1,11 @@
+test_count_and_sort_letters (test_uva_10008.TestUVA10008.test_count_and_sort_letters) ... ok
+test_ignore_non_letters_and_case (test_uva_10008.TestUVA10008.test_ignore_non_letters_and_case) ... ok
+test_abs_difference (test_uva_10019.TestUVA10019.test_abs_difference) ... ok
+test_carry_counts (test_uva_10035.TestUVA10035.test_carry_counts) ... ok
+test_jolly_sequences (test_uva_10038.TestUVA10038.test_jolly_sequences) ... ok
+test_find_unique_and_ambiguous_coin (test_uva_948.TestUVA948.test_find_unique_and_ambiguous_coin) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.621s
+
+OK
