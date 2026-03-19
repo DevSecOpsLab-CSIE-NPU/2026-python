@@ -1,0 +1,51 @@
+[QUESTION-100]
+Command:
+printf '1 10\n100 200\n201 210\n900 1000\n' | python3 weeks/week-03/solutions/1114405012/QUESTION-100.py
+
+Output:
+1 10 20
+100 200 125
+201 210 89
+900 1000 174
+
+------------------------------------------------------------
+[QUESTION-118]
+Command:
+printf '5 3\n1 1 E\nRFRFRFRF\n3 2 N\nFRRFLLFFRRFLL\n0 3 W\nLLFFFLFLFL\n' | python3 weeks/week-03/solutions/1114405012/QUESTION-118.py
+
+Output:
+1 1 E
+3 3 N LOST
+2 3 S
+
+------------------------------------------------------------
+[QUESTION-272]
+Command:
+cat <<'EOF' | python3 weeks/week-03/solutions/1114405012/QUESTION-272.py
+"To be or not to be," quoth the bard, "that is the question."
+EOF
+
+Output:
+``To be or not to be,'' quoth the bard, ``that is the question.''
+
+------------------------------------------------------------
+[QUESTION-299]
+Command:
+printf '3\n3\n1 3 2\n4\n4 3 2 1\n2\n1 2\n' | python3 weeks/week-03/solutions/1114405012/QUESTION-299.py
+
+Output:
+Optimal train swapping takes 1 swaps.
+Optimal train swapping takes 6 swaps.
+Optimal train swapping takes 0 swaps.
+
+------------------------------------------------------------
+[QUESTION-490]
+Command:
+printf 'HELLO\nWORLD\n' | python3 weeks/week-03/solutions/1114405012/QUESTION-490.py
+
+Output:
+WH
+OE
+RL
+LL
+DO
