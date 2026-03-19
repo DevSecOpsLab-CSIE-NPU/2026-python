@@ -1,15 +1,8 @@
-"""
-U03: deque 的 maxlen
-
-當長度超過上限時，最舊的資料會自動被移除。
-"""
+# U3. deque(maxlen=N) 為何能保留最後 N 筆（1.3）
 
 from collections import deque
-
 
 q = deque(maxlen=3)
 for i in [1, 2, 3, 4, 5]:
     q.append(i)
-
-# 最後只會保留最近加入的 3 個值。
-# 內容會是 [3, 4, 5]
+# 結果只剩 [3, 4, 5]

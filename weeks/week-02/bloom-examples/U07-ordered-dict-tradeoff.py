@@ -1,14 +1,8 @@
-"""
-U07: OrderedDict 的取捨
-
-它會保留插入順序，但也會多一點維護成本。
-"""
+# U7. OrderedDict 的取捨：保序但更吃記憶體（1.7）
 
 from collections import OrderedDict
 
-
 d = OrderedDict()
-d["foo"] = 1
-d["bar"] = 2
-
-# 當你需要明確控制鍵的輸出順序時，OrderedDict 會比較好用。
+d['foo'] = 1
+d['bar'] = 2
+# 你能解釋：為了維持插入順序，它需要額外結構（因此更耗記憶體）
