@@ -1,0 +1,22 @@
+UVA 10038 測試執行紀錄
+日期：2026-03-19
+目錄：D:\python0318\2026-python\weeks\week-04\solutions\1114405029\10038
+
+[執行命令]
+python -m unittest -v test_uva10038.py
+
+[測試輸出]
+test_duplicate_difference_case (test_uva10038.TestUVA10038.test_duplicate_difference_case) ... ok
+test_sample_cases (test_uva10038.TestUVA10038.test_sample_cases) ... ok
+test_single_number_case (test_uva10038.TestUVA10038.test_single_number_case) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK
+
+[結論]
+1. test_uva10038.py 已測試 uva10038.py 的主要功能。
+2. 已驗證可正確判斷 Jolly 與 Not jolly。
+3. 已驗證可正確處理單一數字序列。
+4. 已驗證差值重複或不完整時會判定為 Not jolly。

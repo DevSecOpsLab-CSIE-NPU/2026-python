@@ -1,0 +1,22 @@
+UVA 10035 測試執行紀錄
+日期：2026-03-19
+目錄：D:\python0318\2026-python\weeks\week-04\solutions\1114405029\10035
+
+[執行命令]
+python -m unittest -v test_uva10035.py
+
+[測試輸出]
+test_multiple_lines_and_zero_end (test_uva10035.TestUVA10035.test_multiple_lines_and_zero_end) ... ok
+test_sample_cases (test_uva10035.TestUVA10035.test_sample_cases) ... ok
+test_single_carry_case (test_uva10035.TestUVA10035.test_single_carry_case) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.003s
+
+OK
+
+[結論]
+1. test_uva10035.py 已測試 uva10035.py 的主要功能。
+2. 已驗證無進位、一次以上進位與多次進位的情況。
+3. 已驗證可正確處理多組測資。
+4. 已驗證遇到 0 0 時會正確結束輸入。
