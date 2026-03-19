@@ -18,7 +18,7 @@
 ### 執行指令
 
 ```bash
-cd weeks/week-02/solutions/a4528
+cd weeks/week-02/solutions/1111405040
 python -m unittest discover -s tests -p "test_*.py" -v
 ```
 
