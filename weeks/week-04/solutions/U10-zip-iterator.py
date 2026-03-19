@@ -11,9 +11,22 @@
 
 prices = {'A': 2.0, 'B': 1.0}
 z = zip(prices.values(), prices.keys())
+print("--- 第一次存取 min(z) ---")
+try:
+    min_val = min(z)
+    print(f"最小值是: {min_val}")
+except ValueError as e:
+    print(f"錯誤: {e}")
 
-min(z)  # OK（消耗掉迭代器）
-# max(z)  # 會失敗：因為 z 已經被消耗完
+# 2. 第二次存取：慘劇發生
+print("\n--- 第二次存取 max(z) ---")
+try:
+    # 此時 z 已經空了，min/max 對空序列會拋出 ValueError
+    max_val = max(z)
+    print(f"最大值是: {max_val}")
+except ValueError:
+    print("錯誤：ValueError: max() arg is an empty sequence")
+    print("原因：zip 物件是一次性迭代器，已經被 min() 消耗殆盡了！")
 
 # 若要同時取得 min/max，可先轉成 list：
 # pairs = list(zip(prices.values(), prices.keys()))

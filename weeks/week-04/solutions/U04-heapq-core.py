@@ -23,3 +23,8 @@ heapq.heapify(h)
 # 依照 heap 性質，h[0] 永遠是目前的最小值
 # 即使堆內元素順序不是完全排序（只是部分有序），最小值仍然在最前面
 m = heapq.heappop(h)  # 每次 pop 都拿到目前最小值
+
+print("原始 nums:", nums)
+print("heapify 後的 h:", h)
+print("pop 出來的最小值:", m)
+print("pop 之後剩下的 heap:", h)

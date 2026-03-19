@@ -17,17 +17,11 @@ rows = [
     {'date': '07/02/2012', 'x': 3},
 ]
 
-# --- 1. 錯誤示範：沒排序就分組 ---
-print("--- [錯誤示範] 沒排序的分組 ---")
-# 07/02 會出現兩次，因為它們被 07/01 隔開了
-for date, items in groupby(rows, key=itemgetter('date')):
-    print(f"Date: {date}, Items: {list(items)}")
+# 沒排序：07/02 會被分成兩段（因為 groupby 只看「連續」）
+for k, g in groupby(rows, key=itemgetter('date')):
+    list(g)
 
-# --- 2. 正確做法：排序後再分組 ---
-print("\n--- [正確做法] 排序後的分組 ---")
+# 排序後：同 date 才會連在一起，分組才正確
 rows.sort(key=itemgetter('date'))
-
-for date, items in groupby(rows, key=itemgetter('date')):
-    # 這裡的 items 是一個迭代器，轉成 list 方便閱讀
-    current_group = list(items)
-    print(f"Date: {date}, Count: {len(current_group)}, Items: {current_group}")
+for k, g in groupby(rows, key=itemgetter('date')):
+    list(g)

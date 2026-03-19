@@ -11,3 +11,7 @@
 record = ('Dave', 'dave@example.com')
 name, email, *phones = record
 # phones == []  仍是 list
+
+print(name)
+print(email)
+print(phones)

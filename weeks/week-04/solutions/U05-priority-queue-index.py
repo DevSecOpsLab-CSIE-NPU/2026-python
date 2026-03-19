@@ -10,19 +10,31 @@
 # 解法：在 tuple 裡加一個不會比較失敗的值（例如遞增的 index），
 # 讓 heapq 可以在 priority 相同時，順序地比較這個 index。
 
-import heapq
-
 class Item:
     def __init__(self, name):
         self.name = name
+    
+    # 為了讓輸出更易讀，加上 __repr__
+    def __repr__(self):
+        return f"Item('{self.name}')"
 
 pq = []
+idx = 0
 
+print("--- 正在推入元素 ---")
+items_to_push = ['a', 'b', 'c']
 # 若只放 (priority, item)，同 priority 會比較 item，Item 不支援 < 會炸
 # heapq.heappush(pq, (-1, Item('a')))
 # heapq.heappush(pq, (-1, Item('b')))  # TypeError
-
+for name in items_to_push:
+    item = Item(name)
+    # 格式：(priority, index, object)
+    heapq.heappush(pq, (-1, idx, item))
+    print(f"Pushed: priority=-1, index={idx}, item={name}")
+    idx += 1
 # 正解：加 index 避免比較 item
-idx = 0
-heapq.heappush(pq, (-1, idx, Item('a'))); idx += 1
-heapq.heappush(pq, (-1, idx, Item('b'))); idx += 1
+print("\n--- 正在彈出元素 (依優先權與 Index 順序) ---")
+
+while pq:
+    priority, index, item = heapq.heappop(pq)
+    print(f"Popped: Priority={priority}, Index={index}, Object={item}")
