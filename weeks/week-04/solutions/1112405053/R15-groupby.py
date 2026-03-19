@@ -13,7 +13,7 @@ rows = [
     {'date': '07/02/2012', 'address': '...'}
 ]
 
-# 先依照 date 欄位排序，因為 groupby 只會將相鄰（已排序）項目視為同一組
+# 先依照 date 欄位排序，因為 groupby 只會將相鄰（已排序）項目視為同一組 
 rows.sort(key=itemgetter('date'))
 
 # 使用 groupby 進行分組，key=itemgetter('date') 表示以 'date' 欄位為分組依據

@@ -15,7 +15,7 @@ s = ('ACME', 50, 123.45)
 
 portfolio = [{'name': 'AOL', 'shares': 20}, {'name': 'YHOO', 'shares': 75}]
 
-# 找到最小 shares 的值（使用生成器表達式）
+# 找到最小 shares 的值（使用生成器表達式)
 min(s['shares'] for s in portfolio)
 
 # 直接找出 shares 最小的整個 dict（使用 key 參數） 

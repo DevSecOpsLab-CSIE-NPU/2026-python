@@ -18,7 +18,7 @@ def is_int(val):
     # list comprehension：立即建立一個新列表，包含 mylist 中大於 0 的元素 
     [n for n in mylist if n > 0]
 
-    # generator expression（小括號）：懶惰求值，不會一次建立整個列表
+    # generator expression（小括號）：懶惰求值，不會一次建立整個列表 
     pos = (n for n in mylist if n > 0)
 
     values = ['1', '2', '-3', '-', 'N/A']

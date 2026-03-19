@@ -12,7 +12,7 @@ sub = Subscriber('jonesy@example.com', '2012-10-19')
 # 可以透過屬性名稱存取欄位
 sub.addr
 
-# Stock 範例：示範 _replace 用來建立修改後的新命名元組（namedtuple 是不可變的） 
+# Stock 範例：示範 _replace 用來建立修改後的新命名元組（namedtuple 是不可變的）
 Stock = namedtuple('Stock', ['name', 'shares', 'price'])
 s = Stock('ACME', 100, 123.45)
 s = s._replace(shares=75)

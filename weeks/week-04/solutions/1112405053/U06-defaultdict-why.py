@@ -14,7 +14,7 @@ for k, v in pairs:
         d[k] = []
     d[k].append(v)
 
-# defaultdict：省掉初始化分支 
+# defaultdict：省掉初始化分支
 d2 = defaultdict(list)
 for k, v in pairs:
     d2[k].append(v)
