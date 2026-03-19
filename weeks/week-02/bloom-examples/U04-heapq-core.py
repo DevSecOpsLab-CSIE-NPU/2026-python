@@ -1,9 +1,13 @@
-# U4. heap 為何能高效拿 Top-N（1.4）
+﻿"""U04: heapq 的核心是最小堆，不是排序後清單。"""
 
 import heapq
 
 nums = [5, 1, 9, 2]
 h = nums[:]
 heapq.heapify(h)
-# h[0] 永遠是最小值（這是 heap 的核心性質）
-m = heapq.heappop(h)  # 每次 pop 都拿到目前最小
+
+print('heapify 後:', h)
+print('h[0] 一定是最小值:', h[0])
+print('heappop #1:', heapq.heappop(h))
+print('heappop #2:', heapq.heappop(h))
+print('剩餘 heap:', h)

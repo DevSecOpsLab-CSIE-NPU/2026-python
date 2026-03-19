@@ -1,8 +1,10 @@
-# U3. deque(maxlen=N) 為何能保留最後 N 筆（1.3）
+﻿"""U03: deque(maxlen=N) 會自動維持固定長度。"""
 
 from collections import deque
 
 q = deque(maxlen=3)
 for i in [1, 2, 3, 4, 5]:
     q.append(i)
-# 結果只剩 [3, 4, 5]
+    print(f'append({i}) ->', list(q))
+
+print('最終結果只保留最後 3 個:', list(q))
