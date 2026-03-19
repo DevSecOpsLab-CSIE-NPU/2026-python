@@ -1,9 +1,13 @@
-# U8. 字典最值為何常用 zip(values, keys)（1.8）
+"""
+U08: 字典搭配 min/max 與 zip
 
-prices = {'A': 2.0, 'B': 1.0}
+只用 min(prices) 會比較 key，不是比較 value。
+"""
 
-min(prices)            # 回傳 key 的最小值（字母序）
-min(prices.values())   # 回傳最小 value，但你不知道是哪個 key
+prices = {"A": 2.0, "B": 1.0}
 
+min(prices)          # 比較 key，結果是 "A"
+min(prices.values())  # 只拿到最小 value，無法知道是哪個 key
+
+# 把 value 和 key 綁在一起後，就能同時得到兩者。
 min(zip(prices.values(), prices.keys()))
-# 回傳 (最小value, 對應key)，一次拿到兩者

@@ -1,19 +1,24 @@
-# U9. groupby 為何一定要先 sort（1.15）
+"""
+U09: groupby 之前要先排序
+
+如果相同 key 沒排在一起，groupby 會把它們分成多組。
+"""
 
 from itertools import groupby
 from operator import itemgetter
 
+
 rows = [
-    {'date': '07/02/2012', 'x': 1},
-    {'date': '07/01/2012', 'x': 2},
-    {'date': '07/02/2012', 'x': 3},
+    {"date": "07/02/2012", "x": 1},
+    {"date": "07/01/2012", "x": 2},
+    {"date": "07/02/2012", "x": 3},
 ]
 
-# 沒排序：07/02 會被分成兩段（因為 groupby 只看「連續」）
-for k, g in groupby(rows, key=itemgetter('date')):
+# 沒排序時，兩筆 07/02/2012 不會被視為同一組。
+for k, g in groupby(rows, key=itemgetter("date")):
     list(g)
 
-# 排序後：同 date 才會連在一起，分組才正確
-rows.sort(key=itemgetter('date'))
-for k, g in groupby(rows, key=itemgetter('date')):
+# 先排序後，相同日期才會排在一起。
+rows.sort(key=itemgetter("date"))
+for k, g in groupby(rows, key=itemgetter("date")):
     list(g)
