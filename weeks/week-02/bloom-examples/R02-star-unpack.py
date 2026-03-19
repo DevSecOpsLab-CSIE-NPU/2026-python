@@ -75,10 +75,8 @@ print()
 
 print("❌ 錯誤：多個星號")
 print("嘗試：*a, *b = [1, 2, 3, 4]")
-try:
-    *a, *b = [1, 2, 3, 4]
-except SyntaxError as e:
-    print(f"語法錯誤：只能有一個 *\n")
+print("語法錯誤：只能有一個 *")
+print("（Python會在解析階段就報錯)\n")
 
 print("原因：")
 print("  Python 無法確定如何分配元素")
