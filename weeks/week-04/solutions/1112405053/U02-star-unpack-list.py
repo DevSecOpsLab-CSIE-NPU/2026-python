@@ -5,4 +5,4 @@
 
 record = ('Dave', 'dave@example.com')
 name, email, *phones = record
-# phones == []  仍是 list
+# phones == []  仍是 list 

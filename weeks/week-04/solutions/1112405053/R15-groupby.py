@@ -7,7 +7,7 @@
 from itertools import groupby  # 用於產生分組的 iterator
 from operator import itemgetter  # 提供根據 dict 鍵取值的快捷函數
 
-# 範例資料：每個元素為一個 dict，包含 'date' 與 'address' 欄位
+# 範例資料：每個元素為一個 dict，包含 'date' 與 'address' 欄位 
 rows = [
     {'date': '07/01/2012', 'address': '...'},
     {'date': '07/02/2012', 'address': '...'}

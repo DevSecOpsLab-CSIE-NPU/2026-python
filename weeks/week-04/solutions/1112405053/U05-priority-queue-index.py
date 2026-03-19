@@ -15,7 +15,7 @@ pq = []
 # heapq.heappush(pq, (-1, Item('a')))
 # heapq.heappush(pq, (-1, Item('b')))  # TypeError
 
-# 正解：加 index 避免比較 item
+# 正解：加 index 避免比較 item 
 idx = 0
 heapq.heappush(pq, (-1, idx, Item('a'))); idx += 1
 heapq.heappush(pq, (-1, idx, Item('b'))); idx += 1

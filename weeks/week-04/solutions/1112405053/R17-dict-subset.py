@@ -10,5 +10,5 @@ p1 = {k: v for k, v in prices.items() if v > 200}
 
 tech_names = {'AAPL', 'IBM'}
 
-# p2：僅保留 key 在 tech_names 集合內的項目
+# p2：僅保留 key 在 tech_names 集合內的項目 
 p2 = {k: v for k, v in prices.items() if k in tech_names}
