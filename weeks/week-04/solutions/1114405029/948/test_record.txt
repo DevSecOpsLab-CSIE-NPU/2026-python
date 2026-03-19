@@ -1,0 +1,22 @@
+UVA 948 測試執行紀錄
+日期：2026-03-19
+目錄：D:\python0318\2026-python\weeks\week-04\solutions\1114405029\948
+
+[執行命令]
+python -m unittest -v test_uva948.py
+
+[測試輸出]
+test_multiple_cases_with_blank_line_output (test_uva948.TestUVA948.test_multiple_cases_with_blank_line_output) ... ok
+test_no_unique_answer (test_uva948.TestUVA948.test_no_unique_answer) ... ok
+test_unique_fake_coin (test_uva948.TestUVA948.test_unique_fake_coin) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.003s
+
+OK
+
+[結論]
+1. test_uva948.py 已測試 uva948.py 的主要功能。
+2. 所有測試案例皆通過。
+3. 已驗證可唯一判定與無法唯一判定兩種情況。
+4. 已符合題目要求之輸出格式（測資間空白行）。

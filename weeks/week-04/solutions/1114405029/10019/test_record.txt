@@ -1,0 +1,22 @@
+UVA 10019 測試執行紀錄
+日期：2026-03-19
+目錄：D:\python0318\2026-python\weeks\week-04\solutions\1114405029\10019
+
+[執行命令]
+python -m unittest -v test_uva10019.py
+
+[測試輸出]
+test_sample_case (test_uva10019.TestUVA10019.test_sample_case) ... ok
+test_single_digit_case (test_uva10019.TestUVA10019.test_single_digit_case) ... ok
+test_small_number_case (test_uva10019.TestUVA10019.test_small_number_case) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK
+
+[結論]
+1. test_uva10019.py 已測試 uva10019.py 的主要功能。
+2. 已驗證十進位表示轉二進位後的 1 的個數計算正確。
+3. 已驗證十六進位表示轉二進位後的 1 的個數計算正確。
+4. 已驗證可正確處理多組測資。

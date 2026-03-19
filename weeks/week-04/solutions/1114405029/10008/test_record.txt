@@ -1,0 +1,22 @@
+UVA 10008 測試執行紀錄
+日期：2026-03-19
+目錄：D:\python0318\2026-python\weeks\week-04\solutions\1114405029\10008
+
+[執行命令]
+python -m unittest -v test_uva10008.py
+
+[測試輸出]
+test_ignore_case_and_non_letters (test_uva10008.TestUVA10008.test_ignore_case_and_non_letters) ... ok
+test_sample_like_case (test_uva10008.TestUVA10008.test_sample_like_case) ... ok
+test_tie_should_sort_alphabetically (test_uva10008.TestUVA10008.test_tie_should_sort_alphabetically) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+OK
+
+[結論]
+1. test_uva10008.py 已測試 uva10008.py 的主要功能。
+2. 已驗證可正確統計英文字母次數。
+3. 已驗證大小寫需視為相同，且非字母字元不列入統計。
+4. 已驗證當次數相同時，會依字母順序排序輸出。
