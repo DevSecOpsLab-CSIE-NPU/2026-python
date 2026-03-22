@@ -1,5 +1,11 @@
 # Visual Studio Code GitHub 操作流程
 
+## PRE A. 如何開始自己的課程repo
+
+1. 前往([老師的遠端儲存庫](https://github.com/DevSecOpsLab-CSIE-NPU/2026-python))
+2. 找到fork按鈕![fork button](image.png)按下去
+3. 將owner設定為你自己後按下create fork![alt text](image-1.png)
+
 ## A. 每週目標（Week #）
 
 1. 在 VS Code 完成教材同步
