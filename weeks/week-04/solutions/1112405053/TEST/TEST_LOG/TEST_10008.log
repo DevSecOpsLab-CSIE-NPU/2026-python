@@ -1,0 +1,31 @@
+測試目標: E:\BOHAN\python\2026-python\weeks\week-04\solutions\1112405053\10008_AI.py
+
+[1/5] 測試輸入: world
+   執行完成 (耗時: 1.3688s)
+   輸出結果: hello, world
+
+[2/5] 測試輸入: C++
+   執行完成 (耗時: 2.0541s)
+   輸出結果: hello, C++
+
+[3/5] 測試輸入: Python
+   執行完成 (耗時: 1.2739s)
+   輸出結果: hello, Python
+
+[4/5] 測試輸入: ZeroJudge
+   執行完成 (耗時: 1.2784s)
+   輸出結果: hello, ZeroJudge
+
+[5/5] 測試輸入: 12345
+   執行完成 (耗時: 1.2845s)
+   輸出結果: hello, 12345
+
+==================================================
+Run   | Input           | Status     | Duration   | Output
+--------------------------------------------------
+#1    | world           | Success    | 1.3688s    | hello, world
+#2    | C++             | Success    | 2.0541s    | hello, C++
+#3    | Python          | Success    | 1.2739s    | hello, Python
+#4    | ZeroJudge       | Success    | 1.2784s    | hello, ZeroJudge
+#5    | 12345           | Success    | 1.2845s    | hello, 12345
+==================================================
