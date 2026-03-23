@@ -1,11 +1,14 @@
 # R1. 序列解包（1.1）
+# 以下範例示範如何從可迭代物件中直接取出元素並指派給變數
 
-p = (4, 5)
-x, y = p
+p = (4, 5)  # 建立一個二元組
+x, y = p  # 將元組中的兩個值依序解包到變數 x 和 y
 
+# 也可以對列表進行解包
 data = ['ACME', 50, 91.1, (2012, 12, 21)]
-name, shares, price, date = data
-name, shares, price, (year, mon, day) = data
+name, shares, price, date = data  # 將列表的元素對應到四個變數
+# 如果其中某個元素本身也是可迭代的，還可以在一行內再做解包
+name, shares, price, (year, mon, day) = data  # 進一步把日期元組拆解成三個變數
 
-# 丟棄不需要的值（占位）
-_, shares, price, _ = data
+# 若某些值不需要，可以使用占位符 "_" 來丟棄
+_, shares, price, _ = data  # 只保留我們感興趣的欄位，其他的忽略掉
