@@ -1,0 +1,10 @@
+Robot Lost Replay Log
+001: (0,0,N,lost=False) event=INIT scents=0
+002: (0,1,N,lost=False) event=MOVE scents=0
+003: (0,2,N,lost=False) event=MOVE scents=0
+
+Final Matrix:
+. . . . . .
+R . . . . .
+. . . . . .
+. . . . . .
