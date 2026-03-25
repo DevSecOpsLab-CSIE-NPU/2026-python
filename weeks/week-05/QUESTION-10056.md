@@ -48,6 +48,59 @@ N表示玩家數，p表示一次成功事件發生的機率，i (i ≤ N) 表示
 
 ## 解題思路
 
+N 個玩家輪流擲骰子，成功機率 p，第 i 個玩家獲勝的機率。
+
+第 i 個玩家獲勝的條件：前 i-1 個玩家失敗，第 i 個成功。
+
+由於是循環的，使用幾何級數公式：
+
+P_i = p * (1-p)^{i-1} / (1 - (1-p)^N)
+
+需要處理邊界情況，如 p=0 或 p=1。
+
+輸出四捨五入到小數點後四位。
+
+時間複雜度 O(1) 每組。
+
+## 解題代碼
+
+```python
+import sys
+
+def calculate_probability(N, p, i):
+    """
+    計算第 i 個玩家獲勝機率
+    參數：N - 玩家數, p - 成功機率, i - 玩家編號 (1-based)
+    返回：機率
+    """
+    if p == 0:
+        return 0.0
+    q = 1 - p
+    if q ** N == 1:
+        # 如果 q=0, p=1, 第一個玩家總是贏
+        return 1.0 if i == 1 else 0.0
+    prob = p * (q ** (i - 1)) / (1 - q ** N)
+    return prob
+
+def main():
+    """
+    主函數：讀取輸入並處理每一組測試資料
+    """
+    input_data = sys.stdin.read().split()
+    S = int(input_data[0])
+    index = 1
+    for _ in range(S):
+        N = int(input_data[index])
+        p = float(input_data[index + 1])
+        i = int(input_data[index + 2])
+        index += 3
+        prob = calculate_probability(N, p, i)
+        print(f"{prob:.4f}")
+
+if __name__ == "__main__":
+    main()
+```
+
 *請填入你的解題思路*
 
 ## 解題代碼

@@ -1,68 +1,4 @@
-# 題目 10055
-
-**題名**: UVA 10055
-
-**相關連結**:
-- [ZeroJudge 題目頁面](https://zerojudge.tw/ShowProblem?problemid=a048)
-- [Yui Huang 題解](https://yuihuang.com/zj-a048/)
-
-## 題目敘述
-
-判斷**單調函數的增減性**想必大家都很清楚了。
-
-現在有 **N 個函數** f₁(x), f₂(x), …, fN(x)，一開始全部都是**增函數**。
-
-由於記性不好，我會不時發現某個函數的增減性說錯了，需要進行更改。更改時，會告訴你某個函數從增（減）函數變成減（增）函數。
-
-定義複合函數：
-
-$$F(x) = f_L(f_{L+1}(\cdots f_R(x)\cdots))$$
-
-其中 **1 ≤ L ≤ R ≤ N**。
-
-請問每次查詢時，**F(x) 是增函數還是減函數**？
-
-## 輸入說明
-
-輸入第一行是兩個整數 **N**（1 ≤ N ≤ 200000）和 **Q**（1 ≤ Q ≤ 200000）。
-
-接下來有 Q 行，每行第一個數是 **v**（v = 1 或 2）：
-
-- 若 v = **1**：接著有一個整數 i，表示函數 fᵢ 的增減性被記錯了，應將 fᵢ 的增減性**反轉**（增→減 或 減→增）。
-- 若 v = **2**：接著有兩個整數 L 和 R，表示**查詢** F(x) = fL(fL+1(…fR(x)…)) 的增減性。
-
-## 輸出說明
-
-對所有 v = 2 的查詢操作，輸出 F(x) 的增減性：
-
-- 若 F(x) 是**增函數**，輸出 `0`
-- 若 F(x) 是**減函數**，輸出 `1`
-
----
-
-## 解題思路
-
-有 N 個函數，初始皆為增函數（0）。
-
-操作：
-- 1 i：反轉 f_i 的增減性（0<->1）。
-- 2 L R：查詢 f_L 到 f_R 的複合函數增減性。
-
-複合函數的增減性取決於減函數的數量：奇數個減函數則複合為減（1），偶數為增（0）。
-
-因為 N 和 Q 皆為 2e5，需要高效資料結構。
-
-使用線段樹維護區間減函數數量，支援單點更新和區間查詢。
-
-時間複雜度 O(Q log N)。
-
-## 解題代碼
-
-```python
 class SegmentTree:
-    """
-    線段樹：維護區間和（減函數數量）
-    """
     def __init__(self, n):
         self.n = n
         self.tree = [0] * (4 * n)
@@ -122,7 +58,6 @@ def main():
     index += 1
     Q = int(data[index])
     index += 1
-    # 初始化所有函數為增 (0)
     funcs = [0] * (N + 1)
     st = SegmentTree(N + 1)
     st.build(funcs, 1, 1, N)
@@ -133,14 +68,12 @@ def main():
         if v == 1:
             i = int(data[index])
             index += 1
-            # 反轉 f_i
             st.update_range(1, 1, N, i, i)
         else:
             L = int(data[index])
             index += 1
             R = int(data[index])
             index += 1
-            # 查詢 L 到 R 減函數數量 % 2
             dec_count = st.query_range(1, 1, N, L, R)
             is_dec = dec_count % 2
             results.append(str(is_dec))
@@ -148,8 +81,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-```
-
-## 測試用例
-
-*測試輸入與預期輸出*

@@ -31,12 +31,60 @@
 
 ## 解題思路
 
-*請填入你的解題思路*
+這是一個經典的一維中位數問題。為了最小化到所有點的距離總和，最佳位置是所有地址的中位數。
+
+- 將所有地址排序。
+- 中位數是排序後的第 (n//2 + 1) 個元素（1-based）。
+- 計算所有地址到中位數的絕對距離總和。
+
+時間複雜度 O(n log n) 主要來自排序。
 
 ## 解題代碼
 
 ```python
-# 你的代碼這裡
+import sys
+
+def calculate_min_distance(addresses):
+    """
+    計算最小距離總和
+    參數：addresses - 親戚房子的門牌號碼列表
+    返回：最小距離總和
+    """
+    if not addresses:
+        return 0
+    # 排序地址
+    addresses.sort()
+    # 找到中位數（對於偶數個，取任一個中位數）
+    n = len(addresses)
+    median = addresses[n // 2]
+    # 計算總距離
+    total_distance = sum(abs(addr - median) for addr in addresses)
+    return total_distance
+
+def main():
+    """
+    主函數：讀取輸入並處理每一組測試資料
+    """
+    # 讀取所有輸入
+    data = sys.stdin.read().split()
+    # 第一個數字是測試案例數量
+    T = int(data[0])
+    index = 1
+    for _ in range(T):
+        # 讀取親戚數量 r
+        r = int(data[index])
+        index += 1
+        # 讀取 r 個地址
+        addresses = []
+        for i in range(r):
+            addresses.append(int(data[index]))
+            index += 1
+        # 計算並輸出最小距離
+        result = calculate_min_distance(addresses)
+        print(result)
+
+if __name__ == "__main__":
+    main()
 ```
 
 ## 測試用例

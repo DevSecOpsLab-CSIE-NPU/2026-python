@@ -49,6 +49,59 @@
 
 ## 解題思路
 
+給定 n 個數字，找 A 使 sum |X_i - A| 最小。
+
+A 應為中位數。
+
+- 排序數字。
+- 若 n 奇數，A = nums[n//2]，可能的 A 數 = 1。
+- 若 n 偶數，A = nums[n//2 - 1] 或 nums[n//2]，但 sum 相同，輸出一個 A，可能的數 = 2。
+- 計算 sum |X_i - A|。
+
+時間複雜度 O(n log n)。
+
+## 解題代碼
+
+```python
+import sys
+
+def find_median_and_sum(nums):
+    """
+    找到中位數和最小距離總和
+    參數：nums - 數字列表
+    返回：(A, min_sum, possible_A_count)
+    """
+    if not nums:
+        return 0, 0, 0
+    nums.sort()
+    n = len(nums)
+    # 中位數
+    if n % 2 == 1:
+        median = nums[n // 2]
+    else:
+        median = nums[n // 2 - 1]  # 偶數取前一個
+    # 最小距離總和
+    min_sum = sum(abs(x - median) for x in nums)
+    # 可能的 A 數量
+    possible = 1 if n % 2 == 1 else 2
+    return median, min_sum, possible
+
+def main():
+    """
+    主函數：讀取多組測試資料直到 n=0
+    """
+    for line in sys.stdin:
+        n = int(line.strip())
+        if n == 0:
+            break
+        nums = list(map(int, sys.stdin.readline().split()))
+        A, min_sum, possible = find_median_and_sum(nums)
+        print(A, min_sum, possible)
+
+if __name__ == "__main__":
+    main()
+```
+
 *請填入你的解題思路*
 
 ## 解題代碼
