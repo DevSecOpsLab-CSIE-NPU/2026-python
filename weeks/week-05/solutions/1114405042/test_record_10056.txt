@@ -1,0 +1,9 @@
+test_case_1 (test_10056.TestProbability) ... ok
+test_case_2 (test_10056.TestProbability) ... ok
+test_case_3 (test_10056.TestProbability) ... ok
+test_case_4 (test_10056.TestProbability) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
