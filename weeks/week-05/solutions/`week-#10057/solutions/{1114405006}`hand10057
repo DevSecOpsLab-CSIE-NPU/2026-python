@@ -1,0 +1,42 @@
+import sys
+
+
+def solve(data: str) -> str:
+    nums = list(map(int, data.split()))
+    i = 0
+     out = []
+     while i < len(nums):
+       
+     i += 1
+
+       a = nums[i : i + n]
+        i += n
+
+      if n % 2:
+           
+            m = a[n // 2]
+
+          out.append(f"{m} {a.count(m)} 1")
+        else:
+           
+            low, high = a[n // 2 - 1], a[n // 2]
+
+           
+            cnt = sum(low <= x <= high for x in a)
+
+           
+            ways = high - low + 1
+
+            out.append(f"{low} {cnt} {ways}")
+
+    return "\n".join(out)
+
+
+def main() -> None:
+    ans = solve(sys.stdin.read())
+    if ans:
+        sys.stdout.write(ans)
+
+
+if __name__ == "__main__":
+    main()

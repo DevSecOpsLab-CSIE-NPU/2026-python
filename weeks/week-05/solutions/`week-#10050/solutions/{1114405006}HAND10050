@@ -1,0 +1,27 @@
+import sys
+def main() -> None:
+    nuns = list(map(int, sys.stdin.read().split()))
+    if not nuns:
+        return  
+    t = nuns[0]
+    i = 1
+    ans = []
+    for _ in range(t):
+        n = nuns[i]
+        i += 1
+        p = nuns[i]
+        i += 1
+        hs = nuns[i : i + p]
+        i += p
+        lost = set()
+        for h in hs:
+            d = h
+            while d <= n:
+                if d % 7 not in (6, 0):
+                    lost.add(d)
+                d += h
+        ans.append(str(len(lost)))
+
+    sys.stdout.write("\n".join(ans))
+if __name__ == "__main__":
+    main()

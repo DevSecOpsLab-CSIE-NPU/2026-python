@@ -1,0 +1,40 @@
+import sys
+class FenwickTree:
+    def __init__(self, n: int) -> None:
+        self.n = n
+        self.bit = [0] * (n + 1)
+    def add(self, i: int, delta: int) -> None:
+        while i <= self.n:
+            self.bit[i] += delta
+            i += i & -i
+    def prefix_sum(self, i: int) -> int:
+        s = 0
+        while i > 0:
+            s += self.bit[i]
+            i -= i & -i
+        return s
+    def range_sum(self, left: int, right: int) -> int:
+
+        return self.prefix_sum(right) - self.prefix_sum(left - 1)
+        def main() -> None:
+            nums = list(map(int, sys.stdin.read().split()))
+            if not nums:
+                return
+            n, q = nums[0], nums[1]
+            i = 2
+            tree = FenwickTree(n)
+            out = []            state = [0] * (n + 1)
+            for _ in range(q):
+                op = nums[i]
+                i += 1
+                if op == 1:
+                    idx = nums[i]
+                    i += 1
+    tree.add_xor(idx, 1)
+                else:
+                    l,r = nums[i], nums[i+1]
+                    i += 2
+                    out.append(str(tree.range_xor(l, r)))
+            sys.stdout.write("\n".join(out))
+if __name__ == "__main__":
+    main()

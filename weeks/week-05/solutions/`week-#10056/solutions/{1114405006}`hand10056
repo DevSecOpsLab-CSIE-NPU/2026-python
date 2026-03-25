@@ -1,0 +1,27 @@
+import sys
+
+
+def prob(n: int, p: float, i: int) -> float:
+    if p == 0.0:
+        return 0.0
+    q = 1.0 - p
+    return p * (q ** (i - 1)) / (1.0 - (q ** n))
+
+
+def main() -> None:
+    lines = [x.strip() for x in sys.stdin.read().splitlines() if x.strip()]
+    if not lines:
+        return
+
+    s = int(lines[0])
+    out = []
+
+    for k in range(1, s + 1):
+        n, p, i = lines[k].split()
+        out.append(f"{prob(int(n), float(p), int(i)):.4f}")
+
+    sys.stdout.write("\n".join(out))
+
+
+if __name__ == "__main__":
+    main()
