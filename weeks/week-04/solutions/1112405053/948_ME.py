@@ -71,7 +71,7 @@ def solve():
         
         if len(candidates) == 1:
             print(candidates[0])
-        else:
+        else: 
             print(0)
 
 if __name__ == '__main__':

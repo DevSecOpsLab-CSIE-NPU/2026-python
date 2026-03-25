@@ -16,7 +16,7 @@ def solve():
             
             sequence = parts[1:]
             if n == 1:
-                print("Jolly")
+                print("Jolly") 
                 continue
             diffs = []
             for i in range(len(sequence) - 1):

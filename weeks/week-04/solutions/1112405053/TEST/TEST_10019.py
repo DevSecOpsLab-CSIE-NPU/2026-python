@@ -17,7 +17,7 @@ class DualLogger:
         self.log.flush()
 
 def run_test():
-    # 取得目標檔案的絕對路徑
+    # 取得目標檔案的絕對路徑 
     # 假設 TEST_10019.py 在 weeks\week-04\solutions\1112405053\TEST\
     # 而 10019_AI.py 在 weeks\week-04\solutions\1112405053\
     current_dir = os.path.dirname(os.path.abspath(__file__))

@@ -34,7 +34,7 @@ def solve():
             b //= 10
         if carry_count == 0:
             print("No carry operation.")
-        elif carry_count == 1:
+        elif carry_count == 1: 
             print("1 carry operation.")
         else:
             print(f"{carry_count} carry operations.")

@@ -76,7 +76,7 @@ def solve():
                 
                 elif result == '<':
                     # 左邊輕，右邊重
-                    # 1. 沒上天平的硬幣必定是真的
+                    # 1. 沒上天平的硬幣必定是真的 
                     for i in range(1, N + 1):
                         if i not in weighed_coins:
                             possible_light[i] = False

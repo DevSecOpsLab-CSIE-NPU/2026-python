@@ -2,5 +2,5 @@ try:
     s = input()
 
     print(f"hello, {s}")
-except EOFError:
+except EOFError: 
     pass

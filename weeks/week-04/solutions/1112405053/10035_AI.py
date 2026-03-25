@@ -31,7 +31,7 @@ def solve():
         except ValueError:
             continue
             
-        # 結束條件
+        # 結束條件 
         if a == 0 and b == 0:
             break
             

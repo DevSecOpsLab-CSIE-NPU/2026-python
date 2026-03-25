@@ -9,5 +9,5 @@ for line in sys.stdin:
         
         print(abs(a - b))
         
-    except ValueError:
+    except ValueError: 
         pass

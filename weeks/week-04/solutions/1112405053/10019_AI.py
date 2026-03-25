@@ -6,7 +6,7 @@ for line in sys.stdin:
         # 去除空白並分割字串
         parts = line.split()
         
-        # 如果該行沒有內容則跳過
+        # 如果該行沒有內容則跳過 
         if not parts:
             continue
             
