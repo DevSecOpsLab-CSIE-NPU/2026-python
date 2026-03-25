@@ -1,0 +1,50 @@
+Run #1
+timestamp: 2026-03-25T16:56:48
+exit_code: 0
+elapsed_ms: 53.555
+stdout:
+2
+4
+stderr:
+
+----------------------------------------
+Run #2
+timestamp: 2026-03-25T16:56:48
+exit_code: 0
+elapsed_ms: 43.206
+stdout:
+2
+4
+stderr:
+
+----------------------------------------
+Run #3
+timestamp: 2026-03-25T16:56:48
+exit_code: 0
+elapsed_ms: 42.106
+stdout:
+2
+4
+stderr:
+
+----------------------------------------
+Run #4
+timestamp: 2026-03-25T16:56:48
+exit_code: 0
+elapsed_ms: 39.58
+stdout:
+2
+4
+stderr:
+
+----------------------------------------
+Run #5
+timestamp: 2026-03-25T16:56:48
+exit_code: 0
+elapsed_ms: 40.002
+stdout:
+2
+4
+stderr:
+
+----------------------------------------

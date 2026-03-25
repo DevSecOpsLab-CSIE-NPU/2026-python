@@ -1,0 +1,42 @@
+[
+  {
+    "run": 1,
+    "timestamp": "2026-03-25T16:53:59",
+    "exit_code": 0,
+    "elapsed_ms": 41.143,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "run": 2,
+    "timestamp": "2026-03-25T16:53:59",
+    "exit_code": 0,
+    "elapsed_ms": 43.11,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "run": 3,
+    "timestamp": "2026-03-25T16:53:59",
+    "exit_code": 0,
+    "elapsed_ms": 40.021,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "run": 4,
+    "timestamp": "2026-03-25T16:53:59",
+    "exit_code": 0,
+    "elapsed_ms": 38.459,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "run": 5,
+    "timestamp": "2026-03-25T16:53:59",
+    "exit_code": 0,
+    "elapsed_ms": 41.052,
+    "stdout": "",
+    "stderr": ""
+  }
+]
