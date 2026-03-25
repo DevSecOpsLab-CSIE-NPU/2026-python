@@ -53,10 +53,13 @@
 ```
 weeks/
 ├── week-01/
-│   └── README.md
+│   ├── README.md
+│   ├── prerequisites/
+│   └── solutions/
 ├── week-02/
 │   ├── README.md
-│   └── bloom-examples/
+│   ├── bloom-examples/
+│   └── solutions/
 ├── week-03/
 │   ├── README.md
 │   ├── QUESTION-100.md
@@ -64,15 +67,76 @@ weeks/
 │   ├── QUESTION-272.md
 │   ├── QUESTION-299.md
 │   ├── QUESTION-490.md
+│   ├── imgs/
 │   └── solutions/
-│       └── README.md
-├── ...
-└── week-14/
+├── week-04/
+│   ├── README.md
+│   ├── QUESTION-10008.md
+│   ├── QUESTION-10019.md
+│   ├── QUESTION-10035.md
+│   ├── QUESTION-10038.md
+│   ├── QUESTION-948.md
+│   └── solutions/
+├── week-05/
+│   ├── README.md
+│   ├── QUESTION-10041.md
+│   ├── QUESTION-10050.md
+│   ├── QUESTION-10055.md
+│   ├── QUESTION-10056.md
+│   ├── QUESTION-10057.md
+│   └── solutions/
+├── week-06/
+│   ├── README.md
+│   └── solutions/
+├── week-07/
+│   ├── README.md
+│   ├── QUESTION-10062.md
+│   ├── QUESTION-10071.md
+│   ├── QUESTION-10093.md
+│   ├── QUESTION-10101.md
+│   ├── QUESTION-10170.md
+│   └── solutions/
+├── week-08/
+│   ├── README.md
+│   ├── QUESTION-10189.md
+│   ├── QUESTION-10190.md
+│   ├── QUESTION-10193.md
+│   ├── QUESTION-10221.md
+│   ├── QUESTION-10222.md
+│   └── solutions/
+├── week-09/
+│   ├── README.md
+│   └── solutions/
+├── week-10/
+│   ├── README.md
+│   ├── QUESTION-*.md
+│   └── solutions/
+├── week-11/
+│   ├── README.md
+│   ├── QUESTION-*.md
+│   └── solutions/
+├── week-12/
+│   ├── README.md
+│   ├── QUESTION-*.md
+│   └── solutions/
+├── week-13/
+│   ├── README.md
+│   ├── QUESTION-*.md
+│   └── solutions/
+├── week-14/
+│   ├── README.md
+│   ├── QUESTION-*.md
+│   └── solutions/
+├── week-15/
+│   ├── README.md
+│   └── solutions/
+├── week-16/
+│   ├── README.md
+│   └── solutions/
+├── week-17/
+│   ├── README.md
+│   └── solutions/
+└── week-18/
     ├── README.md
-    ├── QUESTION-11349.md
-    ├── QUESTION-11417.md
-    ├── QUESTION-11461.md
-    ├── QUESTION-12019.md
     └── solutions/
-        └── README.md
 ```

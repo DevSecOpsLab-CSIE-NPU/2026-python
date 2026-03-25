@@ -11,28 +11,25 @@
 ├── .github/
 │   └── workflows/
 │       └── submission-policy-check.yml
-├── assets/                         # 資料整理與腳本
+├── assets/                         # 題目資料整理與輔助腳本
 ├── docs/
 │   ├── COURSE_PLAN.md              # 課程計劃表
 │   ├── SUBMISSION_GUIDE.md         # 學生作業提交指南
 │   ├── TA_GRADING_GUIDE.md         # 助教評分指南
-│   └── analysis/                   # 📊 分析與報告（新增）
-│       ├── README.md               # 分析文件導覽
-│       ├── FINAL_SUMMARY.md        # 完整驗證報告（⭐ 從這裡開始）
-│       ├── VERIFICATION_REPORT.md  # 優先級建議
-│       ├── ANALYSIS_REPORT.md      # 課程分析
-│       ├── questions_analysis.json # 結構化資料
-│       ├── questions_analysis.csv  # Excel 匯入格式
-│       └── ... (其他分析檔案)
+│   └── analysis/                   # 分析與報告
 ├── weeks/
+│   ├── README.md
 │   ├── week-01/ ~ week-18/
 │   │   ├── README.md
-│   │   ├── QUESTION-*.md
+│   │   ├── QUESTION-*.md           # 有題目之週次才會出現
 │   │   └── solutions/
+│   └── ...
 ├── CHECK_LIST.md                   # 題目文件品質檢查表
-├── IN_CLASS_EXERCISE.md            # 課堂練習 PR 繳交紀錄（每週匯整）
+├── ENROLLMENT.md                   # 修課學生清單
+├── GITHUB_WORKFLOW.md              # GitHub 使用流程
 ├── HOMEWORK.md                     # 作業 PR 繳交紀錄（含內容檢核）
-└── README.md (本檔案)
+├── IN_CLASS_EXERCISE.md            # 課堂練習 PR 繳交紀錄（每週匯整）
+└── README.md                       # 本檔案
 ```
 
 ## 📚 使用說明
