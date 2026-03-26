@@ -1,0 +1,17 @@
+test_ai_always_plays (tests.test_ai.TestAIStrategyIntegration) ... ok
+test_ai_prefers_high (tests.test_ai.TestAIStrategyIntegration) ... ok
+test_ai_try_empty (tests.test_ai.TestAIStrategyIntegration) ... ok
+test_score_low_cards (tests.test_ai.TestScorePlay) ... ok
+test_score_near_empty (tests.test_ai.TestScorePlay) ... ok
+test_score_pair_higher (tests.test_ai.TestScorePlay) ... ok
+test_score_single (tests.test_ai.TestScorePlay) ... ok
+test_score_spade_bonus (tests.test_ai.TestScorePlay) ... ok
+test_score_triple_higher (tests.test_ai.TestScorePlay) ... ok
+test_select_best (tests.test_ai.TestSelectBest) ... ok
+test_select_empty (tests.test_ai.TestSelectBest) ... ok
+test_select_first_turn (tests.test_ai.TestSelectBest) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.000s
+
+OK

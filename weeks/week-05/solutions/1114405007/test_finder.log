@@ -1,0 +1,21 @@
+test_find_flush (tests.test_finder.TestFindFives) ... ok
+test_find_four_of_a_kind (tests.test_finder.TestFindFives) ... ok
+test_find_full_house (tests.test_finder.TestFindFives) ... ok
+test_find_straight (tests.test_finder.TestFindFives) ... ok
+test_find_straight_flush (tests.test_finder.TestFindFives) ... ok
+test_find_pairs_none (tests.test_finder.TestFindPairs) ... ok
+test_find_pairs_one (tests.test_finder.TestFindPairs) ... ok
+test_find_pairs_two (tests.test_finder.TestFindPairs) ... ok
+test_find_singles (tests.test_finder.TestFindSingles) ... ok
+test_find_singles_empty (tests.test_finder.TestFindSingles) ... ok
+test_find_triples_one (tests.test_finder.TestFindTriples) ... ok
+test_find_triples_with_extra (tests.test_finder.TestFindTriples) ... ok
+test_first_turn (tests.test_finder.TestValidPlays) ... ok
+test_no_valid (tests.test_finder.TestValidPlays) ... ok
+test_with_last_pair (tests.test_finder.TestValidPlays) ... ok
+test_with_last_single (tests.test_finder.TestValidPlays) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.001s
+
+OK

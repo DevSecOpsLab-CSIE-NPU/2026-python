@@ -1,0 +1,31 @@
+test_can_play_diff_type (tests.test_classifier.TestCanPlay) ... ok
+test_can_play_first_3clubs (tests.test_classifier.TestCanPlay) ... ok
+test_can_play_first_not_3clubs (tests.test_classifier.TestCanPlay) ... ok
+test_can_play_not_stronger (tests.test_classifier.TestCanPlay) ... ok
+test_can_play_same_type (tests.test_classifier.TestCanPlay) ... ok
+test_cardtype_values (tests.test_classifier.TestCardType) ... ok
+test_classify_flush (tests.test_classifier.TestClassifyFiveCards) ... ok
+test_classify_four_of_a_kind (tests.test_classifier.TestClassifyFiveCards) ... ok
+test_classify_full_house (tests.test_classifier.TestClassifyFiveCards) ... ok
+test_classify_straight (tests.test_classifier.TestClassifyFiveCards) ... ok
+test_classify_straight_ace_low (tests.test_classifier.TestClassifyFiveCards) ... ok
+test_classify_straight_flush (tests.test_classifier.TestClassifyFiveCards) ... ok
+test_classify_pair (tests.test_classifier.TestClassifyPair) ... ok
+test_classify_pair_diff_rank (tests.test_classifier.TestClassifyPair) ... ok
+test_classify_pair_from_three (tests.test_classifier.TestClassifyPair) ... ok
+test_classify_single_ace (tests.test_classifier.TestClassifySingle) ... ok
+test_classify_single_three (tests.test_classifier.TestClassifySingle) ... ok
+test_classify_single_two (tests.test_classifier.TestClassifySingle) ... ok
+test_classify_triple (tests.test_classifier.TestClassifyTriple) ... ok
+test_classify_triple_not_enough (tests.test_classifier.TestClassifyTriple) ... ok
+test_compare_different_type (tests.test_classifier.TestCompare) ... ok
+test_compare_flush_vs_straight (tests.test_classifier.TestCompare) ... ok
+test_compare_pair_rank (tests.test_classifier.TestCompare) ... ok
+test_compare_pair_suit (tests.test_classifier.TestCompare) ... ok
+test_compare_single_rank (tests.test_classifier.TestCompare) ... ok
+test_compare_single_suit (tests.test_classifier.TestCompare) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.001s
+
+OK

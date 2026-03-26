@@ -1,0 +1,32 @@
+﻿test_card_compare_equal (tests.test_models.TestCard) ... ok
+test_card_compare_rank_2 (tests.test_models.TestCard) ... ok
+test_card_compare_rank_a (tests.test_models.TestCard) ... ok
+test_card_compare_suit (tests.test_models.TestCard) ... ok
+test_card_compare_suit_2 (tests.test_models.TestCard) ... ok
+test_card_compare_suit_3 (tests.test_models.TestCard) ... ok
+test_card_creation (tests.test_models.TestCard) ... ok
+test_card_repr_ace (tests.test_models.TestCard) ... ok
+test_card_repr_three (tests.test_models.TestCard) ... ok
+test_card_sort_key (tests.test_models.TestCard) ... ok
+test_deal_5_cards (tests.test_models.TestDeck) ... ok
+test_deal_exceed (tests.test_models.TestDeck) ... ok
+test_deal_multiple (tests.test_models.TestDeck) ... ok
+test_deck_all_ranks (tests.test_models.TestDeck) ... ok
+test_deck_all_suits (tests.test_models.TestDeck) ... ok
+test_deck_all_unique (tests.test_models.TestDeck) ... ok
+test_deck_has_52_cards (tests.test_models.TestDeck) ... ok
+test_deck_shuffle (tests.test_models.TestDeck) ... ok
+test_hand_creation (tests.test_models.TestHand) ... ok
+test_hand_find_3_clubs (tests.test_models.TestHand) ... ok
+test_hand_find_3_clubs_none (tests.test_models.TestHand) ... ok
+test_hand_iteration (tests.test_models.TestHand) ... ok
+test_hand_remove (tests.test_models.TestHand) ... ok
+test_hand_remove_not_found (tests.test_models.TestHand) ... ok
+test_hand_sort_desc (tests.test_models.TestHand) ... ok
+test_player_ai (tests.test_models.TestPlayer) ... ok
+test_player_human (tests.test_models.TestPlayer) ... ok
+test_player_play (tests.test_models.TestPlayer) ... ok
+test_player_take (tests.test_models.TestPlayer) ... ok
+----------------------------------------------------------------------
+Ran 29 tests in 0.001s
+OK
