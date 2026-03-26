@@ -1,0 +1,34 @@
+測試時間: 2026-03-26T16:32:06
+被測試檔案: E:\BOHAN\python\2026-python\weeks\week-03\solutions\1112405053\Q100_ME.py
+總執行次數: 5
+============================================================
+[Run 1]
+- uva_sample: PASS (returncode=0)
+- single_value_range: PASS (returncode=0)
+- with_blank_lines: PASS (returncode=0)
+Run 1 結果: PASS
+------------------------------------------------------------
+[Run 2]
+- uva_sample: PASS (returncode=0)
+- single_value_range: PASS (returncode=0)
+- with_blank_lines: PASS (returncode=0)
+Run 2 結果: PASS
+------------------------------------------------------------
+[Run 3]
+- uva_sample: PASS (returncode=0)
+- single_value_range: PASS (returncode=0)
+- with_blank_lines: PASS (returncode=0)
+Run 3 結果: PASS
+------------------------------------------------------------
+[Run 4]
+- uva_sample: PASS (returncode=0)
+- single_value_range: PASS (returncode=0)
+- with_blank_lines: PASS (returncode=0)
+Run 4 結果: PASS
+------------------------------------------------------------
+[Run 5]
+- uva_sample: PASS (returncode=0)
+- single_value_range: PASS (returncode=0)
+- with_blank_lines: PASS (returncode=0)
+Run 5 結果: PASS
+------------------------------------------------------------

@@ -1,0 +1,34 @@
+測試時間: 2026-03-26T17:05:12
+被測試檔案: E:\BOHAN\python\2026-python\weeks\week-03\solutions\1112405053\Q490_ME.py
+總執行次數: 5
+============================================================
+[Run 1]
+- basic_rotation: PASS (returncode=0)
+- single_line: PASS (returncode=0)
+- space_sensitive: PASS (returncode=0)
+Run 1 結果: PASS
+------------------------------------------------------------
+[Run 2]
+- basic_rotation: PASS (returncode=0)
+- single_line: PASS (returncode=0)
+- space_sensitive: PASS (returncode=0)
+Run 2 結果: PASS
+------------------------------------------------------------
+[Run 3]
+- basic_rotation: PASS (returncode=0)
+- single_line: PASS (returncode=0)
+- space_sensitive: PASS (returncode=0)
+Run 3 結果: PASS
+------------------------------------------------------------
+[Run 4]
+- basic_rotation: PASS (returncode=0)
+- single_line: PASS (returncode=0)
+- space_sensitive: PASS (returncode=0)
+Run 4 結果: PASS
+------------------------------------------------------------
+[Run 5]
+- basic_rotation: PASS (returncode=0)
+- single_line: PASS (returncode=0)
+- space_sensitive: PASS (returncode=0)
+Run 5 結果: PASS
+------------------------------------------------------------
