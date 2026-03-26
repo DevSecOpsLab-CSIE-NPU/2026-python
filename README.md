@@ -58,14 +58,33 @@
 | [`IN_CLASS_EXERCISE.md`](IN_CLASS_EXERCISE.md) | 課堂練習 PR 繳交紀錄，依學號列出每週出席與提交狀況 |
 | [`HOMEWORK.md`](HOMEWORK.md) | 作業 PR 繳交紀錄，含 task / tests / docs 內容檢核 |
 
-**Week 02 課堂練習**（2026-03-05）：✅ 24 人 ／ ⚠️ 4 人 ／ ❌ 27 人  
+**Week 02 課堂練習**（2026-03-05）：✅ 24 人 ／ ⚠️ 11 人（含 7 筆補交）／ ❌ 20 人  
 **Week 02 作業**：✅ 完整 11 人 ／ ⚠️ 部分缺失 2 人 ／ ❌ 未繳 42 人  
 **Week 03 課堂練習**（2026-03-11）：✅ 10 人 ／ ⚠️ 2 人 ／ ❌ 43 人  
-**Week 03 作業**：✅ 7 人 ／ ❌ 48 人
+**Week 03 作業**：✅ 7 人 ／ ❌ 48 人  
+**Week 04 課堂練習**（2026-03-18）：進行中，詳見 [IN_CLASS_EXERCISE.md](IN_CLASS_EXERCISE.md)
 
 ### 作業與批改規範
 - 學生提交指南：[`docs/SUBMISSION_GUIDE.md`](docs/SUBMISSION_GUIDE.md)
 - 助教評分指南：[`docs/TA_GRADING_GUIDE.md`](docs/TA_GRADING_GUIDE.md)
+
+### Week 04 課堂範例（新增）
+
+- 課堂範例目錄：[`weeks/week-04/in-class/`](weeks/week-04/in-class/)
+- 涵蓋教材：Python3 Cookbook 第二章（字串）＋ 第三章（數字與日期時間）
+- 共 **16 個範例檔**（9 記憶層 R + 7 理解層 U）
+
+| 範例 | 節次 | 主題 |
+|------|------|------|
+| [R01](weeks/week-04/in-class/R01-strings-split-match.py) | 2.1–2.3 | `re.split` / `startswith` / `fnmatch` |
+| [R02](weeks/week-04/in-class/R02-strings-regex.py) | 2.4–2.8 | 正則搜尋、替換、非貪婪、多行 |
+| [R03](weeks/week-04/in-class/R03-strings-format.py) | 2.11–2.16 | `strip` / 對齊 / `join` / `format` |
+| [R04](weeks/week-04/in-class/R04-strings-bytes.py) | 2.20 | `bytes` / `bytearray` |
+| [R05](weeks/week-04/in-class/R05-numbers-basic.py) | 3.1–3.4 | `round` / `Decimal` / 進制轉換 |
+| [R06](weeks/week-04/in-class/R06-numbers-special.py) | 3.7–3.11 | `inf` / `NaN` / `Fraction` / `random` |
+| [R07](weeks/week-04/in-class/R07-datetime-basics.py) | 3.12–3.13 | `timedelta` / 指定星期計算 |
+| [R08](weeks/week-04/in-class/R08-datetime-calendar.py) | 3.14–3.15 | 月份範圍 / `strptime` |
+| [R09](weeks/week-04/in-class/R09-datetime-timezone.py) | 3.16 | `zoneinfo` 時區 |
 
 ### Week 03 任務
 - 週次說明：[`weeks/week-03/README.md`](weeks/week-03/README.md)
