@@ -35,6 +35,16 @@ class Renderer:
     CARD_WIDTH = 60
     CARD_HEIGHT = 90
     CARD_SPACING = 70
+    FONT_CANDIDATES = [
+        "Microsoft JhengHei",
+        "Microsoft YaHei",
+        "Noto Sans CJK TC",
+        "Noto Sans CJK SC",
+        "PingFang TC",
+        "Heiti TC",
+        "Arial Unicode MS",
+        "Arial",
+    ]
 
     COLORS = {
         "background": (45, 45, 45),
@@ -57,8 +67,22 @@ class Renderer:
         self.small_font = None
         if pygame is not None:
             pygame.font.init()
-            self.font = pygame.font.SysFont(None, 24)
-            self.small_font = pygame.font.SysFont(None, 20)
+            self.font = self._load_font(24)
+            self.small_font = self._load_font(20)
+
+    @classmethod
+    def _load_font(cls, size: int):
+        """優先選擇可顯示中文的字型。"""
+
+        if pygame is None:
+            return None
+
+        for name in cls.FONT_CANDIDATES:
+            font_path = pygame.font.match_font(name)
+            if font_path:
+                return pygame.font.Font(font_path, size)
+
+        return pygame.font.SysFont(None, size)
 
     @staticmethod
     def card_label(card: Card) -> str:
@@ -77,7 +101,15 @@ class Renderer:
             return SurfaceStub(width, height)
         return pygame.Surface((width, height), pygame.SRCALPHA)
 
-    def draw_text(self, surface, text: str, x: int, y: int, small: bool = False, color=(240, 240, 240)) -> None:
+    def draw_text(
+        self,
+        surface,
+        text: str,
+        x: int,
+        y: int,
+        small: bool = False,
+        color=(240, 240, 240),
+    ) -> None:
         if pygame is None or isinstance(surface, SurfaceStub):
             if isinstance(surface, SurfaceStub):
                 surface.commands.append({"type": "text", "text": text, "x": x, "y": y})
@@ -86,6 +118,7 @@ class Renderer:
         font = self.small_font if small else self.font
         if font is None:
             return
+
         rendered = font.render(text, True, color)
         surface.blit(rendered, (x, y))
 
@@ -136,11 +169,12 @@ class Renderer:
         if pygame is None or isinstance(surface, SurfaceStub):
             return
 
+        labels = {"play": "出牌", "pass": "Pass", "sort": "排序"}
         for name, (x, y, width, height) in self.BUTTONS.items():
             rect = pygame.Rect(x, y, width, height)
             pygame.draw.rect(surface, self.COLORS["button"], rect, border_radius=6)
             pygame.draw.rect(surface, self.COLORS["border"], rect, 2, border_radius=6)
-            self.draw_text(surface, name.upper(), x + 18, y + 8, small=True)
+            self.draw_text(surface, labels[name], x + 18, y + 8, small=True)
 
     def draw_player_summary(self, surface, label: str, card_count: int, x: int, y: int, is_current: bool) -> None:
         if pygame is None or isinstance(surface, SurfaceStub):
