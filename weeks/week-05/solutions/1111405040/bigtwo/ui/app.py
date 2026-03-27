@@ -21,6 +21,8 @@ class BigTwoApp:
         self.renderer = Renderer()
         self.input_handler = InputHandler(self.renderer)
         self.use_gui = pygame is not None if use_gui is None else use_gui and pygame is not None
+        self.status_message = ""
+        self._last_ai_move_tick = 0
 
         self.screen = None
         self.clock = None
@@ -41,22 +43,40 @@ class BigTwoApp:
         assert self.clock is not None
 
         running = True
-        while running and not self.game.is_game_over():
+        while running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
+                elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1 and not self.game.is_game_over():
+                    changed = self.input_handler.handle_click(event.pos, self.game)
+                    if changed:
+                        self.status_message = ""
+                    elif not self.game.get_current_player().is_ai:
+                        self.status_message = "這個位置目前沒有可執行的操作。"
+                elif event.type == pygame.KEYDOWN and not self.game.is_game_over():
+                    changed = self.input_handler.handle_key(event.key, self.game)
+                    if changed:
+                        self.status_message = ""
+                    elif not self.game.get_current_player().is_ai:
+                        self.status_message = "目前無法執行這個指令。"
 
-            if self.game.get_current_player().is_ai:
-                self.game.ai_turn()
+            if not self.game.is_game_over() and self.game.get_current_player().is_ai:
+                current_tick = pygame.time.get_ticks()
+                if current_tick - self._last_ai_move_tick >= 500:
+                    self.game.ai_turn()
+                    self.input_handler.selected_indices.clear()
+                    self._last_ai_move_tick = current_tick
 
             self.screen.fill(Renderer.COLORS["background"])
-            hand_surface = self.renderer.draw_hand(
-                self.game.players[0].hand,
-                0,
-                0,
-                selected_indices=self.input_handler.selected_indices,
+            self.renderer.draw_table(
+                self.screen,
+                self.game,
+                self.input_handler.selected_indices,
+                self.status_message,
             )
-            self.screen.blit(hand_surface, (20, 580))
+            if self.game.is_game_over():
+                winner_name = self.game.winner.name if self.game.winner is not None else "未知"
+                self.renderer.draw_text(self.screen, f"遊戲結束，贏家是 {winner_name}", 320, 520)
             pygame.display.flip()
             self.clock.tick(30)
 
@@ -108,7 +128,7 @@ class BigTwoApp:
 
         cards = [player.hand.cards[index] for index in indices if 0 <= index < len(player.hand.cards)]
         if cards not in valid_plays:
-            print("這手牌目前不能出。")
+            print("這手牌現在不能出。")
             return
 
         self.game.play(player, cards)

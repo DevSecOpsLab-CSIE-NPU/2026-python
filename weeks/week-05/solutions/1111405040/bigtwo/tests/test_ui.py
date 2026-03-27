@@ -41,6 +41,34 @@ class TestUI(unittest.TestCase):
         self.assertTrue(handler.try_play(game))
         self.assertEqual(game.last_play, [Card(3, 0)])
 
+    def test_handle_click_selects_card(self) -> None:
+        game = BigTwoGame(seed=7)
+        player = Player("Player")
+        player.hand = Hand([Card(3, 0), Card(9, 1)])
+        game.players = [player, Player("AI1", True), Player("AI2", True), Player("AI3", True)]
+        game.current_player_index = 0
+        handler = InputHandler()
+        index = player.hand.cards.index(Card(3, 0))
+        card_x, card_y, _, _ = handler.renderer.hand_layout(
+            len(player.hand.cards),
+            handler.HAND_X,
+            handler.HAND_Y,
+        )[index]
+        self.assertTrue(handler.handle_click((card_x + 5, card_y + 5), game))
+        self.assertIn(index, handler.selected_indices)
+
+    def test_handle_click_play_button(self) -> None:
+        game = BigTwoGame(seed=7)
+        player = Player("Player")
+        player.hand = Hand([Card(3, 0), Card(9, 1)])
+        game.players = [player, Player("AI1", True), Player("AI2", True), Player("AI3", True)]
+        game.current_player_index = 0
+        game.first_turn = True
+        handler = InputHandler()
+        handler.selected_indices = {player.hand.cards.index(Card(3, 0))}
+        self.assertTrue(handler.handle_click((25, 25), game))
+        self.assertEqual(game.last_play, [Card(3, 0)])
+
     def test_button_lookup(self) -> None:
         handler = InputHandler()
         self.assertEqual(handler.button_at((25, 25)), "play")

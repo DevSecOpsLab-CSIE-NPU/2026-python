@@ -30,7 +30,7 @@ class SurfaceStub:
 
 
 class Renderer:
-    """負責把牌桌狀態轉成畫面。"""
+    """負責把遊戲狀態畫到畫面上。"""
 
     CARD_WIDTH = 60
     CARD_HEIGHT = 90
@@ -42,6 +42,8 @@ class Renderer:
         "selected": (241, 196, 15),
         "button": (52, 152, 219),
         "text": (20, 20, 20),
+        "panel": (65, 65, 65),
+        "border": (220, 220, 220),
     }
 
     BUTTONS = {
@@ -52,9 +54,11 @@ class Renderer:
 
     def __init__(self) -> None:
         self.font = None
+        self.small_font = None
         if pygame is not None:
             pygame.font.init()
             self.font = pygame.font.SysFont(None, 24)
+            self.small_font = pygame.font.SysFont(None, 20)
 
     @staticmethod
     def card_label(card: Card) -> str:
@@ -71,7 +75,19 @@ class Renderer:
     def _create_surface(width: int, height: int):
         if pygame is None:
             return SurfaceStub(width, height)
-        return pygame.Surface((width, height))
+        return pygame.Surface((width, height), pygame.SRCALPHA)
+
+    def draw_text(self, surface, text: str, x: int, y: int, small: bool = False, color=(240, 240, 240)) -> None:
+        if pygame is None or isinstance(surface, SurfaceStub):
+            if isinstance(surface, SurfaceStub):
+                surface.commands.append({"type": "text", "text": text, "x": x, "y": y})
+            return
+
+        font = self.small_font if small else self.font
+        if font is None:
+            return
+        rendered = font.render(text, True, color)
+        surface.blit(rendered, (x, y))
 
     def draw_card(self, card: Card, x: int, y: int, selected: bool = False, surface=None):
         if surface is None:
@@ -90,11 +106,10 @@ class Renderer:
             return surface
 
         color = self.COLORS["selected"] if selected else self.COLORS["card"]
-        pygame.draw.rect(surface, color, pygame.Rect(x, y, self.CARD_WIDTH, self.CARD_HEIGHT))
-        pygame.draw.rect(surface, (30, 30, 30), pygame.Rect(x, y, self.CARD_WIDTH, self.CARD_HEIGHT), 2)
-        if self.font is not None:
-            text = self.font.render(self.card_label(card), True, self.COLORS["text"])
-            surface.blit(text, (x + 8, y + 8))
+        rect = pygame.Rect(x, y, self.CARD_WIDTH, self.CARD_HEIGHT)
+        pygame.draw.rect(surface, color, rect)
+        pygame.draw.rect(surface, (30, 30, 30), rect, 2)
+        self.draw_text(surface, self.card_label(card), x + 8, y + 8, color=self.COLORS["text"])
         return surface
 
     def draw_hand(
@@ -109,10 +124,63 @@ class Renderer:
         width = max(self.CARD_WIDTH, self.CARD_WIDTH + max(0, len(hand.cards) - 1) * self.CARD_SPACING)
         height = self.CARD_HEIGHT + 20
         if surface is None:
-            surface = self._create_surface(width, height)
+            surface = self._create_surface(width + x, height + max(0, y))
 
         for index, card in enumerate(hand.cards):
-            card_x = index * self.CARD_SPACING
-            card_y = 0 if index not in selected_indices else -10
+            card_x = x + index * self.CARD_SPACING
+            card_y = y if index not in selected_indices else y - 10
             self.draw_card(card, card_x, card_y, index in selected_indices, surface)
         return surface
+
+    def draw_buttons(self, surface) -> None:
+        if pygame is None or isinstance(surface, SurfaceStub):
+            return
+
+        for name, (x, y, width, height) in self.BUTTONS.items():
+            rect = pygame.Rect(x, y, width, height)
+            pygame.draw.rect(surface, self.COLORS["button"], rect, border_radius=6)
+            pygame.draw.rect(surface, self.COLORS["border"], rect, 2, border_radius=6)
+            self.draw_text(surface, name.upper(), x + 18, y + 8, small=True)
+
+    def draw_player_summary(self, surface, label: str, card_count: int, x: int, y: int, is_current: bool) -> None:
+        if pygame is None or isinstance(surface, SurfaceStub):
+            return
+
+        rect = pygame.Rect(x, y, 180, 64)
+        border = self.COLORS["selected"] if is_current else self.COLORS["border"]
+        pygame.draw.rect(surface, self.COLORS["panel"], rect, border_radius=8)
+        pygame.draw.rect(surface, border, rect, 2, border_radius=8)
+        self.draw_text(surface, label, x + 12, y + 10)
+        self.draw_text(surface, f"手牌: {card_count}", x + 12, y + 34, small=True)
+
+    def draw_last_play(self, surface, cards: list[Card] | None, player_name: str | None, x: int, y: int) -> None:
+        if pygame is None or isinstance(surface, SurfaceStub):
+            return
+
+        self.draw_text(surface, "上一手", x, y)
+        if player_name:
+            self.draw_text(surface, f"玩家: {player_name}", x, y + 24, small=True)
+        if not cards:
+            self.draw_text(surface, "目前尚未出牌", x, y + 52, small=True)
+            return
+
+        for index, card in enumerate(cards):
+            self.draw_card(card, x + index * self.CARD_SPACING, y + 60, False, surface)
+
+    def draw_table(self, surface, game, selected_indices: set[int], status_message: str = "") -> None:
+        if pygame is None or isinstance(surface, SurfaceStub):
+            return
+
+        human = game.players[0]
+        self.draw_player_summary(surface, game.players[1].name, len(game.players[1].hand), 20, 100, game.current_player_index == 1)
+        self.draw_player_summary(surface, game.players[2].name, len(game.players[2].hand), 390, 40, game.current_player_index == 2)
+        self.draw_player_summary(surface, game.players[3].name, len(game.players[3].hand), 760, 100, game.current_player_index == 3)
+
+        self.draw_last_play(surface, game.last_play, game.last_play_player_name, 280, 220)
+        self.draw_buttons(surface)
+        self.draw_text(surface, f"目前輪到: {game.get_current_player().name}", 20, 540)
+        self.draw_text(surface, f"你的手牌 ({len(human.hand)} 張)", 20, 590)
+        if status_message:
+            self.draw_text(surface, status_message, 340, 30, small=True)
+
+        self.draw_hand(human.hand, 20, 620, selected_indices, surface)
