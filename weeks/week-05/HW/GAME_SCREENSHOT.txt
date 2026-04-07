@@ -1,0 +1,124 @@
+"""
+遊戲截圖視覺演示
+
+這個文件展示大貳紙牌遊戲實際運行時的畫面樣貌
+"""
+
+# ============================================================
+# BIG TWO CARD GAME - GAME IN PROGRESS
+# ============================================================
+
+# +------ TABLE ------------------------------------------+
+# | Last Play: 17BJ (Big Joker - Highest Card)            |
+# +-------------------------------------------------------+
+#
+# +------ PLAYERS ----------------------------------------+
+# | > You (Player)            [ACTIVE]     [5 cards]      |
+# | - Alice (AI)              [ACTIVE]     [7 cards]      |
+# | - Bob (AI)                [ACTIVE]     [6 cards]      |
+# | - Charlie (AI)            [OUT]        [0 cards]      |
+# +-------------------------------------------------------+
+#
+# +------ YOUR HAND --------------------------------------+
+# | 3S  4H  5C  6D  9H  JC  QS  KH  AD                    |
+# +-------------------------------------------------------+
+#
+# Selection: 3S, 4H (highlighted)
+#
+# +------ GAME STATS -------------------------------------+
+# | Round: 3                                               |
+# | Pass Count: 1 (You)                                   |
+# | Game State: PLAYING                                   |
+# +-------------------------------------------------------+
+#
+# +------ CONTROLS --------------------------------+
+# | [Click] - Select/Deselect card               |
+# | [Space] - Submit selected cards              |
+# | [P]     - Pass this turn                     |
+# | [C]     - Clear all selections               |
+# | [ESC]   - Quit game                          |
+# +---------------------------------------------+
+
+
+# ============================================================
+# GAME TURN EXAMPLE
+# ============================================================
+
+Turn 1: Alice plays 1 card - 3S (Start)
+Turn 2: Bob plays 1 card - 4H (Higher)
+Turn 3: Charlie plays 1 card - 5C (Higher)
+Turn 4: You play 1 card - 6D (Higher)
+Turn 5: Alice plays 1 card - 8H (Higher)
+Turn 6: Bob plays 1 card - 9C (Higher)
+Turn 7: Charlie passes
+Turn 8: You pass
+Turn 9: Alice passes (3 passes → Clear table)
+Turn 10: Bob plays 2 cards - 3H, 3D (Pair)
+Turn 11: Charlie plays 1 card - 2S (Cannot beat pair with single)
+...continues...
+
+
+# ============================================================
+# HAND TYPES RECOGNITION DEMO
+# ============================================================
+
+Single Card:
+  - 3S
+
+Pair (2 identical ranks):
+  - 3S, 3H
+
+Straight (5 consecutive ranks):
+  - 3S, 4H, 5D, 6C, 7H
+
+Flush (5 same suit):
+  - 3S, 5S, 7S, 9S, JS
+
+Full House (3 of a kind + pair):
+  - 3S, 3H, 3D, 5C, 5H
+
+Four of a Kind (4 of a kind + 1):
+  - 3S, 3H, 3D, 3C, 5H
+
+Straight Flush (5 consecutive + same suit):
+  - 3S, 4S, 5S, 6S, 7S
+
+
+# ============================================================
+# AI STRATEGY DISPLAY
+# ============================================================
+
+Alice (AI) is thinking...
+  - Hand strength: 0.72/1.0 (STRONG)
+  - Valid plays found: 14
+  - Chosen strategy: Conservative
+  - Selected play: Single 5H
+
+Turn: Alice plays 1 card - 5H
+
+
+# ============================================================
+# END GAME SCREEN
+# ============================================================
+
+===== GAME END =====
+
+Winner: You!
+Elimination Order:
+  1. You (Winner!) - Finished at Round 5, Turn 28
+  2. Alice       - Finished at Round 5, Turn 35
+  3. Bob         - Finished at Round 6, Turn 12
+  4. Charlie     - Eliminated (most cards left)
+
+Game Statistics:
+  Total Rounds Played: 6
+  Total Turns: 47
+  Average Turns Per Round: 7.8
+
+Players Stats:
+  You:       8 hands won, 12 hands lost
+  Alice:     5 hands won, 10 hands lost
+  Bob:       7 hands won, 9 hands lost
+  Charlie:   2 hands won, 16 hands lost
+
+[SPACE] - Play Again    [ESC] - Quit
