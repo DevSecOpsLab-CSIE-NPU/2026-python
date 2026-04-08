@@ -3,7 +3,7 @@ import sys
 
 class FenwickTree:
 	def __init__(self, n: int) -> None:
-		self.n = n
+		self.n = n 
 		self.bit = [0] * (n + 1)
 
 	def add(self, idx: int, delta: int) -> None:
