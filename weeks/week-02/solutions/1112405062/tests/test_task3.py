@@ -19,6 +19,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from task3_log_summary import log_summary
 
 
+
 class TestLogSummary(unittest.TestCase):
     """測試日誌統計功能"""
 

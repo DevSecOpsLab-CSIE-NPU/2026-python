@@ -20,7 +20,6 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from task1_sequence_clean import sequence_clean
 
-
 class TestSequenceClean(unittest.TestCase):
     """測試序列清理功能"""
 

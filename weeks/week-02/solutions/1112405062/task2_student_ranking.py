@@ -15,7 +15,6 @@ Task 2: Student Ranking
 
 from typing import List
 
-
 def student_ranking(input_lines: List[str]) -> List[str]:
     """
     學生排名排序

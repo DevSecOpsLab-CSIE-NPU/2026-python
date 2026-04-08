@@ -15,7 +15,6 @@ Task 1: Sequence Clean
 
 from typing import List, Dict
 
-
 def sequence_clean(input_str: str) -> Dict[str, List[int]]:
     """
     處理序列資料

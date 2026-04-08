@@ -14,7 +14,6 @@ Task 3: Log Summary
 from typing import List, Dict
 from collections import defaultdict, Counter
 
-
 def log_summary(input_lines: List[str]) -> Dict[str, any]:
     """
     日誌統計

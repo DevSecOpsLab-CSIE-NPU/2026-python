@@ -85,7 +85,6 @@ python -m unittest discover -s tests -p "test_*.py" -v
 1. **Red**: 先寫測試，確認同分時 age 排序會失敗
 2. **Green**: 使用 `sorted(key=lambda x: (-x[1], x[2], x[0]))` 實現三重排序
 3. **Refactor**: 增加輸入驗證，處理空輸入情況
-
 ### Task 3
 1. **Red**: 先寫測試，確認 m=0 時會出錯
 2. **Green**: 使用 `defaultdict` 和 `Counter` 完成統計

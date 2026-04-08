@@ -21,6 +21,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from task2_student_ranking import student_ranking
 
 
+
 class TestStudentRanking(unittest.TestCase):
     """測試學生排名功能"""
 

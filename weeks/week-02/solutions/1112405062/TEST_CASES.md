@@ -37,7 +37,6 @@
 - **狀態**: PASS
 
 ---
-
 ## Task 2: Student Ranking
 
 ### 測試案例 2-1：一般情況
