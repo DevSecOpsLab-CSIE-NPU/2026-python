@@ -1,0 +1,32 @@
+Python unittest 測試紀錄
+總測試數量: 20
+失敗數量: 0
+錯誤數量: 0
+
+test_uva_10062 (test_hand_solutions.TestHandSolutions.test_uva_10062) ... ok
+test_uva_10071 (test_hand_solutions.TestHandSolutions.test_uva_10071) ... ok
+test_uva_10093 (test_hand_solutions.TestHandSolutions.test_uva_10093) ... ok
+test_uva_10101 (test_hand_solutions.TestHandSolutions.test_uva_10101) ... ok
+test_uva_10170 (test_hand_solutions.TestHandSolutions.test_uva_10170) ... ok
+test_command_line_execution (test_uva_10062.TestUVA10062.test_command_line_execution) ... ok
+test_multiple_cases_with_blank_separator (test_uva_10062.TestUVA10062.test_multiple_cases_with_blank_separator) ... ok
+test_single_case_sorting_rule (test_uva_10062.TestUVA10062.test_single_case_sorting_rule) ... ok
+test_command_line_execution (test_uva_10071.TestUVA10071.test_command_line_execution) ... ok
+test_formula_helper (test_uva_10071.TestUVA10071.test_formula_helper) ... ok
+test_multiple_rows (test_uva_10071.TestUVA10071.test_multiple_rows) ... ok
+test_against_reference_implementation (test_uva_10093.TestUVA10093.test_against_reference_implementation) ... ok
+test_command_line_execution (test_uva_10093.TestUVA10093.test_command_line_execution) ... ok
+test_known_small_cases (test_uva_10093.TestUVA10093.test_known_small_cases) ... ok
+test_command_line_execution (test_uva_10101.TestUVA10101.test_command_line_execution) ... ok
+test_format_helper (test_uva_10101.TestUVA10101.test_format_helper) ... ok
+test_full_solve_output (test_uva_10101.TestUVA10101.test_full_solve_output) ... ok
+test_against_reference_for_small_inputs (test_uva_10170.TestUVA10170.test_against_reference_for_small_inputs) ... ok
+test_command_line_execution (test_uva_10170.TestUVA10170.test_command_line_execution) ... ok
+test_known_cases (test_uva_10170.TestUVA10170.test_known_cases) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.857s
+
+OK
+
+整體結果: PASS
