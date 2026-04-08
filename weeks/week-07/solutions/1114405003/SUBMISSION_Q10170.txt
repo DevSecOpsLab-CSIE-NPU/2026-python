@@ -1,0 +1,23 @@
+Week-07 作業提交檔 (Q10170)
+學號: 1114405003
+日期: 2026-04-08
+
+[題目]
+Q10170
+
+[程式檔案]
+question_10170_handwritten.py
+
+[測試 LOG 檔案]
+question_10170_handwritten_test.log
+
+[最新有效測試紀錄]
+[2026-04-08T13:59:49] selftest start
+case 1: s=4, d=1, expected=4, got=4, ok=True
+case 2: s=4, d=5, expected=5, got=5, ok=True
+case 3: s=7, d=24, expected=9, got=9, ok=True
+case 4: s=7, d=25, expected=10, got=10, ok=True
+summary: total=4, failed=0, passed=4
+
+[結論]
+PASS (failed=0)

@@ -1,0 +1,23 @@
+Week-07 作業提交檔 (Q10093)
+學號: 1114405003
+日期: 2026-04-08
+
+[題目]
+Q10093
+
+[程式檔案]
+question_10093_handwritten.py
+
+[測試 LOG 檔案]
+question_10093_handwritten_test.log
+
+[最新有效測試紀錄]
+[2026-04-08T13:59:42] selftest start
+case 1: grid=['P'], expected=1, got=1, ok=True
+case 2: grid=['H'], expected=0, got=0, ok=True
+case 3: grid=['PPPPP'], expected=2, got=2, ok=True
+case 4: grid=['HHH', 'HHH', 'HHH'], expected=0, got=0, ok=True
+summary: total=4, failed=0, passed=4
+
+[結論]
+PASS (failed=0)
