@@ -22,7 +22,7 @@ def build_postorder(preorder: list[str], inorder: list[str]) -> list[str]:
 
 def main() -> None:
 	tokens = sys.stdin.buffer.read().split()
-	if not tokens:
+	if not tokens: 
 		return
 
 	i = 0

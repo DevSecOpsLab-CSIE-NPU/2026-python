@@ -128,7 +128,7 @@ def solve(expr_with_hash: str) -> str:
 			delta1 = c1 * (nd1 - d1)
 			need = -base_f - delta1
 
-			for j in digit_positions:
+			for j in digit_positions: 
 				if j == i:
 					continue
 				d2 = digits[j]

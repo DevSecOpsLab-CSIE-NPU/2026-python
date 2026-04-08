@@ -21,7 +21,7 @@ def main() -> None:
 				left_values.append(ab + c)
 
 	# Right side: d * (e + f), with d != 0
-	for d in s:
+	for d in s: 
 		if d == 0:
 			continue
 		for e in s:

@@ -20,7 +20,7 @@ def build_transitions() -> tuple[list[list[int]], list[list[int]], list[list[int
 	remove_to = [[] for _ in range(10)]
 	add_to = [[] for _ in range(10)]
 	move_within = [[] for _ in range(10)]
-
+ 
 	for d in range(10):
 		for nd in range(10):
 			if d == nd:

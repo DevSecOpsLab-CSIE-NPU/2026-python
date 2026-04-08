@@ -11,7 +11,7 @@ RUN_COUNT = 5
 # Default input uses the sample case in your description.
 TEST_INPUT = """9
 F B A D C E G I H
-A B C D E F G H I
+A B C D E F G H I 
 """
 
 

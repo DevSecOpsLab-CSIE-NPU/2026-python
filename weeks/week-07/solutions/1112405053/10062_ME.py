@@ -43,7 +43,7 @@ def main() -> None:
 		k = smaller_before[i] + 1
 		brand = ft.kth(k)
 		ans[i] = brand
-		ft.add(brand, -1)
+		ft.add(brand, -1) 
 
 	sys.stdout.write("\n".join(map(str, ans[1:])))
 

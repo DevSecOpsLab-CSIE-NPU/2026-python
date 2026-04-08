@@ -12,7 +12,7 @@ RUN_COUNT = 5
 TEST_INPUT = """5
 1
 2
-1
+1 
 0
 """
 

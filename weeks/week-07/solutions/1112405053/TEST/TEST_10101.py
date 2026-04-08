@@ -11,7 +11,7 @@ RUN_COUNT = 5
 # Default input uses one sample case from ZeroJudge a094.
 TEST_INPUT = """1+1=3#
 """
-
+ 
 
 def main() -> None:
     test_dir = Path(__file__).resolve().parent

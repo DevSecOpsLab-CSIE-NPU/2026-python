@@ -44,7 +44,7 @@ def main() -> None:
 
 	# dp_prev[pre][prepre] 表示處理到前一列時，前一列狀態為 pre、前二列為 prepre 的最大值。
 	dp_prev = [[NEG] * state_count for _ in range(state_count)]
-	dp_prev[0][0] = 0
+	dp_prev[0][0] = 0 
 
 	for i in range(n):
 		dp_cur = [[NEG] * state_count for _ in range(state_count)]

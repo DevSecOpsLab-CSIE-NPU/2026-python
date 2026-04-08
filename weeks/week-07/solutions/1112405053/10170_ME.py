@@ -38,7 +38,7 @@ def main() -> None:
 		i += n
 
 		postorder = build_postorder(preorder, inorder)
-		out_lines.append(" ".join(postorder))
+		out_lines.append(" ".join(postorder)) 
 
 	sys.stdout.write("\n".join(out_lines))
 

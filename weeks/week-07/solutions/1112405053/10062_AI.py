@@ -39,7 +39,7 @@ def main() -> None:
 	ft = FenwickTree(n)
 	# 一開始 1..N 每個品牌都可用，頻率先設為 1。
 	for x in range(1, n + 1):
-		ft.add(x, 1)
+		ft.add(x, 1) 
 
 	ans = [0] * (n + 1)
 	# 由後往前還原：第 i 位要選「目前剩下中第 smaller_before[i] + 1 小」的品牌。

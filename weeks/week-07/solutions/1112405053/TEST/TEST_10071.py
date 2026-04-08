@@ -10,7 +10,7 @@ RUN_COUNT = 5
 
 # Default input uses one sample case from ZeroJudge a064.
 TEST_INPUT = """3
-5
+5 
 7
 10
 """
