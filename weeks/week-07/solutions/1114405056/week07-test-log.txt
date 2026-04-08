@@ -1,0 +1,133 @@
+﻿Week 07 Test Log
+Generated at: 2026-04-08 13:46:22
+Runner: uv run python
+
+[uva10062][case1]
+Input:
+5
+0
+2
+2
+3
+Expected:
+2
+1
+5
+3
+4
+Easy Output:
+2
+1
+5
+3
+4
+Hand Output:
+2
+1
+5
+3
+4
+Result: easy=PASS, hand=PASS, easy_vs_hand=PASS
+
+[uva10062][case2]
+Input:
+3
+0
+1
+Expected:
+3
+1
+2
+Easy Output:
+3
+1
+2
+Hand Output:
+3
+1
+2
+Result: easy=PASS, hand=PASS, easy_vs_hand=PASS
+
+[uva10071][case1]
+Input:
+1
+0
+Expected:
+1
+Easy Output:
+1
+Hand Output:
+1
+Result: easy=PASS, hand=PASS, easy_vs_hand=PASS
+
+[uva10071][case2]
+Input:
+2
+0
+1
+Expected:
+6
+Easy Output:
+6
+Hand Output:
+6
+Result: easy=PASS, hand=PASS, easy_vs_hand=PASS
+
+[uva10093][case1]
+Input:
+1 1
+P
+Expected:
+1
+Easy Output:
+1
+Hand Output:
+1
+Result: easy=PASS, hand=PASS, easy_vs_hand=PASS
+
+[uva10093][case2]
+Input:
+2 2
+PP
+PP
+Expected:
+2
+Easy Output:
+2
+Hand Output:
+2
+Result: easy=PASS, hand=PASS, easy_vs_hand=PASS
+
+[uva10101][case1]
+Input:
+1+1=3#
+Expected:
+1+1=2#
+Easy Output:
+1+1=2#
+Hand Output:
+1+1=2#
+Result: easy=PASS, hand=PASS, easy_vs_hand=PASS
+
+[uva10170][case1]
+Input:
+4 10
+Expected:
+6
+Easy Output:
+6
+Hand Output:
+6
+Result: easy=PASS, hand=PASS, easy_vs_hand=PASS
+
+[uva10170][case2]
+Input:
+1 1
+Expected:
+1
+Easy Output:
+1
+Hand Output:
+1
+Result: easy=PASS, hand=PASS, easy_vs_hand=PASS
+

@@ -1,0 +1,21 @@
+Week 07 Hand Test Log
+Problem: uva10170
+Runner: python.exe
+
+[case1]
+Input:
+4 10
+Expected:
+6
+Output:
+6
+Result: PASS
+
+[case2]
+Input:
+1 1
+Expected:
+1
+Output:
+1
+Result: PASS
