@@ -1,0 +1,23 @@
+============================================================
+UVA 490 - 旋轉文字矩陣 測試結果（簡單版）
+============================================================
+
+test_Q490_easy.TestRotate.test_basic ... ok
+test_Q490_easy.TestRotate.test_single ... ok
+test_Q490_easy.TestRotate.test_empty ... ok
+test_Q490_easy.TestRotate.test_varying ... ok
+test_Q490_easy.TestRotate.test_same ... ok
+test_Q490_easy.TestRotate.test_spaces ... ok
+test_Q490_easy.TestRotate.test_punct ... ok
+test_Q490_easy.TestRotate.test_numbers ... ok
+test_Q490_easy.TestRotate.test_three ... ok
+test_Q490_easy.TestRotate.test_one_char ... ok
+test_Q490_easy.TestRotate.test_all_spaces ... ok
+test_Q490_easy.TestRotate.test_max ... ok
+
+============================================================
+Total: 12 tests, 0 failures, 0 errors
+Status: ALL TESTS PASSED
+============================================================
+
+測試通過！
