@@ -1,0 +1,40 @@
+=== Q118.hand.py 測試結果 ===
+
+【輸入】
+5 3
+1 1 E
+RFRFRFRF
+3 2 N
+FRRFLLFFRRFLL
+0 3 W
+FFLLFF
+
+【輸出】
+1 1 E
+3 3 N LOST
+2 3 W
+
+【預期】
+1 1 E
+3 3 N LOST
+2 3 W
+
+【結果】
+PASS
+
+=== 程式分析 ===
+
+Q118.hand.py 與 QUESTION-118-easy.py 功能完全相同，都是簡潔的實現：
+
+核心邏輯：
+1. DIRECTIONS = ["N", "E", "S", "W"]  # 四方向列表
+2. turn_left(d): (index - 1) % 4      # 左轉
+3. turn_right(d): (index + 1) % 4      # 右轉
+4. forward(x, y, d): 根據方向計算新座標
+5. is_out(): 檢查是否超出邊界
+6. scents: set 記錄掉落標記位置
+
+機器人掉落處理：
+- 前進指令導致超出邊界時，檢查 (x, y) 是否在 scents 中
+- 有標記：忽略指令，繼續執行
+- 無標記：加入 scents，標記 LOST，停止執行
