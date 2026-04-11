@@ -1,22 +1,22 @@
-# AI Usage Record
+# AI 使用紀錄
 
-## Tool Used
+## 使用工具
 
-- GitHub Copilot (GPT-5.3-Codex)
+- GitHub Copilot（GPT-5.3-Codex）
 
-## Usage Scope
+## 使用範圍
 
-- Helped organize solution and test file structure.
-- Assisted with code comments and documentation wording.
-- Helped verify output formatting consistency.
+- 協助整理解答與測試檔案架構。
+- 協助調整註解與文件文字。
+- 協助檢查輸出格式一致性。
 
-## Human Work
+## 人工負責內容
 
-- Selected algorithms and reviewed all solution logic.
-- Checked problem requirements and edge cases.
-- Confirmed final file placement and submission structure.
+- 自行決定解題方法並檢查邏輯正確性。
+- 針對題目需求與邊界案例進行確認。
+- 確認最終檔案位置與提交結構。
 
-## Verification
+## 驗證方式
 
-- Re-ran tests manually after generation/refinement.
-- Ensured files are in `weeks/week-03/solutions/1114405054/`.
+- 修改後重新執行測試程式。
+- 確認檔案皆位於 `weeks/week-03/solutions/1114405054/`。

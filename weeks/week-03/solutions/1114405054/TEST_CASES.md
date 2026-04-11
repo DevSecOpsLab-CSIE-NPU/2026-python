@@ -1,32 +1,32 @@
-# Test Cases
+# 測試案例說明
 
 ## uva100
 
-- Input: `1 10` -> Expected max cycle length: `20`
-- Input: `100 200` -> Expected: `125`
-- Input: `201 210` -> Expected: `89`
-- Input: `900 1000` -> Expected: `174`
+- 輸入 `1 10`，預期最大 cycle length 為 `20`
+- 輸入 `100 200`，預期為 `125`
+- 輸入 `201 210`，預期為 `89`
+- 輸入 `900 1000`，預期為 `174`
 
 ## uva118
 
-- Official sample map and robot commands.
-- Case where robot is LOST and leaves scent.
-- Case where next robot ignores a dangerous `F` on scented cell.
+- 題目官方範例地圖與指令
+- 機器人掉落並留下標記（LOST）
+- 後續機器人在有標記格子忽略危險 `F` 指令
 
 ## uva272
 
-- Standard quoted sentence replacement.
-- Multi-line quote toggling.
-- No-quote input should remain unchanged.
+- 一般引號替換案例
+- 多行輸入下的引號開關切換
+- 沒有引號時輸出應保持不變
 
 ## uva299
 
-- Already sorted sequence -> `0` swaps.
-- Reverse sequence -> maximum inversions.
-- Mixed sequence with known inversion count.
+- 已排序序列，預期 `0` swaps
+- 完全反序列，逆序數最大
+- 混合序列，使用已知逆序數比對
 
 ## uva490
 
-- Two-line rotation sample (`HELLO`, `WORLD`).
-- Different line lengths with padding spaces.
-- Single-line and single-char edge cases.
+- 兩行旋轉範例（`HELLO`、`WORLD`）
+- 行長不同時的補空白與旋轉
+- 單行、單字元邊界案例

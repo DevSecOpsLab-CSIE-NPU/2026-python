@@ -1,18 +1,18 @@
-# Week 03 Solutions - 1114405054
+# Week 03 解題說明 - 1114405054
 
-## Overview
+## 內容概述
 
-This folder contains my Week 03 UVA/ZeroJudge solutions and test scripts.
+本資料夾為 Week 03 的 UVA/ZeroJudge 題目解答與測試程式。
 
-Implemented problems:
+解答檔案：
 
-- `uva100.py` (3n+1 / Collatz)
-- `uva118.py` (Martian Robots)
-- `uva272.py` (TeX Quotes)
-- `uva299.py` (Train Swapping)
-- `uva490.py` (Rotating Sentences)
+- `uva100.py`（3n+1 / Collatz）
+- `uva118.py`（Martian Robots）
+- `uva272.py`（TeX Quotes）
+- `uva299.py`（Train Swapping）
+- `uva490.py`（Rotating Sentences）
 
-Test scripts:
+測試檔案：
 
 - `測試程式碼_uva100.py`
 - `測試程式碼_uva118.py`
@@ -20,21 +20,21 @@ Test scripts:
 - `測試程式碼_uva299.py`
 - `測試程式碼_uva490.py`
 
-## Run
+## 執行方式
 
-Run a solution:
+執行解答：
 
 ```bash
 python uva100.py < input.txt
 ```
 
-Run a test script:
+執行測試：
 
 ```bash
 python 測試程式碼_uva100.py
 ```
 
-## Notes
+## 備註
 
-- Solutions are written for readability with comments.
-- Test scripts include multiple cases and pass/fail output.
+- 解答程式包含必要註解，便於閱讀。
+- 測試程式提供多組案例與通過/失敗結果。
