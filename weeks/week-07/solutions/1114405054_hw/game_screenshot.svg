@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1f2937"/>
+      <stop offset="100%" stop-color="#0b1220"/>
+    </linearGradient>
+    <style>
+      .title { font: 600 22px Consolas, 'Courier New', monospace; fill: #d1d5db; }
+      .text { font: 20px Consolas, 'Courier New', monospace; fill: #e5e7eb; }
+      .muted { font: 20px Consolas, 'Courier New', monospace; fill: #9ca3af; }
+      .ok { font: 20px Consolas, 'Courier New', monospace; fill: #86efac; }
+      .warn { font: 20px Consolas, 'Courier New', monospace; fill: #fde68a; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="720" fill="#0f172a"/>
+  <rect x="70" y="50" width="1060" height="620" rx="14" fill="url(#bg)" stroke="#334155"/>
+
+  <circle cx="100" cy="78" r="8" fill="#ef4444"/>
+  <circle cx="125" cy="78" r="8" fill="#f59e0b"/>
+  <circle cx="150" cy="78" r="8" fill="#22c55e"/>
+  <text x="180" y="85" class="title">chibi_battle_easy.py - Battle Report</text>
+
+  <text x="95" y="130" class="text">============================================================</text>
+  <text x="95" y="162" class="text">  吞食天地 - 赤壁戰役 | 蜀吳聯軍 vs 曹操魏軍</text>
+  <text x="95" y="194" class="text">============================================================</text>
+
+  <text x="95" y="238" class="warn">[傷害輸出排名 Top 5]</text>
+  <text x="95" y="270" class="text">1. 關羽   ################....   84 HP</text>
+  <text x="95" y="302" class="text">2. 曹操   ##############......   72 HP</text>
+  <text x="95" y="334" class="text">3. 黃蓋   ############........   60 HP</text>
+  <text x="95" y="366" class="text">4. 夏侯惇 ##########..........   52 HP</text>
+  <text x="95" y="398" class="text">5. 孫權   ########............   40 HP</text>
+
+  <text x="95" y="446" class="warn">[勢力傷害統計]</text>
+  <text x="95" y="478" class="text">蜀: 132 HP (36.7%)</text>
+  <text x="95" y="510" class="text">吳: 108 HP (30.0%)</text>
+  <text x="95" y="542" class="text">魏: 120 HP (33.3%)</text>
+
+  <text x="95" y="590" class="ok">戰役完成。輸出已記錄到 TEST_LOG.md</text>
+  <text x="95" y="628" class="muted">(示意畫面，提交於 1114405054_hw/game_screenshot.svg)</text>
+</svg>
