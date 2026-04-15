@@ -1,0 +1,26 @@
+def build_map():
+    rows = [
+        "`1234567890-=",
+        "qwertyuiop[]\\",
+        "asdfghjkl;'",
+        "zxcvbnm,./",
+    ]
+    mp = {}
+    for row in rows:
+        for i in range(1, len(row)):
+            mp[row[i]] = row[i - 1]
+            mp[row[i].upper()] = row[i - 1].upper()
+    return mp
+def solve() -> None:
+    import sys
+    mp = build_map()
+    out_lines = []
+    for line in sys.stdin:
+        decoded = []
+        for ch in line:
+            decoded.append(mp.get(ch, ch))
+        out_lines.append("".join(decoded))
+
+    sys.stdout.write("".join(out_lines))
+if __name__ == "__main__":
+    solve()

@@ -1,0 +1,26 @@
+def build_sequence(n: int, m: int):
+    if m <= 1:
+        return None
+    seq = [n]
+    while n != 1:
+        if n % m != 0:
+            return None
+        n //= m
+        seq.append(n)
+    return seq
+def solve() -> None:
+    import sys
+out = []
+    for line in sys.stdin:
+        line = line.strip()
+        if not line:
+            continue
+n, m = map(int, line.split())
+        seq = build_sequence(n, m)
+        if seq is None or len(seq) < 2 or any(seq[i] <= seq[i + 1] for i in range(len(seq) - 1)):
+            out.append("Boring!")
+        else:
+            out.append(" ".join(map(str, seq)))
+    sys.stdout.write("\n".join(out))
+if __name__ == "__main__":
+    solve()
