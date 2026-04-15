@@ -31,12 +31,75 @@
 
 ## 解題思路
 
-*請填入你的解題思路*
+逐格掃描地圖。
+
+如果目前格子是地雷就直接保留 `*`；如果是空白格子，就檢查周圍 8 個方向，統計地雷數量後填入對應數字。
+
+因為地圖大小不大，直接暴力檢查鄰居就足夠了。
 
 ## 解題代碼
 
 ```python
-# 你的代碼這裡
+import sys
+
+
+def main():
+	data = sys.stdin.read().split()
+	index = 0
+	field_number = 1
+	outputs = []
+
+	# 8 個方向：上、下、左、右、四個斜角
+	directions = [
+		(-1, -1), (-1, 0), (-1, 1),
+		(0, -1),           (0, 1),
+		(1, -1),  (1, 0),  (1, 1),
+	]
+
+	while index < len(data):
+		n = int(data[index])
+		m = int(data[index + 1])
+		index += 2
+
+		if n == 0 and m == 0:
+			break
+
+		grid = data[index:index + n]
+		index += n
+
+		outputs.append(f'Field #{field_number}:')
+
+		for row in range(n):
+			answer_row = []
+			for col in range(m):
+				# 地雷直接保留
+				if grid[row][col] == '*':
+					answer_row.append('*')
+					continue
+
+				# 空白格子就數周圍地雷
+				mine_count = 0
+				for dr, dc in directions:
+					nr = row + dr
+					nc = col + dc
+					if 0 <= nr < n and 0 <= nc < m and grid[nr][nc] == '*':
+						mine_count += 1
+
+				answer_row.append(str(mine_count))
+
+			outputs.append(''.join(answer_row))
+
+		field_number += 1
+
+		# 不是最後一組資料時，補一個空行
+		if index < len(data):
+			outputs.append('')
+
+	sys.stdout.write('\n'.join(outputs))
+
+
+if __name__ == '__main__':
+	main()
 ```
 
 ## 測試用例

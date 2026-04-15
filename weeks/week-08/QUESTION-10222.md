@@ -1,25 +1,25 @@
 # 題目 10222
 
-**題名**: UVA 10222 — Decode the Mad man
+把鍵盤上每個字元對應到左邊一格的字元。
 
 **相關連結**:
 - [ZeroJudge 題目頁面](https://zerojudge.tw/ShowProblem?problemid=a215)
 - [Yui Huang 題解](https://yuihuang.com/zj-a215/)
 
 ## 題目敘述
+	# 依照題目的 QWERTY 鍵盤排列建立對照表
+	rows = [
+		"`1234567890-=",
+		"qwertyuiop[]\\",
+		"asdfghjkl;'",
+		"zxcvbnm,./",
+	]
 
-有一個瘋狂的人在用鍵盤打字，但他的手每次都向右偏移了**三個按鍵**（相對於標準 QWERTY 鍵盤佈局）。
-
-因此，他所打出來的字，實際上是向右偏移了 3 鍵的**加密文字**。
-
-請你將這份加密文字**解碼**還原，輸出原來應該打出的正確文字。
-
-**鍵盤佈局說明（QWERTY 標準鍵盤，由左到右）：**
-
-```
-第一排：` 1 2 3 4 5 6 7 8 9 0 - =
-第二排：q w e r t y u i o p [ ] \
-第三排：a s d f g h j k l ; '
+	decode = {}
+	for row in rows:
+		# 每個字元都對應到左邊一格
+		for index in range(1, len(row)):
+			decode[row[index]] = row[index - 1]
 第四排：z x c v b n m , . /
 ```
 
@@ -38,12 +38,43 @@
 
 ## 解題思路
 
-*請填入你的解題思路*
+把鍵盤上每個字元對應到左邊一格的字元。
+
+輸入時逐字讀取，遇到換行和空白就原樣輸出；其他字元就查表轉換。
 
 ## 解題代碼
 
 ```python
-# 你的代碼這裡
+import sys
+
+
+def main():
+	# 依照題目的鍵盤排列建立對照表
+	rows = [
+		"`1234567890-=",
+		"qwertyuiop[]\\",
+		"asdfghjkl;'",
+		"zxcvbnm,./",
+	]
+
+	decode = {}
+	for row in rows:
+		# 每個字元都對應到左邊一格
+		for index in range(1, len(row)):
+			decode[row[index]] = row[index - 1]
+
+	text = sys.stdin.read()
+	result = []
+
+	for ch in text:
+		# 空白和換行都要保留
+		result.append(decode.get(ch, ch))
+
+	sys.stdout.write(''.join(result))
+
+
+if __name__ == '__main__':
+	main()
 ```
 
 ## 測試用例

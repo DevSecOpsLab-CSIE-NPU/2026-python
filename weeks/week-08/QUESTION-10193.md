@@ -54,12 +54,51 @@ $$\arctan\!\left(\frac{1}{a}\right) = \arctan\!\left(\frac{1}{b}\right) + \arcta
 
 ## 解題思路
 
-*請填入你的解題思路*
+由公式
+
+$$\arctan\left(\frac{1}{a}\right)=\arctan\left(\frac{1}{b}\right)+\arctan\left(\frac{1}{c}\right)$$
+
+可推出
+
+$$bc-1=a(b+c)$$
+
+整理後得到
+
+$$ (b-a)(c-a)=a^2+1 $$
+
+所以只要把 `a^2 + 1` 的所有因數配對找出來，就能得到對應的 `b` 和 `c`。
+
+因為題目要的是 `b + c` 最小，所以枚舉 `a^2 + 1` 的因數時，取 `x` 和 `d/x` 使 `x + d/x` 最小即可。
 
 ## 解題代碼
 
 ```python
-# 你的代碼這裡
+import math
+import sys
+
+
+def main():
+	a = int(sys.stdin.readline())
+	target = a * a + 1
+	best = None
+
+	# 枚舉因數對，找 b + c 最小的組合
+	for x in range(1, math.isqrt(target) + 1):
+		if target % x != 0:
+			continue
+
+		y = target // x
+
+		# b = a + x, c = a + y
+		total = 2 * a + x + y
+		if best is None or total < best:
+			best = total
+
+	print(best)
+
+
+if __name__ == '__main__':
+	main()
 ```
 
 ## 測試用例

@@ -37,12 +37,48 @@
 
 ## 解題思路
 
-*請填入你的解題思路*
+先把角度換成弧度。
+
+若角度輸入是 `deg`，就直接把度數轉成弧度；若是 `min`，則先除以 60 變成度，再轉成弧度。
+
+接著依照公式計算：
+
+- 弧長 = `r * a`
+- 弦長 = `2 * r * sin(a / 2)`
+
+其中 `r = 6440 + s`。
 
 ## 解題代碼
 
 ```python
-# 你的代碼這裡
+import math
+import sys
+
+
+def main():
+  for line in sys.stdin:
+    line = line.strip()
+    if not line:
+      continue
+
+    s, angle, unit = line.split()
+    s = float(s)
+    angle = float(angle)
+
+    # 先把角度轉成弧度
+    if unit == 'min':
+      angle = angle / 60.0
+    radians = math.radians(angle)
+
+    radius = 6440.0 + s
+    arc_length = radius * radians
+    chord_length = 2.0 * radius * math.sin(radians / 2.0)
+
+    print(f'{arc_length:.6f} {chord_length:.6f}')
+
+
+if __name__ == '__main__':
+  main()
 ```
 
 ## 測試用例
