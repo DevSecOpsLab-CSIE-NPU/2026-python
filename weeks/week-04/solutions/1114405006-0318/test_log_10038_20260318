@@ -1,0 +1,18 @@
+﻿[INFO] 2026-03-19 09:03:55 開始執行 UVA 10038 測試
+[INFO] Python: Python 3.12.10
+[INFO] Command: C:\Users\Chiao\AppData\Local\Programs\Python\Python312\python.exe -m unittest 2026-python/weeks/week-04/solutions/1114405006-948-0318/test_question_10038.py -v
+[OUTPUT]
+test_duplicate_differences_not_jolly (2026-python.weeks.week-04.solutions.1114405006-948-0318.test_question_10038.TestQuestion10038.test_duplicate_differences_not_jolly)
+相鄰差值重複且缺值時，不是 Jolly。 ... ok
+test_multiple_lines_mixed (2026-python.weeks.week-04.solutions.1114405006-948-0318.test_question_10038.TestQuestion10038.test_multiple_lines_mixed)
+多組測資混合情境。 ... ok
+test_sample_like_cases (2026-python.weeks.week-04.solutions.1114405006-948-0318.test_question_10038.TestQuestion10038.test_sample_like_cases)
+常見範例型測資。 ... ok
+test_single_number_is_jolly (2026-python.weeks.week-04.solutions.1114405006-948-0318.test_question_10038.TestQuestion10038.test_single_number_is_jolly)
+長度為 1 的序列一定是 Jolly。 ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+OK
+[EXIT_CODE] 0

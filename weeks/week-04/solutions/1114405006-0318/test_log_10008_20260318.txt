@@ -1,0 +1,33 @@
+﻿[INFO] 2026-03-19 08:33:32 開始執行 UVA 10008 測試
+[INFO] Python: Python 3.12.10
+[INFO] Command: C:\Users\Chiao\AppData\Local\Programs\Python\Python312\python.exe -m unittest 2026-python/weeks/week-04/solutions/1114405006-948-0318/test_question_10008.py -v
+[OUTPUT]
+python.exe : test_case_insensitive_and_ignore_non_letters (2026-python.weeks.we
+ek-04.solutions.1114405006-948-0318.test_question_10008.TestUVA10008.test_case_
+insensitive_and_ignore_non_letters)
+位於 線路:1 字元:560
++ ... end; $out = & $py -m unittest "2026-python/weeks/week-04/solutions/11 ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_case_insen...re_non_letters) 
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+大小寫視為同字元，且忽略數字與標點符號。 ... ok
+test_empty_or_non_letter_lines (2026-python.weeks.week-04.solutions.1114405006-
+948-0318.test_question_10008.TestUVA10008.test_empty_or_non_letter_lines)
+若沒有任何 A~Z 字母，輸出應為空字串。 ... ok
+test_multiple_lines_combined_count (2026-python.weeks.week-04.solutions.1114405
+006-948-0318.test_question_10008.TestUVA10008.test_multiple_lines_combined_coun
+t)
+需跨多行累積統計，不是逐行輸出。 ... ok
+test_sort_by_frequency_then_alphabet (2026-python.weeks.week-04.solutions.11144
+05006-948-0318.test_question_10008.TestUVA10008.test_sort_by_frequency_then_alp
+habet)
+先比次數（大到小），同次數時比字母（小到大）。 ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
+
+[EXIT_CODE] 0

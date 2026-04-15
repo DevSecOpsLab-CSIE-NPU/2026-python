@@ -1,0 +1,18 @@
+﻿[INFO] 2026-03-19 08:45:30 開始執行 UVA 10019 測試
+[INFO] Python: Python 3.12.10
+[INFO] Command: C:\Users\Chiao\AppData\Local\Programs\Python\Python312\python.exe -m unittest 2026-python/weeks/week-04/solutions/1114405006-948-0318/test_question_10019.py -v
+[OUTPUT]
+test_basic_pairs (2026-python.weeks.week-04.solutions.1114405006-948-0318.test_question_10019.TestQuestion10019.test_basic_pairs)
+一般情況：多行資料各自輸出絕對差。 ... ok
+test_ignore_blank_lines (2026-python.weeks.week-04.solutions.1114405006-948-0318.test_question_10019.TestQuestion10019.test_ignore_blank_lines)
+空白行應被安全忽略。 ... ok
+test_large_numbers (2026-python.weeks.week-04.solutions.1114405006-948-0318.test_question_10019.TestQuestion10019.test_large_numbers)
+大數測試：確認仍能正確計算差值。 ... ok
+test_order_irrelevant (2026-python.weeks.week-04.solutions.1114405006-948-0318.test_question_10019.TestQuestion10019.test_order_irrelevant)
+題意允許任意順序，輸出都應為正差值。 ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+OK
+[EXIT_CODE] 0

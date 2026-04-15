@@ -1,12 +1,9 @@
-"""UVA 10035 Primary Arithmetic 解答。"""
-
 from __future__ import annotations
 
 import sys
 
 
 def count_carry(a: str, b: str) -> int:
-    """計算兩個非負整數字串相加時產生的進位次數。"""
     i = len(a) - 1
     j = len(b) - 1
     carry = 0
@@ -15,9 +12,9 @@ def count_carry(a: str, b: str) -> int:
     while i >= 0 or j >= 0:
         da = ord(a[i]) - ord("0") if i >= 0 else 0
         db = ord(b[j]) - ord("0") if j >= 0 else 0
+        total = da + db + carry
 
-        s = da + db + carry
-        if s >= 10:
+        if total >= 10:
             carry = 1
             count += 1
         else:
@@ -29,41 +26,35 @@ def count_carry(a: str, b: str) -> int:
     return count
 
 
-def format_output(c: int) -> str:
-    """依題目格式回傳 carry 敘述字串。"""
-    if c == 0:
+def format_answer(carry_count: int) -> str:
+    if carry_count == 0:
         return "No carry operation."
-    if c == 1:
+    if carry_count == 1:
         return "1 carry operation."
-    return f"{c} carry operations."
+    return f"{carry_count} carry operations."
 
 
 def solve(data: str) -> str:
-    """
-    讀取多組兩整數資料，直到 `0 0`。
-    每組輸出一行 carry 結果。
-    """
-    outputs: list[str] = []
+    answers = []
 
     for raw in data.splitlines():
         line = raw.strip()
         if not line:
             continue
 
-        a, b = line.split()
-        if a == "0" and b == "0":
+        left, right = line.split()
+        if left == "0" and right == "0":
             break
 
-        outputs.append(format_output(count_carry(a, b)))
+        answers.append(format_answer(count_carry(left, right)))
 
-    if not outputs:
+    if not answers:
         return ""
 
-    return "\n".join(outputs) + "\n"
+    return "\n".join(answers) + "\n"
 
 
 def main() -> None:
-    """標準輸入輸出入口。"""
     sys.stdout.write(solve(sys.stdin.read()))
 
 

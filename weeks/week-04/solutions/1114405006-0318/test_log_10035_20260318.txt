@@ -1,0 +1,18 @@
+﻿[INFO] 2026-03-19 08:52:19 開始執行 UVA 10035 測試
+[INFO] Python: Python 3.12.10
+[INFO] Command: C:\Users\Chiao\AppData\Local\Programs\Python\Python312\python.exe -m unittest 2026-python/weeks/week-04/solutions/1114405006-948-0318/test_question_10035.py -v
+[OUTPUT]
+test_all_nines_chain_carry (2026-python.weeks.week-04.solutions.1114405006-948-0318.test_question_10035.TestQuestion10035.test_all_nines_chain_carry)
+連鎖進位情境。 ... ok
+test_different_lengths (2026-python.weeks.week-04.solutions.1114405006-948-0318.test_question_10035.TestQuestion10035.test_different_lengths)
+不同位數加法也要正確計算進位。 ... ok
+test_ignore_lines_after_terminator (2026-python.weeks.week-04.solutions.1114405006-948-0318.test_question_10035.TestQuestion10035.test_ignore_lines_after_terminator)
+遇到 0 0 後，後續資料必須忽略。 ... ok
+test_sample_style_cases (2026-python.weeks.week-04.solutions.1114405006-948-0318.test_question_10035.TestQuestion10035.test_sample_style_cases)
+常見範例型測資。 ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+OK
+[EXIT_CODE] 0

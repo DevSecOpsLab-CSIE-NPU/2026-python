@@ -1,12 +1,9 @@
-"""UVA 10038 Jolly Jumpers 解答。"""
-
 from __future__ import annotations
 
 import sys
 
 
 def is_jolly(seq: list[int]) -> bool:
-    """檢查序列是否為 Jolly Jumper。"""
     n = len(seq)
     if n <= 1:
         return True
@@ -19,11 +16,7 @@ def is_jolly(seq: list[int]) -> bool:
 
 
 def solve(data: str) -> str:
-    """
-    每行一組測資：n + n 個整數。
-    若序列是 jolly jumper 輸出 `Jolly`，否則輸出 `Not jolly`。
-    """
-    outputs: list[str] = []
+    answers = []
 
     for raw in data.splitlines():
         line = raw.strip()
@@ -33,17 +26,15 @@ def solve(data: str) -> str:
         nums = list(map(int, line.split()))
         n = nums[0]
         seq = nums[1 : 1 + n]
+        answers.append("Jolly" if is_jolly(seq) else "Not jolly")
 
-        outputs.append("Jolly" if is_jolly(seq) else "Not jolly")
-
-    if not outputs:
+    if not answers:
         return ""
 
-    return "\n".join(outputs) + "\n"
+    return "\n".join(answers) + "\n"
 
 
 def main() -> None:
-    """標準輸入輸出入口。"""
     sys.stdout.write(solve(sys.stdin.read()))
 
 
