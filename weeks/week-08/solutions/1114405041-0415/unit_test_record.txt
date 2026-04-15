@@ -1,0 +1,26 @@
+Python unittest 測試紀錄
+總測試數量: 14
+失敗數量: 0
+錯誤數量: 0
+
+test_command_line_execution (test_uva_10189.TestUVA10189.test_command_line_execution) ... ok
+test_no_mine_case (test_uva_10189.TestUVA10189.test_no_mine_case) ... ok
+test_sample_cases (test_uva_10189.TestUVA10189.test_sample_cases) ... ok
+test_command_line_execution (test_uva_10190.TestUVA10190.test_command_line_execution) ... ok
+test_single_valid_case (test_uva_10190.TestUVA10190.test_single_valid_case) ... ok
+test_valid_and_boring_cases (test_uva_10190.TestUVA10190.test_valid_and_boring_cases) ... ok
+test_command_line_execution (test_uva_10193.TestUVA10193.test_command_line_execution) ... ok
+test_sample_style_cases (test_uva_10193.TestUVA10193.test_sample_style_cases) ... ok
+test_command_line_execution (test_uva_10221.TestUVA10221.test_command_line_execution) ... ok
+test_large_angle_uses_shorter_arc (test_uva_10221.TestUVA10221.test_large_angle_uses_shorter_arc) ... ok
+test_sample_cases (test_uva_10221.TestUVA10221.test_sample_cases) ... ok
+test_command_line_execution (test_uva_10222.TestUVA10222.test_command_line_execution) ... ok
+test_decode_sentence (test_uva_10222.TestUVA10222.test_decode_sentence) ... ok
+test_keep_spaces_and_multiple_lines (test_uva_10222.TestUVA10222.test_keep_spaces_and_multiple_lines) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.461s
+
+OK
+
+整體結果: PASS

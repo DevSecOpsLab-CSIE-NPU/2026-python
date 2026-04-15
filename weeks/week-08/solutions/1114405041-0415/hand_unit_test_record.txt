@@ -1,0 +1,17 @@
+Hand 程式 unittest 測試紀錄
+總測試數量: 5
+失敗數量: 0
+錯誤數量: 0
+
+test_uva_10189 (test_hand_solutions.TestHandSolutions.test_uva_10189) ... ok
+test_uva_10190 (test_hand_solutions.TestHandSolutions.test_uva_10190) ... ok
+test_uva_10193 (test_hand_solutions.TestHandSolutions.test_uva_10193) ... ok
+test_uva_10221 (test_hand_solutions.TestHandSolutions.test_uva_10221) ... ok
+test_uva_10222 (test_hand_solutions.TestHandSolutions.test_uva_10222) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.398s
+
+OK
+
+整體結果: PASS
