@@ -1,0 +1,89 @@
+﻿[INFO] 2026-03-19 00:17:58 start
+[INFO] cmd: C:\Users\Chiao\AppData\Local\Programs\Python\Python312\python.exe -m unittest discover -s 2026-python/weeks/week-04/solutions/1114405006-948-0318 -p test_question_948.py -v
+[OUTPUT]
+python.exe : test_ambiguous_returns_zero (test_question_948.TestUVA948.test_amb
+iguous_returns_zero)
+位於 線路:1 字元:460
++ ... end; $out = & $py -m unittest discover -s "2026-python/weeks/week-04/ ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_ambiguous_...s_returns_zero) 
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+資訊不足時必須輸出 0。 ... FAIL
+test_equal_then_imbalance_unique (test_question_948.TestUVA948.test_equal_then_
+imbalance_unique)
+先用等重排除，再透過不平衡鎖定唯一假幣。 ... FAIL
+test_multiple_cases_with_blank_line_between_answers (test_question_948.TestUVA9
+48.test_multiple_cases_with_blank_line_between_answers)
+多組測資輸出格式：答案間必須有空白行。 ... FAIL
+test_unique_coin_from_single_weighing (test_question_948.TestUVA948.test_unique
+_coin_from_single_weighing)
+只有第 1 號硬幣符合秤重結果。 ... FAIL
+
+======================================================================
+FAIL: test_ambiguous_returns_zero (test_question_948.TestUVA948.test_ambiguous_
+returns_zero)
+資訊不足時必須輸出 0。
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\1114405006-0318\2026-python\weeks\week-04\solutions\1114405006-948-0
+318\test_question_948.py", line 166, in test_ambiguous_returns_zero
+    self.assertEqual(SOLVE(data), "0\n")
+AssertionError: '3\n' != '0\n'
+- 3
++ 0
+
+
+======================================================================
+FAIL: test_equal_then_imbalance_unique (test_question_948.TestUVA948.test_equal
+_then_imbalance_unique)
+先用等重排除，再透過不平衡鎖定唯一假幣。
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\1114405006-0318\2026-python\weeks\week-04\solutions\1114405006-948-0
+318\test_question_948.py", line 179, in test_equal_then_imbalance_unique
+    self.assertEqual(SOLVE(data), "3\n")
+AssertionError: '0\n' != '3\n'
+- 0
++ 3
+
+
+======================================================================
+FAIL: test_multiple_cases_with_blank_line_between_answers (test_question_948.Te
+stUVA948.test_multiple_cases_with_blank_line_between_answers)
+多組測資輸出格式：答案間必須有空白行。
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\1114405006-0318\2026-python\weeks\week-04\solutions\1114405006-948-0
+318\test_question_948.py", line 193, in test_multiple_cases_with_blank_line_bet
+ween_answers
+    self.assertEqual(SOLVE(data), "1\n\n0\n")
+AssertionError: '0\n\n3\n' != '1\n\n0\n'
++ 1
++ 
+  0
+- 
+- 3
+
+
+======================================================================
+FAIL: test_unique_coin_from_single_weighing (test_question_948.TestUVA948.test_
+unique_coin_from_single_weighing)
+只有第 1 號硬幣符合秤重結果。
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\1114405006-0318\2026-python\weeks\week-04\solutions\1114405006-948-0
+318\test_question_948.py", line 155, in test_unique_coin_from_single_weighing
+    self.assertEqual(SOLVE(data), "1\n")
+AssertionError: '0\n' != '1\n'
+- 0
++ 1
+
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+FAILED (failures=4)
+
+[EXIT_CODE] 1
