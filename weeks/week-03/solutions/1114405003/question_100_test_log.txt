@@ -1,0 +1,7 @@
+test_sample_cases (test_question_100.TestQuestion100.test_sample_cases) ... ok
+test_swapped_range (test_question_100.TestQuestion100.test_swapped_range) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK

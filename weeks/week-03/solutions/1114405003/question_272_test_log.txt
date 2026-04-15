@@ -1,0 +1,7 @@
+test_multiple_lines (test_question_272.TestQuestion272.test_multiple_lines) ... ok
+test_quote_replacement (test_question_272.TestQuestion272.test_quote_replacement) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK

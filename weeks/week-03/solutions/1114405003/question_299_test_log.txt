@@ -1,0 +1,7 @@
+test_sample_case (test_question_299.TestQuestion299.test_sample_case) ... ok
+test_single_case (test_question_299.TestQuestion299.test_single_case) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK
