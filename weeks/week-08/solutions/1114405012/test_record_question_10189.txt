@@ -1,0 +1,7 @@
+test_sample (test_question_10189.TestQuestion10189) ... ok
+test_single_cell (test_question_10189.TestQuestion10189) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.071s
+
+OK

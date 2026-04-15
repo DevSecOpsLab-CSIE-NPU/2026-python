@@ -1,0 +1,8 @@
+test_basic_letters (test_question_10222.TestQuestion10222) ... ok
+test_keep_spaces_and_symbols (test_question_10222.TestQuestion10222) ... ok
+test_mixed_sentence (test_question_10222.TestQuestion10222) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.163s
+
+OK

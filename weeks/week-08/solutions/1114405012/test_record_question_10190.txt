@@ -1,0 +1,7 @@
+test_equal_values (test_question_10190.TestQuestion10190) ... ok
+test_mixed_cases (test_question_10190.TestQuestion10190) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.070s
+
+OK
