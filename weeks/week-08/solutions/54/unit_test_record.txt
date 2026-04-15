@@ -1,0 +1,31 @@
+Python unittest 測試紀錄
+總測試數量: 19
+失敗數量: 0
+錯誤數量: 0
+
+test_uva_10189 (test_hand_solutions.TestHandSolutions.test_uva_10189) ... ok
+test_uva_10190 (test_hand_solutions.TestHandSolutions.test_uva_10190) ... ok
+test_uva_10193 (test_hand_solutions.TestHandSolutions.test_uva_10193) ... ok
+test_uva_10221 (test_hand_solutions.TestHandSolutions.test_uva_10221) ... ok
+test_uva_10222 (test_hand_solutions.TestHandSolutions.test_uva_10222) ... ok
+test_command_line_execution (test_uva_10189.TestUVA10189.test_command_line_execution) ... ok
+test_sample_cases (test_uva_10189.TestUVA10189.test_sample_cases) ... ok
+test_command_line_execution (test_uva_10190.TestUVA10190.test_command_line_execution) ... ok
+test_helper (test_uva_10190.TestUVA10190.test_helper) ... ok
+test_known_cases (test_uva_10190.TestUVA10190.test_known_cases) ... ok
+test_command_line_execution (test_uva_10193.TestUVA10193.test_command_line_execution) ... ok
+test_gcd_logic (test_uva_10193.TestUVA10193.test_gcd_logic) ... ok
+test_known_cases (test_uva_10193.TestUVA10193.test_known_cases) ... ok
+test_command_line_execution (test_uva_10221.TestUVA10221.test_command_line_execution) ... ok
+test_large_angle_normalization (test_uva_10221.TestUVA10221.test_large_angle_normalization) ... ok
+test_sample_cases (test_uva_10221.TestUVA10221.test_sample_cases) ... ok
+test_command_line_execution (test_uva_10222.TestUVA10222.test_command_line_execution) ... ok
+test_decode_sentence (test_uva_10222.TestUVA10222.test_decode_sentence) ... ok
+test_keep_space_and_unknown (test_uva_10222.TestUVA10222.test_keep_space_and_unknown) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 1.748s
+
+OK
+
+整體結果: PASS
