@@ -1,247 +1,189 @@
 """
-題目 10062 - UVA 10062：乳牛排序問題
+UVA 10062 乳牛排序 - 正式版（Fenwick Tree）
 
-題意說明：
-  - N 頭乳牛排隊等吃晚餐，原本應該按編號 1 到 N 依序排列
-  - 但它們喝醉了，隊伍被打亂了
-  - 對於隊伍中的每一頭乳牛，我們知道在它前面、編號比它小的乳牛有幾頭
-  - 根據這些線索重建原始排列
+題意（重點）：
+1. 共有 n 頭乳牛，編號為 1..n，且編號不重複。
+2. 已知對每個位置 i（2 <= i <= n）：
+   在它前面、編號比它小的乳牛數量為 counts[i-2]。
+3. 請還原整個隊伍編號順序。
 
-測試策略：
-  1. 簡單測試：N=2, 小規模驗證基本邏輯
-  2. 中等測試：N=4, 驗證多層次的插入邏輯
-  3. 邊界測試：檢查第一頭乳牛的處理
+核心觀察：
+若從右往左回推，在處理位置 i 時，尚未使用的編號總共有 i 個，
+而該位置前面要有 c 個較小編號，代表該位置必須放「第 c+1 小」的可用編號。
+
+這個檔案提供：
+1. 高效解法（Fenwick Tree，O(n log n)）
+2. 單元測試
+3. 測試紀錄輸出（test_10062.log）
 """
 
-import unittest
+from __future__ import annotations
+
+from pathlib import Path
 from typing import List
+import unittest
 
 
-def solve_cow_order(n: int, smaller_counts: List[int]) -> List[int]:
+class FenwickTree:
+    """Fenwick Tree（Binary Indexed Tree），支援前綴和與第 k 小查詢。"""
+
+    def __init__(self, n: int) -> None:
+        self.n = n
+        self.bit = [0] * (n + 1)
+
+    def add(self, idx: int, delta: int) -> None:
+        """將 idx 位置的值增加 delta（idx 為 1-based）。"""
+        while idx <= self.n:
+            self.bit[idx] += delta
+            idx += idx & -idx
+
+    def prefix_sum(self, idx: int) -> int:
+        """回傳 [1..idx] 的總和。"""
+        res = 0
+        while idx > 0:
+            res += self.bit[idx]
+            idx -= idx & -idx
+        return res
+
+    def find_kth(self, k: int) -> int:
+        """
+        找到最小 idx，使得 prefix_sum(idx) >= k。
+        這裡可用來查詢「目前可用編號中的第 k 小」。
+        """
+        if k <= 0 or k > self.prefix_sum(self.n):
+            raise ValueError("k 超出可查詢範圍")
+
+        idx = 0
+        bit_mask = 1 << (self.n.bit_length() - 1)
+
+        while bit_mask:
+            nxt = idx + bit_mask
+            if nxt <= self.n and self.bit[nxt] < k:
+                k -= self.bit[nxt]
+                idx = nxt
+            bit_mask >>= 1
+
+        return idx + 1
+
+
+def solve_cow_order(n: int, counts: List[int]) -> List[int]:
     """
-    根據每頭乳牛前面比它小的乳牛數量，重建排列。
-    
-    演算法思路：
-      1. 維護一個「已排列乳牛」的有序列表
-      2. 維護一個「未使用編號」的集合
-      3. 對於每個位置，根據「前面比它小的數量」來選擇合適的編號
-      
-    Parameters:
-      n: 乳牛總數
-      smaller_counts: 列表，第 i 個元素表示第 (i+2) 個位置的乳牛
-                     前面編號比它小的乳牛數量
-                     （第一頭沒有資訊，所以從第二頭開始）
-    
-    Returns:
-      list: 重建後的排列順序
+    使用 Fenwick Tree 還原乳牛排列。
+
+    參數：
+    n: 乳牛總數
+    counts: 長度必須為 n-1，counts[i-1] 代表第 i 個位置前方較小編號數量
+
+    回傳：
+    長度為 n 的排列（每個值介於 1..n，且不重複）
     """
-    from bisect import insort, bisect_left
-    
-    # 初始化結果列表和已排列乳牛的有序追蹤
-    result = []  # 最終排列結果
-    sorted_result = []  # 用於快速查找的有序列表
-    used = set()  # 已使用的編號集合
-    
-    # 處理第一頭乳牛
-    # 由於題目沒有給出第一頭乳牛的資訊，我們選擇最小的編號 1
-    result.append(1)
-    sorted_result.append(1)
-    used.add(1)
-    
-    # 處理後續的乳牛
+    if n < 2:
+        raise ValueError("n 必須 >= 2")
+    if len(counts) != n - 1:
+        raise ValueError("counts 長度必須為 n-1")
+
+    # 初始化：所有編號 1..n 都是可用狀態（值為 1）。
+    ft = FenwickTree(n)
+    for x in range(1, n + 1):
+        ft.add(x, 1)
+
+    ans = [0] * n
+
+    # 從右往左填值。
+    for i in range(n, 1, -1):
+        c = counts[i - 2]
+        if c < 0 or c >= i:
+            raise ValueError(f"counts 在位置 {i-1} 不合法：{c}")
+
+        # 第 c+1 小（1-based）
+        kth = c + 1
+        val = ft.find_kth(kth)
+        ans[i - 1] = val
+        ft.add(val, -1)
+
+    # 第一個位置就是剩下唯一編號。
+    ans[0] = ft.find_kth(1)
+    return ans
+
+
+def build_counts_from_permutation(perm: List[int]) -> List[int]:
+    """由排列反推題目給定的 counts，供測試用。"""
+    n = len(perm)
+    counts = []
     for i in range(1, n):
-        # smaller_counts[i-1] 是第 (i+1) 個位置的乳牛前面編號比它小的數量
-        c = smaller_counts[i - 1]
-        
-        # 從未使用的編號中找出合適的編號
-        # 條件：在 sorted_result 中有恰好 c 個編號比它小
-        found = False
-        for num in range(1, n + 1):
-            if num not in used:
-                # 計算在 sorted_result 中有多少個數比 num 小
-                # 這相當於 num 在排序後應該插入的位置
-                count_smaller = bisect_left(sorted_result, num)
-                
-                if count_smaller == c:
-                    # 找到合適的編號
-                    result.append(num)
-                    insort(sorted_result, num)
-                    used.add(num)
-                    found = True
-                    break
-        
-        if not found:
-            # 如果沒有找到，表示輸入有誤或演算法需要調整
-            raise ValueError(f"無法為位置 {i+1} 找到合適的乳牛編號")
-    
-    return result
-        def try_build(first_num: int):
-            """嘗試以 first_num 作為第一頭乳牛構建排列"""
-            result = [first_num]
-            sorted_result = [first_num]
-            used = {first_num}
-        
-            for i in range(1, n):
-                c = smaller_counts[i - 1]
-                found = False
-                for num in range(1, n + 1):
-                    if num not in used:
-                        count_smaller = bisect_left(sorted_result, num)
-                        if count_smaller == c:
-                            result.append(num)
-                            insort(sorted_result, num)
-                            used.add(num)
-                            found = True
-                            break
-                if not found:
-                    return None
-        
-            return result
-    
-        # 嘗試每個可能的第一個位置
-        for first_num in range(1, n + 1):
-            result = try_build(first_num)
-            if result is not None:
-                return result
-    
-        raise ValueError("無法根據輸入重建排列")-
+        c = sum(1 for x in perm[:i] if x < perm[i])
+        counts.append(c)
+    return counts
 
 
 class TestCowOrder(unittest.TestCase):
-    """測試用例集"""
-    
-    def test_simple_case_n2(self):
-        """
-        測試1：簡單情況 N=2
-        輸入：2
-              0
-        說明：第二頭乳牛前面編號比它小的有 0 個
-        預期：[1, 2]（因為第二頭乳牛編號比第一頭大）
-        """
-        result = solve_cow_order(2, [0])
-        self.assertEqual(result, [1, 2])
-        print(f"測試1（N=2）: {result} ✓")
-    
-    def test_reverse_case_n2(self):
-        """
-        測試2：N=2 的反向情況
-        輸入：2
-              1
-        說明：第二頭乳牛前面編號比它小的有 1 個
-        預期：[2, 1]（第二頭乳牛編號比第一頭小）
-        """
-        result = solve_cow_order(2, [1])
-        self.assertEqual(result, [2, 1])
-        print(f"測試2（N=2 反向）: {result} ✓")
-    
-    def test_case_n3_example(self):
-        """
-        測試3：N=3 的標準測試
-        輸入：3
-              0
-              1
-        說明：
-          - 第二頭：前面有 0 個編號比它小 → 比第一頭大
-          - 第三頭：前面有 1 個編號比它小 → 中間大小
-        預期排列範例：[1, 3, 2] 或 [2, 3, 1] 等
-        """
-        result = solve_cow_order(3, [0, 1])
-        # 驗證基本約束
-        self.assertEqual(len(result), 3)
-        self.assertEqual(set(result), {1, 2, 3})
-        
-        # 驗證第二個位置的約束：前面編號比它小的有 0 個
-        count = sum(1 for x in result[:1] if x < result[1])
-        self.assertEqual(count, 0)
-        
-        # 驗證第三個位置的約束：前面編號比它小的有 1 個
-        count = sum(1 for x in result[:2] if x < result[2])
-        self.assertEqual(count, 1)
-        
-        print(f"測試3（N=3）: {result} ✓")
-    
-    def test_case_n4(self):
-        """
-        測試4：N=4 的測試
-        輸入：4
-              0
-              1
-              2
-        說明：
-          - 第二頭：前面有 0 個編號比它小
-          - 第三頭：前面有 1 個編號比它小
-          - 第四頭：前面有 2 個編號比它小
-        """
-        result = solve_cow_order(4, [0, 1, 2])
-        self.assertEqual(len(result), 4)
-        self.assertEqual(set(result), {1, 2, 3, 4})
-        
-        # 驗證各個位置的約束
-        for i in range(1, 4):
-            expected_smaller = i - 1
-            actual_smaller = sum(1 for x in result[:i] if x < result[i])
-            self.assertEqual(actual_smaller, expected_smaller,
-                           f"位置 {i+1} 的約束不符")
-        
-        print(f"測試4（N=4）: {result} ✓")
-    
-    def test_constraint_verification(self):
-        """
-        測試5：約束驗證
-        對任意結果驗證是否滿足題目約束
-        """
-        test_cases = [
-            (2, [0]),
-            (2, [1]),
-            (3, [0, 0]),
-            (3, [1, 1]),
-            (4, [0, 1, 2]),
+    """測試 UVA 10062 還原邏輯。"""
+
+    def test_known_case_1(self) -> None:
+        # 由排列 [4,1,2,3] 反推得到 counts = [0,1,2]
+        n = 4
+        counts = [0, 1, 2]
+        self.assertEqual(solve_cow_order(n, counts), [4, 1, 2, 3])
+
+    def test_known_case_2(self) -> None:
+        # 由排列 [2,1,3] 反推得到 counts = [0,2]
+        n = 3
+        counts = [0, 2]
+        self.assertEqual(solve_cow_order(n, counts), [2, 1, 3])
+
+    def test_known_case_3(self) -> None:
+        # 由排列 [1,2,3,4,5] 反推得到 counts = [1,2,3,4]
+        n = 5
+        counts = [1, 2, 3, 4]
+        self.assertEqual(solve_cow_order(n, counts), [1, 2, 3, 4, 5])
+
+    def test_round_trip_small(self) -> None:
+        # 小型回圈測試：用多組固定排列做 round-trip 驗證
+        test_perms = [
+            [2, 1],
+            [1, 2, 3],
+            [3, 1, 2],
+            [4, 2, 1, 3],
+            [5, 3, 1, 4, 2],
         ]
-        
-        for n, smaller_counts in test_cases:
-            result = solve_cow_order(n, smaller_counts)
-            
-            # 驗證是否是有效的排列
-            self.assertEqual(set(result), set(range(1, n + 1)))
-            
-            # 驗證每個位置的約束
-            for i in range(1, n):
-                expected = smaller_counts[i - 1]
-                actual = sum(1 for x in result[:i] if x < result[i])
-                self.assertEqual(actual, expected,
-                               f"N={n}, 位置 {i+1}: 期望 {expected} 個編號比它小，"
-                               f"實際 {actual} 個")
-            
-            print(f"  驗證 N={n}: {result} ✓")
+        for perm in test_perms:
+            counts = build_counts_from_permutation(perm)
+            self.assertEqual(solve_cow_order(len(perm), counts), perm)
+
+    def test_invalid_counts_length(self) -> None:
+        with self.assertRaises(ValueError):
+            solve_cow_order(4, [0, 1])
+
+    def test_invalid_counts_value(self) -> None:
+        # 對 n=4 而言，第三個條件最多只能是 3，這裡用 4 應拋錯
+        with self.assertRaises(ValueError):
+            solve_cow_order(4, [0, 1, 4])
 
 
-def run_tests():
-    """
-    執行所有測試並輸出結果
-    """
-    print("=" * 60)
-    print("題目 10062 - UVA 10062 乳牛排序問題")
-    print("=" * 60)
-    print()
-    
-    # 創建測試套件
+def run_tests() -> bool:
+    """執行測試並保留紀錄檔。"""
+    base_dir = Path(__file__).resolve().parent
+    log_path = base_dir / "test_10062.log"
+
     suite = unittest.TestLoader().loadTestsFromTestCase(TestCowOrder)
-    
-    # 運行測試
-    runner = unittest.TextTestRunner(verbosity=2)
-    result = runner.run(suite)
-    
-    print()
-    print("=" * 60)
-    if result.wasSuccessful():
-        print("✓ 所有測試通過！")
-    else:
-        print("✗ 有些測試失敗")
-    print("=" * 60)
-    
+
+    # 用文字檔保存完整測試紀錄（UTF-8）。
+    with log_path.open("w", encoding="utf-8") as log_file:
+        runner = unittest.TextTestRunner(stream=log_file, verbosity=2)
+        result = runner.run(suite)
+
+        log_file.write("\n")
+        log_file.write("=" * 60 + "\n")
+        log_file.write(f"tests_run={result.testsRun}\n")
+        log_file.write(f"failures={len(result.failures)}\n")
+        log_file.write(f"errors={len(result.errors)}\n")
+        log_file.write(f"success={result.wasSuccessful()}\n")
+
+    print("Test run finished.")
+    print(f"Log saved to: {log_path.name}")
     return result.wasSuccessful()
 
 
 if __name__ == "__main__":
-    success = run_tests()
-    exit(0 if success else 1)
+    ok = run_tests()
+    raise SystemExit(0 if ok else 1)
