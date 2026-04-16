@@ -1,4 +1,4 @@
-﻿from typing import List, Optional, Tuple
+from typing import List, Optional, Tuple
 
 from game.models import Deck, Hand, Player, Card
 from game.classifier import HandClassifier
@@ -30,7 +30,8 @@ class BigTwoGame:
         for i, player in enumerate(self.players):
             player.take_cards(self.deck.deal(13))
 
-        # Find who has 3??        for i, player in enumerate(self.players):
+        # Find who has 3♣
+        for i, player in enumerate(self.players):
             if player.hand.find_3_clubs() is not None:
                 self.current_player = i
                 break
@@ -102,7 +103,8 @@ class BigTwoGame:
             return self.play(player, best)
         else:
             if self.is_first_turn:
-                # AI must play 3??on first turn; force single 3??                three_clubs = player.hand.find_3_clubs()
+                # AI must play 3♣ on first turn; force single 3♣
+                three_clubs = player.hand.find_3_clubs()
                 if three_clubs:
                     return self.play(player, [three_clubs])
             return self.pass_(player)

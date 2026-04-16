@@ -1,4 +1,4 @@
-﻿import unittest
+import unittest
 from game.models import Card
 from game.classifier import HandClassifier, CardType
 
@@ -110,7 +110,7 @@ class TestCompare(unittest.TestCase):
                                                  [C(13, 3), C(13, 2)]), 1)
 
     def test_compare_pair_suit(self):
-        # ?A vs ?色A
+        # ♠♥A vs ♦♣A
         self.assertEqual(HandClassifier.compare([C(14, 3), C(14, 2)],
                                                  [C(14, 1), C(14, 0)]), 1)
 

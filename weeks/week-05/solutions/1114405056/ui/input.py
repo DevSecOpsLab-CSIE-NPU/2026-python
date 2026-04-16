@@ -1,4 +1,4 @@
-﻿try:
+try:
     import pygame
     PYGAME_AVAILABLE = True
 except ImportError:

@@ -1,4 +1,4 @@
-﻿from enum import Enum
+from enum import Enum
 from typing import List, Optional, Tuple
 from collections import Counter
 
@@ -104,7 +104,8 @@ class HandClassifier:
             return False
 
         if last_play is None:
-            # First turn: must include 3??            return any(c.rank == 3 and c.suit == 0 for c in cards)
+            # First turn: must include 3♣
+            return any(c.rank == 3 and c.suit == 0 for c in cards)
 
         if len(last_play) != len(cards):
             return False

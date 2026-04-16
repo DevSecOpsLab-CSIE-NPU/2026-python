@@ -1,4 +1,4 @@
-﻿import unittest
+import unittest
 from unittest.mock import MagicMock, patch
 from game.models import Card, Hand
 from game.game import BigTwoGame

@@ -1,4 +1,4 @@
-﻿import unittest
+import unittest
 from game.models import Card, Hand
 from game.classifier import CardType
 from game.ai import AIStrategy
@@ -45,7 +45,9 @@ class TestScorePlay(unittest.TestCase):
         self.assertGreater(score, AIStrategy.NEAR_EMPTY_BONUS)
 
     def test_score_spade_bonus(self):
-        spade = [C(14, 3)]   # ??        club = [C(14, 0)]    # ??        hand = Hand([C(14, 3), C(14, 0), C(5, 1)])
+        spade = [C(14, 3)]   # ♠
+        club = [C(14, 0)]    # ♣
+        hand = Hand([C(14, 3), C(14, 0), C(5, 1)])
         self.assertGreater(AIStrategy.score_play(spade, hand),
                            AIStrategy.score_play(club, hand))
 

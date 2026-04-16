@@ -1,4 +1,4 @@
-﻿try:
+try:
     import pygame
     PYGAME_AVAILABLE = True
 except ImportError:
@@ -23,7 +23,7 @@ class BigTwoApp:
         if PYGAME_AVAILABLE:
             pygame.init()
             self.screen = pygame.display.set_mode((SCREEN_W, SCREEN_H))
-            pygame.display.set_caption("Big Two (憭扯?)")
+            pygame.display.set_caption("Big Two (大老二)")
             self.renderer = Renderer(self.screen)
             self.input_handler = InputHandler(self.renderer)
 

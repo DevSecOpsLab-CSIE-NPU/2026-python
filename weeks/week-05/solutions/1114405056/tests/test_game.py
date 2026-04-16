@@ -1,4 +1,4 @@
-﻿import unittest
+import unittest
 from game.models import Card, Hand
 from game.game import BigTwoGame
 
@@ -56,7 +56,7 @@ class TestPlayFlow(unittest.TestCase):
 
     def test_invalid_play(self):
         first = self.game.get_current_player()
-        # Try to play a card that is not 3??on first turn
+        # Try to play a card that is not 3♣ on first turn
         other_card = next(c for c in first.hand
                           if not (c.rank == 3 and c.suit == 0))
         result = self.game.play(first, [other_card])

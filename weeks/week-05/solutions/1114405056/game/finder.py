@@ -1,4 +1,4 @@
-﻿from itertools import combinations
+from itertools import combinations
 from typing import List, Optional
 from collections import defaultdict
 
@@ -116,7 +116,8 @@ class HandFinder:
     @staticmethod
     def get_all_valid_plays(hand: Hand, last_play: Optional[List[Card]]) -> List[List[Card]]:
         if last_play is None:
-            # First turn: return all plays containing 3??            all_plays = (
+            # First turn: return all plays containing 3♣
+            all_plays = (
                 HandFinder.find_singles(hand) +
                 HandFinder.find_pairs(hand) +
                 HandFinder.find_triples(hand) +

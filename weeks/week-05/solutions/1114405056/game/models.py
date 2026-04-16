@@ -1,7 +1,7 @@
-﻿import random
+import random
 from typing import List, Optional
 
-SUIT_SYMBOLS = ['??, '??, '??, '??]
+SUIT_SYMBOLS = ['♣', '♦', '♥', '♠']
 RANK_SYMBOLS = {
     3: '3', 4: '4', 5: '5', 6: '6', 7: '7', 8: '8', 9: '9', 10: 'T',
     11: 'J', 12: 'Q', 13: 'K', 14: 'A', 15: '2'
@@ -11,7 +11,8 @@ RANK_SYMBOLS = {
 class Card:
     def __init__(self, rank: int, suit: int):
         self.rank = rank   # 3-14 = 3-A, 15 = 2
-        self.suit = suit   # 0=?? 1=?? 2=?? 3=??
+        self.suit = suit   # 0=♣, 1=♦, 2=♥, 3=♠
+
     def __repr__(self) -> str:
         return SUIT_SYMBOLS[self.suit] + RANK_SYMBOLS[self.rank]
 

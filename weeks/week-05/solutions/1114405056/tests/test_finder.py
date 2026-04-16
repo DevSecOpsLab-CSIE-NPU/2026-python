@@ -1,4 +1,4 @@
-﻿import unittest
+import unittest
 from game.models import Card, Hand
 from game.finder import HandFinder
 from game.classifier import HandClassifier, CardType
@@ -89,7 +89,8 @@ class TestFindFives(unittest.TestCase):
 class TestGetAllValidPlays(unittest.TestCase):
 
     def test_first_turn(self):
-        # Hand has 3?? last=None -> only plays containing 3??        h = Hand([C(3, 0), C(14, 3), C(14, 2)])
+        # Hand has 3♣; last=None -> only plays containing 3♣
+        h = Hand([C(3, 0), C(14, 3), C(14, 2)])
         result = HandFinder.get_all_valid_plays(h, None)
         self.assertTrue(len(result) > 0)
         for play in result:

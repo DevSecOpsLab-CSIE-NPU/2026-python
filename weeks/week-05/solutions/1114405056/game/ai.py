@@ -1,4 +1,4 @@
-﻿from typing import List, Optional
+from typing import List, Optional
 
 from game.models import Card, Hand
 from game.classifier import HandClassifier, CardType
@@ -51,7 +51,8 @@ class AIStrategy:
             return None
 
         if is_first:
-            # Must play 3??            for play in valid_plays:
+            # Must play 3♣
+            for play in valid_plays:
                 if any(c.rank == 3 and c.suit == 0 for c in play):
                     return play
             return None

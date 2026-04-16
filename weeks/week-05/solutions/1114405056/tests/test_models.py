@@ -1,4 +1,4 @@
-﻿import unittest
+import unittest
 from game.models import Card, Deck, Hand, Player
 
 
@@ -10,17 +10,20 @@ class TestCard(unittest.TestCase):
         self.assertEqual(c.suit, 3)
 
     def test_card_repr_ace(self):
-        self.assertEqual(repr(Card(14, 3)), '?')
+        self.assertEqual(repr(Card(14, 3)), '♠A')
 
     def test_card_repr_three(self):
-        self.assertEqual(repr(Card(3, 0)), '??')
+        self.assertEqual(repr(Card(3, 0)), '♣3')
 
     def test_card_compare_suit(self):
-        self.assertTrue(Card(14, 3) > Card(14, 2))   # ??> ??
+        self.assertTrue(Card(14, 3) > Card(14, 2))   # ♠ > ♥
+
     def test_card_compare_suit_2(self):
-        self.assertTrue(Card(14, 2) > Card(14, 1))   # ??> ??
+        self.assertTrue(Card(14, 2) > Card(14, 1))   # ♥ > ♦
+
     def test_card_compare_suit_3(self):
-        self.assertTrue(Card(14, 1) > Card(14, 0))   # ??> ??
+        self.assertTrue(Card(14, 1) > Card(14, 0))   # ♦ > ♣
+
     def test_card_compare_rank_2(self):
         self.assertTrue(Card(15, 0) > Card(14, 3))   # 2 > A
 
