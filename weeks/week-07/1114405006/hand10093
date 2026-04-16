@@ -1,0 +1,9 @@
+test_random_small_grids (test_question_10093.TestQuestion10093.test_random_small_grids) ... ok
+test_single_mountain (test_question_10093.TestQuestion10093.test_single_mountain) ... ok
+test_single_plain (test_question_10093.TestQuestion10093.test_single_plain) ... ok
+test_small_manual (test_question_10093.TestQuestion10093.test_small_manual) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 7.449s
+
+OK

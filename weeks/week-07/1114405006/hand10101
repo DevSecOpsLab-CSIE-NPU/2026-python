@@ -1,0 +1,9 @@
+test_extra_trailing_text_after_hash (test_question_10101.TestQuestion10101.test_extra_trailing_text_after_hash) ... ok
+test_solvable_simple (test_question_10101.TestQuestion10101.test_solvable_simple) ... ok
+test_unsolvable_simple (test_question_10101.TestQuestion10101.test_unsolvable_simple) ... ok
+test_with_negative (test_question_10101.TestQuestion10101.test_with_negative) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.204s
+
+OK

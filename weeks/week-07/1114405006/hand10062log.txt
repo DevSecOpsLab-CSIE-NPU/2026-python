@@ -1,0 +1,9 @@
+test_manual_case_1 (test_question_10062.TestQuestion10062.test_manual_case_1) ... ok
+test_manual_case_2 (test_question_10062.TestQuestion10062.test_manual_case_2) ... ok
+test_n1 (test_question_10062.TestQuestion10062.test_n1) ... ok
+test_random_permutations (test_question_10062.TestQuestion10062.test_random_permutations) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 7.554s
+
+OK

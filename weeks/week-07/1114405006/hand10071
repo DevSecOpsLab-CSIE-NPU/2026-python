@@ -1,0 +1,9 @@
+test_manual_positive (test_question_10071.TestQuestion10071.test_manual_positive) ... ok
+test_manual_with_negative (test_question_10071.TestQuestion10071.test_manual_with_negative) ... ok
+test_random_small_sets (test_question_10071.TestQuestion10071.test_random_small_sets) ... ok
+test_single_zero (test_question_10071.TestQuestion10071.test_single_zero) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 1.150s
+
+OK
