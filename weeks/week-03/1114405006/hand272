@@ -1,0 +1,22 @@
+import sys
+def convert_quotes_easy(text: str) -> str:
+    result = []
+    counter = 0 
+    for char in text:
+        if char == '"':
+            counter += 1
+            if counter % 2 == 1:
+                result.append('``')
+            else:
+                result.append("''")
+        else:
+            result.append(char)
+    return ''.join(result)
+def process_input(text: str) -> str:
+    return convert_quotes_easy(text)
+def main():
+    input_text = sys.stdin.read()
+    output_text = process_input(input_text)
+    print(output_text, end='')
+if __name__ == '__main__':
+    main()

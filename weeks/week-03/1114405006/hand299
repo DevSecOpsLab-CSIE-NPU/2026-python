@@ -1,0 +1,35 @@
+from __future__ import annotations
+import sys
+def count_swaps(train: list[int]) -> int:
+    numbers = train[:]  # 保留原始資料，避免直接改掉外部傳入的 list
+    swaps = 0
+    length = len(numbers)
+    for end in range(length - 1, 0, -1):
+        for index in range(end):
+            if numbers[index] > numbers[index + 1]:
+                numbers[index], numbers[index + 1] = numbers[index + 1], numbers[index]
+                swaps += 1
+ return swaps
+def solve_text(text: str) -> str:
+    tokens = text.split()
+    if not tokens:
+        return ""
+case_count = int(tokens[0])
+    position = 1
+    outputs = []
+for _ in range(case_count):
+        length = int(tokens[position])
+        position += 1
+train = []
+        for _ in range(length):
+            train.append(int(tokens[position]))
+            position += 1
+swaps = count_swaps(train)
+        outputs.append(f"Optimal train swapping takes {swaps} swaps.")
+return "\n".join(outputs) + "\n"
+def main() -> None:
+    input_text = sys.stdin.read()
+    if input_text.strip():
+        sys.stdout.write(solve_text(input_text))
+if __name__ == "__main__":
+    main()

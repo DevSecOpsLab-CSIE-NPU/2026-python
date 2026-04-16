@@ -1,0 +1,83 @@
+
+from __future__ import annotations
+
+
+def solve_robots(map_max_x: int, map_max_y: int, robots_data: list[tuple[str, str]]) -> list[str]:
+   
+    directions = ['N', 'E', 'S', 'W']
+
+    scent = set()
+
+    results = []
+
+    for initial_state_str, commands_str in robots_data:
+        parts = initial_state_str.split()
+        x, y = int(parts[0]), int(parts[1])
+        direction = parts[2]
+
+        lost = False
+
+        for cmd in commands_str:
+        
+            if lost:
+                break
+
+            if cmd == 'L':
+                idx = directions.index(direction)
+                direction = directions[(idx - 1) % 4]
+
+            elif cmd == 'R':
+                idx = directions.index(direction)
+                direction = directions[(idx + 1) % 4]
+
+            elif cmd == 'F':
+            
+                if direction == 'N':
+                    nx, ny = x, y + 1  
+                elif direction == 'E':
+                    nx, ny = x + 1, y  
+                elif direction == 'S':
+                    nx, ny = x, y - 1 
+                else:  # 'W'
+                    nx, ny = x - 1, y 
+
+                if 0 <= nx <= map_max_x and 0 <= ny <= map_max_y:
+                    x, y = nx, ny
+                else:
+                    scent_key = (x, y, direction)
+                    if scent_key not in scent:
+                        scent.add(scent_key)
+                        lost = True
+        if lost:
+            results.append(f"{x} {y} {direction} LOST")
+        else:
+            results.append(f"{x} {y} {direction}")
+
+    return results
+
+
+def parse_and_solve(text: str) -> str:
+    lines = text.strip().splitlines()
+    if not lines:
+        return ""
+
+   
+    map_parts = lines[0].split()
+    map_max_x, map_max_y = int(map_parts[0]), int(map_parts[1])
+
+    robots_data = []
+    i = 1
+    while i + 1 < len(lines):
+        robots_data.append((lines[i], lines[i + 1]))
+        i += 2
+
+    results = solve_robots(map_max_x, map_max_y, robots_data)
+    return "\n".join(results)
+
+
+if __name__ == "__main__":
+    import sys
+
+    input_text = sys.stdin.read()
+    if input_text.strip():
+        print(parse_and_solve(input_text))

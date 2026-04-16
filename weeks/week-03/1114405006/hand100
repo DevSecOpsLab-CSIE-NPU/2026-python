@@ -1,0 +1,58 @@
+from __future__ import annotations
+
+import sys
+
+
+class CollatzEasySolver:
+    
+    def __init__(self) -> None:
+        # 1 的 cycle-length 一定是 1，先放進去當基底。
+        # 這樣後面只要走到 1，就知道可以停下來。
+        self.cache: dict[int, int] = {1: 1}
+
+    def cycle_length(self, n: int) -> int:
+
+        if n <= 0:
+            raise ValueError("n 必須是正整數")
+        if n in self.cache:
+            return self.cache[n]
+        path: list[int] = []
+        current = n
+        while current not in self.cache:
+            path.append(current)
+            if current % 2 == 0:
+                current //= 2
+            else:
+                current = current * 3 + 1
+        length = self.cache[current]
+        for value in reversed(path):
+            length += 1
+            self.cache[value] = length
+return self.cache[n]
+def max_cycle_length(self, left: int, right: int) -> int:
+start = min(left, right)
+        end = max(left, right)
+        return max(self.cycle_length(number) for number in range(start, end + 1))
+
+
+def solve_text(text: str) -> str:
+   solver = CollatzEasySolver()
+    output_lines: list[str] = []
+
+    for raw_line in text.splitlines():
+        raw_line = raw_line.strip()
+        if not raw_line:
+            continue
+        left_str, right_str = raw_line.split()
+        left = int(left_str)
+        right = int(right_str)
+        best = solver.max_cycle_length(left, right)
+        output_lines.append(f"{left} {right} {best}")
+
+    return "\n".join(output_lines)
+def main() -> None:
+    input_text = sys.stdin.read()
+    if input_text.strip():
+        print(solve_text(input_text))
+if __name__ == "__main__":
+    main()

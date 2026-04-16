@@ -1,0 +1,27 @@
+from __future__ import annotations
+import sys
+def rotate_lines_easy(lines: list[str]) -> list[str]:
+    if not lines:
+        return []
+width = max(len(line) for line in lines)
+    if width == 0:
+        return []
+    padded_lines = [line.ljust(width) for line in lines]
+    rotated = []
+    for col in range(width):
+        rotated_line = ''.join(line[col] for line in reversed(padded_lines))
+        rotated.append(rotated_line)
+return rotated
+def solve_text(text: str) -> str:
+    if not text:
+        return ""
+lines = text.splitlines()
+    rotated_lines = rotate_lines_easy(lines)
+    if not rotated_lines:
+        return ""
+return '\n'.join(rotated_lines) + '\n'
+def main() -> None:
+    input_text = sys.stdin.read()
+    sys.stdout.write(solve_text(input_text))
+if __name__ == '__main__':
+    main()
