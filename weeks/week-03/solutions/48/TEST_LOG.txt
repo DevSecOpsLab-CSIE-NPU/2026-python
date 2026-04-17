@@ -1,0 +1,12 @@
+[PASS] 10041.py
+[PASS] 10050.py
+[PASS] 10055.py
+[PASS] 10056.py
+[PASS] 10057.py
+[PASS] 10041-easy.py
+[PASS] 10050-easy.py
+[PASS] 10055-easy.py
+[PASS] 10056-easy.py
+[PASS] 10057-easy.py
+
+Summary: 10/10 passed
