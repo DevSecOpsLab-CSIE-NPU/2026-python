@@ -1,0 +1,7 @@
+test_simple_case (test_uva490.TestUVA490) ... ok
+test_uneven_lines (test_uva490.TestUVA490) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.077s
+
+OK
