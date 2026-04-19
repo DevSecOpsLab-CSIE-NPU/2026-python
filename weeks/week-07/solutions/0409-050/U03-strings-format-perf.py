@@ -78,4 +78,4 @@ print(b[0])  # 72（整數 = ord('H')）
 # 然後，`.encode("ascii")` 將這個格式化後的字串編碼成 ASCII 位元組序列。
 # bytes 不能直接 format，需先格式化再 encode
 print("{:10s} {:5d}".format("ACME", 100).encode("ascii"))
-# b'ACME            100'
+# b'ACME            100' 

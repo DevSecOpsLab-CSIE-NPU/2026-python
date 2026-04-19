@@ -71,7 +71,7 @@ print(Decimal("0.1") + Decimal("0.2"))  # 0.3
 print(Decimal("0.1") + Decimal("0.2") == Decimal("0.3"))  # True
 
 # 使用 timeit 測量 float 的運算效能。
-t1 = timeit.timeit(lambda: 0.1 * 999, number=100_000)
+t1 = timeit.timeit(lambda: 0.1 * 999, number=100_000) 
 # 使用 timeit 測量 Decimal 的運算效能。
 t2 = timeit.timeit(lambda: Decimal("0.1") * 999, number=100_000)
 # 輸出比較結果，通常 Decimal 會比 float 慢非常多（可能慢幾十倍）。因此，除非需要絕對精度（如貨幣計算），否則預設還是建議用 float。

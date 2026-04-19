@@ -67,5 +67,5 @@ print(repr(re.sub(r"\s+", " ", s.strip())))  # 'hello world'（正確）
 lines = ["  apple  \n", "  banana  \n"]
 # (l.strip() for l in lines) 是一個生成器表達式，它會逐行處理並移除每行兩端的空白，
 # 但並不會立即創建一個新的列表，而是在迭代時按需生成。
-for line in (l.strip() for l in lines):
+for line in (l.strip() for l in lines): 
     print(line)

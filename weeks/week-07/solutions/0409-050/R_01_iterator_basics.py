@@ -124,3 +124,4 @@ def manual_iter_default(items):
 
 print("\n使用預設值:")
 manual_iter_default(["a", "b", "c"])
+ 

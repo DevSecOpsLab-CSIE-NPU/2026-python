@@ -13,7 +13,7 @@ from datetime import datetime, timedelta
 # 不支援直接使用 `months` 或 `years` 作為參數進行加減。
 
 # 建立一個基準日期：2012年9月23日
-dt = datetime(2012, 9, 23)
+dt = datetime(2012, 9, 23) 
 try:
     # 嘗試使用 timedelta 加上一個月，這會引發 TypeError。
     # `type: ignore[call-arg]` 是給型別檢查工具 (如 mypy) 看的，忽略此處的引數錯誤。

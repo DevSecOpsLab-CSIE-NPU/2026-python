@@ -89,4 +89,4 @@ s = "UPPER PYTHON, lower python, Mixed Python"
 # `s`：要操作的字串。
 # `flags=re.IGNORECASE`：設置旗標，使正則表達式匹配時不區分大小寫。
 print(re.sub("python", matchcase("snake"), s, flags=re.IGNORECASE))
-# 'UPPER SNAKE, lower snake, Mixed Snake'
+# 'UPPER SNAKE, lower snake, Mixed Snake' 

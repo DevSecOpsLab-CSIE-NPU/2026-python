@@ -17,10 +17,9 @@ print("--- enumerate() 基本用法 ---")
 #   執行結果：
 #   0: red
 #   1: green
-#   2: blue
+#   2: blue 
 for i, color in enumerate(colors):
     print(f"{i}: {color}")
-
 print("\n--- enumerate(start=1) ---")
 # 核心概念：enumerate() 指定起始索引 (Specifying Start Index for enumerate())
 # `enumerate()` 函式可以接受一個 `start` 參數，讓你指定索引的起始值，而不是預設的 0。

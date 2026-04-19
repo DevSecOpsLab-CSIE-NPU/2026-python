@@ -8,7 +8,7 @@ from zoneinfo import ZoneInfo
 
 # 建立 UTC 和美國中部時間 (芝加哥) 的時區物件
 utc = ZoneInfo("UTC")
-central = ZoneInfo("America/Chicago")
+central = ZoneInfo("America/Chicago") 
 
 # 問題：直接在本地時間加減，夏令時邊界會出錯
 # 說明：美國中部時間在 2013-03-10 凌晨 2:00 開始實施夏令時間 (Daylight Saving Time)。
