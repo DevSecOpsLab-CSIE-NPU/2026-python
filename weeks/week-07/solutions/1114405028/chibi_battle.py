@@ -65,11 +65,18 @@ class ChibiBattle:
         return damage
     
     def simulate_wave(self, wave_num):
-        """模擬一波戰鬥 (蜀軍攻擊魏軍)"""
+        """模擬一波戰鬥 (蜀吳聯軍攻擊魏軍)"""
         shu = [g for g in self.generals.values() if g.faction == '蜀']
+        wu = [g for g in self.generals.values() if g.faction == '吳']
         wei = [g for g in self.generals.values() if g.faction == '魏']
         
+        # 蜀軍攻擊魏軍
         for i, attacker in enumerate(shu[:wave_num]):
+            if i < len(wei):
+                self.calculate_damage(attacker.name, wei[i].name)
+        
+        # 吳軍攻擊魏軍
+        for i, attacker in enumerate(wu[:wave_num]):
             if i < len(wei):
                 self.calculate_damage(attacker.name, wei[i].name)
     
