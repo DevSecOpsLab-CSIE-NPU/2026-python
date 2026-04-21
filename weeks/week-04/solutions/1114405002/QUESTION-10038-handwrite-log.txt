@@ -1,0 +1,24 @@
+QUESTION-10038 測試紀錄
+
+測試輸入：
+4 1 4 2 3
+5 1 4 2 -1 6
+1 100
+
+測試結果：
+[QUESTION-10038.py] OK
+Jolly
+Not jolly
+Jolly
+
+[QUESTION-10038-easy.py] OK
+Jolly
+Not jolly
+Jolly
+
+[QUESTION-10038-handwrite.py] OK
+Jolly
+Not jolly
+Jolly
+
+結論：三個版本輸出一致，測資通過。

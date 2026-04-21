@@ -1,0 +1,25 @@
+QUESTION-10035 測試紀錄
+
+測試輸入：
+123 456
+555 555
+123 594
+0 0
+
+測試結果：
+[QUESTION-10035.py] OK
+No carry operation.
+3 carry operations.
+1 carry operation.
+
+[QUESTION-10035-easy.py] OK
+No carry operation.
+3 carry operations.
+1 carry operation.
+
+[QUESTION-10035-handwrite.py] OK
+No carry operation.
+3 carry operations.
+1 carry operation.
+
+結論：三個版本輸出一致，測資通過。
