@@ -1,0 +1,48 @@
+
+from __future__ import annotations
+
+import sys
+
+
+LIMIT = 63
+MORE_THAN_LIMIT = "More than 63 trials needed."
+
+
+def solve(data: str) -> str:
+
+    answers: list[str] = []
+
+    for line in data.splitlines():
+        if not line.strip():
+            continue
+
+        balls, floors = map(int, line.split())
+        if balls == 0:
+            break
+
+        
+        dp = [0] * (balls + 1)
+        found = False
+
+        for trial in range(1, LIMIT + 1):
+           
+            for ball in range(balls, 0, -1):
+                dp[ball] = min(floors, dp[ball] + dp[ball - 1] + 1)
+
+            if dp[balls] >= floors:
+                answers.append(str(trial))
+                found = True
+                break
+
+        if not found:
+            answers.append(MORE_THAN_LIMIT)
+
+    return "\n".join(answers)
+
+
+def main() -> None:
+    sys.stdout.write(solve(sys.stdin.read()))
+
+
+if __name__ == "__main__":
+    main()
