@@ -1,0 +1,16 @@
+2026-04-22
+
+執行指令：
+py -3 -m unittest -v test_10242.py
+
+執行結果：
+test_sample_case (test_10242.Test10242.test_sample_case) ... ok
+test_scc_must_collect_entire_component (test_10242.Test10242.test_scc_must_collect_entire_component) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK
+
+補充紀錄：
+已在移除全域變數依賴後再次執行同一組測試，結果仍為 OK。

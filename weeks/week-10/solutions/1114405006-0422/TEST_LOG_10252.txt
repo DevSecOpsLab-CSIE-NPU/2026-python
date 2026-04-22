@@ -1,0 +1,13 @@
+2026-04-22
+
+執行指令：
+py -3 -m unittest -v test_10252.py
+
+執行結果：
+test_duplicates_are_kept_by_minimum_count (test_10252.Test10252.test_duplicates_are_kept_by_minimum_count) ... ok
+test_sample_like_case (test_10252.Test10252.test_sample_like_case) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK

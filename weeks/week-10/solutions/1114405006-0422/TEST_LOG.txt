@@ -1,0 +1,13 @@
+2026-04-22
+
+執行指令：
+py -3 -m unittest -v test_10226.py
+
+執行結果：
+test_multiple_cases_and_forbidden_positions (test_10226.Test10226.test_multiple_cases_and_forbidden_positions) ... ok
+test_sample_case_without_constraints (test_10226.Test10226.test_sample_case_without_constraints) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK

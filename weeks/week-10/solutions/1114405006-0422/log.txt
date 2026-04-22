@@ -1,0 +1,175 @@
+﻿2026-04-23 hand 檔執行紀錄
+
+=== hand10226 ===
+(no output)
+
+=== hand10235 ===
+(no output)
+
+=== hand10242 ===
+(no output)
+
+=== hand10252 ===
+(no output)
+[2026-04-23 02:42:58] run hand10226
+input:
+3
+0
+0
+0
+exit_code: 0
+output:
+(no output)
+
+[2026-04-23 02:44:52] run hand10226
+input:
+3
+0
+0
+0
+exit_code: 0
+output:
+(no output)
+
+[2026-04-23 02:44:52] run hand10235
+input:
+3
+1 1
+0
+1 1
+1
+2 2
+1 1
+1 1
+exit_code: 0
+output:
+(no output)
+
+[2026-04-23 02:44:52] run hand10242
+input:
+6 7
+1 2
+2 3
+3 5
+2 4
+4 1
+2 6
+6 5
+10
+12
+8
+16
+1
+5
+1 4
+4 3 5 6
+exit_code: 0
+output:
+(no output)
+
+[2026-04-23 02:44:52] run hand10252
+input:
+1
+pretty
+women
+exit_code: 0
+output:
+(no output)
+
+[2026-04-23 02:48:42] run hand10235
+input:
+3
+1 1
+0
+1 1
+1
+2 2
+1 1
+1 1
+exit_code: 0
+output:
+(no output)
+
+[2026-04-23 02:48:42] run hand10242
+input:
+6 7
+1 2
+2 3
+3 5
+2 4
+4 1
+2 6
+6 5
+10
+12
+8
+16
+1
+5
+1 4
+4 3 5 6
+exit_code: 0
+output:
+(no output)
+
+[2026-04-23 02:48:42] run hand10252
+input:
+1
+pretty
+women
+exit_code: 0
+output:
+(no output)
+
+[2026-04-23 02:49:03] run hand10226
+input:
+3
+0
+0
+0
+exit_code: 0
+output:
+(no output)
+
+[2026-04-23 02:51:39] run test_10235.py
+command:
+py -3 -m unittest -v test_10235.py
+exit_code: 0
+output:
+py : test_blocked_cells_reduce_answers (test_10235.Test10235.test_blocked_cells
+_reduce_answers) ... ok
+位於 線路:1 字元:102
++ ... -0422'; $cmdOutput = (py -3 -m unittest -v test_10235.py 2>&1 | Out-S ...
++                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_blocked_ce...answers) ... ok 
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+test_sample_like_cases (test_10235.Test10235.test_sample_like_cases) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK
+
+[2026-04-23 02:52:52] run test_10235.py (clean)
+command:
+py -3 -m unittest -v test_10235.py
+exit_code: 0
+output:
+(no output)
+
+[2026-04-23 02:54:09] run test_10242.py (clean)
+command:
+py -3 -m unittest -v test_10242.py
+exit_code: 0
+output:
+(no output)
+
+[2026-04-23 02:55:22] run test_10252.py (clean)
+command:
+py -3 -m unittest -v test_10252.py
+exit_code: 0
+output:
+(no output)
+

@@ -1,0 +1,94 @@
+
+from __future__ import annotations
+
+import sys
+from typing import Iterable
+
+
+def parse_cases(tokens: list[int]) -> list[tuple[int, list[set[int]]]]:
+ 
+
+    cases: list[tuple[int, list[set[int]]]] = []
+    index = 0
+
+    while index < len(tokens):
+        n = tokens[index]
+        index += 1
+
+        forbidden: list[set[int]] = [set() for _ in range(n)]
+        for person in range(n):
+            while index < len(tokens):
+                position = tokens[index]
+                index += 1
+                if position == 0:
+                    break
+                forbidden[person].add(position)
+
+        cases.append((n, forbidden))
+
+    return cases
+
+
+def generate_permutations(n: int, forbidden: list[set[int]]) -> Iterable[str]:
+  
+
+    used = [False] * n
+    current = [""] * n
+
+    def dfs(position: int) -> Iterable[str]:
+        if position == n:
+            yield "".join(current)
+            return
+
+        for person in range(n):
+            if used[person]:
+                continue
+            if (position + 1) in forbidden[person]:
+                continue
+
+            used[person] = True
+            current[position] = chr(ord("A") + person)
+            yield from dfs(position + 1)
+            used[person] = False
+
+    return dfs(0)
+
+
+def compress_outputs(permutations: Iterable[str]) -> list[str]:
+   
+
+    outputs: list[str] = []
+    previous = ""
+
+    for permutation in permutations:
+        shared = 0
+        limit = min(len(previous), len(permutation))
+        while shared < limit and previous[shared] == permutation[shared]:
+            shared += 1
+
+        outputs.append(permutation[shared:])
+        previous = permutation
+
+    return outputs
+
+
+def solve(data: str) -> str:
+  
+
+    tokens = [int(value) for value in data.split()]
+    cases = parse_cases(tokens)
+
+    rendered_cases: list[str] = []
+    for n, forbidden in cases:
+        permutations = generate_permutations(n, forbidden)
+        rendered_cases.append("\n".join(compress_outputs(permutations)))
+
+    return "\n\n".join(rendered_cases)
+
+
+def main() -> None:
+    sys.stdout.write(solve(sys.stdin.read()))
+
+
+if __name__ == "__main__":
+    main()

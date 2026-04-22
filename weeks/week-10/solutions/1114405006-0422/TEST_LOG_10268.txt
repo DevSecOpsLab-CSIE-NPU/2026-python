@@ -1,0 +1,13 @@
+2026-04-22
+
+執行指令：
+py -3 -m unittest -v test_10268.py
+
+執行結果：
+test_sample_cases (test_10268.Test10268.test_sample_cases) ... ok
+test_small_cases (test_10268.Test10268.test_small_cases) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK

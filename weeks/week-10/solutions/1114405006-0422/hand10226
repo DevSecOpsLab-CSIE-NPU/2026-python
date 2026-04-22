@@ -1,0 +1,73 @@
+
+from __future__ import annotations
+
+import sys
+
+
+def solve(data: str) -> str:
+
+	numbers = [int(item) for item in data.split()]
+	index = 0
+	all_case_outputs: list[str] = []
+
+	while index < len(numbers):
+		n = numbers[index]
+		index += 1
+
+	
+		forbidden_positions = [set() for _ in range(n)]
+		for person in range(n):
+			while index < len(numbers):
+				position = numbers[index]
+				index += 1
+				if position == 0:
+					break
+				forbidden_positions[person].add(position)
+
+		used = [False] * n
+		arrangement = [""] * n
+		permutations: list[str] = []
+
+		def dfs(position: int) -> None:
+		
+			if position == n:
+				permutations.append("".join(arrangement))
+				return
+
+			
+			for person in range(n):
+				if used[person]:
+					continue
+				if (position + 1) in forbidden_positions[person]:
+					continue
+
+				used[person] = True
+				arrangement[position] = chr(ord("A") + person)
+				dfs(position + 1)
+				used[person] = False
+
+		dfs(0)
+
+		
+		case_outputs: list[str] = []
+		previous = ""
+		for permutation in permutations:
+			shared = 0
+			while shared < len(previous) and shared < len(permutation):
+				if previous[shared] != permutation[shared]:
+					break
+				shared += 1
+			case_outputs.append(permutation[shared:])
+			previous = permutation
+
+		all_case_outputs.append("\n".join(case_outputs))
+
+	return "\n\n".join(all_case_outputs)
+
+
+def main() -> None:
+	sys.stdout.write(solve(sys.stdin.read()))
+
+
+if __name__ == "__main__":
+	main()
