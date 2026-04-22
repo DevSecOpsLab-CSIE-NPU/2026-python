@@ -1,0 +1,8 @@
+[Input]
+1 10
+2 100
+0 0
+
+[Expected Output]
+10
+14

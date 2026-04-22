@@ -1,0 +1,13 @@
+[Input]
+3
+0
+0
+0
+
+[Expected Output]
+ABC
+C
+BC
+C
+AC
+C
