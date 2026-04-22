@@ -1,0 +1,7 @@
+test_multiple_integer_solutions (__main__.Test10252) ... ok
+test_sample_like_case (__main__.Test10252) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.069s
+
+OK
