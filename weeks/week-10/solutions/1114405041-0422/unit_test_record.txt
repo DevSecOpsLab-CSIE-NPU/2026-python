@@ -1,0 +1,27 @@
+Python unittest 測試紀錄
+總測試數量: 15
+失敗數量: 0
+錯誤數量: 0
+
+test_command_line_execution (test_uva_10226.TestUVA10226.test_command_line_execution) ... ok
+test_sample_cases (test_uva_10226.TestUVA10226.test_sample_cases) ... ok
+test_small_custom_case (test_uva_10226.TestUVA10226.test_small_custom_case) ... ok
+test_command_line_execution (test_uva_10235.TestUVA10235.test_command_line_execution) ... ok
+test_sample_cases (test_uva_10235.TestUVA10235.test_sample_cases) ... ok
+test_simple_blocked_or_impossible (test_uva_10235.TestUVA10235.test_simple_blocked_or_impossible) ... ok
+test_command_line_execution (test_uva_10242.TestUVA10242.test_command_line_execution) ... ok
+test_sample_case (test_uva_10242.TestUVA10242.test_sample_case) ... ok
+test_simple_chain (test_uva_10242.TestUVA10242.test_simple_chain) ... ok
+test_command_line_execution (test_uva_10252.TestUVA10252.test_command_line_execution) ... ok
+test_even_points_have_multiple_optima (test_uva_10252.TestUVA10252.test_even_points_have_multiple_optima) ... ok
+test_sample_case (test_uva_10252.TestUVA10252.test_sample_case) ... ok
+test_command_line_execution (test_uva_10268.TestUVA10268.test_command_line_execution) ... ok
+test_sample_cases (test_uva_10268.TestUVA10268.test_sample_cases) ... ok
+test_small_cases (test_uva_10268.TestUVA10268.test_small_cases) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.345s
+
+OK
+
+整體結果: PASS
