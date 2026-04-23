@@ -15,6 +15,9 @@
 # 『結果』：
 #   呼叫生成器函式不會立即執行函式內的程式碼，而是回傳一個「生成器物件」。當你對這個生成器物件進行迭代（例如使用 `for` 迴圈或 `next()` 函式），函式內的程式碼才會開始執行，直到遇到 `yield` 語句。
 #   這個 `frange` 函式模擬了 `range()` 函式，但可以處理浮點數步長。
+# 生成器口訣：yield 暫停又恢復，要一個才算一個，省記憶體！
+
+# 函式 frange：模擬 range()，但能處理浮點數步長
 def frange(start, stop, step):
     # 初始化變數 x 為起始值。
     x = start
@@ -22,18 +25,21 @@ def frange(start, stop, step):
     while x < stop:
         # `yield x`：這是生成器函式的核心。它會暫停函式的執行，並回傳 x 的值。
         # 下次呼叫 `next()` 時，函式會從這裡繼續執行。
+        # yield x 口訣：暫停函式，回傳 x，下次從這裡繼續！
         yield x
         # 將 x 增加步長。
         x += step
 
 # 呼叫 `frange` 函式，它會回傳一個生成器物件。
 # `list()` 函式會迭代這個生成器物件，將其產生所有值收集成一個串列。
+# 呼叫 frange 得到一個生成器物件，list() 會把所有值取出來
 result = list(frange(0, 2, 0.5))
 # 印出結果。
 print(f"frange(0, 2, 0.5): {result}")
 
 # 核心概念：生成器生命週期與 `next()` 函式
 # 這個 `countdown` 函式展示了生成器從啟動、產生值到結束的整個過程，以及 `next()` 函式如何驅動生成器。
+# 函式 countdown：展示生成器的生命週期，next() 如何一步步驅動它
 def countdown(n):
     # 函式開始執行時，會先印出這行。
     print(f"Starting countdown from {n}")
@@ -48,6 +54,7 @@ def countdown(n):
 
 print("\n--- 建立生成器 ---")
 # 呼叫 `countdown(3)`，這會建立一個生成器物件 `c`，但函式內部的程式碼（包括第一個 `print`）還不會執行。
+# 呼叫 countdown(3) 得到生成器物件 c，但函式內部還沒執行
 c = countdown(3)
 # 印出生成器物件本身，可以看到它的記憶體位址。
 print(f"生成器物件: {c}")
@@ -58,23 +65,27 @@ print("\n--- 逐步迭代 ---")
 #   - 印出 "Starting countdown from 3"。
 #   - 進入 `while` 迴圈，`n` 是 3。
 #   - `yield 3`，函式暫停，回傳 3。
+# next(c) 口訣：第一次呼叫，函式開始執行，遇到 yield 暫停並回傳值
 print(f"next(c): {next(c)}")
 # 第二次呼叫 `next(c)`：
 #   - 函式從上次暫停的地方（`yield n` 之後）繼續執行。
 #   - `n -= 1`，`n` 變成 2。
 #   - 再次進入 `while` 迴圈，`n` 是 2。
 #   - `yield 2`，函式暫停，回傳 2。
+# next(c) 口訣：從上次暫停處繼續執行，遇到 yield 再次暫停並回傳值
 print(f"next(c): {next(c)}")
 # 第三次呼叫 `next(c)`：
 #   - 函式從上次暫停的地方繼續執行。
 #   - `n -= 1`，`n` 變成 1。
 #   - 再次進入 `while` 迴圈，`n` 是 1。
 #   - `yield 1`，函式暫停，回傳 1。
+# next(c) 口訣：再次從上次暫停處繼續執行
 print(f"next(c): {next(c)}")
 
 # 核心概念：StopIteration 例外
 # 當生成器已經沒有更多值可以產生時，再次呼叫 `next()` 會觸發 `StopIteration` 例外。
 # `for` 迴圈在內部就是透過捕獲這個例外來判斷何時停止迭代的。
+# StopIteration 口訣：生成器沒值了，再 next() 就會「爆炸」！for 迴圈就是靠它停止的。
 try:
     # 第四次呼叫 `next(c)`：
     #   - 函式從上次暫停的地方繼續執行。
@@ -82,6 +93,7 @@ try:
     #   - `while n > 0` 條件不成立，迴圈結束。
     #   - 印出 "Done!"。
     #   - 函式執行完畢，沒有更多的 `yield` 語句，所以會觸發 `StopIteration` 例外。
+    # 再次 next(c)，此時 n 已經變成 0，迴圈結束，函式執行完畢，沒有更多 yield
     next(c)
 except StopIteration:
     # 捕獲到 `StopIteration` 例外，印出訊息。
@@ -90,6 +102,8 @@ except StopIteration:
 # 核心概念：無限序列生成器
 # 生成器可以設計成產生無限序列，因為它們是惰性求值的，不會一次性佔用所有記憶體。
 # 這個 `fibonacci` 函式會產生費波那契數列。
+# 無限序列生成器口訣：while True + yield，無限產生，因為惰性求值不佔記憶體！
+# 函式 fibonacci：產生費波那契數列
 def fibonacci():
     # 初始化費波那契數列的兩個起始值。
     a, b = 0, 1
@@ -102,8 +116,10 @@ def fibonacci():
 
 print("\n--- Fibonacci 生成器 ---")
 # 建立費波那契生成器物件。
+# 建立費波那契生成器
 fib = fibonacci()
 # 使用 `for` 迴圈迭代生成器，這裡只取前 10 個數。
+# 取前 10 個費波那契數
 for i in range(10):
     # 每次呼叫 `next(fib)` 取得下一個費波那契數並印出。
     print(next(fib), end=" ")
@@ -120,16 +136,20 @@ print()
 #   3. 在協程 (coroutine) 中實現委託。
 # 『結果』：
 #   當 `yield from` 被執行時，它會直接將子生成器或可迭代物件產生所有值傳遞給呼叫者，直到子生成器耗盡或完成。
+# yield from 口訣：把控制權「委託」給另一個生成器，簡化巢狀生成器！
+# 函式 chain_iter：串聯多個可迭代物件
 def chain_iter(*iterables):
     # 遍歷傳入的所有可迭代物件。
     for it in iterables:
         # `yield from it` 會將 `it` 這個可迭代物件中的所有元素一個接一個地產生出來。
         # 相當於 `for item in it: yield item`。
+        # yield from it 口訣：直接把 it 裡的所有元素「轉發」出去
         yield from it
 
 print("\n--- yield from 用法 ---")
 # 呼叫 `chain_iter` 函式，傳入三個串列。
 # `list()` 會收集 `chain_iter` 生成器產生所有值。
+# 串聯三個列表
 result = list(chain_iter([1, 2], [3, 4], [5, 6]))
 # 印出結果。
 print(f"chain_iter: {result}")
@@ -137,6 +157,8 @@ print(f"chain_iter: {result}")
 # 核心概念：生成器與物件導向 (Generator with Object-Oriented Programming)
 # 生成器可以作為類別的方法，用於實現複雜資料結構（如樹）的遍歷。
 # 這個 `Node` 類別代表樹狀結構中的一個節點，並實作了深度優先遍歷的生成器方法。
+# 生成器與物件導向口訣：類別方法用生成器，遍歷複雜結構超方便！
+# Node 類別：代表樹狀結構中的一個節點
 class Node:
     # 節點的初始化方法。
     def __init__(self, value):
@@ -151,11 +173,13 @@ class Node:
 
     # 實作 `__iter__` 方法，讓 `Node` 物件本身成為一個可迭代物件，
     # 迭代時會遍歷其子節點。
+    # 讓 Node 物件本身可以被迭代 (遍歷其子節點)
     def __iter__(self):
         return iter(self.children)
 
     # 核心概念：深度優先遍歷生成器 (Depth-First Traversal Generator)
     # 這個方法是一個生成器，用於以深度優先的方式遍歷樹中的所有節點。
+    # 深度優先遍歷生成器口訣：先自己，再 yield from 子節點，遞迴搞定！
     def depth_first(self):
         # 首先產生當前節點本身。
         yield self
@@ -163,10 +187,12 @@ class Node:
         for child in self:
             # 遞迴呼叫子節點的 `depth_first` 方法，並使用 `yield from` 將子生成器產生所有值委託給當前生成器。
             # 這確保了深度優先的順序：先遍歷完一個子樹，再遍歷下一個子樹。
+            # 遞迴呼叫子節點的深度優先，並委託給它
             yield from child.depth_first()
 
 print("\n--- 樹的深度優先遍歷 ---")
 # 建立根節點。
+# 建立樹結構
 root = Node(0)
 # 新增子節點。
 root.add_child(Node(1))
@@ -176,6 +202,7 @@ root.children[0].add_child(Node(3))
 root.children[0].add_child(Node(4))
 
 # 使用 `for` 迴圈遍歷 `root` 節點的深度優先生成器。
+# 遍歷樹，印出節點值
 for node in root.depth_first():
     # 印出每個遍歷到的節點的值。
     print(node.value, end=" ")
@@ -184,14 +211,17 @@ print()
 
 # 核心概念：巢狀序列攤平生成器 (Flattening Nested Sequences Generator)
 # 這個 `flatten` 函式是一個生成器，用於將任意層次的巢狀序列（例如串列中包含串列）攤平為一個單一的序列。
+# 巢狀序列攤平生成器口訣：遞迴 + yield from，一層一層攤平！
 def flatten(items):
     # 遍歷傳入的序列中的每個元素。
     for x in items:
         # 檢查元素 `x` 是否是可迭代物件，並且不是字串。
         # `hasattr(x, "__iter__")` 檢查 `x` 是否有 `__iter__` 方法，表示它是可迭代的。
         # `not isinstance(x, str)` 是為了避免將字串（例如 'abc'）也當作可迭代物件而逐字元攤平。
+        # 如果是可迭代物件 (但不是字串)，就遞迴攤平
         if hasattr(x, "__iter__") and not isinstance(x, str):
             # 如果是巢狀的可迭代物件（且不是字串），則遞迴呼叫 `flatten`，並使用 `yield from` 將其產生所有值委託給當前生成器。
+            # yield from 遞迴呼叫 flatten
             yield from flatten(x)
         else:
             # 如果不是巢狀的可迭代物件（或者它是字串），則直接產生這個元素。
@@ -199,6 +229,7 @@ def flatten(items):
 
 print("\n--- 巢狀序列攤平 ---")
 # 範例巢狀串列。
+# 巢狀列表
 nested = [1, [2, [3, 4]], 5]
 # 呼叫 `flatten` 函式，並使用 `list()` 將其產生所有值收集成一個串列。
 print(f"展開: {list(flatten(nested))}")
