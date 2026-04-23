@@ -13,17 +13,6 @@ Bloom: Remember
 - 文字檔建議明確指定 encoding="utf-8"，避免跨平台亂碼。
 - 小檔案可 f.read() 一次讀完；大檔案請用 for line in f 逐行處理。
 - 文字模式只能寫 str；位元組模式只能寫 bytes。
-
-閱讀建議：
-1) 先看 5.1，建立 open() 的基本讀寫觀念。
-2) 再看 5.2/5.3，理解 print() 也能寫檔與格式控制。
-3) 最後看 5.17，掌握文字模式與二進位模式的型別規則。
-
-常用 mode 對照：
-- rt：read text，讀文字檔（預設模式通常是 r）
-- wt：write text，寫文字檔（若檔案已存在會覆蓋）
-- at：append text，附加到檔尾（保留舊內容）
-- rb / wb：讀寫二進位資料（圖片、壓縮檔等）
 """
 
 from pathlib import Path
@@ -33,24 +22,20 @@ from pathlib import Path
 path = Path("hello.txt")
 with open(path, "wt", encoding="utf-8") as f:
     # write() 不會自動補換行，所以這裡手動加上 \n
-    # 若寫入很多行，記得每行自己補 \n，避免內容全黏在同一行
     f.write("你好，Python\n")
     f.write("第二行\n")
 
 # 讀回：一次讀完 vs 逐行讀
 with open(path, "rt", encoding="utf-8") as f:
-    # read() 會一次把全部內容讀進記憶體，適合小檔案
     print(f.read())  # 一次讀完（小檔才適合）
 
 with open(path, "rt", encoding="utf-8") as f:
     for line in f:  # 大檔必備：逐行迭代
         # rstrip() 去掉每行結尾換行，避免 print 時空一行
-        # 若要保留原始換行可改用 print(line, end="")
         print(line.rstrip())
 
 # ── 5.2 print 導向檔案 ─────────────────────────────────
 # print() 預設輸出到螢幕；加上 file=f 會改輸出到檔案
-# 與 f.write() 相比，print() 會自動處理字串拼接與換行，對新手較直觀
 with open("log.txt", "wt", encoding="utf-8") as f:
     print("登入成功", file=f)
     print("使用者:", "alice", file=f)
@@ -59,19 +44,16 @@ with open("log.txt", "wt", encoding="utf-8") as f:
 fruits = ["apple", "banana", "cherry"]
 with open("fruits.csv", "wt", encoding="utf-8") as f:
     # *fruits 會展開成多個參數，sep="," 剛好輸出成 CSV 一列
-    # end="\n" 表示列尾換行，形成一筆完整紀錄
     print(*fruits, sep=",", end="\n", file=f)
 
 # end='' 可避免多一個換行
 with open("fruits.csv", "at", encoding="utf-8") as f:
-    # at = append text，寫入時不覆蓋舊內容，而是接在檔案最後
     # 先寫欄位值與逗號，不換行
     print("date", end=",", file=f)
     # 再寫第二個值並換行，完成第二列
     print("2026-04-23", file=f)
 
 # 快速驗證輸出內容
-# read_text() 是 pathlib 的便捷方法，內部仍是以文字模式讀檔
 print(Path("fruits.csv").read_text(encoding="utf-8"))
 # apple,banana,cherry
 # date,2026-04-23
@@ -83,7 +65,4 @@ try:
         f.write(b"bytes in text mode")  # 故意示範錯誤：bytes 不能寫入文字模式
 except TypeError as e:
     # 捕捉錯誤並印出，讓學習者知道常見型別錯誤長什麼樣子
-    # 看到這類訊息時，先檢查你現在持有的是 str 還是 bytes
-    # - 若是 bytes 要寫入文字檔：先 decode 成 str
-    # - 若是要原樣寫 bytes：改用 wb 模式
     print("錯誤示範:", e)

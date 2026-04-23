@@ -10,16 +10,6 @@
 - combinations_with_replacement：允許元素重複的組合
 
 以下程式會直接印出結果，方便觀察每個函式的行為差異。
-
-閱讀順序建議：
-1) 先看 islice，理解「在迭代器上切片」的概念。
-2) 再看 dropwhile 與 takewhile，分清楚「跳過前段」與「取用前段」的差別。
-3) 再看 chain，掌握多序列串接技巧。
-4) 最後看 permutations / combinations，比較順序是否影響結果。
-
-名詞提醒：
-- 迭代器（iterator）：資料一次吐一個值，通常不會一次把全部資料載入記憶體。
-- 惰性運算（lazy evaluation）：需要時才產生值，對大資料特別省記憶體。
 """
 
 from itertools import islice, dropwhile, takewhile, chain, permutations, combinations
@@ -29,7 +19,6 @@ print("--- islice() 切片 ---")
 
 def count(n):
     # 產生一個無限遞增的序列，讓 islice 可以從中擷取指定範圍
-    # 這裡故意設計成無窮迭代器，示範 islice 如何安全取固定片段
     i = n
     while True:
         yield i
@@ -38,20 +27,17 @@ def count(n):
 
 c = count(0)
 # 從第 5 個元素開始，取 5 個元素，也就是取出 5~9
-# islice(iterable, start, stop[, step]) 的 stop 不包含在結果中
 result = list(islice(c, 5, 10))
 print(f"islice(c, 5, 10): {result}")
 
 print("\n--- dropwhile() 條件跳過 ---")
 nums = [1, 3, 5, 2, 4, 6]
 # 先跳過所有小於 5 的元素，直到遇到第一個不小於 5 的值才開始保留
-# 一旦條件第一次不成立，後面元素就不再檢查條件，會全部保留
 result = list(dropwhile(lambda x: x < 5, nums))
 print(f"dropwhile(x<5, {nums}): {result}")
 
 print("\n--- takewhile() 條件取用 ---")
 # 只要元素小於 5 就持續取用，一旦遇到 5 以上的值就立刻停止
-# 停止後不會再恢復取值，所以結果只會是「開頭連續符合條件」的那段
 result = list(takewhile(lambda x: x < 5, nums))
 print(f"takewhile(x<5, {nums}): {result}")
 
@@ -60,26 +46,22 @@ a = [1, 2]
 b = [3, 4]
 c = [5]
 # 將多個序列接成一個連續的迭代流程
-# chain 不會先複製全部資料，仍是逐步迭代，適合串流式處理
 print(f"chain(a, b, c): {list(chain(a, b, c))}")
 
 print("\n--- permutations() 排列 ---")
 items = ["a", "b", "c"]
 # 產生所有可能的排列，預設長度等於原資料長度
-# 排列重視順序，因此 ("a", "b") 與 ("b", "a") 是不同結果
 print(f"permutations(items):")
 for p in permutations(items):
     print(f"  {p}")
 
 # 指定長度為 2，會列出所有 2 個元素的排列結果
-# 結果數量是 P(n, r) = n! / (n-r)!
 print(f"permutations(items, 2):")
 for p in permutations(items, 2):
     print(f"  {p}")
 
 print("\n--- combinations() 組合 ---")
 # 組合只看「有哪些元素」，不看順序，所以 (a, b) 和 (b, a) 視為同一組
-# 結果數量是 C(n, r) = n! / (r!(n-r)!)
 print(f"combinations(items, 2):")
 for c in combinations(items, 2):
     print(f"  {c}")
@@ -87,7 +69,6 @@ for c in combinations(items, 2):
 print("\n--- 組合應用：密碼窮舉 ---")
 chars = ["A", "B", "1"]
 # 這裡用排列示範：若密碼的順序重要，就要用 permutations
-# 例如 AB 與 BA 是兩個不同密碼，因此都要列出
 print("2位數密碼:")
 for p in permutations(chars, 2):
     print(f"  {''.join(p)}")
@@ -96,6 +77,5 @@ print("2位數密碼（可重複）:")
 from itertools import combinations_with_replacement
 
 # 允許重複選取相同元素，例如 AA、A1、11 這類結果都會出現
-# 注意：這裡是「可重複的組合」，所以 AB 會出現一次，不會再出現 BA
 for p in combinations_with_replacement(chars, 2):
     print(f"  {''.join(p)}")

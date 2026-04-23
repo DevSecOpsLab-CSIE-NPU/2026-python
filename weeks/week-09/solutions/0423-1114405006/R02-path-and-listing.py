@@ -12,16 +12,6 @@ Bloom: Remember
 - pathlib 會依作業系統自動處理分隔符（Windows 的 \\、Unix 的 /）。
 - 在讀檔前先判斷檔案存在，可避免 FileNotFoundError。
 - rglob("*.py") 會遞迴搜尋，專案大時可能回傳很多結果。
-
-閱讀順序建議：
-1) 先看 Path 的屬性（name/parent/stem/suffix）建立路徑直覺。
-2) 再看 exists/is_file/is_dir，理解防呆檢查流程。
-3) 最後看 listdir/glob/rglob 的差異與使用時機。
-
-名詞對照：
-- 路徑（path）：檔案或資料夾的位置表示法。
-- 當層（current level）：只看目前資料夾，不深入子資料夾。
-- 遞迴（recursive）：會往下層子資料夾持續搜尋。
 """
 
 import os
@@ -29,31 +19,28 @@ from pathlib import Path
 
 # ── 5.11 組路徑：pathlib 是現代寫法 ────────────────────
 # Path 物件可用 / 直接組路徑，比字串串接更安全、清楚
-# 好處是不用自己手動處理 Windows 與 Linux 的分隔符差異
 base = Path("weeks") / "week-09"
 print(base)              # weeks/week-09（Windows 會自動變成反斜線）
-print(base.name)         # name：最後一段名稱 -> week-09
-print(base.parent)       # parent：上一層路徑 -> weeks
-print(base.suffix)       # suffix：副檔名；資料夾通常是 ''（空字串）
+print(base.name)         # week-09
+print(base.parent)       # weeks
+print(base.suffix)       # ''（無副檔名）
 
 # stem = 去掉副檔名後的檔名；suffix = 副檔名
 f = Path("hello.txt")
 print(f.stem, f.suffix)  # hello .txt
 
 # 相容舊寫法：os.path.join
-# 舊專案很常見；你需要讀舊碼時仍要看得懂
 print(os.path.join("weeks", "week-09", "README.md"))
 
 # ── 5.12 存在判斷 ──────────────────────────────────────
 p = Path("hello.txt")
-print(p.exists())    # exists()：路徑是否存在（檔案或資料夾都算）
-print(p.is_file())   # is_file()：存在且是一般檔案才會 True
-print(p.is_dir())    # is_dir()：存在且是資料夾才會 True
+print(p.exists())    # 是否存在
+print(p.is_file())   # 是否是檔案
+print(p.is_dir())    # 是否是資料夾
 
 # 實務上常見：不存在就略過，避免直接讀檔報錯
 missing = Path("no_such_file.txt")
 if not missing.exists():
-    # 這種 guard clause（先檢查再處理）是很常見的防呆模式
     print(f"{missing} 不存在，略過讀取")
 
 # ── 5.13 列出資料夾內容 ────────────────────────────────
@@ -61,19 +48,16 @@ here = Path(".")
 
 # 只列當層
 # os.listdir() 回傳名稱字串，不含完整路徑
-# 若後續要開檔，通常要再手動與 here 組合成完整路徑
 for name in os.listdir(here):
     print("listdir:", name)
 
 # 只抓 .py（當層）
 # glob() 不遞迴，只找目前目錄
-# 這裡回傳的是 Path 物件，比純字串更方便做後續處理
 for p in here.glob("*.py"):
     print("glob:", p)
 
 # 遞迴抓所有 .py（含子資料夾）
 # rglob() 會往下搜尋子目錄，適合做專案掃描
-# 由於結果可能很多，示範只印第一個；實戰可移除 break 全部處理
 for p in Path("..").rglob("*.py"):
     print("rglob:", p)
     break  # 示範用，只印第一個
