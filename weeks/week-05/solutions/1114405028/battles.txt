@@ -1,0 +1,11 @@
+Hero vs Monster
+Hero:100:20
+Monster:80:15
+
+Knight vs Dragon
+Knight:120:25
+Dragon:200:30
+
+Warrior vs Goblin
+Warrior:90:18
+Goblin:50:10
