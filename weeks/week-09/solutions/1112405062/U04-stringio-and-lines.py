@@ -17,7 +17,6 @@ print("第三行", file=buf)
 text = buf.getvalue()
 print("---StringIO 內容---")
 print(text)
-
 #  也能當讀檔用：seek 回開頭再逐行讀
 buf.seek(0)
 for i, line in enumerate(buf, 1):

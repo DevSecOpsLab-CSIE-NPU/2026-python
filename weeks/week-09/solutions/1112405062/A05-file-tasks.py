@@ -18,7 +18,6 @@ try:
     print(f"已建立 {diary}")
 except FileExistsError:
     print(f"{diary} 今天已寫過，保留原內容不覆蓋")
-
 # ── 任務二：統計某資料夾裡 .py 檔的行數 ────────────────
 #  走訪目錄 → 逐檔逐行讀 → 累計三個數字
 #  total: 總行數

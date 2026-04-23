@@ -60,7 +60,6 @@ print("\n--- combinations() 組合 ---")
 print(f"combinations(items, 2):")
 for c in combinations(items, 2):
     print(f"  {c}")
-
 print("\n--- 組合應用：密碼窮舉 ---")
 # 實際應用：使用排列組合來窮舉可能的密碼組合
 chars = ["A", "B", "1"]

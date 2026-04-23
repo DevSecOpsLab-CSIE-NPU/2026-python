@@ -26,7 +26,6 @@ p = Path("hello.txt")
 print(p.exists())    # 檢查路徑是否存在（回傳布林值）
 print(p.is_file())   # 檢查是否為檔案
 print(p.is_dir())    # 檢查是否為目錄（資料夾）
-
 missing = Path("no_such_file.txt")
 if not missing.exists():
     print(f"{missing} 不存在，略過讀取")

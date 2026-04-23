@@ -19,7 +19,6 @@ print(head == magic)  # True（確認讀取的資料與原本相同）
 #  bytes 物件可以逐位元組迭代（拿到 int 型別，不是 str）
 for b in head[:4]:
     print(b, hex(b))
-
 # ── 文字 vs 位元組的型別差 ─────────────────────────────
 #  str（文字）和 bytes（位元組）是兩種不同的型別
 #  encode：將 str 轉換為 bytes（文字編碼）

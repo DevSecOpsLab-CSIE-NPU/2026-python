@@ -11,7 +11,6 @@ path = Path("hello.txt")
 with open(path, "wt", encoding="utf-8") as f:
     f.write("你好，Python\n")
     f.write("第二行\n")
-
 # 讀回檔案：有兩種方式
 # 方式一：一次讀完（適用於小檔案）
 with open(path, "rt", encoding="utf-8") as f:

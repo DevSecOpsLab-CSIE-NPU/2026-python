@@ -13,7 +13,6 @@ from pathlib import Path
 with gzip.open("notes.txt.gz", "wt", encoding="utf-8") as f:
     f.write("第一行筆記\n")
     f.write("第二行筆記\n")
-
 #  讀回：直接逐行迭代（與一般檔案相同）
 with gzip.open("notes.txt.gz", "rt", encoding="utf-8") as f:
     for line in f:
