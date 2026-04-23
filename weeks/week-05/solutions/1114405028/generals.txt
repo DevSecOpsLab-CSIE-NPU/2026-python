@@ -1,0 +1,26 @@
+General Data for Battle Game
+
+Hero
+HP:100
+Attack:20
+Defense:10
+
+Monster
+HP:80
+Attack:15
+Defense:5
+
+Knight
+HP:120
+Attack:25
+Defense:15
+
+Dragon
+HP:200
+Attack:30
+Defense:20
+
+Goblin
+HP:50
+Attack:10
+Defense:3
