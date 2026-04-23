@@ -1,0 +1,30 @@
+=== 題號 10101 / 一般版 ===
+test_no_solution (test_10101.Test10101) ... ok
+test_simple_solvable_1 (test_10101.Test10101) ... ok
+test_simple_solvable_2 (test_10101.Test10101) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK
+
+=== 題號 10101 / easy 版 ===
+test_no_solution (test_10101.Test10101) ... ok
+test_simple_solvable_1 (test_10101.Test10101) ... ok
+test_simple_solvable_2 (test_10101.Test10101) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.003s
+
+OK
+
+=== 題號 10101 / hand 版 ===
+test_no_solution (test_10101.Test10101) ... ok
+test_simple_solvable_1 (test_10101.Test10101) ... ok
+test_simple_solvable_2 (test_10101.Test10101) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+OK
+

@@ -1,0 +1,33 @@
+=== 題號 10071 / 一般版 ===
+test_single (test_10071.Test10071) ... ok
+test_small_mixed (test_10071.Test10071) ... ok
+test_small_positive (test_10071.Test10071) ... ok
+test_small_with_negative (test_10071.Test10071) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+OK
+
+=== 題號 10071 / easy 版 ===
+test_single (test_10071.Test10071) ... ok
+test_small_mixed (test_10071.Test10071) ... ok
+test_small_positive (test_10071.Test10071) ... ok
+test_small_with_negative (test_10071.Test10071) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.003s
+
+OK
+
+=== 題號 10071 / hand 版 ===
+test_single (test_10071.Test10071) ... ok
+test_small_mixed (test_10071.Test10071) ... ok
+test_small_positive (test_10071.Test10071) ... ok
+test_small_with_negative (test_10071.Test10071) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.002s
+
+OK
+

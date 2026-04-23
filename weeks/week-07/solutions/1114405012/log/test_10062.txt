@@ -1,0 +1,39 @@
+=== 題號 10062 / 一般版 ===
+test_fixed_case_1 (test_10062.TestUVA10062) ... ok
+test_fixed_case_2 (test_10062.TestUVA10062) ... ok
+test_n2_case_a0 (test_10062.TestUVA10062) ... ok
+test_n2_case_a1 (test_10062.TestUVA10062) ... ok
+test_output_token_count (test_10062.TestUVA10062) ... ok
+test_reference_generated_cases (test_10062.TestUVA10062) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+OK
+
+=== 題號 10062 / easy 版 ===
+test_fixed_case_1 (test_10062.TestUVA10062) ... ok
+test_fixed_case_2 (test_10062.TestUVA10062) ... ok
+test_n2_case_a0 (test_10062.TestUVA10062) ... ok
+test_n2_case_a1 (test_10062.TestUVA10062) ... ok
+test_output_token_count (test_10062.TestUVA10062) ... ok
+test_reference_generated_cases (test_10062.TestUVA10062) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.003s
+
+OK
+
+=== 題號 10062 / hand 版 ===
+test_fixed_case_1 (test_10062.TestUVA10062) ... ok
+test_fixed_case_2 (test_10062.TestUVA10062) ... ok
+test_n2_case_a0 (test_10062.TestUVA10062) ... ok
+test_n2_case_a1 (test_10062.TestUVA10062) ... ok
+test_output_token_count (test_10062.TestUVA10062) ... ok
+test_reference_generated_cases (test_10062.TestUVA10062) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.002s
+
+OK
+

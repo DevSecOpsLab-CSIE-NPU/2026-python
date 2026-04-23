@@ -1,0 +1,30 @@
+=== 題號 10170 / 一般版 ===
+test_large_d (test_10170.Test10170) ... ok
+test_multiple_lines (test_10170.Test10170) ... ok
+test_single_case (test_10170.Test10170) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK
+
+=== 題號 10170 / easy 版 ===
+test_large_d (test_10170.Test10170) ... ok
+test_multiple_lines (test_10170.Test10170) ... ok
+test_single_case (test_10170.Test10170) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+OK
+
+=== 題號 10170 / hand 版 ===
+test_large_d (test_10170.Test10170) ... ok
+test_multiple_lines (test_10170.Test10170) ... ok
+test_single_case (test_10170.Test10170) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.003s
+
+OK
+
