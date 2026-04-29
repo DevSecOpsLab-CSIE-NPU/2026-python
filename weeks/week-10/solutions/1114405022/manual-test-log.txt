@@ -1,0 +1,21 @@
+Command:
+python "c:\Users\user\Desktop\2026 python\weeks\week-10\solutions\1114405022\test_10226.py"
+
+Output:
+=== 測試 10226.py ===
+[case1] PASS
+[case2] PASS
+[case3] PASS
+
+=== 測試 10226_easy.py ===
+[case1] PASS
+[case2] PASS
+[case3] PASS
+
+全部測試通過
+
+Test Cases Covered:
+- case1: 一般多樹種統計
+- case2: 單一樹種 100%
+- case3: 多測資 + 大小寫視為不同字串
+
