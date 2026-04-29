@@ -1,6 +1,6 @@
 # 題目 10071
 
-**題名**: UVA 10071
+**題名**: UVA 10071 — Back to High School Physics
 
 **相關連結**:
 - [ZeroJudge 題目頁面](https://zerojudge.tw/ShowProblem?problemid=a064)
@@ -8,31 +8,66 @@
 
 ## 題目敘述
 
-給定一個整數集合 S，其元素均介於 -30000 到 30000 之間（含首尾）。
-請計算满足条件的六元組數量：a + b + c + d + e = f，其中 a、b、c、d、e、f 均屬於 S（可重複使用）。
+給定兩個整數 v 與 t，請計算物體在等加速度運動下，從時間 0 到時間 2t 的位移。
+
+在這題的設定裡，答案就是公式 **2 × v × t**。
 
 ## 輸入說明
 
-第一行包含一個整數 N（1 ≤ N ≤ 100），代表集合 S 的元素個數。
-接下來的 N 行，每行一個整數，為 S 的元素。
-所有數字均不重複。
+每一行包含兩個整數 **v** 與 **t**。
+
+輸入會持續到 EOF。
 
 ## 輸出說明
 
-輸出符合條件的六元組總數量。
+對每一行輸入，輸出一個整數，表示 **2 × v × t**。
 
 ---
 
 ## 解題思路
 
-*請填入你的解題思路*
+這題只需要直接套公式。
+
+1. 讀入每一組 v、t。
+2. 計算 2 × v × t。
+3. 逐行輸出結果。
+
+時間複雜度為 O(1) / 組。
 
 ## 解題代碼
 
 ```python
-# 你的代碼這裡
+import sys
+
+
+def main() -> None:
+	data = sys.stdin.read().split()
+	if not data:
+		return
+
+	values = []
+	for i in range(0, len(data), 2):
+		v = int(data[i])
+		t = int(data[i + 1])
+		values.append(str(2 * v * t))
+
+	sys.stdout.write("\n".join(values))
+
+
+if __name__ == "__main__":
+	main()
 ```
 
 ## 測試用例
 
-*測試輸入與預期輸出*
+輸入：
+
+```text
+3 4
+```
+
+輸出：
+
+```text
+24
+```

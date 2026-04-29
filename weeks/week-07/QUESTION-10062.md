@@ -31,14 +31,89 @@
 
 ## 解題思路
 
-*請填入你的解題思路*
+這題本質上是「由前綴資訊還原排列」的問題。做法是先把每個位置對應的數字看成一個需要被放回去的位置，接著從大到小放入數字。
+
+1. 先建立一個長度為 N 的陣列，記錄每個數字前面有多少個比較小的數字。
+2. 從 N 開始往 1 依序處理，因為較大的數字不會影響較小數字的相對順序。
+3. 用 Fenwick Tree（BIT）維護目前還空著的位置。
+4. 對於目前數字 x，找到第 k 個空位，其中 k = 前面較小數字數量 + 1。
+5. 把 x 放到那個位置，並把該位置從 BIT 中移除。
+
+Fenwick Tree 可以在 O(log N) 時間內完成「找第 k 個空位」與「更新位置」，因此總時間複雜度是 O(N log N)。
 
 ## 解題代碼
 
 ```python
-# 你的代碼這裡
+import sys
+
+
+class FenwickTree:
+  def __init__(self, size: int) -> None:
+    self.size = size
+    self.tree = [0] * (size + 1)
+
+  def add(self, index: int, delta: int) -> None:
+    while index <= self.size:
+      self.tree[index] += delta
+      index += index & -index
+
+  def kth(self, k: int) -> int:
+    index = 0
+    bit_mask = 1 << (self.size.bit_length() - 1)
+    while bit_mask:
+      next_index = index + bit_mask
+      if next_index <= self.size and self.tree[next_index] < k:
+        k -= self.tree[next_index]
+        index = next_index
+      bit_mask >>= 1
+    return index + 1
+
+
+def main() -> None:
+  data = sys.stdin.read().split()
+  if not data:
+    return
+
+  n = int(data[0])
+  smaller_before = [0] * (n + 1)
+  for i in range(2, n + 1):
+    smaller_before[i] = int(data[i - 1])
+
+  bit = FenwickTree(n)
+  for position in range(1, n + 1):
+    bit.add(position, 1)
+
+  answer = [0] * (n + 1)
+  for value in range(n, 0, -1):
+    position = bit.kth(smaller_before[value] + 1)
+    answer[position] = value
+    bit.add(position, -1)
+
+  sys.stdout.write("\n".join(map(str, answer[1:])))
+
+
+if __name__ == "__main__":
+  main()
 ```
 
 ## 測試用例
 
-*測試輸入與預期輸出*
+輸入：
+
+```text
+5
+1
+2
+3
+4
+```
+
+輸出：
+
+```text
+1
+2
+3
+4
+5
+```

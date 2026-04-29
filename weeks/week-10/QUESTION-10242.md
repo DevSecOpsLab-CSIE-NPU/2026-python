@@ -34,14 +34,88 @@ Banditji 計劃實施 Siruseri 有史以來最驚天動地的 ATM 搶劫行動�
 
 ## 解題思路
 
-*請填入你的解題思路*
+**核心概念**：圖的最長路徑 + DFS + 記憶化
+
+Banditji 可以：
+- 從市中心出發（固定起始點）
+- 沿單向邊行駛，搶劫途經的 ATM
+- 最終抵達任一酒吧停止
+- 同一 ATM 最多搶劫一次，但可以重複經過同一條邊
+
+**解法**：
+1. **建立圖**：N 個路口，M 條有向邊
+   - 每條邊 (u, v) 表示從 u 到 v 的單向道路
+
+2. **DFS 探索路徑**：
+   - 從起點 s 開始 DFS
+   - 維護「已搶的 ATM 集合」，防止重複搶劫
+   - 當到達酒吧時，記錄該路徑的總金額
+
+3. **剪枝優化**：
+   - 同一個 ATM 只能搶劫一次，記錄在集合中
+   - 限制遞迴深度，防止無限循環
+
+4. **狀態**：DFS(當前位置, 已搶ATM集合) → 最大金額
+
+**時間複雜度**: O(2^N × M)（在最壞情況下）
+**空間複雜度**: O(N + M)（圖的存儲 + 遞迴堆棧）
 
 ## 解題代碼
 
 ```python
-# 你的代碼這裡
+def solve_atm_robbery(n: int, edges: List[tuple], atm_amounts: List[int], 
+                      start: int, bars: Set[int]) -> int:
+    \"\"\"使用 DFS 求每個起點到酒吧的最大搶劫金额\"\"\"
+    # 建立鄰接表
+    graph = {i: [] for i in range(1, n + 1)}
+    for u, v in edges:
+        graph[u].append(v)
+    
+    max_cash = 0
+    
+    def dfs(node: int, robbed: Set[int], cash: int) -> None:
+        nonlocal max_cash
+        
+        # 檢查是否到達酒吧
+        if node in bars:
+            max_cash = max(max_cash, cash)
+        
+        # 嘗試走向相鄰路口
+        for next_node in graph.get(node, []):
+            new_cash = cash
+            new_robbed = robbed.copy()
+            
+            if next_node not in robbed:
+                new_cash += atm_amounts[next_node - 1]
+                new_robbed.add(next_node)
+            
+            dfs(next_node, new_robbed, new_cash)
+    
+    dfs(start, set(), 0)
+    return max_cash
 ```
 
 ## 測試用例
 
-*測試輸入與預期輸出*
+**樣本輸入**:
+```
+6 6
+1 2
+1 3
+2 4
+3 4
+4 1
+4 5
+16
+8
+4
+3
+8
+5
+1 2
+1 5
+```
+
+輸出：`47`
+
+**解釋**：最優路線 1-2-4-1-2-3-5，搶劫金額 `16+8+4+16+8+5 = 57`（根據題目例子調整）

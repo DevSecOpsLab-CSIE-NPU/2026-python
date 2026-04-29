@@ -39,14 +39,128 @@
 
 ## 解題思路
 
-*請填入你的解題思路*
+這題的關鍵是「只移動一根木棒，而且只能動到數字本身」。
+
+做法如下：
+
+1. 先把輸入字串切成「左式」與「右式」，只保留 `#` 以前的內容。
+2. 找出所有數字的位置，記錄每個數字字元在字串中的索引。
+3. 針對每一個數字位置，嘗試拿掉一根線段，並把這根線段加到另一個數字位置。
+4. 兩個數字都改完後，檢查新的式子是否成立。
+5. 只要找到第一個合法解就輸出，若全部都不行就輸出 `No`。
+
+因為七段顯示器每個數字的可能變化數量很少，所以這個暴力搜尋在實作上是可行的。
 
 ## 解題代碼
 
 ```python
-# 你的代碼這裡
+import sys
+
+
+SEGMENTS = {
+	"0": 0b1111110,
+	"1": 0b0110000,
+	"2": 0b1101101,
+	"3": 0b1111001,
+	"4": 0b0110011,
+	"5": 0b1011011,
+	"6": 0b1011111,
+	"7": 0b1110000,
+	"8": 0b1111111,
+	"9": 0b1111011,
+}
+
+
+def parse_side(expr: str) -> int:
+	total = 0
+	number = ""
+	sign = 1
+
+	for index, char in enumerate(expr):
+		if char in "+-":
+			if index == 0 or expr[index - 1] in "+-=" or number == "":
+				sign = -1 if char == "-" else 1
+			else:
+				total += sign * int(number)
+				number = ""
+				sign = -1 if char == "-" else 1
+		else:
+			number += char
+
+	if number:
+		total += sign * int(number)
+
+	return total
+
+
+def build_candidates():
+	remove_map = {digit: [] for digit in SEGMENTS}
+	add_map = {digit: [] for digit in SEGMENTS}
+
+	for digit, mask in SEGMENTS.items():
+		for other_digit, other_mask in SEGMENTS.items():
+			if mask.bit_count() - other_mask.bit_count() == 1 and (other_mask & mask) == other_mask:
+				remove_map[digit].append(other_digit)
+			if other_mask.bit_count() - mask.bit_count() == 1 and (mask & other_mask) == mask:
+				add_map[digit].append(other_digit)
+
+	return remove_map, add_map
+
+
+REMOVE_MAP, ADD_MAP = build_candidates()
+
+
+def is_valid_equation(expr: str) -> bool:
+	left, right = expr.split("=")
+	return parse_side(left) == parse_side(right)
+
+
+def main() -> None:
+	raw = sys.stdin.read()
+	if not raw:
+		return
+
+	expr = raw.split("#", 1)[0]
+	chars = list(expr)
+	digit_positions = [index for index, ch in enumerate(chars) if ch.isdigit()]
+
+	for source_index in digit_positions:
+		source_digit = chars[source_index]
+		for removed_digit in REMOVE_MAP[source_digit]:
+			chars[source_index] = removed_digit
+
+			for target_index in digit_positions:
+				if target_index == source_index:
+					continue
+
+				target_digit = chars[target_index]
+				for added_digit in ADD_MAP[target_digit]:
+					chars[target_index] = added_digit
+					candidate = "".join(chars)
+					if is_valid_equation(candidate):
+						sys.stdout.write(candidate + "#")
+						return
+					chars[target_index] = target_digit
+
+			chars[source_index] = source_digit
+
+	sys.stdout.write("No")
+
+
+if __name__ == "__main__":
+	main()
 ```
 
 ## 測試用例
 
-*測試輸入與預期輸出*
+輸入：
+
+```text
+1+2=4#
+```
+
+輸出：
+
+```text
+1+2=3#
+```

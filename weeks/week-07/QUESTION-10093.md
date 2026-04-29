@@ -33,14 +33,98 @@
 
 ## 解題思路
 
-*請填入你的解題思路*
+這題是經典的狀態壓縮動態規劃。
+
+因為地圖寬度 M 最多只有 10，所以可以用 bitmask 表示每一列是否放炮兵。
+
+核心限制有三個：
+
+1. 同一列的兩個炮兵不能距離 1 或 2 格，所以同一列的 bitmask 必須滿足 `mask & (mask << 1) == 0` 且 `mask & (mask << 2) == 0`。
+2. 與前一列不能有相同欄位的炮兵，避免垂直距離 1 互相攻擊。
+3. 與前兩列也不能有相同欄位的炮兵，避免垂直距離 2 互相攻擊。
+
+做法：
+
+1. 先把每一列哪些位置可放炮兵轉成 bitmask。
+2. 列舉所有符合同列限制的 mask。
+3. 用 `dp[(prev2, prev1)]` 表示處理到目前列時，前兩列狀態為 `prev2`、`prev1` 的最大炮兵數量。
+4. 轉移到當前列 `cur` 時，只要 `cur` 與 `prev1`、`prev2` 都沒有重疊，就可以更新答案。
+
+因為 M 很小，這個做法可以在可接受時間內完成。
 
 ## 解題代碼
 
 ```python
-# 你的代碼這裡
+import sys
+
+
+def build_valid_masks(width: int):
+	masks = []
+	for mask in range(1 << width):
+		if mask & (mask << 1):
+			continue
+		if mask & (mask << 2):
+			continue
+		masks.append(mask)
+	return masks
+
+
+def main() -> None:
+	data = sys.stdin.read().splitlines()
+	if not data:
+		return
+
+	n, m = map(int, data[0].split())
+	rows = data[1:1 + n]
+
+	usable = []
+	for row in rows:
+		mask = 0
+		for idx, ch in enumerate(row):
+			if ch == "P":
+				mask |= 1 << idx
+		usable.append(mask)
+
+	all_valid_masks = build_valid_masks(m)
+
+	dp = {(0, 0): 0}
+	for row_index in range(n):
+		next_dp = {}
+		allowed = usable[row_index]
+		current_masks = [mask for mask in all_valid_masks if mask & allowed == mask]
+
+		for (prev2, prev1), value in dp.items():
+			for cur in current_masks:
+				if cur & prev1:
+					continue
+				if cur & prev2:
+					continue
+
+				state = (prev1, cur)
+				candidate = value + cur.bit_count()
+				if candidate > next_dp.get(state, -1):
+					next_dp[state] = candidate
+
+		dp = next_dp
+
+	print(max(dp.values(), default=0))
+
+
+if __name__ == "__main__":
+	main()
 ```
 
 ## 測試用例
 
-*測試輸入與預期輸出*
+輸入：
+
+```text
+1 5
+PPPPP
+```
+
+輸出：
+
+```text
+2
+```

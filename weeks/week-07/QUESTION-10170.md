@@ -36,14 +36,67 @@ HaluaRuti 城裡有一家奇特的旅館，擁有**無限多間房間**。
 
 ## 解題思路
 
-*請填入你的解題思路*
+這題的關鍵是把「第 D 天屬於哪一團」轉成累積天數問題。
+
+第 1 團的人數是 S，住 S 天；第 2 團人數是 S+1，住 S+1 天；依此類推。
+
+若前 k 團總共住了 `S + (S+1) + ... + (S+k-1)` 天，則可以用等差級數公式表示為：
+
+`k * (2S + k - 1) / 2`
+
+所以只要找出最小的 k，使得累積天數大於等於 D，就能知道第 D 天屬於第 k 團，答案就是 `S + k - 1`。
+
+因為 D 很大，直接模擬不適合，使用二分搜尋找 k 最穩定。
 
 ## 解題代碼
 
 ```python
-# 你的代碼這裡
+import sys
+
+
+def find_group_size(s: int, d: int) -> int:
+	left = 1
+	right = 2 * 10**9
+
+	while left < right:
+		mid = (left + right) // 2
+		total_days = mid * (2 * s + mid - 1) // 2
+		if total_days >= d:
+			right = mid
+		else:
+			left = mid + 1
+
+	return s + left - 1
+
+
+def main() -> None:
+	data = sys.stdin.read().split()
+	if not data:
+		return
+
+	results = []
+	for i in range(0, len(data), 2):
+		s = int(data[i])
+		d = int(data[i + 1])
+		results.append(str(find_group_size(s, d)))
+
+	sys.stdout.write("\n".join(results))
+
+
+if __name__ == "__main__":
+	main()
 ```
 
 ## 測試用例
 
-*測試輸入與預期輸出*
+輸入：
+
+```text
+4 10
+```
+
+輸出：
+
+```text
+6
+```

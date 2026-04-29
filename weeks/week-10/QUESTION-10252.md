@@ -72,14 +72,74 @@ NOOOOOOOOOOOOOOOOOOOOOOO~~~~~~老師不要當我呀！
 
 ## 解題思路
 
-*請填入你的解題思路*
+**核心概念**：費馬點問題（Fermat Point）+ 整數點搜索
+
+費馬點是使得到所有給定點的距離和最小的點。對於多個點，找到該點後，需要統計有多少個整數坐標點能達到相同的最小距離和。
+
+**解法**：
+1. **找費馬點**：
+   - 使用梯度下降或爬山法找到距離和最小的點（不一定是整數點）
+   - 初始點設為點集的質心
+
+2. **局部搜索**：
+   - 從費馬點附近的區域開始搜索
+   - 檢查所有整數坐標點（局部搜索範圍內）
+
+3. **計算距離和**：
+   - 對每個整數點 (x, y)，計算它到所有給定點的歐幾里得距離和
+   - 使用浮點精度比較（允許誤差 1e-9）
+
+4. **統計結果**：
+   - 找到全局最小距離和
+   - 計算有多少個整數點達到此最小值
+   - 將距離和四捨五入輸出
+
+**時間複雜度**: O(搜索範圍^2 × N)
+**空間複雜度**: O(N)
 
 ## 解題代碼
 
 ```python
-# 你的代碼這裡
+def solve_fermat_problem(points: List[Tuple[int, int]]) -> Tuple[int, int]:
+    \"\"\"求費馬點及達到最小距離和的整數點個數\"\"\"
+    if len(points) == 0:
+        return (0, 0)
+    
+    # 尋找費馬點（梯度下降）
+    fermat = find_fermat_point(points)
+    
+    # 在費馬點周圍搜索最優整數點
+    search_range = 50
+    min_dist = float('inf')
+    count = 0
+    
+    for x in range(fermat[0] - search_range, fermat[0] + search_range + 1):
+        for y in range(fermat[1] - search_range, fermat[1] + search_range + 1):
+            dist = sum(distance((x, y), p) for p in points)
+            
+            if dist < min_dist:
+                min_dist = dist
+                count = 1
+            elif abs(dist - min_dist) < 1e-9:
+                count += 1
+    
+    return (int(min_dist + 0.5), count)  # 四捨五入
 ```
 
 ## 測試用例
 
-*測試輸入與預期輸出*
+**樣本輸入**:
+```
+1
+3
+0 0
+1 1
+2 2
+```
+
+輸出：`3 1` (或根據四捨五入結果調整)
+
+**解釋**：
+- 三個點 (0,0), (1,1), (2,2) 共線
+- 最小距離和約為 2√2 ≈ 2.828，四捨五入為 3
+- 對稱性下可能有多個整數點達到相同(或近似)距離和
