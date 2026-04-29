@@ -1,0 +1,53 @@
+week-10 easy solutions optimization summary
+
+1. uva_10226-easy.py
+- Optimization:
+  Changed forbidden positions from set lookup to boolean matrix indexed by person and position.
+  Precomputed output letters once and kept the DFS interface unchanged.
+- Benefits:
+  Removes hash lookup overhead inside the deepest DFS loop.
+  Makes the position check direct and easier to reason about.
+- Weakness in previous easy file:
+  The old version used set membership for every candidate placement, which is slower in a tight backtracking loop.
+
+2. uva_10235-easy.py
+- Optimization:
+  Hoisted row-level availability checks outside the DP state loop.
+  Reused bit masks for left and down edges to reduce repeated work per transition.
+- Benefits:
+  Cuts repeated grid indexing and makes the state transition logic more explicit.
+  Keeps the same contour DP algorithm but with lower per-state overhead.
+- Weakness in previous easy file:
+  The old version recalculated several structural conditions inside nested loops, which made the hot path heavier and harder to scan.
+
+3. uva_10242-easy.py
+- Optimization:
+  Extracted SCC construction into a dedicated helper and kept the iterative DFS approach.
+  Simplified DAG DP variable naming so the condensed-graph flow is clearer.
+- Benefits:
+  Separates SCC compression from longest-path DP, making the code easier to verify and maintain.
+  Preserves the stack-safe iterative traversal.
+- Weakness in previous easy file:
+  The previous version mixed SCC building and condensed-graph reasoning in one long solve function, which made review and debugging harder.
+
+4. uva_10252-easy.py
+- Optimization:
+  Extracted one-dimensional distance computation into a helper and kept the median-based solution.
+- Benefits:
+  Removes duplicated accumulation logic and makes the Manhattan-distance decomposition clearer.
+- Weakness in previous easy file:
+  The old version duplicated the x-axis and y-axis distance loops directly in solve, which reduced readability.
+
+5. uva_10268-easy.py
+- Optimization:
+  Switched per-query trial search from a manual linear scan to bisect over the precomputed coverage table.
+  Centralized constants for max trials, max balls, and cap value.
+- Benefits:
+  Makes the lookup intent explicit and keeps each query focused on search rather than iteration details.
+  Improves maintainability around the precomputation boundaries.
+- Weakness in previous easy file:
+  The old version used a manual loop for every query even though the table is monotonic and directly searchable.
+
+Common result:
+- All optimized files keep the same solve and main interfaces so they remain easy to test and submit.
+- The changes focus on lower overhead in hot paths, clearer naming, and simpler maintenance without changing problem behavior.
