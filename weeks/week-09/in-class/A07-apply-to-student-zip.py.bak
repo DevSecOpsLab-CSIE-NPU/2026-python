@@ -13,38 +13,30 @@
 #   5.21 pickle 保存跨屆統計快照
 #   5.2  print(file=) 寫 Markdown 週報
 
-# ╔════════════════════════════════════════════════════╗
-# ║ 【導入模組】用途說明                              ║
-# ╚════════════════════════════════════════════════════╝
-import csv              # CSV 表格讀寫工具
-import io               # StringIO：把字串當成檔案用
+# 【導入模組】
+import csv              # CSV 表格讀寫
+import io               # StringIO：把字串當檔案用
 import pickle           # 序列化物件（save/load 複雜資料結構）
 import tempfile         # 建立暫存資料夾（沙箱環境）
 import zipfile          # 不解壓直接讀 zip 檔
 from collections import Counter  # 計數統計工具（替代字典計數）
 from pathlib import Path         # 跨平台路徑物件（取代 os.path）
 
-# ╔════════════════════════════════════════════════════╗
-# ║ 【5.11/5.12】路徑定位 + 檔案檢查                  ║
-# ╚════════════════════════════════════════════════════╝
-
+# ── 5.11 / 5.12 找到資料檔 ─────────────────────────────
+# 【相對路徑定位】
 HERE = Path(__file__).resolve().parent  # 當前 .py 檔所在資料夾的絕對路徑
-
-# 從當前檔往上 3 層：week-09 → weeks → 2026-python → root
+# 從當前檔往上 3 層 (week-09 → weeks → 2026-python → root)
 # 再進 assets 資料夾找 zip 檔
 ZIP_PATH = HERE.parent.parent.parent / "assets" / "npu-stu-109-114-anon.zip"
-
 # 【防守性檢查】檔案不存在就立即拋錯，比到真正讀檔時才發現好
 assert ZIP_PATH.exists(), f"找不到資料：{ZIP_PATH}"
 print("資料來源:", ZIP_PATH.name)
 
 
-# ╔════════════════════════════════════════════════════╗
-# ║ 【5.7+5.6+5.1】不解壓讀 zip 裡的 CSV              ║
-# ╚════════════════════════════════════════════════════╝
-
+# ── 5.7 + 5.6 + 5.1 不解壓讀 zip 裡的 CSV ──────────────
+# 【產生器函數】不同於一次性讀檔，而是逐年逐個檔案 yield 資料
 def iter_year_csv(zip_path: Path):
-    """【產生器函數】逐年從 zip 中讀出 CSV 資料。
+    """【功能】逐年從 zip 中讀出 CSV 資料。
     
     【參數】zip_path: zip 檔的 Path 物件
     【返回】每次 yield (年度字串, CSV header 列表, 資料列表)
@@ -58,10 +50,12 @@ def iter_year_csv(zip_path: Path):
       - 節省硬碟空間：不用臨時解壓到磁碟
       - 更快：直接在 zip 串流中讀，跳過解壓階段
     """
-    with zipfile.ZipFile(zip_path) as z:  # 【with 陳述】自動開關檔案
-        for info in z.infolist():  # 【infolist()】取得 zip 內所有檔案的中繼資料
-            # 【檔名檢查】防守性編程
-            # 舊 zip 檔常見中文檔名編碼問題（cp437 亂碼）
+    # 【with 陳述】自動開關檔案
+    # zipfile.ZipFile(zip_path) 打開 zip，執行完自動 close
+    with zipfile.ZipFile(zip_path) as z:
+        # 【infolist()】取得 zip 內所有檔案的中繼資料 (不讀內容)
+        for info in z.infolist():
+            # 【檔名檢查】防守：舊的 zip 檔常見中文檔名編碼問題（cp437 亂碼）
             # 這份新生資料庫已預先清理，所以檔名是正確的 utf-8 格式
             name = info.filename
             
@@ -81,65 +75,32 @@ def iter_year_csv(zip_path: Path):
             # 返回值是 bytes（二進制資料，還未解碼）
             raw = z.read(info)
             
-            # 【第2步】raw.decode("utf-8-sig") 把位元組解碼成文字
+            # 【第2步】raw.decode(\"utf-8-sig\") 把位元組解碼成文字
             # 為什麼用 utf-8-sig 而非 utf-8？
             #   - Excel 存 CSV 時會在檔案開頭加 BOM 標記 (Byte Order Mark)
             #   - BOM = 3 個位元組：0xEF 0xBB 0xBF
             #   - utf-8 不會自動移除，導致第一欄前面有隱形符號
-            #   - utf-8-sig 能自動偵測並移除 BOM（推薦用）
-            text = raw.decode("utf-8-sig")
-            
-            # 【第3步】io.StringIO 把字串包成 file-like 物件
-            # 為什麼需要 StringIO？
-            #   - csv.reader(f) 期望 f 是檔案物件（有 readline() 方法）
-            #   - 純字串沒有這些方法，csv.reader 會拒絕
-            #   - StringIO 製造一個「假檔案」，提供檔案介面
-            #   - 這樣 csv.reader 就能逐行讀字串
-            reader = csv.reader(io.StringIO(text))
-            
-            # 【list(reader)】一次讀完所有列
-            # rows[0] = 表頭 (column names)
-            # rows[1:] = 資料列 (student records)
-            rows = list(reader)
-            
-            # ╔════════════════════════════════════════════════════╗
-            # ║ 【yield 而非 return】讓呼叫者邊迭代邊處理          ║
-            # ║ 好處：每次只在記憶體保留 1 屆資料                 ║
-            # ╚════════════════════════════════════════════════════╝
-            yield year, rows[0], rows[1:]
+            #   - utf-8-sig 能自動偵測並移除 BOM（推薦用）\n            text = raw.decode(\"utf-8-sig\")\n            \n            # 【第3步】io.StringIO 把字串包成 file-like 物件\n            # 為什麼需要 StringIO？\n            #   - csv.reader(f) 期望 f 是檔案物件（有 readline() 方法）\n            #   - 純字串沒有這些方法，csv.reader 會拒絕\n            #   - StringIO 製造一個「假檔案」，提供檔案介面\n            #   - 這樣 csv.reader 就能逐行讀字串\n            reader = csv.reader(io.StringIO(text))\n            \n            # 【list(reader)】一次讀完所有列\n            # rows[0] = 表頭 (column names)\n            # rows[1:] = 資料列 (student records)\n            rows = list(reader)\n            \n            # ╔════════════════════════════════════════════════════╗\n            # ║ 【yield 而非 return】讓呼叫者邊迭代邊處理          ║\n            # ║ 好處：每次只在記憶體保留 1 屆資料                 ║\n            # ╚════════════════════════════════════════════════════╝\n            yield year, rows[0], rows[1:]
 
 
-# ╔════════════════════════════════════════════════════╗
-# ║ 【主程式】跨屆統計                                ║
-# ╚════════════════════════════════════════════════════╝
-
-# 【資料結構設計】用字典存放每屆的統計結果
-# summary = {
-#   "109": {"total": 1234, "by_dept": Counter({...}), "by_entry": Counter({...})},
-#   "110": {...},
-#   ...
-# }
+# ── 跨屆統計 ───────────────────────────────────────────
+# 【資料結構】summary 存放每屆的統計數據
+# 格式: {年度字串: {'total': int, 'by_dept': Counter, 'by_entry': Counter}}
 summary = {}
-# 【全體累計】all_depts 會把所有 6 屆的系所人數加總
-# 用途：求「歷年最熱門 5 大系所」
-all_depts = Counter()
+all_depts = Counter()  # 累計 6 屆所有系所的人數分布
 
-# ╔════════════════════════════════════════════════════╗
-# ║ 【主迴圈】逐屆讀取 CSV 並計算統計                 ║
-# ╚════════════════════════════════════════════════════╝
-
-for year, header, rows in iter_year_csv(ZIP_PATH):
-    # 【找欄位位置】用欄位名稱查 index，而不是硬編號碼
-    # 好處：若 CSV 格式改變（增減欄位、調整欄序），程式仍能正確執行
-    # 壞處：若欄位名稱改變會 raise ValueError
+for year, header, rows in iter_year_csv(ZIP_PATH):  # 迭代每屆的資料
+    # 【動態尋找欄位】不硬編號碼，而是用欄位名稱查位置
+    # 好處：若 CSV 欄序改變仍能正確對應，程式邏輯不受影響
+    # 壞處：若欄位名稱改變會拋出 ValueError，需事先確認欄位名稱
     dept_idx  = header.index("系所名稱")  # 在 header 列表中找「系所名稱」的位置
     entry_idx = header.index("入學方式")  # 在 header 列表中找「入學方式」的位置
 
     # ╔════════════════════════════════════════════════════╗
-    # ║ 【Counter 統計】用生成器表達式高效過濾+計數      ║
+    # ║ 【Counter 統計】用生成器表達式高效過濾+計數        ║
     # ║ 條件 len(r) > idx 的用途：                        ║
     # ║   某些列可能欄位數不足（資料損壞或缺少值）      ║
-    # ║   直接存取 r[idx] 會 IndexError                  ║
+    # ║   直接存取 r[idx] 會拋 IndexError                ║
     # ║   預先檢查長度能防止程式崩潰                     ║
     # ╚════════════════════════════════════════════════════╝
     
@@ -167,10 +128,10 @@ for year, header, rows in iter_year_csv(ZIP_PATH):
     #   update 後 all_depts["資工"] = 200 + 180 = 380
     all_depts.update(by_dept)
 
+# ── 終端輸出：總覽 ──────────────────────────────────────
 # ╔════════════════════════════════════════════════════╗
-# ║ 【終端輸出】三組統計資訊                          ║
+# ║ 【第一組統計】各屆新生人數總覽                    ║
 # ╚════════════════════════════════════════════════════╝
-
 print("\n=== 6 屆新生人數 ===")
 # 【sorted()】確保按年度升序輸出
 # 年份字串（"109", "110", ...）的字典序恰好等於年度升序
@@ -180,6 +141,9 @@ for year in sorted(summary):
     total = summary[year]['total']
     print(f"  {year} 學年：{total:>4} 人")
 
+# ╔════════════════════════════════════════════════════╗
+# ║ 【第二組統計】歷年最熱門 5 大系所（跨屆累計）   ║
+# ╚════════════════════════════════════════════════════╝
 print("\n=== 全體最熱門 5 個系所（累計 6 屆） ===")
 # 【Counter.most_common(n)】
 # 回傳前 n 個最常見項目，順序為降序（最多在前）
@@ -187,6 +151,9 @@ print("\n=== 全體最熱門 5 個系所（累計 6 屆） ===")
 for dept, n in all_depts.most_common(5):
     print(f"  {n:>4} 人  {dept}")
 
+# ╔════════════════════════════════════════════════════╗
+# ║ 【第三組統計】114 年度（最新一屆）入學方式分布   ║
+# ╚════════════════════════════════════════════════════╝
 print("\n=== 114 學年入學方式分布 ===")
 # 【單層存取】summary["114"] 取 114 年的統計結果（字典）
 #            再取 ["by_entry"] = Counter 物件
@@ -195,17 +162,11 @@ for kind, n in summary["114"]["by_entry"].most_common():
     print(f"  {n:>4} 人  {kind}")
 
 
-# ╔════════════════════════════════════════════════════╗
-# ║ 【5.19+5.5+5.2+5.21】沙箱輸出、快照保存          ║
-# ╚════════════════════════════════════════════════════╝
-
-# 【沙箱環境】TemporaryDirectory
-# 用途：產生暫存檔案而不污染專案目錄
-# 安全性：自動清理，不怕遺留垃圾檔
+# ── 5.19 + 5.5 + 5.2 沙箱產生報告、5.21 存快照 ─────────
 with tempfile.TemporaryDirectory() as tmp:
     # 【型別轉換】str → Path，才能用 / 組路徑
     tmp = Path(tmp)
-    print(f"\n沙箱位置：{tmp}")
+    print(f"沙箱位置：{tmp}")
 
     # ╔════════════════════════════════════════════════════╗
     # ║ 【快照保存】用 pickle 序列化複雜物件              ║
@@ -244,7 +205,6 @@ with tempfile.TemporaryDirectory() as tmp:
         print("", file=f)
         print("| 學年 | 人數 | 第一大系所 |", file=f)
         print("|------|------|------------|", file=f)
-        
         for year in sorted(summary):
             # 【most_common(1)】取最常見的 1 項
             # 回傳 [(item, count)]（含括號）
@@ -258,7 +218,7 @@ with tempfile.TemporaryDirectory() as tmp:
     # ║ 【驗證寫檔】讀回 Markdown 預覽效果                ║
     # ╚════════════════════════════════════════════════════╝
     
-    print("\n=== Markdown 報告預覽 ===")
+    print("\\n=== Markdown 報告預覽 ===")
     # 【Path.read_text(encoding)】一次讀整個檔案成字串
     # 等同於：
     #   with open(report, 'r', encoding='utf-8') as f:
@@ -269,7 +229,7 @@ with tempfile.TemporaryDirectory() as tmp:
     # ║ 【驗證反序列化】確保 pickle 往返一致性            ║
     # ╚════════════════════════════════════════════════════╝
     
-    print("\n--- pickle 反序列化驗證 ---")
+    print("\\n--- pickle 反序列化驗證 ---")
     # 【"rb" 模式】read binary：以位元組形式讀檔
     with open(snap, "rb") as f:
         # pickle.load(檔案)：讀取位元組流並反序列化成 Python 物件
@@ -288,52 +248,22 @@ with tempfile.TemporaryDirectory() as tmp:
 # ║ 特性：TemporaryDirectory 會遞迴刪除所有內部檔案  ║
 # ║ 優點：不怕遺漏、不污染專案、安全穩定            ║
 # ╚════════════════════════════════════════════════════╝
-print("\n(✓ 沙箱已自動清理，report.md 和 summary.pkl 已刪除)")
-
-
-# ╔════════════════════════════════════════════════════╗
-# ║ 【課堂延伸挑戰】加深對 I/O 技巧的理解            ║
-# ╚════════════════════════════════════════════════════╝
-
-# 1️⃣  【目標】把報告改寫到專案目錄 (HERE / 'report.md')
-#    【目前狀況】用 'x' 模式確保檔案只寫一次
-#    【問題】改用 'w' 模式會無聲覆蓋舊檔（危險！）
-#    【題目】不用沙箱，怎麼在專案目錄安全寫檔？
-#    【提示】考慮用 pathlib.Path 先 unlink()（若存在）再 write_text()
-#    【技巧複習】
-#      - Path.unlink(missing_ok=True)：刪除檔案，不存在時不報錯
-#      - Path.write_text()：一次性寫字串到檔案
+print("\\n(✓ 沙箱已自動清理，report.md 和 summary.pkl 已刪除)")\n\n    # 【驗證 pickle 反序列化】確保序列化/反序列化正常
+    # 目的：測試 pickle.dump/load 的往返一致性（型別、內容都對）
+    with open(snap, "rb") as f:
+        loaded = pickle.load(f)  # 反序列化：bytes → Python 物件
+    print(\"pickle 讀回 key:\", sorted(loaded.keys()))\n\n# 【with 區塊結束】離開 TemporaryDirectory 的 with\n# → tmp 資料夾自動刪除（包含內部所有檔案）\n# → 不會在專案目錄留下暫存垃圾\nprint(\"\\n(沙箱已自動清理)\")\n\n\n# ── 課堂延伸挑戰 ── 【進階應用】加深對 I/O 技巧的理解 ────────────────────────\n# \n# 1️⃣  把報告改寫到專案目錄 (HERE / 'report.md')\n#    - 目前用 'x' 模式確保檔案只寫一次\n#    - 改用 'w' 模式會無聲覆蓋（危險）\n#    - 題目：不用沙箱，怎麼在專案目錄安全寫檔？\n#    - 提示：考慮用 pathlib.Path 先 unlink()（若存在）再 write_text()\n#\n# 2️⃣  加一欄「女性比例」到 Markdown 表格\n#    - 找出 CSV 性別欄位（可能叫「性別」、「gender」等）\n#    - 用 Counter 統計該欄：{\"女\": n, \"男\": m}\n#    - 計算百分比：女性人數 / 該屆總人數 × 100\n#\n# 3️⃣  把 summary 壓縮存成 summary.pkl.gz（gzip 節省空間）\n#    - import gzip\n#    - with gzip.open('summary.pkl.gz', 'wb') as f:\n#    -     pickle.dump(summary, f)\n#    - 好處：統計資料量大時節省硬碟 I/O 和存儲空間\n#\n# 4️⃣  跨屆分析「人數逐年下降最明顯的系所」\n#    - 把 by_dept 按年排成折線：{\"系所\": [109→114 人數序列]}\n#    - 計算斜率或下降幅度\n#    - 提示：可用 matplotlib 繪圖或純文字做 trend analysis
 #
-# 2️⃣  【目標】加一欄「女性比例」到 Markdown 表格
-#    【步驟】
-#      1. 找出 CSV 性別欄位（可能叫「性別」、「gender」等）
-#      2. 用 Counter 統計該欄：{"女": n, "男": m}
-#      3. 計算百分比：女性人數 / 該屆總人數 × 100
-#      4. 新增表格欄位「女性比例」
-#    【技巧複習】
-#      - header.index()：找欄位名稱對應的位置
-#      - Counter：快速統計字典
-#      - 格式化：f"{比例:.1f}%"
+# 2) 加一欄「女性比例」到 Markdown 表格
+#    - CSV 應該有性別欄位，用 Counter 統計「女性人數」
+#    - 計算百分比：女性人數 / 該屆總人數
 #
-# 3️⃣  【目標】把 summary 壓縮存成 summary.pkl.gz（gzip）
-#    【步驟】
-#      1. import gzip
-#      2. with gzip.open('summary.pkl.gz', 'wb') as f:
-#      3.     pickle.dump(summary, f)
-#    【好處】
-#      - 節省儲存空間（特別是統計資料量大時）
-#      - 讀取時也要用 gzip.open()（自動解壓）
-#    【技巧複習】
-#      - gzip 串流：壓縮邊寫，無需先建立暫時檔案
-#      - 可搭配 pickle 一起用
+# 3) 把 summary 壓縮存成 summary.pkl.gz
+#    - import gzip 開啟壓縮檔：gzip.open('summary.pkl.gz', 'wb')
+#    - pickle.dump 寫入壓縮流
+#    - 好處：節省儲存空間（特別是統計資料多時）
 #
-# 4️⃣  【目標】跨屆分析「人數逐年下降最明顯的系所」
-#    【步驟】
-#      1. 把 by_dept 按年組織：{"系所": {"109": n, "110": n, ...}}
-#      2. 計算斜率或下降幅度：(第一年 - 最後一年) / 年份數
-#      3. 找出下降幅度最大的系所
-#    【輸出】可用 matplotlib 繪圖或純文字 trend analysis
-#    【技巧複習】
-#      - 字典轉置：從 {年: {系: 人數}} 轉成 {系: {年: 人數}}
-#      - 迴圈統計：max() + lambda 或 sorted() 搭配 key=
-#      - 視覺化：可選用 matplotlib 或 pandas plot()
+# 4) 跨屆分析「人數逐年下降最明顯的系所」
+#    - 把 by_dept 按年排成折線圖 (x=年度, y=人數)
+#    - 找出下降幅度最大的系所
+#    - 提示：可用 matplotlib 畫圖或純文字做 trend analysis
