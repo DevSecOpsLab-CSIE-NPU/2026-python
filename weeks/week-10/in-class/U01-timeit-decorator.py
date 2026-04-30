@@ -9,19 +9,16 @@ import xml.etree.ElementTree as ET
 import functools
 
 # ═══════════════════════════════════════════════════════════
-# Part 1｜問題：每個函式都要手動計時，程式碼會大量重複
+# Part 1｜問題：每個函式都要手動計時 → 大量重複
 # ═══════════════════════════════════════════════════════════
 
 def read_csv_raw(data: str) -> list:
-    # 直接把 CSV 文字轉成 DictReader，回傳每列資料。
     return list(csv.DictReader(io.StringIO(data)))
 
 def read_json_raw(data: str) -> list:
-    # JSON 可以直接用標準函式解碼成 Python 物件。
     return json.loads(data)
 
 def read_xml_raw(data: str) -> list:
-    # XML 先解析成樹狀結構，再把每個 row 的屬性取出來。
     root = ET.fromstring(data)
     return [r.attrib for r in root.findall("row")]
 
@@ -36,13 +33,12 @@ def read_xml_raw(data: str) -> list:
 # ... 每加一個函式就多寫三行，且容易忘記移除
 
 # ═══════════════════════════════════════════════════════════
-# Part 2｜解法：用裝飾器把計時邏輯包起來，一次定義，到處復用
+# Part 2｜解法：裝飾器把計時邏輯包起來，一次定義，到處復用
 # ═══════════════════════════════════════════════════════════
 
 def timeit(func):
-    """基礎版計時裝飾器：在函式呼叫前後量測並印出耗時。"""
+    """基礎版：在呼叫前後計時，印出耗時"""
     def wrapper(*args, **kwargs):
-        # 記錄開始時間，呼叫原函式後再計算經過時間。
         start = time.perf_counter()
         result = func(*args, **kwargs)
         elapsed = time.perf_counter() - start
@@ -50,21 +46,19 @@ def timeit(func):
         return result
     return wrapper
 
-# 問題：wrapper 會蓋掉原函式的 __name__ / __doc__ 等資訊。
+# 問題：wrapper 蓋掉了原函式的 __name__ / __doc__
 def demo():
     """這是 demo 的說明文字"""
     pass
 
 wrapped = timeit(demo)
-print("未加 wraps 前：", wrapped.__name__)   # 這裡會顯示 wrapper
+print("未加 wraps 前：", wrapped.__name__)   # wrapper（錯誤！）
 
 # ── Part 3｜functools.wraps：保留原函式的 metadata ──────────
 
 def timeit(func):
-    # wraps 會把原函式的名稱、說明與模組資訊保留下來。
-    @functools.wraps(func)
+    @functools.wraps(func)          # 保留 __name__ / __doc__ / __module__
     def wrapper(*args, **kwargs):
-        # 重新量測一次，這裡同樣保留原本的輸出格式。
         start = time.perf_counter()
         result = func(*args, **kwargs)
         elapsed = time.perf_counter() - start
@@ -73,17 +67,17 @@ def timeit(func):
     return wrapper
 
 wrapped = timeit(demo)
-print("加 wraps 後：  ", wrapped.__name__)   # 這裡會正確顯示 demo
+print("加 wraps 後：  ", wrapped.__name__)   # demo（正確）
 print()
 
 # ═══════════════════════════════════════════════════════════
-# Part 4｜實驗：用相同資料比較 CSV、JSON、XML 的讀取速度
+# Part 4｜實驗：相同資料，CSV vs JSON vs XML 速度比較
 # ═══════════════════════════════════════════════════════════
 
 # ── 產生測試資料（1000 筆學生記錄）────────────────────────
 N = 1000
 
-# CSV 格式：先用 DictWriter 寫到記憶體中的字串緩衝區。
+# CSV 格式
 csv_buf = io.StringIO()
 writer = csv.DictWriter(csv_buf, fieldnames=["id", "name", "score"])
 writer.writeheader()
@@ -91,13 +85,13 @@ for i in range(N):
     writer.writerow({"id": i, "name": f"Student{i:04d}", "score": 60 + i % 40})
 CSV_DATA = csv_buf.getvalue()
 
-# JSON 格式：直接把 Python list 轉成 JSON 字串。
+# JSON 格式
 JSON_DATA = json.dumps([
     {"id": i, "name": f"Student{i:04d}", "score": 60 + i % 40}
     for i in range(N)
 ])
 
-# XML 格式：手動組出一串 row 節點，再包成根節點。
+# XML 格式
 xml_rows = "".join(
     f'<row id="{i}" name="Student{i:04d}" score="{60 + i % 40}"/>'
     for i in range(N)
@@ -107,7 +101,6 @@ XML_DATA = f"<data>{xml_rows}</data>"
 # ── 帶回傳耗時的計時包裝 ─────────────────────────────────
 
 def timeit_silent(func):
-    # 這個版本不印出結果，只回傳 (原結果, 耗時)，方便做平均比較。
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
         start = time.perf_counter()
@@ -125,7 +118,6 @@ RUNS = 5
 times = {"CSV": 0.0, "JSON": 0.0, "XML": 0.0}
 
 for _ in range(RUNS):
-    # 每輪都跑一次三種格式，累積耗時後再取平均。
     _, t = _csv(CSV_DATA);   times["CSV"]  += t
     _, t = _json(JSON_DATA); times["JSON"] += t
     _, t = _xml(XML_DATA);   times["XML"]  += t
@@ -140,11 +132,11 @@ for fmt, total in times.items():
 # ═══════════════════════════════════════════════════════════
 # 觀察重點
 # ═══════════════════════════════════════════════════════════
-# 1. JSON 通常最快，因為解析器是高效率的原生實作。
-# 2. XML 通常最慢，因為文字結構較冗長，解析開銷也比較大。
-# 3. CSV  通常介於中間，格式簡單，但欄位轉型常要額外處理。
+# 1. JSON 通常最快（原生 C 實作的解析器）
+# 2. XML  通常最慢（文字解析開銷大，屬性字串轉換）
+# 3. CSV  介於中間（簡單格式，但每欄都是字串需自行轉型）
 #
 # 裝飾器帶來的好處：
-# - 計時邏輯只需要寫一次，不會污染原本函式內容。
-# - 如果不想計時，只要移除 @timeit，不必改函式本體。
-# - functools.wraps 可以保留正確的函式名稱與說明文字，方便除錯與 help() 顯示。
+# - 計時邏輯只寫一次，不汙染原函式
+# - 要移除計時只需拿掉 @timeit，函式本身不需修改
+# - functools.wraps 確保 debug / help() 時能看到正確名稱
