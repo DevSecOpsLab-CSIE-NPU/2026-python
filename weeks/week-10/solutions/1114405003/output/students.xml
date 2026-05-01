@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<students source="113年新生資料庫" total="30">
+  <student id="1131234001" dept="電機工程系" school="國立馬公高中" zip="880" />
+  <student id="1131234002" dept="資訊工程系" school="國立馬公高中" zip="880" />
+  <student id="1131234004" dept="機械工程系" school="國立台中一中" zip="400" />
+  <student id="1131234006" dept="電機工程系" school="國立台南一中" zip="500" />
+  <student id="1131234008" dept="機械工程系" school="國立台中二中" zip="400" />
+  <student id="1131234009" dept="資訊工程系" school="私立復興高中" zip="106" />
+  <student id="1131234011" dept="土木工程系" school="國立基隆高中" zip="200" />
+  <student id="1131234012" dept="資訊工程系" school="國立竹東高中" zip="302" />
+  <student id="1131234014" dept="電機工程系" school="國立澎湖高中" zip="880" />
+  <student id="1131234015" dept="化學工程系" school="國立高雄女中" zip="802" />
+  <student id="1131234016" dept="資訊工程系" school="國立師大附中" zip="100" />
+  <student id="1131234018" dept="電機工程系" school="國立中山女高" zip="104" />
+  <student id="1131234019" dept="機械工程系" school="國立大里高中" zip="408" />
+  <student id="1131234020" dept="資訊工程系" school="國立苗栗高中" zip="300" />
+  <student id="1131234022" dept="電機工程系" school="國立文華高中" zip="400" />
+  <student id="1131234023" dept="土木工程系" school="國立新竹女中" zip="300" />
+  <student id="1131234025" dept="機械工程系" school="國立馬公高中" zip="880" />
+  <student id="1131234027" dept="資訊工程系" school="國立瑞芳高中" zip="200" />
+  <student id="1131234028" dept="化學工程系" school="國立鳳山高中" zip="802" />
+  <student id="1131234029" dept="土木工程系" school="國立東山高中" zip="407" />
+  <student id="1131234030" dept="電機工程系" school="國立麗山高中" zip="100" />
+  <student id="1131234032" dept="資訊工程系" school="國立科學園實中" zip="302" />
+  <student id="1131234033" dept="電機工程系" school="國立政大附中" zip="116" />
+  <student id="1131234034" dept="化學工程系" school="國立陽明高中" zip="100" />
+  <student id="1131234035" dept="土木工程系" school="國立暖暖高中" zip="200" />
+  <student id="1131234036" dept="資訊工程系" school="國立中科實中" zip="400" />
+  <student id="1131234037" dept="機械工程系" school="國立竹南高中" zip="300" />
+  <student id="1131234038" dept="電機工程系" school="國立馬公高中" zip="880" />
+  <student id="1131234040" dept="土木工程系" school="國立安樂高中" zip="200" />
+  <student id="1131234042" dept="電機工程系" school="國立居仁高中" zip="400" />
+</students>
