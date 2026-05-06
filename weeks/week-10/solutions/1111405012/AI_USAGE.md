@@ -8,6 +8,7 @@
 - `@timeit` 裝飾器如何保留原函式名稱，避免測試與除錯時看到 `wrapper`。
 - 當本機沒有 `matplotlib` 時，Task 3 是否需要 fallback 方案產生圖檔。
 - 更新 CSV 資料路徑 `assets/stu-data/113年新生資料庫.csv`，避免沿用 HOMEWORK 舊路徑。
+- 加分版圖表如何使用 `seaborn` 並確保中文字不亂碼。
 
 ## 採用的建議
 
@@ -22,6 +23,7 @@
 - 未採用「直接用 set 或 dict comprehension 去重建所有資料欄位」的做法，因為本題只要求輸出指定欄位，保留全部欄位會讓 JSON 輸出不符合格式。
 - 未採用「把 XML 每個欄位做成巢狀元素」的做法，因為 HOMEWORK 指定格式是 `<student id="..." dept="..." school="..." zip="..."/>`。
 - 未採用「只支援 matplotlib，缺套件就停止」的做法，因為目前環境未安裝 `matplotlib`，仍需要產生 `timing_comparison.png`。
+- 未採用下載 `fonts-noto-cjk` 的做法，因為該字型套件涉及授權條款確認；改成只使用系統已安裝字型。
 
 ## AI 建議不完整與修正
 
@@ -40,3 +42,17 @@ TypeError: can't concat str to bytes
 ```
 
 修正方式是將 `IHDR`、`IDAT`、`IEND` 改為 bytes，例如 `b"IHDR"`。
+
+## 加分版處理
+
+依需求新增三個 `_bonus` 版程式：
+
+- `task1_csv_to_json_bonus.py`：增加加分摘要、系所排名、全部入學方式統計。
+- `task2_json_to_xml_bonus.py`：增加摘要 XML 節點與系所排名 XML 節點。
+- `task3_plot_comparison_bonus.py`：使用 `seaborn`、中文標題與座標軸、漸層效果、X 軸右旋轉 90 度、圖上笑臉、摘要註解與結論。
+
+中文字型策略：
+
+- Windows：優先使用系統字型 `Microsoft JhengHei`。
+- Linux：自動尋找系統已安裝的 WenQuanYi、AR PL、Source Han、LXGW 等 CJK 字型，也會檢查其他支援中文字的系統字型。
+- 若找不到可顯示中文的系統字型，程式會停止輸出，避免產生中文方塊或亂碼圖。

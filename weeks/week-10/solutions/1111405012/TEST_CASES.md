@@ -45,3 +45,11 @@ python3 -B -m unittest discover -s tests -p "test_*.py" -v
 - 輸出 JSON 的 `總人數`：189
 - 輸出 XML 的 `<student>` 數量：189
 - `timing_comparison.png` 為有效 PNG 檔，檔頭為 `b'\x89PNG\r\n\x1a\n'`
+
+## 加分版驗證
+
+- `task1_csv_to_json_bonus.py` 已產生 `output/students_bonus.json`。
+- `students_bonus.json` 額外包含 `加分摘要`、`系所排名`、`全部入學方式統計`。
+- `task2_json_to_xml_bonus.py` 已產生 `output/students_bonus.xml`。
+- `students_bonus.xml` 額外包含 `<summary>` 與 `<department_ranking>`。
+- `task3_plot_comparison_bonus.py` 字型固定使用 `fonts-noto-cjk`（直接掃描 `/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc`）。安裝套件 `fonts-noto-cjk` 與 `seaborn matplotlib pandas numpy` 後，已成功產生 `output/timing_comparison_bonus.png`。

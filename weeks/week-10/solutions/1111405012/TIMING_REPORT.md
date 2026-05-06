@@ -49,3 +49,25 @@ Task 3：
 ```text
 output/timing_comparison.png
 ```
+
+## 加分項說明
+
+本次完成 HOMEWORK 加分項設計：
+
+- `task3_plot_comparison_bonus.py` 使用 `seaborn` 繪製比較圖。
+- 圖表文字使用繁體中文，包含標題、座標軸、圖例、資料標籤、摘要註解與結論。
+- Windows 優先使用系統字型 `Microsoft JhengHei`；Linux 自動尋找系統已安裝且支援中文字的 CJK 字型。
+- 創意延伸包含第二組資料比較、漸層效果、X 軸文字右旋轉 90 度、圖上笑臉、摘要註解與結論。
+
+目前執行環境狀態：
+
+```text
+缺少系統 CJK 字型，因此 task3_plot_comparison_bonus.py 會停止產生圖表，
+避免中文字變成方塊或亂碼。
+```
+
+在有 `seaborn`、`matplotlib`、`pandas`、`numpy`，且有 `Microsoft JhengHei` 或其他 CJK 系統字型的環境，可執行：
+
+```bash
+python3 -B task3_plot_comparison_bonus.py
+```
