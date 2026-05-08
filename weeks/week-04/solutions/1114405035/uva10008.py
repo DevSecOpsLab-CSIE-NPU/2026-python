@@ -1,30 +1,50 @@
 #!/usr/bin/env python3
-import sys
+
+
+def process_input(input_text: str) -> str:
+    lines = [line.strip() for line in input_text.strip().splitlines() if line.strip()]
+    results = []
+    for line in lines:
+        words = line.split()
+        count = int(words[0])
+        words_sorted = sorted(words[1:count + 1])
+        for word in words_sorted:
+            results.append(word)
+    return '\n'.join(results)
+
+
+if __name__ == '__main__':
+    import sys
+    print(process_input(sys.stdin.read()), end='')
 from collections import Counter
+from typing import List
+
 
 def process_input(input_text: str) -> str:
     lines = input_text.splitlines()
     if not lines:
-        return ""
-    
+        return ''
+
     try:
         n = int(lines[0].strip())
     except ValueError:
-        return ""
-        
-    counter = Counter()
-    for i in range(1, min(n + 1, len(lines))):
-        for char in lines[i]:
-            if char.isalpha():
-                counter[char.upper()] += 1
-                
-    sorted_chars = sorted(counter.items(), key=lambda x: (-x[1], x[0]))
-    return '\n'.join(f"{char} {count}" for char, count in sorted_chars)
+        return ''
 
-def main():
-    input_text = sys.stdin.read()
-    if input_text:
-        print(process_input(input_text))
+    counter = Counter()
+    for line in lines[1 : 1 + n]:
+        for ch in line:
+            if ch.isalpha():
+                counter[ch.upper()] += 1
+
+    items = sorted(counter.items(), key=lambda item: (-item[1], item[0]))
+    return '\n'.join(f"{letter} {count}" for letter, count in items)
+
+
+def main() -> None:
+    import sys
+    text = sys.stdin.read()
+    print(process_input(text), end='')
+
 
 if __name__ == '__main__':
     main()
