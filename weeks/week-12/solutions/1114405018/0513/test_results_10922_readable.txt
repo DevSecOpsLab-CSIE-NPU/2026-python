@@ -1,0 +1,30 @@
+﻿python : test_degree_one (__main__.TestDegreeOfNine.test_degree_one)
+位於 線路:1 字元:102
++ ... 1114405018\0513" ; python test_10922.py > test_results_10922.txt 2>&1
++                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_degree_one...est_degree_one) 
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+一次加總就得到 9。 ... ok
+test_degree_three (__main__.TestDegreeOfNine.test_degree_three)
+需要三次加總才能得到 9。 ... ok
+test_degree_two (__main__.TestDegreeOfNine.test_degree_two)
+需要兩次加總才能得到 9。 ... ok
+test_not_multiple_of_nine (__main__.TestDegreeOfNine.test_not_multiple_of_nine)
+不是 9 的倍數就回傳 0。 ... ok
+test_single_nine (__main__.TestDegreeOfNine.test_single_nine)
+單一數字 9 的深度是 1。 ... ok
+test_digit_sum_large_number (__main__.TestDigitSum.test_digit_sum_large_number)
+很長的數字字串也要能正確處理。 ... ok
+test_digit_sum_simple (__main__.TestDigitSum.test_digit_sum_simple)
+基本測試：12345 -> 15。 ... ok
+test_digit_sum_with_nines (__main__.TestDigitSum.test_digit_sum_with_nines)
+全是 9 的情況。 ... ok
+test_sample_run (__main__.TestMainProgram.test_sample_run)
+設計一組輸入來驗證輸出格式。 ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.126s
+
+OK

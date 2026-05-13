@@ -1,0 +1,19 @@
+UVA 10922 — 2 the 9s 簡易版執行摘要
+
+已建立檔案：
+- 10922-easy.py
+- test_10922-easy.py
+
+測試結果：
+- 共 6 項測試
+- 全部通過
+
+保留紀錄：
+- test_results_10922-easy.txt
+- test_results_10922-easy_readable.txt
+
+簡易版重點：
+- 直接用字串逐位加總
+- 反覆做 digit sum，直到只剩一位數
+- 最後若是 9，代表是 9 的倍數
+- 單一數字 9 的 9-degree 為 1

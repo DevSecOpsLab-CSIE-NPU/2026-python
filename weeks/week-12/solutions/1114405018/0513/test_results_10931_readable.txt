@@ -1,0 +1,12 @@
+﻿python : ...........
+位於 線路:1 字元:102
++ ... 1114405018\0513" ; python test_10931.py > test_results_10931.txt 2>&1
++                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (...........:String) [], RemoteExc 
+   eption
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+----------------------------------------------------------------------
+Ran 11 tests in 0.092s
+
+OK

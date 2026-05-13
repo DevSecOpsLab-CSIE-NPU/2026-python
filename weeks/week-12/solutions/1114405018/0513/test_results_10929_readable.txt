@@ -1,0 +1,35 @@
+﻿python : test_sample_run (__main__.TestMainProgram.test_sample_run)
+位於 線路:1 字元:102
++ ... 1114405018\0513" ; python test_10929.py > test_results_10929.txt 2>&1
++                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_sample_run...est_sample_run) 
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+設計一組輸入來驗證輸出格式。 ... ok
+test_121 (__main__.TestMultipleOf11.test_121)
+121 = 11 * 11。 ... ok
+test_alternating_sum_negative (__main__.TestMultipleOf11.test_alternating_sum_n
+egative)
+測試交替和為負數的情況：5 不是 11 的倍數。 ... ok
+test_alternating_sum_zero (__main__.TestMultipleOf11.test_alternating_sum_zero)
+1001 = 11 * 91，交替和 = (1+0) - (0+1) = 0。 ... ok
+test_large_multiple (__main__.TestMultipleOf11.test_large_multiple)
+測試較大的 11 的倍數：9999 = 11 * 909。 ... ok
+test_not_multiple_10 (__main__.TestMultipleOf11.test_not_multiple_10)
+10 不是 11 的倍數。 ... ok
+test_not_multiple_12 (__main__.TestMultipleOf11.test_not_multiple_12)
+12 不是 11 的倍數。 ... ok
+test_simple_multiple (__main__.TestMultipleOf11.test_simple_multiple)
+簡單的 11 的倍數。 ... ok
+test_simple_multiple_22 (__main__.TestMultipleOf11.test_simple_multiple_22)
+22 也是 11 的倍數。 ... ok
+test_single_digit_zero (__main__.TestMultipleOf11.test_single_digit_zero)
+0 是 11 的倍數（0 % 11 == 0）。 ... ok
+test_very_large_string (__main__.TestMultipleOf11.test_very_large_string)
+測試超長字串：999999999999 應該是 11 的倍數。 ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.110s
+
+OK

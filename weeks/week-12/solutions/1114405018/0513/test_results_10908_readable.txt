@@ -1,0 +1,32 @@
+﻿python : test_all_same_square (__main__.TestLargestSquare.test_all_same_square)
+位於 線路:1 字元:102
++ ... 1114405018\0513" ; python test_10908.py > test_results_10908.txt 2>&1
++                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_all_same_s...ll_same_square) 
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+整個區域字元都相同時，應能擴到整個可行範圍。 ... ok
+test_blocked_by_different_char (__main__.TestLargestSquare.test_blocked_by_diff
+erent_char)
+外框只要出現不同字元，就必須停止。 ... ok
+test_near_boundary (__main__.TestLargestSquare.test_near_boundary)
+中心點靠近邊界時，不能超出網格。 ... ok
+test_sample_center_1 (__main__.TestLargestSquare.test_sample_center_1)
+測試範例中第一個查詢點。 ... ok
+test_sample_center_2 (__main__.TestLargestSquare.test_sample_center_2)
+測試範例中第二個查詢點。 ... ok
+test_sample_center_3 (__main__.TestLargestSquare.test_sample_center_3)
+測試範例中第三個查詢點。 ... ok
+test_sample_center_4 (__main__.TestLargestSquare.test_sample_center_4)
+測試範例中第四個查詢點。 ... ok
+test_single_cell_grid (__main__.TestLargestSquare.test_single_cell_grid)
+最小網格只能得到邊長 1。 ... ok
+test_sample_program_output (__main__.TestMainProgram.test_sample_program_output
+)
+題目範例的整體輸出應完全一致。 ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.127s
+
+OK

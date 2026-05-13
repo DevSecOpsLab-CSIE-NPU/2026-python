@@ -1,0 +1,31 @@
+﻿python : test_all_same_3x3 (__main__.TestLargestSquareEasy.test_all_same_3x3)
+位於 線路:1 字元:102
++ ... 018\0513" ; python test_10908-easy.py > test_results_10908-easy.txt 2 ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_all_same_3...t_all_same_3x3) 
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+整個 3x3 都相同時，答案是 3。 ... ok
+test_example_1 (__main__.TestLargestSquareEasy.test_example_1)
+範例查詢點 1。 ... ok
+test_example_2 (__main__.TestLargestSquareEasy.test_example_2)
+範例查詢點 2。 ... ok
+test_example_3 (__main__.TestLargestSquareEasy.test_example_3)
+範例查詢點 3。 ... ok
+test_example_4 (__main__.TestLargestSquareEasy.test_example_4)
+範例查詢點 4。 ... ok
+test_single_cell (__main__.TestLargestSquareEasy.test_single_cell)
+只有一格時，答案一定是 1。 ... ok
+test_stop_at_boundary (__main__.TestLargestSquareEasy.test_stop_at_boundary)
+靠邊時不能超出範圍。 ... ok
+test_stop_at_different_char (__main__.TestLargestSquareEasy.test_stop_at_differ
+ent_char)
+遇到不同字元就停止。 ... ok
+test_sample_output (__main__.TestMainProgramEasy.test_sample_output)
+題目範例輸出要完全一致。 ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.122s
+
+OK

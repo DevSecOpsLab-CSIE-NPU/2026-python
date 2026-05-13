@@ -1,0 +1,24 @@
+﻿python : test_degree_three (__main__.TestEasyVersion.test_degree_three)
+位於 線路:1 字元:102
++ ... 018\0513" ; python test_10922-easy.py > test_results_10922-easy.txt 2 ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_degree_thr...t_degree_three) 
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+111 個 9 需要三次加總才會到 9。 ... ok
+test_degree_two (__main__.TestEasyVersion.test_degree_two)
+999999 -> 54 -> 9，所以深度是 2。 ... ok
+test_digit_sum (__main__.TestEasyVersion.test_digit_sum)
+基本加總測試。 ... ok
+test_main_output (__main__.TestEasyVersion.test_main_output)
+主程式輸出要與題目格式一致。 ... ok
+test_not_multiple_of_nine (__main__.TestEasyVersion.test_not_multiple_of_nine)
+不是 9 的倍數時要回傳 0。 ... ok
+test_single_nine (__main__.TestEasyVersion.test_single_nine)
+單一 9 的深度是 1。 ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.121s
+
+OK
