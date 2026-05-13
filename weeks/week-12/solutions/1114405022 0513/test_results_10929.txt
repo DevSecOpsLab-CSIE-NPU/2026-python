@@ -1,0 +1,9 @@
+﻿11 is a multiple of 11.
+22 is a multiple of 11.
+121 is a multiple of 11.
+123 is not a multiple of 11.
+1000000000000000 is not a multiple of 11.
+121121121 is a multiple of 11.
+99 is a multiple of 11.
+12345678901234567890 is not a multiple of 11.
+
