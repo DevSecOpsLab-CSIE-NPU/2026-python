@@ -1,0 +1,16 @@
+# Python 快取目錄
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Python 虛擬環境
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
