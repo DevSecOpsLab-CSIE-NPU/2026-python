@@ -1,0 +1,9 @@
+test_case1 (test_10812.Test10812.test_case1) ... ok
+test_case2 (test_10812.Test10812.test_case2) ... ok
+test_case3 (test_10812.Test10812.test_case3) ... ok
+test_case4 (test_10812.Test10812.test_case4) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.085s
+
+OK

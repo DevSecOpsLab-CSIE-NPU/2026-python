@@ -1,0 +1,8 @@
+test_case1 (test_10908.Test10908.test_case1) ... ok
+test_case2 (test_10908.Test10908.test_case2) ... ok
+test_case3 (test_10908.Test10908.test_case3) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.065s
+
+OK
