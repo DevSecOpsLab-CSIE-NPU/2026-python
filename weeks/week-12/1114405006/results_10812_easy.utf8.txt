@@ -1,0 +1,10 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.12.10, pytest-9.0.3, pluggy-1.6.0 -- C:\Users\Chiao\AppData\Local\Programs\Python\Python312\python.exe
+cachedir: .pytest_cache
+rootdir: D:\1114405006-0513\2026-python\weeks\week-12\1114405006
+collecting ... collected 1 item
+
+test_10812_easy.py::test_solution_easy_matches PASSED                    [100%]
+
+- generated xml file: D:\1114405006-0513\2026-python\weeks\week-12\1114405006\results_10812_easy.xml -
+============================== 1 passed in 0.09s ==============================

@@ -1,0 +1,34 @@
+def digit_sum(test:str) -> int:
+    return sum(int(ch) for ch in test)
+def nine_degree(num_str:str):
+    num_str = num_str.lstrip('0') or '0'
+    if num_str == '9':
+        return 1
+    total = digit_sum(num_str)
+    if total % 9 != 0:
+        return None
+    degree = 1
+    while True:
+        if total == 9:
+            return degree + 1
+        if total < 10:
+            return None
+        total = digit_sum(str(total))
+        degree += 1
+    def parse_and_run():
+        import sys
+        out = []
+        for line in sys.stdin:
+            n = line.strip()
+            if not n:
+                continue
+            if n == '0':
+                break
+            degree = nine_degree(n)
+            if degree is None:
+                out.append(f"{n} is not a multiple of 9.")
+            else:
+                out.append(f"9-degree of {n} is {degree}.")
+        print("\n".join(out))
+    if __name__ == '__main__':
+        parse_and_run()

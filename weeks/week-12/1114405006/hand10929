@@ -1,0 +1,30 @@
+def is_multiple_of_11_easy(num_str: str) -> bool:
+    
+    num_str = num_str.lstrip('0') or '0'
+
+    total = 0
+    for index, ch in enumerate(num_str, start=1):
+        digit = ord(ch) - 48
+        if index % 2 == 1:
+            total += digit
+        else:
+            total -= digit
+
+    return total % 11 == 0
+    def parse_and_run() -> None:
+        import sys
+        out_lines = []
+        for line in sys.stdin:
+            n = line.strip()
+            if not n:
+                continue
+            if n == '0':
+                break
+
+            if is_multiple_of_11_easy(n):
+                out_lines.append(f"{n} is a multiple of 11.")
+            else:
+                out_lines.append(f"{n} is not a multiple of 11.")
+        sys.stdout.write("\n".join(out_lines))
+        if __name__ == '__main__':
+            parse_and_run()

@@ -1,0 +1,21 @@
+def parity_easy(num: int) -> tuple[str, int]:
+    binary_str = bin(num)[2:]
+    ones = binary_str.count('1')
+    return binary_str, ones
+    def parse_and_run() -> None:
+        import sys
+        out_lines = []
+        for line in sys.stdin:
+            text = line.strip()
+            if not text:
+                continue
+            num = int(text)
+            if num == 0:
+                break
+
+            binary_str, ones = parity_easy(num)
+            out_lines.append(f"The parity of {binary_str} is {ones} (mod 2).")
+
+        sys.stdout.write("\n".join(out_lines))
+    if __name__ == '__main__':
+        parse_and_run()

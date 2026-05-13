@@ -1,0 +1,42 @@
+def largest_square(grid,r,c):
+    if not grid:
+        return 0
+    M = len(grid)
+    N = len(grid[0])
+    ch = grid[r][c]
+    max_k = min(r, c, M-1-r, N-1-c)
+    k = 0
+    while k < max_k:
+        nk = k + 1
+        ok = True
+        for j in range(c-nk, c+nk+1):
+            if grid[r-nk][j] != ch or grid[r+nk][j] != ch:
+                ok = False
+                break
+        if not ok:
+            break
+        for i in range(r-nk+1, r+nk):
+            if grid[i][c-nk] != ch or grid[i][c+nk] != ch:
+                ok = False
+                break
+        if not ok:
+            break
+        k = nk
+    return 2*k + 1
+
+    if __name__ == '__main__':
+        import sys
+        data = sys.stdin.read().strip().split()
+        if not data:
+            sys.exit(0)
+        it = iter(data)
+        T = int(next(it))
+        out = []
+        for _ in range(T):
+            M = int(next(it)); N = int(next(it)); Q = int(next(it))
+            grid = [list(next(it).rstrip()) for _ in range(M)]
+            out.append(f"{M} {N} {Q}")
+            for _ in range(Q):
+                r = int(next(it)); c = int(next(it))
+                out.append(str(largest_square(grid, r, c)))
+        print('\n'.join(out))

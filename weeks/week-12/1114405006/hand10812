@@ -1,0 +1,26 @@
+def compute_scores(S:int,D: int):
+    if S<D or (s+d) & 1:
+        raise ValueError("impossible")
+    hi = (S+D) // 2
+    lo = S - hi     
+    if lo < 0:
+        raise ValueError("impossible")
+    return hi, lo
+
+if __name__ == "__main__":
+    import sys
+
+    data = sys.stdin.read().strip().split()
+    if not data:
+        sys.exit(0)
+    it = iter(data)
+    t = int(next(it))
+    out = []
+    for _ in range(t):
+        S = int(next(it)); D = int(next(it))
+        try:
+            h, l = compute_scores(S, D)
+            out.append(f"{h} {l}")
+        except ValueError:
+            out.append("impossible")
+    print("\n".join(out))
