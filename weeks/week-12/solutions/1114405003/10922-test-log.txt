@@ -1,0 +1,35 @@
+# 10922 測試紀錄
+
+執行環境：Windows PowerShell + d:/111/.venv/Scripts/python.exe
+測試資料：
+```text
+9
+18
+20
+999
+0
+```
+
+## 10922.py
+```text
+9-degree of 9 is 1.
+9-degree of 18 is 1.
+20 is not a multiple of 9.
+9-degree of 999 is 2.
+```
+
+## 10922-easy.py
+```text
+9-degree of 9 is 1.
+9-degree of 18 is 1.
+20 is not a multiple of 9.
+9-degree of 999 is 2.
+```
+
+## 10922-hand.py
+```text
+9-degree of 9 is 1.
+9-degree of 18 is 1.
+20 is not a multiple of 9.
+9-degree of 999 is 2.
+```

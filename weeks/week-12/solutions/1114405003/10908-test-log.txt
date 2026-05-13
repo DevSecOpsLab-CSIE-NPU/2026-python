@@ -1,0 +1,46 @@
+# 10908 測試紀錄
+
+執行環境：Windows PowerShell + d:/111/.venv/Scripts/python.exe
+測試資料：
+```text
+1
+7 10 4
+abbbaaaaaa
+abbbaaaaaa
+abbbaaaaaa
+aaaaaaaaaa
+aaaaaaaaaa
+aaccaaaaaa
+aaccaaaaaa
+1 2
+2 4
+4 6
+5 2
+```
+
+## 10908.py
+```text
+7 10 4
+3
+1
+5
+1
+```
+
+## 10908-easy.py
+```text
+7 10 4
+3
+1
+5
+1
+```
+
+## 10908-hand.py
+```text
+7 10 4
+3
+1
+5
+1
+```

@@ -1,0 +1,27 @@
+# 10812 測試紀錄
+
+執行環境：Windows PowerShell + d:/111/.venv/Scripts/python.exe
+測試資料：
+```text
+2
+40 20
+20 40
+```
+
+## 10812.py
+```text
+30 10
+impossible
+```
+
+## 10812-easy.py
+```text
+30 10
+impossible
+```
+
+## 10812-hand.py
+```text
+30 10
+impossible
+```

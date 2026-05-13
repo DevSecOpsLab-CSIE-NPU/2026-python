@@ -1,0 +1,35 @@
+# 10931 測試紀錄
+
+執行環境：Windows PowerShell + d:/111/.venv/Scripts/python.exe
+測試資料：
+```text
+1
+2
+10
+21
+0
+```
+
+## 10931.py
+```text
+The parity of 1 is 1 (mod 2).
+The parity of 10 is 1 (mod 2).
+The parity of 1010 is 2 (mod 2).
+The parity of 10101 is 3 (mod 2).
+```
+
+## 10931-easy.py
+```text
+The parity of 1 is 1 (mod 2).
+The parity of 10 is 1 (mod 2).
+The parity of 1010 is 2 (mod 2).
+The parity of 10101 is 3 (mod 2).
+```
+
+## 10931-hand.py
+```text
+The parity of 1 is 1 (mod 2).
+The parity of 10 is 1 (mod 2).
+The parity of 1010 is 2 (mod 2).
+The parity of 10101 is 3 (mod 2).
+```

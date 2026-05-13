@@ -1,0 +1,31 @@
+# 10929 測試紀錄
+
+執行環境：Windows PowerShell + d:/111/.venv/Scripts/python.exe
+測試資料：
+```text
+11
+121
+123456789
+0
+```
+
+## 10929.py
+```text
+11 is a multiple of 11.
+121 is a multiple of 11.
+123456789 is not a multiple of 11.
+```
+
+## 10929-easy.py
+```text
+11 is a multiple of 11.
+121 is a multiple of 11.
+123456789 is not a multiple of 11.
+```
+
+## 10929-hand.py
+```text
+11 is a multiple of 11.
+121 is a multiple of 11.
+123456789 is not a multiple of 11.
+```
