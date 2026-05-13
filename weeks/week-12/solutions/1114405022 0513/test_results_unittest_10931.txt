@@ -1,0 +1,79 @@
+﻿python : test_binary_conversion_1 (__main__.TestParityCalculation.test_binary_c
+onversion_1)
+位於 線路:1 字元:82
++ ... lutions\1114405022 0513" ; python test_QUESTION-10931.py 2>&1 | Out-S ...
++                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_binary_con...y_conversion_1) 
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+測試：1 的二進位是 1 ... ok
+test_binary_conversion_10 (__main__.TestParityCalculation.test_binary_conversio
+n_10)
+測試：10 的二進位是 1010 ... ok
+test_binary_conversion_1024 (__main__.TestParityCalculation.test_binary_convers
+ion_1024)
+測試：1024 的二進位是 10000000000（1 個 1） ... ok
+test_binary_conversion_15 (__main__.TestParityCalculation.test_binary_conversio
+n_15)
+測試：15 的二進位是 1111（全 1） ... ok
+test_binary_conversion_2 (__main__.TestParityCalculation.test_binary_conversion
+_2)
+測試：2 的二進位是 10 ... ok
+test_binary_conversion_21 (__main__.TestParityCalculation.test_binary_conversio
+n_21)
+測試：21 的二進位是 10101 ... ok
+test_binary_conversion_255 (__main__.TestParityCalculation.test_binary_conversi
+on_255)
+測試：255 的二進位是 11111111（8 個 1） ... ok
+test_binary_conversion_256 (__main__.TestParityCalculation.test_binary_conversi
+on_256)
+測試：256 的二進位是 100000000（1 個 1） ... ok
+test_binary_conversion_3 (__main__.TestParityCalculation.test_binary_conversion
+_3)
+測試：3 的二進位是 11 ... ok
+test_binary_conversion_4 (__main__.TestParityCalculation.test_binary_conversion
+_4)
+測試：4 的二進位是 100 ... ok
+test_binary_conversion_5 (__main__.TestParityCalculation.test_binary_conversion
+_5)
+測試：5 的二進位是 101 ... ok
+test_binary_conversion_7 (__main__.TestParityCalculation.test_binary_conversion
+_7)
+測試：7 的二進位是 111（全 1） ... ok
+test_binary_conversion_large_number (__main__.TestParityCalculation.test_binary
+_conversion_large_number)
+測試：大數字 1000000 的二進位 ... ok
+test_binary_conversion_max_value (__main__.TestParityCalculation.test_binary_co
+nversion_max_value)
+測試：最大值 2147483647 的二進位 ... ok
+test_boundary_maximum (__main__.TestParityCalculation.test_boundary_maximum)
+測試：最大值 2147483647 ... ok
+test_boundary_minimum (__main__.TestParityCalculation.test_boundary_minimum)
+測試：最小值 1 ... ok
+test_output_format_1 (__main__.TestParityCalculation.test_output_format_1)
+測試：輸出格式 - 1 ... ok
+test_output_format_10 (__main__.TestParityCalculation.test_output_format_10)
+測試：輸出格式 - 10 ... ok
+test_output_format_2 (__main__.TestParityCalculation.test_output_format_2)
+測試：輸出格式 - 2 ... ok
+test_output_format_21 (__main__.TestParityCalculation.test_output_format_21)
+測試：輸出格式 - 21 ... ok
+test_output_format_255 (__main__.TestParityCalculation.test_output_format_255)
+測試：輸出格式 - 255（全 1） ... ok
+test_power_of_two_1 (__main__.TestParityCalculation.test_power_of_two_1)
+測試：2 的 1 次方 = 2 ... ok
+test_power_of_two_10 (__main__.TestParityCalculation.test_power_of_two_10)
+測試：2 的 10 次方 = 1024 ... ok
+test_power_of_two_minus_1_16 (__main__.TestParityCalculation.test_power_of_two_
+minus_1_16)
+測試：2 的 16 次方 - 1 = 65535 ... ok
+test_power_of_two_minus_1_3 (__main__.TestParityCalculation.test_power_of_two_m
+inus_1_3)
+測試：2 的 3 次方 - 1 = 7 ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 0.002s
+
+OK
+

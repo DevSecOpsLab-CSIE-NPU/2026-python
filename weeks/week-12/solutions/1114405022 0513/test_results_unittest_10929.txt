@@ -1,0 +1,63 @@
+﻿python : test_diff_negative_not_multiple (__main__.TestMultipleOf11.test_diff_n
+egative_not_multiple)
+位於 線路:1 字元:82
++ ... lutions\1114405022 0513" ; python test_QUESTION-10929.py 2>&1 | Out-S ...
++                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_diff_negat...e_not_multiple) 
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+測試：差為負數不是 11 的倍數 ... ok
+test_double_zero (__main__.TestMultipleOf11.test_double_zero)
+測試：00 等於 0，是 11 的倍數 ... ok
+test_five_digit_12321 (__main__.TestMultipleOf11.test_five_digit_12321)
+測試：12321 是 11 的倍數 ... ok
+test_four_digit_1000 (__main__.TestMultipleOf11.test_four_digit_1000)
+測試：1000 不是 11 的倍數 ... ok
+test_four_digit_1111 (__main__.TestMultipleOf11.test_four_digit_1111)
+測試：1111 是 11 的倍數 ... ok
+test_four_digit_1210 (__main__.TestMultipleOf11.test_four_digit_1210)
+測試：1210 是 11 的倍數 ... ok
+test_large_multiple (__main__.TestMultipleOf11.test_large_multiple)
+測試：大數字 121121121 是 11 的倍數 ... ok
+test_negative_diff_1 (__main__.TestMultipleOf11.test_negative_diff_1)
+測試：差為負數的倍數關係 ... ok
+test_negative_diff_multiple (__main__.TestMultipleOf11.test_negative_diff_multi
+ple)
+測試：差為負數但是 11 的倍數 ... ok
+test_single_digit_1 (__main__.TestMultipleOf11.test_single_digit_1)
+測試：1 不是 11 的倍數 ... ok
+test_single_digit_11 (__main__.TestMultipleOf11.test_single_digit_11)
+測試：11 本身 ... ok
+test_single_digit_5 (__main__.TestMultipleOf11.test_single_digit_5)
+測試：5 不是 11 的倍數 ... ok
+test_three_digit_100 (__main__.TestMultipleOf11.test_three_digit_100)
+測試：100 不是 11 的倍數 ... ok
+test_three_digit_121 (__main__.TestMultipleOf11.test_three_digit_121)
+測試：121 是 11 的倍數 ... ok
+test_three_digit_123 (__main__.TestMultipleOf11.test_three_digit_123)
+測試：123 不是 11 的倍數 ... ok
+test_three_digit_132 (__main__.TestMultipleOf11.test_three_digit_132)
+測試：132 是 11 的倍數 ... ok
+test_two_digit_10 (__main__.TestMultipleOf11.test_two_digit_10)
+測試：10 不是 11 的倍數 ... ok
+test_two_digit_22 (__main__.TestMultipleOf11.test_two_digit_22)
+測試：22 是 11 的倍數 (2+2=4, 差=4-0=4... 不對) ... ok
+test_two_digit_23 (__main__.TestMultipleOf11.test_two_digit_23)
+測試：23 不是 11 的倍數 ... ok
+test_two_digit_99 (__main__.TestMultipleOf11.test_two_digit_99)
+測試：99 是 11 的倍數 ... ok
+test_very_large_number_1000_digits (__main__.TestMultipleOf11.test_very_large_n
+umber_1000_digits)
+測試：1000 位的大數字 ... ok
+test_very_large_number_not_multiple (__main__.TestMultipleOf11.test_very_large_
+number_not_multiple)
+測試：1000 位的大數字（非 11 倍數） ... ok
+test_zero (__main__.TestMultipleOf11.test_zero)
+測試：0 是 11 的倍數（0 ÷ 11 = 0） ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 0.001s
+
+OK
+
