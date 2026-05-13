@@ -1,0 +1,4 @@
+9-degree of 9 is 1.
+9-degree of 999 is 2.
+9-degree of 18 is 1.
+123456 is not a multiple of 9.
