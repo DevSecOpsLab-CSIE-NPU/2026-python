@@ -1,0 +1,25 @@
+Week 12 測試紀錄
+
+Red
+Command:
+Set-Location 'e:\MyCodes\Python_Code\2026-python\weeks\week-12\solutions\1111405012'; $files = @('test-question-10812.py','test-question-10908.py','test-question-10922.py','test-question-10929.py','test-question-10931.py'); foreach ($file in $files) { Write-Host "--- $file ---"; python $file }
+
+Summary:
+- 總測試數：15
+- 通過數：14
+- 失敗數：1
+
+Change:
+- `test-question-10929.py` 的 large-number 測試案例選錯，改成明確可驗證的 `"11" * 500` 之後再重跑。
+
+Green
+Command:
+Set-Location 'e:\MyCodes\Python_Code\2026-python\weeks\week-12\solutions\1111405012'; $files = @('test-question-10812.py','test-question-10908.py','test-question-10922.py','test-question-10929.py','test-question-10931.py'); foreach ($file in $files) { Write-Host "--- $file ---"; python $file }
+
+Summary:
+- 總測試數：15
+- 通過數：15
+- 失敗數：0
+
+Change:
+- 修正 `test-question-10929.py` 的邊界案例後，全數測試通過。
