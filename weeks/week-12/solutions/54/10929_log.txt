@@ -1,0 +1,4 @@
+1 is not a multiple of 11.
+11 is a multiple of 11.
+121 is a multiple of 11.
+123456789 is not a multiple of 11.
