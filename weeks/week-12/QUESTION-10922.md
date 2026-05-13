@@ -39,12 +39,73 @@
 
 ## 解題思路
 
-*請填入你的解題思路*
+### 核心概念
+判斷一個數是否為 9 的倍數，可以用「數字根」的方法：
+1. 將所有數字相加
+2. 如果結果是多位數，重複步驟 1
+3. 當結果是一位數時：
+   - 若為 9，則原數是 9 的倍數
+   - 否則不是 9 的倍數
+
+「9 的深度」就是執行上述過程的次數。
+
+### 解題步驟
+**1. 先檢查整除性**
+- 直接用 `N % 9 == 0` 判斷是否為 9 的倍數
+
+**2. 計算 9 的深度**
+- 不斷計算各位數字之和
+- 直到結果為一位數
+- 計數執行的次數
+
+**3. 輸出結果**
+- 若不是 9 的倍數：輸出「X is not a multiple of 9.」
+- 若是 9 的倍數：輸出「9-degree of X is Y.」
+
+### 時間複雜度
+O(log N × log log N) - 數字和會快速遞減
 
 ## 解題代碼
 
 ```python
-# 你的代碼這裡
+def calculate_degree(num_str):
+	"""計算數字 9 的深度"""
+	# 深度計數器
+	degree = 0
+    
+	# 持續計算數字和，直到結果為一位數
+	while len(num_str) > 1:
+		# 計算所有數字的總和
+		digit_sum = sum(int(digit) for digit in num_str)
+		# 將和轉換為字符串，便於計算下一輪
+		num_str = str(digit_sum)
+		# 增加深度計數
+		degree += 1
+    
+	# 返回深度（最後一位數字應該是 9）
+	return degree
+
+
+# 讀取輸入
+while True:
+	# 讀取一行輸入
+	num_str = input().strip()
+    
+	# 當輸入為 '0' 時停止
+	if num_str == '0':
+		break
+    
+	# 轉換為整數檢查是否為 9 的倍數
+	num = int(num_str)
+    
+	# 步驟 1：檢查是否為 9 的倍數
+	if num % 9 != 0:
+		# 不是 9 的倍數
+		print(f"{num_str} is not a multiple of 9.")
+	else:
+		# 是 9 的倍數，計算深度
+		degree = calculate_degree(num_str)
+		print(f"9-degree of {num_str} is {degree}.")
 ```
 
 ## 測試用例
