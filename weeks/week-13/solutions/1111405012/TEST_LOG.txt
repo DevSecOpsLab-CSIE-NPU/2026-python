@@ -57,3 +57,110 @@ python -m compileall "weeks/week-13/solutions/1111405012"
 
 Summary:
 - All original / `-su` / `-easy` scripts compiled successfully
+
+============================================================
+[RED] Class / Property / Inheritance failing run
+============================================================
+Command:
+python -m unittest discover -s "weeks/week-13/solutions/1111405012/tests" -p "test_*.py" -v
+
+Summary:
+- Ran 34 tests
+- Passed: 32
+- Failures: 2
+- Errors: 0
+
+Key failures:
+- `R02-property.py`：`Circle(-1)` 沒有在初始化時拋出 `ValueError`
+- `R03-inheritance.py`：`make_sounds()` 只有列印沒有回傳，測試拿到 `None`
+
+Excerpt:
+FAILED (failures=2)
+
+What changed after this run:
+- 把 `Circle.__init__` 改成走 `self.radius = radius`
+- 把 `make_sounds()` 改成回傳字串列表，並把示範輸出集中到 `main()`
+
+============================================================
+[GREEN] Class / Property / Inheritance passing run
+============================================================
+Command:
+python -m unittest discover -s "weeks/week-13/solutions/1111405012/tests" -p "test_*.py" -v
+
+Summary:
+- Ran 34 tests
+- Passed: 34
+- Failures: 0
+- Errors: 0
+
+Excerpt:
+----------------------------------------------------------------------
+Ran 34 tests in 0.098s
+
+OK
+
+What changed before this run:
+- 完成 `R01-class-basic.py`、`R02-property.py`、`R03-inheritance.py` 的正式可測版本
+- 新增對應的 `-su` 與 `-easy` 教學版本
+
+============================================================
+[CHECK] Class-related syntax compile
+============================================================
+Command:
+python -m compileall "weeks/week-13/solutions/1111405012"
+
+Summary:
+- New `R01-class-basic*` / `R02-property*` / `R03-inheritance*` files compiled successfully
+
+============================================================
+[RED] Special Methods failing run
+============================================================
+Command:
+python -m unittest discover -s "weeks/week-13/solutions/1111405012/tests" -p "test_*.py" -v
+
+Summary:
+- Ran 38 tests
+- Passed: 37
+- Failures: 1
+- Errors: 0
+
+Key failures:
+- `R04-special-methods.py` 在匯入時直接輸出示範結果，違反「模組可安靜匯入」的測試要求
+
+Excerpt:
+FAILED (failures=1)
+
+What changed after this run:
+- 把 `Score` / `Classroom` 的示範建立與 `print()` 從頂層移入 `main()`
+- 保留原本特殊方法邏輯，只移除匯入副作用
+
+============================================================
+[GREEN] Special Methods passing run
+============================================================
+Command:
+python -m unittest discover -s "weeks/week-13/solutions/1111405012/tests" -p "test_*.py" -v
+
+Summary:
+- Ran 38 tests
+- Passed: 38
+- Failures: 0
+- Errors: 0
+
+Excerpt:
+----------------------------------------------------------------------
+Ran 38 tests in 0.084s
+
+OK
+
+What changed before this run:
+- 完成 `R04-special-methods.py` 的正式可測版本
+- 新增 `R04-special-methods-su.py` 與 `R04-special-methods-easy.py`
+
+============================================================
+[CHECK] Special Methods syntax compile
+============================================================
+Command:
+python -m compileall "weeks/week-13/solutions/1111405012"
+
+Summary:
+- `R04-special-methods.py`、`R04-special-methods-su.py`、`R04-special-methods-easy.py` compiled successfully

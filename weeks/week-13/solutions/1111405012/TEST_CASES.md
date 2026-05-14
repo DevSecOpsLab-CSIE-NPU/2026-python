@@ -55,3 +55,52 @@
 - 是否通過：`PASS`
 - 對應測試：`tests/test_u01_timeit_decorator.py::test_readers_parse_same_number_of_rows`
 - 關鍵修改點：把資料生成流程抽成 `build_sample_datasets()`，避免 benchmark 與測試各寫一套
+
+## Case 7：R01 Class 距離與類別變數
+
+- 輸入：`Point(0, 0)`、`Point(3, 4)`，以及兩個 `Student` 實例
+- 預期輸出：兩點距離為 `5.0`；把 `Student.school` 改成 `NPU` 後，兩個實例都看到新值
+- 實際輸出：距離為 `5.0`，兩個實例的 `school` 都更新為 `NPU`
+- 是否通過：`PASS`
+- 對應測試：
+  - `tests/test_r01_class_basic.py::test_point_repr_str_and_distance`
+  - `tests/test_r01_class_basic.py::test_updating_school_affects_all_instances`
+- 關鍵修改點：把頂層示範移入 `main()`，讓類別可直接被測試建立與驗證
+
+## Case 8：R02 Property 負半徑反例
+
+- 輸入：`Circle(-1)` 與 `circle.radius = -2`
+- 預期輸出：兩者都應拋出 `ValueError("半徑不能為負數")`
+- 實際輸出：初始化與 setter 都正確拋出 `ValueError`
+- 是否通過：`PASS`
+- 對應測試：`tests/test_r02_property.py::test_circle_rejects_negative_radius_in_init_and_setter`
+- 關鍵修改點：把 `Circle.__init__` 從直接指定 `_radius` 改成走 `self.radius = radius`
+
+## Case 9：R03 Inheritance 多型回傳結果
+
+- 輸入：`[Dog("小黑"), Cat("咪咪"), GuideDog("阿金", "王伯伯")]`
+- 預期輸出：`make_sounds()` 回傳三筆叫聲字串列表
+- 實際輸出：`["小黑 說：汪汪！", "咪咪 說：喵～", "阿金 說：汪汪！（導盲犬，主人：王伯伯）"]`
+- 是否通過：`PASS`
+- 對應測試：`tests/test_r03_inheritance.py::test_make_sounds_collects_polymorphic_results`
+- 關鍵修改點：把 `make_sounds()` 從純 `print()` 改成回傳列表，再由 `main()` 做輸出
+
+## Case 10：R04 Special Methods 匯入不可有副作用
+
+- 輸入：載入 `R04-special-methods.py`
+- 預期輸出：匯入時標準輸出應為空字串，類別定義可正常建立測試物件
+- 實際輸出：重構後匯入時無輸出，`Score` 與 `Classroom` 可直接使用
+- 是否通過：`PASS`
+- 對應測試：`tests/test_r04_special_methods.py::test_import_has_no_side_effect_output`
+- 關鍵修改點：把頂層示範碼全部移入 `main()`
+
+## Case 11：R04 Special Methods 比較與容器行為
+
+- 輸入：`Score("Alice", 90)`、`Score("Bob", 75)`、`Score("Carol", 90)`，以及加入 `Alice`、`Bob`、`Carol` 的 `Classroom("資工一甲")`
+- 預期輸出：`sorted(scores)` 依分數升冪排列；`len(classroom)` 為 `3`；`"Alice" in classroom` 為 `True`；可迭代出 `["Alice", "Bob", "Carol"]`
+- 實際輸出：與預期一致
+- 是否通過：`PASS`
+- 對應測試：
+  - `tests/test_r04_special_methods.py::test_score_supports_ordering_and_repr`
+  - `tests/test_r04_special_methods.py::test_classroom_supports_len_contains_iter_and_repr`
+- 關鍵修改點：保留 `Score` 的比較特殊方法與 `Classroom` 的容器特殊方法，並避免匯入時執行示範碼
