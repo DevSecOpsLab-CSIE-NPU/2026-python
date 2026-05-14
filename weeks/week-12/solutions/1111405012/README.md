@@ -1,4 +1,4 @@
-# Week 13 Solutions - 1111405012
+# Week 12 Solutions - 1111405012
 
 ## 完成項目
 
@@ -19,20 +19,20 @@
 
 - Python 版本：`Python 3.12.2`
 - 執行單支程式：
-  - `python weeks/week-13/solutions/1111405012/R01-csv-basic.py`
-  - `python weeks/week-13/solutions/1111405012/R01-class-basic.py`
-  - `python weeks/week-13/solutions/1111405012/R02-json-basic.py`
-  - `python weeks/week-13/solutions/1111405012/R02-property.py`
-  - `python weeks/week-13/solutions/1111405012/R03-xml-parse.py`
-  - `python weeks/week-13/solutions/1111405012/R03-inheritance.py`
-  - `python weeks/week-13/solutions/1111405012/R04-encoding-hex-base64.py`
-  - `python weeks/week-13/solutions/1111405012/R04-special-methods.py`
-  - `python weeks/week-13/solutions/1111405012/R05-stats-counter.py`
-  - `python weeks/week-13/solutions/1111405012/U01-timeit-decorator.py`
+  - `python weeks/week-12/solutions/1111405012/R01-csv-basic.py`
+  - `python weeks/week-12/solutions/1111405012/R01-class-basic.py`
+  - `python weeks/week-12/solutions/1111405012/R02-json-basic.py`
+  - `python weeks/week-12/solutions/1111405012/R02-property.py`
+  - `python weeks/week-12/solutions/1111405012/R03-xml-parse.py`
+  - `python weeks/week-12/solutions/1111405012/R03-inheritance.py`
+  - `python weeks/week-12/solutions/1111405012/R04-encoding-hex-base64.py`
+  - `python weeks/week-12/solutions/1111405012/R04-special-methods.py`
+  - `python weeks/week-12/solutions/1111405012/R05-stats-counter.py`
+  - `python weeks/week-12/solutions/1111405012/U01-timeit-decorator.py`
 - 執行測試：
-  - `python -m unittest discover -s "weeks/week-13/solutions/1111405012/tests" -p "test_*.py" -v`
+  - `python -m unittest discover -s "weeks/week-12/solutions/1111405012/tests" -p "test_*.py" -v`
 - 語法檢查：
-  - `python -m compileall "weeks/week-13/solutions/1111405012"`
+  - `python -m compileall "weeks/week-12/solutions/1111405012"`
 
 ## 資料結構與作法選擇
 
