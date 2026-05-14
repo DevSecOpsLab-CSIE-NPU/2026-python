@@ -13,15 +13,12 @@ import functools
 # ═══════════════════════════════════════════════════════════
 
 def read_csv_raw(data: str) -> list:
-    # CSV 先用 DictReader 轉成一筆一筆的 dict。
     return list(csv.DictReader(io.StringIO(data)))
 
 def read_json_raw(data: str) -> list:
-    # JSON 解析後會直接回傳 Python 物件。
     return json.loads(data)
 
 def read_xml_raw(data: str) -> list:
-    # XML 需要先抓出每個 row 節點，再把屬性整理成 dict。
     root = ET.fromstring(data)
     return [r.attrib for r in root.findall("row")]
 
@@ -42,7 +39,6 @@ def read_xml_raw(data: str) -> list:
 def timeit(func):
     """基礎版：在呼叫前後計時，印出耗時"""
     def wrapper(*args, **kwargs):
-        # 記錄開始時間，呼叫原函式，結束後再計算耗時。
         start = time.perf_counter()
         result = func(*args, **kwargs)
         elapsed = time.perf_counter() - start
@@ -56,7 +52,6 @@ def demo():
     pass
 
 wrapped = timeit(demo)
-# 沒有 wraps 時，wrapper 會取代原本的函式名稱。
 print("未加 wraps 前：", wrapped.__name__)   # wrapper（錯誤！）
 
 # ── Part 3｜functools.wraps：保留原函式的 metadata ──────────
@@ -64,7 +59,6 @@ print("未加 wraps 前：", wrapped.__name__)   # wrapper（錯誤！）
 def timeit(func):
     @functools.wraps(func)          # 保留 __name__ / __doc__ / __module__
     def wrapper(*args, **kwargs):
-        # 用 wraps 包裝後，函式對外看起來仍然像原本的 func。
         start = time.perf_counter()
         result = func(*args, **kwargs)
         elapsed = time.perf_counter() - start
@@ -84,7 +78,6 @@ print()
 N = 1000
 
 # CSV 格式
-# 先把測試資料組成三種格式，後面才能公平比較讀取速度。
 csv_buf = io.StringIO()
 writer = csv.DictWriter(csv_buf, fieldnames=["id", "name", "score"])
 writer.writeheader()
@@ -99,7 +92,6 @@ JSON_DATA = json.dumps([
 ])
 
 # XML 格式
-# XML 用 row 節點與屬性來模擬同樣的資料內容。
 xml_rows = "".join(
     f'<row id="{i}" name="Student{i:04d}" score="{60 + i % 40}"/>'
     for i in range(N)
@@ -111,7 +103,6 @@ XML_DATA = f"<data>{xml_rows}</data>"
 def timeit_silent(func):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
-        # 這個版本只回傳結果與耗時，不額外印出訊息。
         start = time.perf_counter()
         result = func(*args, **kwargs)
         return result, time.perf_counter() - start
@@ -127,14 +118,12 @@ RUNS = 5
 times = {"CSV": 0.0, "JSON": 0.0, "XML": 0.0}
 
 for _ in range(RUNS):
-    # 每種格式都跑多次，降低單次波動造成的誤差。
     _, t = _csv(CSV_DATA);   times["CSV"]  += t
     _, t = _json(JSON_DATA); times["JSON"] += t
     _, t = _xml(XML_DATA);   times["XML"]  += t
 
 print(f"=== 讀取 {N} 筆資料，重複 {RUNS} 次平均 ===\n")
 print(f"{'格式':<6} {'平均耗時':>12}  {'相對 JSON':>10}")
-# 以 JSON 的平均耗時當基準，方便比較各格式的相對速度。
 base = times["JSON"] / RUNS
 for fmt, total in times.items():
     avg = total / RUNS
