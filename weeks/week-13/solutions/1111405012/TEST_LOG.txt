@@ -1,0 +1,59 @@
+Week 13 - 1111405012 Test Log
+Date: 2026-05-14
+
+============================================================
+[RED] First meaningful failing run
+============================================================
+Command:
+python -m unittest discover -s "weeks/week-13/solutions/1111405012/tests" -p "test_*.py" -v
+
+Summary:
+- Ran 14 tests
+- Passed: 1
+- Errors: 15
+
+Key failures:
+- R01 缺少 `read_csv_rows()`、`read_csv_dict_rows()`、`write_csv_text()`、`write_dict_csv_text()`
+- R02 在匯入階段直接開啟 `/tmp/data.json`，Windows 環境發生 `FileNotFoundError`
+- R03 缺少 `parse_xml()` 等可重用函式
+- R04 缺少 Hex / Base64 編解碼函式
+- R05 缺少 Counter / defaultdict / average 封裝函式
+- U01 缺少 `build_sample_datasets()` 與 `benchmark_readers()`
+
+Excerpt:
+FAILED (errors=15)
+
+What changed after this run:
+- 把 6 支腳本從頂層示範碼改成可匯入函式，並將示範輸出移入 `main()`
+- 為 JSON 檔案 I/O 補上可注入路徑的函式，移除 `/tmp` 依賴
+
+============================================================
+[GREEN] Passing run after implementation
+============================================================
+Command:
+python -m unittest discover -s "weeks/week-13/solutions/1111405012/tests" -p "test_*.py" -v
+
+Summary:
+- Ran 21 tests
+- Passed: 21
+- Failures: 0
+- Errors: 0
+
+Excerpt:
+----------------------------------------------------------------------
+Ran 21 tests in 0.124s
+
+OK
+
+What changed before this run:
+- 完成 `R01` 到 `R05` 與 `U01` 的正式函式版本
+- 修正測試載入方式與 JSON 檔案路徑問題
+
+============================================================
+[CHECK] Syntax compile for all files
+============================================================
+Command:
+python -m compileall "weeks/week-13/solutions/1111405012"
+
+Summary:
+- All original / `-su` / `-easy` scripts compiled successfully
