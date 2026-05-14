@@ -64,3 +64,39 @@ print(r.area)       # 24
 print(r.perimeter)  # 20
 r.width = 8         # 修改後 area 自動更新
 print(r.area)       # 48
+
+# ── 另一個 class：Point 與其他 Point 物件一起使用 ───────────
+class Point:
+    def __init__(self, x, y):
+        self._x = x
+        self._y = y
+
+    @property
+    def x(self):
+        return self._x
+
+    @x.setter
+    def x(self, value):
+        self._x = value
+
+    @property
+    def y(self):
+        return self._y
+
+    @y.setter
+    def y(self, value):
+        self._y = value
+
+    @property
+    def coords(self):
+        return (self._x, self._y)
+
+    def distance_to(self, other):
+        return ((self.x - other.x) ** 2 + (self.y - other.y) ** 2) ** 0.5
+
+
+p = Point(3, 4)
+other = Point(0, 0)
+print(p.coords)          # (3, 4)
+print(other.coords)      # (0, 0)
+print(p.distance_to(other))

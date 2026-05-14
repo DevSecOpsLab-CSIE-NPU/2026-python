@@ -66,3 +66,19 @@ print("Dave" in cls)        # False
 
 for student in cls:         # __iter__ 讓 for 迴圈可用
     print(student)
+
+# ── 補充：Point 類別與另一個 Point 物件 ───────────────────
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __repr__(self):
+        return f"Point({self.x}, {self.y})"
+
+
+p = Point(3, 4)
+other = Point(0, 0)
+
+print(repr(p))
+print(repr(other))
