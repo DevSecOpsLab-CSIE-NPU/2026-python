@@ -1,0 +1,11 @@
+﻿python : .
+位於 線路:1 字元:1
++ python weeks/week-12/solutions/1114405035/test_10908.py 2>&1 | Out-Fi ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK
