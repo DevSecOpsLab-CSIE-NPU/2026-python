@@ -13,7 +13,7 @@ def get_degree(s):
 def solve():
     for line in sys.stdin:
         n = line.strip()
-        if n == '0': break
+        if n == '0' or not n: break
         
         degree = get_degree(n)
         if degree > 0:

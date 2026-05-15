@@ -14,7 +14,10 @@ def solve():
     
     idx = 0
     # 讀取測試資料組數 T
-    T = int(input_data[idx])
+    try:
+        T = int(input_data[idx])
+    except (IndexError, ValueError):
+        return
     idx += 1
     
     for _ in range(T):

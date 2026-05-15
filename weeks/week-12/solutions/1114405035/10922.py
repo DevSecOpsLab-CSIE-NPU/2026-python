@@ -15,6 +15,8 @@ def solve():
         if n_str == '0':
             break
         
+        if not n_str: continue
+        
         # 計算初步的位數和
         current_sum = sum(int(d) for d in n_str)
         

@@ -13,7 +13,10 @@ def solve():
         return
         
     for _ in range(T_cases):
-        m, n, q = int(next(it)), int(next(it)), int(next(it))
+        try:
+            m, n, q = int(next(it)), int(next(it)), int(next(it))
+        except StopIteration:
+            break
         grid = [next(it) for _ in range(m)]
         print(m, n, q)
         for _ in range(q):
