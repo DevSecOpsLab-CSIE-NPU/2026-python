@@ -39,14 +39,64 @@
 
 ## 解題思路
 
-*請填入你的解題思路*
+這道題目要求判斷一個大整數是否為 9 的倍數，並計算其「9 的深度」（9-degree）。
+
+1. **判斷 9 的倍數**：
+   - 一個數是 9 的倍數，若且唯若其各位數字之和也是 9 的倍數。
+   - 由於輸入的數字位數可能很多，我們必須以字串形式讀入。
+
+2. **遞迴計算 9 的深度**：
+   - 步聚 1：計算該數各位數字的總和 $S_1$。
+   - 步聚 2：如果 $S_1$ 是 9 的倍數，深度加 1。
+   - 步聚 3：如果 $S_1 > 9$，則對 $S_1$ 重複上述過程（計算其各位數字之和 $S_2$），直到結果為一位數。
+   - 如果最終一位數是 9，則原數是 9 的倍數；否則不是。
+
+3. **實作細節**：
+   - 使用 `sum(int(d) for d in n_str)` 來快速計算位數和。
+   - 使用迴圈或遞迴來處理深度的計算。
+   - 注意輸入為 "0" 時停止。
 
 ## 解題代碼
 
 ```python
-# 你的代碼這裡
+import sys
+
+def solve():
+    for line in sys.stdin:
+        n_str = line.strip()
+        if n_str == '0':
+            break
+        
+        # 計算初步位數和
+        current_sum = sum(int(d) for d in n_str)
+        
+        if current_sum % 9 != 0:
+            print(f"{n_str} is not a multiple of 9.")
+        else:
+            degree = 1
+            # 如果位數和仍大於 9，則繼續遞迴
+            temp_sum = current_sum
+            while temp_sum > 9:
+                temp_sum = sum(int(d) for d in str(temp_sum))
+                degree += 1
+            
+            print(f"{n_str} is a multiple of 9 and has 9-degree {degree}.")
+
+if __name__ == "__main__":
+    solve()
 ```
 
 ## 測試用例
 
-*測試輸入與預期輸出*
+```
+輸入:
+999
+9
+181
+0
+
+輸出:
+999 is a multiple of 9 and has 9-degree 2.
+9 is a multiple of 9 and has 9-degree 1.
+181 is not a multiple of 9.
+```

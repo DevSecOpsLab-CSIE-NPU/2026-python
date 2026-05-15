@@ -5,30 +5,21 @@ import importlib.util
 import os
 
 # 動態匯入數字開頭的模組
-module_name = "10908"
+module_name = "10922"
 file_path = os.path.join(os.path.dirname(__file__), f"{module_name}.py")
 spec = importlib.util.spec_from_file_location(module_name, file_path)
 module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(module)
 solve = module.solve
 
-class Test10908(unittest.TestCase):
+class Test10922(unittest.TestCase):
     def test_sample_case(self):
-        input_text = """1
-7 10 4
-abbbaaaaaa
-abbbaaaaaa
-abbbaaaaaa
-aaaaaaaaaa
-aaaaaaaaaa
-aaccaaaaaa
-aaccaaaaaa
-1 2
-2 4
-4 6
-5 2
+        input_text = """999
+9
+181
+0
 """
-        expected_output = "7 10 4\n3\n1\n5\n1\n"
+        expected_output = "999 is a multiple of 9 and has 9-degree 2.\n9 is a multiple of 9 and has 9-degree 1.\n181 is not a multiple of 9.\n"
         
         # 模擬標準輸入與輸出
         old_stdin = sys.stdin
