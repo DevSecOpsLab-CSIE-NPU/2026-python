@@ -1,0 +1,12 @@
+﻿python : ...
+位於 線路:1 字元:8
++ $out = python -m unittest "test_q11332-hand.py" 2>&1 | Out-String; $o ...
++        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (...:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+----------------------------------------------------------------------
+Ran 3 tests in 0.091s
+
+OK
+
