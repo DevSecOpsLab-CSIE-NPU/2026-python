@@ -19,7 +19,7 @@ def load_module(filename):
         已載入的模組物件
 
     Example:
-        >>> module = load_module('question-11005.py')
+        >>> module = load_module('QUESTION_11005.py')
         >>> result = module.solve()
     """
     filepath = Path(filename)

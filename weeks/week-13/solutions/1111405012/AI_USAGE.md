@@ -7,10 +7,10 @@
 ## 使用流程
 
 1. 先讀 `weeks/week-13/QUESTION-*.md` 理解題意與輸入輸出格式。
-2. 先請 AI 依題目建立 `unittest` 測試架構，再依測試內容補齊解法。
-3. 先做可讀性較高的 `question-XXXXX-easy.py`，再由學生手打 `question-XXXXX.py`。
+2. 先請 AI 依題目建立 `unittest` 測試架構，再依測試內容補齊解法 `QUESTION_XXXXX.py`。
+3. 先做可讀性較高的 `QUESTION_XXXXX-easy.py`，再由學生手打 `QUESTION_XXXXX-hand.py`。
 4. 將測試檔放到 `weeks/week-13/solutions/1111405012/tests/`，並用 `test_support.py` 從上層載入正式解法。
-5. 跑完整組測試後，將結果整理到 `TEST_LOG.txt` 與本檔。
+5. 跑完整組測試後，將結果整理到 `TEST_LOG.md` 與本檔。
 
 ## AI 協助的內容
 
@@ -48,16 +48,16 @@
 
 ## 我自行修正的部分
 
-- 把 AI 產生的多餘 `-su` 版本移除，改成符合本次提交要求的正式版 + easy 版。
+- 把 `-su` 版本移除，改成符合本次提交要求的正式版 + easy 版 + hand 版。
 - 把測試檔移到 `tests/`，避免與解法檔混在同一層。
-- 修正 `test_support.py` 與測試檔的相對路徑，讓 `pytest` 可正常執行。
+- 修正 `test_support.py` 與測試檔的相對路徑，讓 `unittest discover` 可正常執行。
 - 清理了 AI 初稿中不必要的示範碼與模板文字。
 
 ## 沒有採用的建議
 
 - 沒有照搬 AI 的簡化遮擋模型到 `11332`，因為那會讓程式與題意脫節。
-- 沒有保留 `-su` 檔案，因為這次交付規範只需要 AI 教學版與手打版。
+- `-su` 檔案，更改為手打版 `-hand`。
 
 ## 結論
 
-AI 用於輔助拆解題目與建立測試骨架，最後程式與測試結構由我依規範整理並修正，完成 15/15 測試通過。
+AI 用於輔助拆解題目與建立測試骨架，最後程式與測試結構由我依規範整理並修正，並依 `README.md` 的命名規則統一為 `QUESTION_*` / `test_question_*`。

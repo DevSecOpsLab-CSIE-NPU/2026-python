@@ -47,5 +47,5 @@
 ## 測試結論
 
 - 共 15 個測試，全數通過
-- 測試目的是驗證函式回傳型態、邊界條件與基本邏輯
+- 測試案例對應 `tests/test_question_11005.py`、`tests/test_question_11063.py`、`tests/test_question_11150.py`、`tests/test_question_11321.py`、`tests/test_question_11332.py`
 - 目前測試案例與 `tests/` 內的 `unittest` 檔案一致

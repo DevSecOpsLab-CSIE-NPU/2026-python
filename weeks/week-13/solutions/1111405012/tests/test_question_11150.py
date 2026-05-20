@@ -4,13 +4,14 @@
 使用 BFS 或動態規劃求解
 """
 
-from test_support import load_module
-import unittest
 import sys
+import unittest
 from pathlib import Path
 
 parent_dir = Path(__file__).parent.parent
 sys.path.insert(0, str(parent_dir))
+
+from test_support import load_module
 
 
 class TestQuestion11150(unittest.TestCase):
@@ -19,7 +20,7 @@ class TestQuestion11150(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         """載入解決方案模組"""
-        cls.module = load_module(str(parent_dir / 'question-11150.py'))
+        cls.module = load_module(str(parent_dir / 'QUESTION_11150.py'))
 
     def test_no_stones(self):
         """基本測試: 沒有石子"""

@@ -3,14 +3,14 @@
 將 RGB 像素轉換到 XYZ 色彩空間並計算平均亮度
 """
 
-from test_support import load_module
-import unittest
 import sys
+import unittest
 from pathlib import Path
-from io import StringIO
 
 parent_dir = Path(__file__).parent.parent
 sys.path.insert(0, str(parent_dir))
+
+from test_support import load_module
 
 
 class TestQuestion11063(unittest.TestCase):
@@ -19,7 +19,7 @@ class TestQuestion11063(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         """載入解決方案模組"""
-        cls.module = load_module(str(parent_dir / 'question-11063.py'))
+        cls.module = load_module(str(parent_dir / 'QUESTION_11063.py'))
 
     def test_single_pixel(self):
         """基本測試: 單一像素轉換"""

@@ -4,13 +4,14 @@
 需要檢查放置陷阱後是否仍有從左到右的通路
 """
 
-from test_support import load_module
-import unittest
 import sys
+import unittest
 from pathlib import Path
 
 parent_dir = Path(__file__).parent.parent
 sys.path.insert(0, str(parent_dir))
+
+from test_support import load_module
 
 
 class TestQuestion11321(unittest.TestCase):
@@ -19,7 +20,7 @@ class TestQuestion11321(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         """載入解決方案模組"""
-        cls.module = load_module(str(parent_dir / 'question-11321.py'))
+        cls.module = load_module(str(parent_dir / 'QUESTION_11321.py'))
 
     def test_small_grid_no_trap(self):
         """基本測試: 3x3 網格，無陷阱"""

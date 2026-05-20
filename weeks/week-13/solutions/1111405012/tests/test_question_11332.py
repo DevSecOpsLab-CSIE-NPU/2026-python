@@ -4,13 +4,14 @@
 需要使用計算幾何判斷射線是否被其他線段遮擋
 """
 
-from test_support import load_module
-import unittest
 import sys
+import unittest
 from pathlib import Path
 
 parent_dir = Path(__file__).parent.parent
 sys.path.insert(0, str(parent_dir))
+
+from test_support import load_module
 
 
 class TestQuestion11332(unittest.TestCase):
@@ -19,7 +20,7 @@ class TestQuestion11332(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         """載入解決方案模組"""
-        cls.module = load_module(str(parent_dir / 'question-11332.py'))
+        cls.module = load_module(str(parent_dir / 'QUESTION_11332.py'))
 
     def test_single_mirror(self):
         """基本測試: 單一鏡子"""
