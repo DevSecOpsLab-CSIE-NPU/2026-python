@@ -8,6 +8,7 @@ import unittest
 
 from question_11321 import c_style_mod, solve, sort_numbers
 from question_11321_easy import solve as solve_easy
+from question_11321_hand import solve as solve_hand
 
 
 class TestQuestion11321(unittest.TestCase):
@@ -26,7 +27,7 @@ class TestQuestion11321(unittest.TestCase):
         self.assertEqual(sort_numbers(numbers, 3), expected)
 
     def test_solve(self) -> None:
-        """正式版與 easy 版都要得到相同排序結果。"""
+        """正式版、easy 版與 hand 版都要得到相同排序結果。"""
         data = "\n".join(
             [
                 "15 3",
@@ -71,6 +72,7 @@ class TestQuestion11321(unittest.TestCase):
         )
         self.assertEqual(solve(data), expected)
         self.assertEqual(solve_easy(data), expected)
+        self.assertEqual(solve_hand(data), expected)
 
 
 if __name__ == "__main__":

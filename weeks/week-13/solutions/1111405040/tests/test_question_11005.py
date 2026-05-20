@@ -8,6 +8,7 @@ import unittest
 
 from question_11005 import cheapest_bases, cost_in_base, solve
 from question_11005_easy import solve as solve_easy
+from question_11005_hand import solve as solve_hand
 
 
 class TestQuestion11005(unittest.TestCase):
@@ -29,7 +30,7 @@ class TestQuestion11005(unittest.TestCase):
         self.assertEqual(cheapest_bases(5, costs), list(range(6, 37)))
 
     def test_solve(self) -> None:
-        """正式版與 easy 版都要輸出相同答案。"""
+        """正式版、easy 版與 hand 版都要輸出相同答案。"""
         data = "\n".join(
             [
                 "1",
@@ -51,6 +52,7 @@ class TestQuestion11005(unittest.TestCase):
         )
         self.assertEqual(solve(data), expected)
         self.assertEqual(solve_easy(data), expected)
+        self.assertEqual(solve_hand(data), expected)
 
 
 if __name__ == "__main__":

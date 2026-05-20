@@ -12,8 +12,10 @@
   - 本次提交的正式版程式。
 - `question_11005_easy.py`、`question_11063_easy.py`、`question_11150_easy.py`、`question_11321_easy.py`、`question_11332_easy.py`
   - 較容易記憶的簡單版程式。
+- `question_11005_hand.py`、`question_11063_hand.py`、`question_11150_hand.py`、`question_11321_hand.py`、`question_11332_hand.py`
+  - 照抄 easy 版邏輯、移除註解後的手打版程式。
 - `tests/test_question_*.py`
-  - 驗證正式版與簡單版是否都符合題意。
+  - 驗證正式版、簡單版與 hand 版是否都符合題意。
 - `TEST_CASES.md`
   - 整理每題的主要測試情境。
 - `TEST_LOG.md`
@@ -111,11 +113,14 @@ cd weeks/week-13/solutions/1111405040
 ### 方法 4：手動執行簡單版程式
 - 將上面的檔名改成對應的 `question_xxxxx_easy.py` 即可。
 
+### 方法 5：手動執行 hand 版程式
+- 將上面的檔名改成對應的 `question_xxxxx_hand.py` 即可。
+
 ## 依賴套件
 - 無
 - 使用 Python 3.10+ 內建模組即可
 
 ## 補充說明
-- 本次依照 README 要求，每題提供正式版與簡單版兩份程式。
+- 本次依照 README 要求，每題提供正式版、簡單版與 hand 版三份程式。
 - 共撰寫 5 份測試檔，15 個測試案例，全部通過。
 - `QUESTION-11063.md`、`QUESTION-11150.md`、`QUESTION-11321.md`、`QUESTION-11332.md` 的內容與實際 UVA 題號不一致，因此本次實作以 `week-13/README.md` 的題號清單與對應 UVA 正式題意為準。

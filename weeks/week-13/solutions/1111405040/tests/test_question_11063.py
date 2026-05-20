@@ -8,6 +8,7 @@ import unittest
 
 from question_11063 import is_b2_sequence, solve
 from question_11063_easy import solve as solve_easy
+from question_11063_hand import solve as solve_hand
 
 
 class TestQuestion11063(unittest.TestCase):
@@ -26,7 +27,7 @@ class TestQuestion11063(unittest.TestCase):
         self.assertFalse(is_b2_sequence([1, 2, 3]))
 
     def test_solve(self) -> None:
-        """正式版與 easy 版都要通過相同案例。"""
+        """正式版、easy 版與 hand 版都要通過相同案例。"""
         data = "\n".join(
             [
                 "4",
@@ -44,6 +45,7 @@ class TestQuestion11063(unittest.TestCase):
         )
         self.assertEqual(solve(data), expected)
         self.assertEqual(solve_easy(data), expected)
+        self.assertEqual(solve_hand(data), expected)
 
 
 if __name__ == "__main__":
