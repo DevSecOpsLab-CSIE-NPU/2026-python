@@ -9,7 +9,8 @@ import sys
 from pathlib import Path
 from io import StringIO
 
-sys.path.insert(0, str(Path(__file__).parent))
+parent_dir = Path(__file__).parent.parent
+sys.path.insert(0, str(parent_dir))
 
 
 class TestQuestion11063(unittest.TestCase):
@@ -18,7 +19,7 @@ class TestQuestion11063(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         """載入解決方案模組"""
-        cls.module = load_module('question-11063.py')
+        cls.module = load_module(str(parent_dir / 'question-11063.py'))
 
     def test_single_pixel(self):
         """基本測試: 單一像素轉換"""

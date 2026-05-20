@@ -9,7 +9,8 @@ import unittest
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent))
+parent_dir = Path(__file__).parent.parent
+sys.path.insert(0, str(parent_dir))
 
 
 class TestQuestion11321(unittest.TestCase):
@@ -18,7 +19,7 @@ class TestQuestion11321(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         """載入解決方案模組"""
-        cls.module = load_module('question-11321.py')
+        cls.module = load_module(str(parent_dir / 'question-11321.py'))
 
     def test_small_grid_no_trap(self):
         """基本測試: 3x3 網格，無陷阱"""

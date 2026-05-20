@@ -9,7 +9,8 @@ import unittest
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent))
+parent_dir = Path(__file__).parent.parent
+sys.path.insert(0, str(parent_dir))
 
 
 class TestQuestion11332(unittest.TestCase):
@@ -18,7 +19,7 @@ class TestQuestion11332(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         """載入解決方案模組"""
-        cls.module = load_module('question-11332.py')
+        cls.module = load_module(str(parent_dir / 'question-11332.py'))
 
     def test_single_mirror(self):
         """基本測試: 單一鏡子"""
@@ -34,7 +35,7 @@ class TestQuestion11332(unittest.TestCase):
 
     def test_close_to_origin(self):
         """反例測試: 靠近原點的線段"""
-        # 線段接近但不通過原點 (0.5, 0.5) 到 (1, 1)
+        # 線段接近但不通過原點
         result = self.module.is_visible(sx=0, sy=1, ex=1, ey=0)
         self.assertIn(result, [True, False])
 
