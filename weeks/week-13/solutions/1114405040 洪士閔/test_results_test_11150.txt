@@ -1,0 +1,8 @@
+test_no_stones (test_11150.Test11150.test_no_stones) ... ok
+test_sample_process (test_11150.Test11150.test_sample_process) ... ok
+test_single_stone_avoidable (test_11150.Test11150.test_single_stone_avoidable) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK

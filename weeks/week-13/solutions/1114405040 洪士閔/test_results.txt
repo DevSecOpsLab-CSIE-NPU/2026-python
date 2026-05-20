@@ -1,0 +1,8 @@
+test_all_costs_equal (test_cheapest_base.TestCheapestBase.test_all_costs_equal) ... ok
+test_preferred_base (test_cheapest_base.TestCheapestBase.test_preferred_base) ... ok
+test_zero_returns_all_bases (test_cheapest_base.TestCheapestBase.test_zero_returns_all_bases) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK

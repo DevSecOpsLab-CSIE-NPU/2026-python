@@ -1,0 +1,48 @@
+=== test_11063.py ===
+test_process_single_pixel_format (test_11063.Test11063.test_process_single_pixel_format) ... ok
+test_rgb_to_xyz_known (test_11063.Test11063.test_rgb_to_xyz_known) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK
+
+=== test_11150.py ===
+test_no_stones (test_11150.Test11150.test_no_stones) ... ok
+test_sample_process (test_11150.Test11150.test_sample_process) ... ok
+test_single_stone_avoidable (test_11150.Test11150.test_single_stone_avoidable) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK
+
+=== test_11321.py ===
+test_block_causes_fail (test_11321.Test11321.test_block_causes_fail) ... ok
+test_block_full (test_11321.Test11321.test_block_full) ... ok
+test_small_no_block (test_11321.Test11321.test_small_no_block) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK
+
+=== test_11332.py ===
+test_blocked_segment (test_11332.Test11332.test_blocked_segment) ... ok
+test_multiple (test_11332.Test11332.test_multiple) ... ok
+test_single_segment (test_11332.Test11332.test_single_segment) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK
+
+=== test_cheapest_base.py ===
+test_all_costs_equal (test_cheapest_base.TestCheapestBase.test_all_costs_equal) ... ok
+test_preferred_base (test_cheapest_base.TestCheapestBase.test_preferred_base) ... ok
+test_zero_returns_all_bases (test_cheapest_base.TestCheapestBase.test_zero_returns_all_bases) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK

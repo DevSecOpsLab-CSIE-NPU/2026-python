@@ -1,0 +1,8 @@
+test_block_causes_fail (test_11321.Test11321.test_block_causes_fail) ... ok
+test_block_full (test_11321.Test11321.test_block_full) ... ok
+test_small_no_block (test_11321.Test11321.test_small_no_block) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK

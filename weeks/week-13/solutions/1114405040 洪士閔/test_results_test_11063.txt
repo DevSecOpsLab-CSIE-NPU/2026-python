@@ -1,0 +1,7 @@
+test_process_single_pixel_format (test_11063.Test11063.test_process_single_pixel_format) ... ok
+test_rgb_to_xyz_known (test_11063.Test11063.test_rgb_to_xyz_known) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK

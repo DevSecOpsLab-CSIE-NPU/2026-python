@@ -1,0 +1,8 @@
+test_blocked_segment (test_11332.Test11332.test_blocked_segment) ... ok
+test_multiple (test_11332.Test11332.test_multiple) ... ok
+test_single_segment (test_11332.Test11332.test_single_segment) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK
