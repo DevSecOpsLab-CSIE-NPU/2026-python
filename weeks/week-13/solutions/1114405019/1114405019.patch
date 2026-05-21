@@ -1,0 +1,1639 @@
+diff --git a/weeks/week-13/solutions/1114405019/A01-partial.py b/weeks/week-13/solutions/1114405019/A01-partial.py
+new file mode 100644
+index 0000000..283960b
+--- /dev/null
++++ b/weeks/week-13/solutions/1114405019/A01-partial.py
+@@ -0,0 +1,144 @@
++"""
++A01-partial.py - functools.partial 的進階應用
++
++進階觀念：
++  functools.partial 可以「預先填入」函數的部分引數，產生一個新的可呼叫物件。
++  這種技巧稱為「偏函數 (Partial Function Application)」，能讓程式碼更具語義性。
++
++常見陷阱：
++  1. partial 不會複製函數的 __doc__，除非手動設定。
++  2. partial 保留參數綁定的「執行時機」語義，與 lambda 不同（見下方比較）。
++  3. 不能用 partial 覆蓋已由位置決定的關鍵字引數順序。
++
++標準寫法：
++  - 優先使用 partial 而非 lambda，因為 partial 有更清楚的 repr() 輸出，便於除錯。
++  - 當需要動態建立多個「變體函數」時，partial 比 lambda 更為直觀。
++"""
++
++from functools import partial
++import urllib.request
++import json
++
++
++# ─────────────────────────────────────────────
++# 基本示範：用 partial 固定函數引數
++# ─────────────────────────────────────────────
++
++def power(base, exponent):
++    """計算 base 的 exponent 次方。"""
++    return base ** exponent
++
++# 用 partial 固定 exponent=2，產生「平方函數」
++square = partial(power, exponent=2)
++
++# 用 partial 固定 exponent=3，產生「立方函數」
++cube = partial(power, exponent=3)
++
++print("=== 基本 partial 示範 ===")
++print(f"square(5) = {square(5)}")   # 25
++print(f"cube(3)   = {cube(3)}")     # 27
++
++# partial 物件有清楚的 repr，有助於除錯
++print(f"repr(square) = {square!r}")
++
++
++# ─────────────────────────────────────────────
++# 與 sorted() 結合：更具語義的排序 key
++# ─────────────────────────────────────────────
++
++def get_field(record: dict, field: str):
++    """從字典中取出指定欄位的值（可設定預設值）。"""
++    return record.get(field, "")
++
++# 情境：對網路裝置清單依不同欄位排序
++devices = [
++    {"hostname": "router-01", "ip": "192.168.1.1",  "port": 8080, "vendor": "Cisco"},
++    {"hostname": "switch-03", "ip": "10.0.0.3",     "port": 22,   "vendor": "Juniper"},
++    {"hostname": "ap-02",     "ip": "172.16.0.2",   "port": 443,  "vendor": "Cisco"},
++    {"hostname": "fw-01",     "ip": "10.0.0.1",     "port": 22,   "vendor": "Palo Alto"},
++]
++
++# 用 partial 固定 field，產生專用的排序 key 函數
++sort_by_hostname = partial(get_field, field="hostname")
++sort_by_port     = partial(get_field, field="port")
++sort_by_vendor   = partial(get_field, field="vendor")
++
++print("\n=== 依 hostname 排序 ===")
++for d in sorted(devices, key=sort_by_hostname):
++    print(f"  {d['hostname']:10s}  {d['ip']}")
++
++print("\n=== 依 port 排序 ===")
++for d in sorted(devices, key=sort_by_port):
++    print(f"  port={d['port']:4d}  {d['hostname']}")
++
++
++# ─────────────────────────────────────────────
++# 網路 / CPE 應用：固定 API base URL
++# ─────────────────────────────────────────────
++
++def build_api_request(base_url: str, endpoint: str, method: str = "GET") -> str:
++    """
++    模擬建立 API 請求的 URL 字串（實際應用中會呼叫 requests.get / requests.post）。
++    """
++    return f"[{method}] {base_url.rstrip('/')}/{endpoint.lstrip('/')}"
++
++# CPE 管理平台的 base URL（ACS / TR-069 場景）
++ACS_BASE_URL = "http://acs.example.com:7547/api/v1"
++
++# 用 partial 固定 base_url，產生針對此平台的請求函數
++acs_request = partial(build_api_request, base_url=ACS_BASE_URL)
++
++print("\n=== CPE ACS API 請求（固定 base_url）===")
++print(acs_request(endpoint="devices"))
++print(acs_request(endpoint="devices/00:11:22:33:44:55/reboot", method="POST"))
++print(acs_request(endpoint="firmware/latest"))
++
++# 也可以進一步固定 method，產生更具語義的函數
++acs_post = partial(acs_request, method="POST")
++print("\n=== 固定 method=POST 的 ACS 請求 ===")
++print(acs_post(endpoint="devices/00:11:22:33:44:55/factory-reset"))
++
++
++# ─────────────────────────────────────────────
++# 對照組：lambda vs partial 的比較
++# ─────────────────────────────────────────────
++
++print("\n=== lambda vs partial 比較 ===")
++
++# ── 用 lambda 達成相同效果 ──
++square_lambda = lambda base: power(base, 2)
++acs_request_lambda = lambda endpoint, method="GET": build_api_request(ACS_BASE_URL, endpoint, method)
++
++print(f"square_lambda(5)     = {square_lambda(5)}")
++print(f"acs_request_lambda('devices') = {acs_request_lambda('devices')}")
++
++"""
++比較摘要：
++
++┌─────────────────┬─────────────────────────────────┬─────────────────────────────────┐
++│ 面向             │ partial                          │ lambda                          │
++├─────────────────┼─────────────────────────────────┼─────────────────────────────────┤
++│ 可讀性           │ 語義更明確，repr 顯示原函數與綁定值  │ 較簡短但可能隱藏意圖               │
++│ repr 輸出        │ functools.partial(<func>, ...)   │ <function <lambda> at 0x...>    │
++│ 引數執行時機     │ 引數在 partial() 呼叫時就已綁定     │ 引數在 lambda 被呼叫時才求值       │
++│                 │（除了預設值的晚期綁定問題不存在）   │（注意閉包晚期綁定陷阱）             │
++│ pickle 支援      │ 可 pickle（模組層級函數）           │ 通常無法 pickle                  │
++│ 適用場景         │ 需要多次重用、需要除錯、需序列化     │ 簡單的一次性轉換、inline 使用      │
++└─────────────────┴─────────────────────────────────┴─────────────────────────────────┘
++
++關鍵差異 - 執行時機（晚期綁定）：
++  partial 在建立時就確定了綁定值，之後不受外部變數變動影響。
++  lambda 若捕獲外部變數（閉包），該變數的值在 lambda 被呼叫時才讀取，
++  可能產生「晚期綁定陷阱」（詳見 U01-closures-traps.py）。
++"""
++
++# 示範執行時機差異
++multiplier = 3
++partial_times3 = partial(power, exponent=multiplier)  # exponent=3 已在此時綁定
++lambda_times3  = lambda base: power(base, multiplier)  # multiplier 在呼叫時才查詢
++
++multiplier = 10  # 修改外部變數
++
++print(f"\n修改 multiplier 後：")
++print(f"  partial_times3(2) = {partial_times3(2)} (仍使用原始綁定值 3)")
++print(f"  lambda_times3(2)  = {lambda_times3(2)} (使用最新值 10，晚期綁定！)")
+diff --git a/weeks/week-13/solutions/1114405019/A02-context-manager.py b/weeks/week-13/solutions/1114405019/A02-context-manager.py
+new file mode 100644
+index 0000000..f23d95e
+--- /dev/null
++++ b/weeks/week-13/solutions/1114405019/A02-context-manager.py
+@@ -0,0 +1,306 @@
++"""
++A02-context-manager.py - Context Manager 與資源管理
++
++進階觀念：
++  Context Manager 實作了「確保資源正確釋放」的樣板（setup/teardown pattern）。
++  無論程式碼區塊中是否發生例外，teardown 邏輯（__exit__ / finally）都會執行。
++
++  兩種實作方式：
++    1. 類別方式：實作 __enter__ 和 __exit__ 方法
++       優點：可維護狀態（self.xxx），適合複雜資源管理
++    2. contextlib.contextmanager 裝飾器方式：用 generator + yield
++       優點：程式碼更簡潔，適合簡單的 setup/teardown 邏輯
++
++  __exit__ 的回傳值語義：
++    - 回傳 True：壓制（suppress）例外，程式繼續正常執行
++    - 回傳 False 或 None：不壓制，例外繼續向上傳播
++
++常見陷阱：
++  1. 在類別式 CM 中，__exit__ 忘記回傳 True/False，
++     預設回傳 None（等同 False），例外會向上傳播——通常是正確行為，
++     但若想壓制特定例外，必須明確回傳 True。
++  2. contextmanager 方式中，yield 之後的程式碼必須在 try/finally 中，
++     否則例外發生時 teardown 程式碼不會執行。
++  3. 巢狀 context manager 建議用 contextlib.ExitStack 管理，
++     而非手動巢狀 with 陳述式。
++
++標準寫法：
++  - 類別式 CM：適合需要設定複雜狀態或需要 __enter__ 回傳有意義物件的場景
++  - 裝飾器式 CM：適合簡單的 setup/yield/teardown 模式
++  - 記錄例外資訊時，使用 logging 而非 print（本例為示範用途使用 print）
++"""
++
++import time
++import io
++import sys
++import traceback
++from contextlib import contextmanager
++from typing import Optional, Type
++
++
++# ─────────────────────────────────────────────
++# 實作 1（類別方式）：計時器 Context Manager
++# ─────────────────────────────────────────────
++
++class Timer:
++    """
++    計算程式碼區塊執行時間的計時器，使用類別實作 context manager。
++
++    使用方式：
++        with Timer("資料庫查詢") as t:
++            results = db.query(...)
++        print(f"耗時: {t.elapsed:.3f}s")
++
++    設計說明：
++      - __enter__ 記錄開始時間並回傳 self，使 as 子句能存取 elapsed 屬性。
++      - __exit__ 計算經過時間，無論是否發生例外都會執行。
++      - suppress_errors=True 時，壓制例外讓程式繼續；
++        False 時，記錄例外但讓它繼續傳播（預設行為）。
++    """
++
++    def __init__(self, name: str = "", suppress_errors: bool = False):
++        self.name = name
++        self.suppress_errors = suppress_errors
++        self.elapsed: float = 0.0
++        self._start: float = 0.0
++
++    def __enter__(self) -> "Timer":
++        """開始計時，回傳 self 供 as 子句使用。"""
++        self._start = time.perf_counter()
++        return self  # as 子句接收此回傳值
++
++    def __exit__(
++        self,
++        exc_type: Optional[Type[BaseException]],
++        exc_val: Optional[BaseException],
++        exc_tb: Optional[object],
++    ) -> bool:
++        """
++        停止計時，記錄經過時間。
++
++        參數說明：
++          exc_type : 例外類型（無例外時為 None）
++          exc_val  : 例外實例（無例外時為 None）
++          exc_tb   : traceback 物件（無例外時為 None）
++
++        回傳值：
++          True  → 壓制例外（suppress_errors=True 時）
++          False → 讓例外繼續傳播（預設）
++        """
++        self.elapsed = time.perf_counter() - self._start
++        label = f"[{self.name}] " if self.name else ""
++
++        if exc_type is not None:
++            print(f"{label}計時結束（發生例外 {exc_type.__name__}）: {self.elapsed:.6f}s")
++            if self.suppress_errors:
++                print(f"{label}例外已被壓制: {exc_val}")
++                return True  # 壓制例外
++            return False     # 讓例外繼續傳播
++        else:
++            print(f"{label}執行完成: {self.elapsed:.6f}s")
++            return False
++
++
++# ─────────────────────────────────────────────
++# 實作 2（contextmanager 裝飾器）：計時器
++# ─────────────────────────────────────────────
++
++@contextmanager
++def timer(name: str = "", suppress_errors: bool = False):
++    """
++    與 Timer 類別相同功能的裝飾器版本。
++
++    結構：
++      - yield 之前的程式碼 ≡ __enter__
++      - yield 回傳的值 ≡ __enter__ 的回傳值（供 as 子句使用）
++      - yield 之後的程式碼 ≡ __exit__
++
++    注意：使用 try/finally 確保即使例外發生，teardown 也會執行。
++    若想要攔截例外，改用 try/except。
++    """
++    label = f"[{name}] " if name else ""
++    elapsed_holder = [0.0]  # 用 list 讓 finally 區塊能存取（Python 3.9+ 可用 nonlocal）
++    start = time.perf_counter()
++
++    try:
++        yield elapsed_holder  # 把持有 elapsed 的容器傳出去，讓呼叫端可讀取
++    except Exception as e:
++        elapsed_holder[0] = time.perf_counter() - start
++        print(f"{label}計時結束（例外 {type(e).__name__}）: {elapsed_holder[0]:.6f}s")
++        if suppress_errors:
++            print(f"{label}例外已被壓制: {e}")
++            return  # generator 的 return 等同於 StopIteration，壓制例外
++        raise  # 重新拋出例外
++    else:
++        elapsed_holder[0] = time.perf_counter() - start
++        print(f"{label}執行完成: {elapsed_holder[0]:.6f}s")
++
++
++# ─────────────────────────────────────────────
++# 實作 3（類別方式）：捕獲標準輸出（用於測試）
++# ─────────────────────────────────────────────
++
++class CaptureStdout:
++    """
++    暫時重定向 sys.stdout，捕獲程式碼區塊中的所有 print() 輸出。
++
++    典型用途：測試中驗證 print() 的輸出內容，無需修改被測函數。
++
++    使用方式：
++        with CaptureStdout() as cap:
++            print("hello")
++            print("world")
++        assert cap.output == "hello\\nworld\\n"
++    """
++
++    def __init__(self):
++        self._buffer: Optional[io.StringIO] = None
++        self._original_stdout = None
++        self.output: str = ""
++
++    def __enter__(self) -> "CaptureStdout":
++        self._buffer = io.StringIO()
++        self._original_stdout = sys.stdout
++        sys.stdout = self._buffer   # 替換標準輸出
++        return self
++
++    def __exit__(self, exc_type, exc_val, exc_tb) -> bool:
++        self.output = self._buffer.getvalue()
++        sys.stdout = self._original_stdout  # 一定要還原，否則後續所有輸出都消失
++        self._buffer.close()
++
++        if exc_type is not None:
++            # 例外發生時，輸出到真正的 stdout 以免除錯資訊消失
++            print(f"[CaptureStdout] 例外發生於捕獲區塊: {exc_type.__name__}: {exc_val}")
++        return False  # 不壓制例外
++
++
++# ─────────────────────────────────────────────
++# 實作 4（contextmanager 裝飾器）：捕獲標準輸出
++# ─────────────────────────────────────────────
++
++@contextmanager
++def capture_stdout():
++    """
++    與 CaptureStdout 相同功能的裝飾器版本。
++    回傳一個 dict 讓呼叫端在 with 區塊結束後能存取捕獲的輸出。
++    """
++    buffer = io.StringIO()
++    original = sys.stdout
++    result = {"output": ""}
++
++    sys.stdout = buffer
++    try:
++        yield result
++    finally:
++        result["output"] = buffer.getvalue()
++        sys.stdout = original  # 無論如何都要還原
++        buffer.close()
++
++
++# ─────────────────────────────────────────────
++# 完整示範
++# ─────────────────────────────────────────────
++
++print("=" * 60)
++print("計時器示範（類別方式）")
++print("=" * 60)
++
++# 基本計時
++with Timer("正常執行") as t:
++    time.sleep(0.05)
++    result = sum(range(100_000))
++print(f"  加總結果: {result}, elapsed 屬性: {t.elapsed:.6f}s\n")
++
++# 有例外時（不壓制）
++print("有例外時（不壓制）:")
++try:
++    with Timer("例外不壓制") as t:
++        time.sleep(0.01)
++        raise ValueError("模擬網路逾時")
++except ValueError:
++    print(f"  例外被重新拋出，elapsed: {t.elapsed:.6f}s\n")
++
++# 有例外時（壓制）
++print("有例外時（壓制例外）:")
++with Timer("例外壓制", suppress_errors=True) as t:
++    raise RuntimeError("模擬硬體錯誤")
++print(f"  程式繼續執行，elapsed: {t.elapsed:.6f}s\n")
++
++print("=" * 60)
++print("計時器示範（contextmanager 裝飾器方式）")
++print("=" * 60)
++
++with timer("裝飾器計時") as elapsed_holder:
++    time.sleep(0.03)
++print(f"  elapsed_holder[0] = {elapsed_holder[0]:.6f}s\n")
++
++# 壓制例外
++print("裝飾器版本壓制例外:")
++with timer("裝飾器壓制", suppress_errors=True):
++    raise KeyError("模擬設定檔讀取失敗")
++print("  程式繼續執行\n")
++
++
++print("=" * 60)
++print("捕獲 stdout 示範（類別方式）")
++print("=" * 60)
++
++def simulate_cpe_status_report(devices):
++    """模擬 CPE 狀態報告輸出（用於示範 stdout 捕獲）。"""
++    print(f"=== CPE 狀態報告 ===")
++    for d in devices:
++        status = "上線" if d.get("online") else "離線"
++        print(f"  [{status}] {d['hostname']:20s}  {d['ip']}")
++    print(f"共 {len(devices)} 台裝置")
++
++devices = [
++    {"hostname": "cpe-living-room", "ip": "192.168.1.2",  "online": True},
++    {"hostname": "cpe-bedroom",     "ip": "192.168.1.3",  "online": False},
++    {"hostname": "cpe-kitchen",     "ip": "192.168.1.4",  "online": True},
++]
++
++with CaptureStdout() as cap:
++    simulate_cpe_status_report(devices)
++
++# 此時輸出已被捕獲，cap.output 包含所有文字
++print("捕獲到的輸出（前 80 字元）:")
++print(repr(cap.output[:80]))
++
++# 驗證輸出內容（模擬測試用法）
++assert "cpe-living-room" in cap.output, "輸出應包含裝置名稱"
++assert "共 3 台裝置" in cap.output, "輸出應包含統計"
++print("  [測試通過] 輸出內容驗證成功\n")
++
++
++print("=" * 60)
++print("捕獲 stdout 示範（contextmanager 裝飾器方式）")
++print("=" * 60)
++
++with capture_stdout() as result:
++    print("line 1: 裝置清單")
++    print("line 2: 共 3 台")
++
++print(f"捕獲行數: {result['output'].count(chr(10))}")
++print(f"捕獲內容: {result['output']!r}\n")
++
++
++print("=" * 60)
++print("巢狀 context manager（ExitStack）")
++print("=" * 60)
++
++from contextlib import ExitStack
++
++# ExitStack 允許動態組合多個 context manager，
++# 適合「需要同時管理數量不固定的資源」的場景
++with ExitStack() as stack:
++    t1 = stack.enter_context(Timer("外層計時"))
++    cap = stack.enter_context(CaptureStdout())
++
++    print("這行會被捕獲，不會出現在終端機")
++    time.sleep(0.02)
++    print("捕獲的第二行")
++
++# ExitStack 離開後，兩個 CM 依反序執行 __exit__
++print(f"外層計時 elapsed: {t1.elapsed:.6f}s")
++print(f"捕獲的輸出行數: {cap.output.count(chr(10))}")
+diff --git a/weeks/week-13/solutions/1114405019/R01-function-signatures.py b/weeks/week-13/solutions/1114405019/R01-function-signatures.py
+new file mode 100644
+index 0000000..af086f2
+--- /dev/null
++++ b/weeks/week-13/solutions/1114405019/R01-function-signatures.py
+@@ -0,0 +1,180 @@
++"""
++R01-function-signatures.py - 彈性函數簽名
++
++進階觀念：
++  Python 函數的引數分為五種類型（依位置順序）：
++    1. 位置引數 (positional)
++    2. *args：收集多餘的位置引數為 tuple
++    3. 關鍵字限定引數 (keyword-only)：放在 * 或 *args 之後，必須以關鍵字呼叫
++    4. **kwargs：收集多餘的關鍵字引數為 dict
++    5. 僅位置引數 (positional-only)：放在 / 之前（Python 3.8+）
++
++常見陷阱：
++  1. 位置引數不能出現在 *args 之後（語法錯誤）。
++  2. **kwargs 必須排在最後。
++  3. 若忘記加 * 隔開，原本想設計為關鍵字限定的參數仍可用位置呼叫，
++     可能導致呼叫端傳錯順序而難以察覺。
++
++標準寫法：
++  - 對「語義上不宜隨意換順序」的引數，使用關鍵字限定（*, param）強制呼叫端明確說明。
++  - 公開 API 建議多用關鍵字限定，減少因引數順序改變導致的 breaking change。
++"""
++
++
++# ─────────────────────────────────────────────
++# 完整引數類型示範
++# ─────────────────────────────────────────────
++
++def full_demo(pos1, pos2, /, normal, *args, kw_only1, kw_only2="default", **kwargs):
++    """
++    pos1, pos2   : 僅位置引數（/ 之前），不能用關鍵字傳入
++    normal       : 一般引數，可位置或關鍵字傳入
++    *args        : 收集多餘位置引數
++    kw_only1     : 關鍵字限定，必須寫 kw_only1=值
++    kw_only2     : 關鍵字限定且有預設值
++    **kwargs     : 收集多餘關鍵字引數
++    """
++    print(f"  pos1={pos1}, pos2={pos2}")
++    print(f"  normal={normal}")
++    print(f"  args={args}")
++    print(f"  kw_only1={kw_only1}, kw_only2={kw_only2}")
++    print(f"  kwargs={kwargs}")
++
++print("=== 完整引數類型示範 ===")
++full_demo(1, 2, "norm", "extra1", "extra2", kw_only1="必填", extra_kw="額外")
++
++
++# ─────────────────────────────────────────────
++# 實際應用：結構化日誌紀錄器（Logger）
++# ─────────────────────────────────────────────
++
++import datetime
++import json
++import sys
++from typing import Any
++
++# 日誌等級定義
++LOG_LEVELS = {"DEBUG": 10, "INFO": 20, "WARNING": 30, "ERROR": 40, "CRITICAL": 50}
++
++
++def log(
++    *messages: Any,             # 可傳入多個訊息片段（自動 join）
++    level: str = "INFO",        # 關鍵字限定：強制呼叫端明確指定等級
++    source: str = "app",        # 關鍵字限定：訊息來源模組
++    timestamp: bool = True,     # 關鍵字限定：是否附加時間戳記
++    output_format: str = "text",# 關鍵字限定：輸出格式 "text" 或 "json"
++    **extra_fields: Any,        # 接收任意附加欄位（如 request_id, device_ip 等）
++):
++    """
++    彈性日誌函數。
++
++    設計說明：
++      - *messages 允許像 print() 一樣傳入多個片段，方便拼接動態訊息。
++      - level/source 等參數使用關鍵字限定，確保呼叫端不會因位置順序搞混
++        而靜默地傳入錯誤值（例如把 source 填入 level 的位置）。
++      - **extra_fields 允許附加任意業務欄位，不需修改函數簽名即可擴充。
++
++    API 安全性說明：
++      - 若 level 不在已知等級中，以 WARNING 取代並提示，避免靜默失敗。
++    """
++    # 正規化等級，避免靜默失敗
++    level = level.upper()
++    if level not in LOG_LEVELS:
++        extra_fields["original_level"] = level
++        level = "WARNING"
++        messages = (f"[未知等級] ",) + messages
++
++    message_str = " ".join(str(m) for m in messages)
++
++    if output_format == "json":
++        record = {
++            "level": level,
++            "source": source,
++            "message": message_str,
++            **extra_fields,
++        }
++        if timestamp:
++            record["timestamp"] = datetime.datetime.now().isoformat()
++        print(json.dumps(record, ensure_ascii=False))
++    else:
++        ts = f"[{datetime.datetime.now().strftime('%H:%M:%S')}] " if timestamp else ""
++        extras = "  ".join(f"{k}={v}" for k, v in extra_fields.items())
++        extras_str = f"  | {extras}" if extras else ""
++        print(f"{ts}[{level}] [{source}] {message_str}{extras_str}")
++
++
++print("\n=== 結構化日誌紀錄器示範 ===")
++
++# 基本用法
++log("系統啟動完成")
++log("使用者登入", level="INFO", source="auth")
++
++# 傳入多個片段（類似 print）
++log("裝置", "192.168.1.1", "離線", level="WARNING", source="monitor")
++
++# 附加任意業務欄位
++log("連線失敗", level="ERROR", source="cpe-agent",
++    device_mac="00:11:22:33:44:55", retry_count=3, port=7547)
++
++# JSON 格式輸出（適合送往 ELK / Loki）
++log("韌體更新成功", level="INFO", source="acs",
++    output_format="json", device_id="CPE-001", firmware="v2.3.1")
++
++
++# ─────────────────────────────────────────────
++# 實際應用：資料庫連線設定產生器
++# ─────────────────────────────────────────────
++
++def build_db_config(
++    host: str,
++    database: str,
++    *,                          # * 之後全為關鍵字限定引數
++    port: int = 5432,
++    user: str = "postgres",
++    password: str = "",
++    ssl_mode: str = "prefer",
++    connect_timeout: int = 10,
++    **driver_options: Any,      # 允許傳入特定資料庫驅動的額外選項
++) -> dict:
++    """
++    建立資料庫連線設定字典。
++
++    使用關鍵字限定的好處：
++      - host 和 database 是必填且有固定語義，適合用位置傳入。
++      - port / user / ssl_mode 等參數語義不同，若允許位置傳入，
++        一旦未來新增參數或調整順序，舊程式碼會靜默傳錯值。
++      - 強制關鍵字可讓函數簽名改版時更安全（只要關鍵字名稱不變）。
++    """
++    config = {
++        "host": host,
++        "port": port,
++        "database": database,
++        "user": user,
++        "password": password,
++        "sslmode": ssl_mode,
++        "connect_timeout": connect_timeout,
++        **driver_options,
++    }
++    return config
++
++
++print("\n=== 資料庫連線設定示範 ===")
++
++# 正確用法：關鍵字引數讓意圖清晰
++prod_db = build_db_config(
++    "db.prod.example.com",
++    "cpe_inventory",
++    port=5432,
++    user="cpe_svc",
++    password="s3cr3t",
++    ssl_mode="require",
++    application_name="acs-server",  # 傳入 psycopg2 驅動選項
++)
++print("Production DB config:", json.dumps(prod_db, indent=2))
++
++# 錯誤示範（被關鍵字限定保護）：
++try:
++    # 嘗試以位置引數傳入 port（會引發 TypeError，因為 port 是關鍵字限定）
++    bad_config = build_db_config("localhost", "test_db", 3306)
++except TypeError as e:
++    print(f"\n[保護機制] 位置引數嘗試被攔截: {e}")
+diff --git a/weeks/week-13/solutions/1114405019/R02-special-methods.py b/weeks/week-13/solutions/1114405019/R02-special-methods.py
+new file mode 100644
+index 0000000..e36d6ae
+--- /dev/null
++++ b/weeks/week-13/solutions/1114405019/R02-special-methods.py
+@@ -0,0 +1,173 @@
++"""
++R02-special-methods.py - OOP 魔術方法
++
++進階觀念：
++  Python 的特殊方法（dunder methods）讓自訂類別能無縫融入語言的內建操作。
++  本例示範以下魔術方法的精確語義：
++
++  __repr__  : 給「開發者」看，應能重建物件（eval(repr(obj)) == obj），
++              出現在 REPL、日誌、容器的 repr() 中。
++  __str__   : 給「使用者」看，出現在 print()、str()、f-string 中。
++              若未定義，Python 回退到 __repr__。
++  __eq__    : 定義 == 運算，預設比較 id（identity），覆寫後比較 value。
++              注意：定義 __eq__ 後，預設的 __hash__ 會被設為 None，
++              使物件不可 hash（無法作為 dict key / set 元素），
++              若需要，必須明確定義 __hash__。
++  __lt__    : 搭配 functools.total_ordering，只需定義 __eq__ 和 __lt__，
++              其餘比較運算子（>, <=, >=）由裝飾器自動推導。
++  __slots__ : 限制實例只能有預先宣告的屬性，
++              避免意外新增屬性，並減少每個實例的記憶體開銷。
++
++常見陷阱：
++  1. 忘記在定義 __eq__ 後同步定義 __hash__，導致物件無法放入 set / dict。
++  2. __repr__ 回傳的字串格式不能用 eval() 重建，違反慣例。
++  3. 使用 total_ordering 時忘記同時實作 __eq__，會導致比較邏輯錯誤。
++  4. __slots__ 在繼承時必須在每層子類別各自宣告，否則子類別仍會有 __dict__。
++
++標準寫法：
++  - 若物件可排序，同時定義 __hash__（通常用相同的排序欄位）。
++  - 使用 @functools.total_ordering 減少重複程式碼。
++  - __repr__ 格式建議：ClassName(field1=val, field2=val)
++"""
++
++from functools import total_ordering
++
++
++# ─────────────────────────────────────────────
++# 情境：CPE（Customer Premises Equipment）裝置記錄
++# ─────────────────────────────────────────────
++
++@total_ordering   # 自動補完 >, <=, >= 三個比較運算子
++class CPEDevice:
++    """
++    代表一台 CPE 裝置（如家用路由器、ONT 等）的資料物件。
++
++    __slots__ 說明：
++      - 每個 Python 實例預設帶有 __dict__（一個 dict），用來儲存所有實例屬性。
++        對於大量小物件，這個 dict 本身就佔用可觀記憶體（約 200-300 bytes/object）。
++      - 宣告 __slots__ = (...) 後，Python 改用固定大小的陣列儲存屬性，
++        省去 __dict__ 的開銷（實測通常可節省 40-60% 記憶體）。
++      - 副作用：無法在執行時動態新增未宣告的屬性（TypeError），
++        這在資料類別中反而是好事，可防止打字錯誤導致的靜默 bug。
++      - 若子類別沒有宣告自己的 __slots__，子類別仍會有 __dict__，
++        __slots__ 的節省效果就消失了。
++    """
++    __slots__ = ("mac_address", "hostname", "firmware_version", "signal_dbm")
++
++    def __init__(
++        self,
++        mac_address: str,
++        hostname: str,
++        firmware_version: str,
++        signal_dbm: float = 0.0,
++    ):
++        self.mac_address = mac_address.upper()
++        self.hostname = hostname
++        self.firmware_version = firmware_version
++        self.signal_dbm = signal_dbm
++
++    # ── __repr__：給開發者看，ideally eval-able ──
++    def __repr__(self) -> str:
++        """
++        格式：CPEDevice(mac_address='...', hostname='...', ...)
++        在 REPL、logging、容器的 repr 中出現，讓開發者一眼重建物件狀態。
++        """
++        return (
++            f"CPEDevice("
++            f"mac_address={self.mac_address!r}, "
++            f"hostname={self.hostname!r}, "
++            f"firmware_version={self.firmware_version!r}, "
++            f"signal_dbm={self.signal_dbm!r})"
++        )
++
++    # ── __str__：給使用者看，著重可讀性 ──
++    def __str__(self) -> str:
++        """
++        格式：[MAC] hostname  fw=...  signal=...dBm
++        出現在 print()、str()、f-string 中，對終端使用者更友善。
++        """
++        signal_bar = "▓" * max(0, int((self.signal_dbm + 100) / 10))
++        return (
++            f"[{self.mac_address}] {self.hostname:<20s} "
++            f"fw={self.firmware_version:<10s} "
++            f"signal={self.signal_dbm:+.1f}dBm {signal_bar}"
++        )
++
++    # ── __eq__：比較實質內容（而非記憶體位址）──
++    def __eq__(self, other: object) -> bool:
++        """
++        兩台裝置相等的條件：MAC address 相同（MAC 是唯一識別碼）。
++        注意：定義 __eq__ 後必須同步定義 __hash__，否則物件不可 hash。
++        """
++        if not isinstance(other, CPEDevice):
++            return NotImplemented   # 回傳 NotImplemented 讓 Python 嘗試反向運算
++        return self.mac_address == other.mac_address
++
++    # ── __hash__：與 __eq__ 保持一致 ──
++    def __hash__(self) -> int:
++        """
++        若兩物件 __eq__ 為 True，其 __hash__ 必須相同。
++        使用 mac_address 作為 hash 的依據。
++        """
++        return hash(self.mac_address)
++
++    # ── __lt__：搭配 total_ordering，只需定義這一個 ──
++    def __lt__(self, other: "CPEDevice") -> bool:
++        """
++        依信號強度排序（signal_dbm 越大表示信號越好）。
++        @total_ordering 會用 __eq__ 和 __lt__ 推導 >, <=, >= 三個方法。
++        """
++        if not isinstance(other, CPEDevice):
++            return NotImplemented
++        return self.signal_dbm < other.signal_dbm
++
++
++# ─────────────────────────────────────────────
++# 驗證各魔術方法的行為
++# ─────────────────────────────────────────────
++
++dev1 = CPEDevice("aa:bb:cc:dd:ee:01", "cpe-living-room", "v3.2.1", signal_dbm=-55.0)
++dev2 = CPEDevice("AA:BB:CC:DD:EE:01", "cpe-living-room", "v3.2.1", signal_dbm=-55.0)
++dev3 = CPEDevice("aa:bb:cc:dd:ee:02", "cpe-bedroom",     "v3.1.0", signal_dbm=-72.5)
++dev4 = CPEDevice("aa:bb:cc:dd:ee:03", "cpe-kitchen",     "v3.2.1", signal_dbm=-61.0)
++
++print("=== __repr__ 與 __str__ ===")
++print("repr(dev1) :", repr(dev1))
++print("str(dev1)  :", str(dev1))
++print("print(dev3):", dev3)          # print 自動呼叫 __str__
++
++print("\n=== 容器中的表示（用 repr）===")
++devices = [dev1, dev3, dev4]
++print(devices)  # list 的 repr 對元素呼叫 __repr__
++
++print("\n=== __eq__ 比較 ===")
++print(f"dev1 == dev2 (同 MAC): {dev1 == dev2}")     # True（MAC 正規化為大寫後相同）
++print(f"dev1 == dev3 (不同 MAC): {dev1 == dev3}")    # False
++print(f"dev1 is dev2: {dev1 is dev2}")               # False（不同物件）
++
++print("\n=== __hash__：放入 set / dict ===")
++device_set = {dev1, dev2, dev3}
++print(f"set 大小（dev1 和 dev2 視為同一台）: {len(device_set)}")  # 2
++
++device_lookup = {dev1: "living_room_vlan", dev3: "bedroom_vlan"}
++print(f"用 dev2 查 dict（與 dev1 同 MAC）: {device_lookup[dev2]}")  # living_room_vlan
++
++print("\n=== __lt__ 與 total_ordering ===")
++print(f"dev1.signal={dev1.signal_dbm} < dev3.signal={dev3.signal_dbm}: {dev1 < dev3}")  # False（-55 > -72.5）
++print(f"dev3 < dev1: {dev3 < dev1}")     # True
++print(f"dev1 > dev3: {dev1 > dev3}")     # True（由 total_ordering 推導）
++print(f"dev1 >= dev2: {dev1 >= dev2}")   # True（相等時 >= 也為 True）
++
++print("\n=== 依信號強度排序（最強在前）===")
++for d in sorted(devices, reverse=True):
++    print(f"  {d}")
++
++print("\n=== __slots__ 保護 ===")
++try:
++    dev1.unknown_field = "oops"  # 嘗試新增未宣告的屬性
++except AttributeError as e:
++    print(f"[slots 保護] {e}")
++
++# 驗證沒有 __dict__
++print(f"dev1 有 __dict__: {hasattr(dev1, '__dict__')}")  # False
++print(f"dev1 的 __slots__: {CPEDevice.__slots__}")
+diff --git a/weeks/week-13/solutions/1114405019/R03-property.py b/weeks/week-13/solutions/1114405019/R03-property.py
+new file mode 100644
+index 0000000..ea88ca5
+--- /dev/null
++++ b/weeks/week-13/solutions/1114405019/R03-property.py
+@@ -0,0 +1,255 @@
++"""
++R03-property.py - Property 與 Setter 資料驗證
++
++進階觀念：
++  @property 讓我們用「屬性存取語法」（obj.attr）隱藏背後的計算或驗證邏輯，
++  同時保持介面的一致性（不需要改為 get_attr() 這種方法呼叫形式）。
++
++  三個相關裝飾器：
++    @property           → getter（唯讀或讀寫的第一步）
++    @<name>.setter      → setter（帶驗證的寫入）
++    @<name>.deleter     → deleter（控制刪除行為）
++
++常見陷阱：
++  1. 子類別覆寫 setter 時，必須重新宣告完整的 @property，
++     否則只宣告 @setter 會導致 AttributeError 或覆寫失敗（最常見的坑！）。
++  2. 在 setter 中呼叫 self._value = ... 時若名稱與 property 同名（無底線前綴），
++     會觸發無限遞迴（setter 呼叫自身）。正確做法是用底線命名私有變數。
++  3. @property 若沒有 setter，賦值時會拋出 AttributeError，
++     這正是「唯讀屬性」的實作方式。
++
++標準寫法：
++  - 私有實例變數以 _name 命名，公開屬性以 property 暴露。
++  - Setter 的驗證邏輯應拋出有意義的例外（TypeError / ValueError），而非靜默轉換。
++  - 子類別覆寫時，用 super() 呼叫父類別的 setter 保留原有邏輯，再加上額外約束。
++"""
++
++
++# ─────────────────────────────────────────────
++# 基礎類別：網路埠設定（Port Configuration）
++# ─────────────────────────────────────────────
++
++class PortConfig:
++    """
++    代表一個網路服務的埠設定，包含埠號與描述。
++
++    唯讀屬性：protocol（建構後不可更改）
++    可寫屬性：port_number（含驗證）、description
++    計算屬性：service_endpoint（唯讀，動態計算）
++    """
++
++    # 合法的 TCP/UDP 埠範圍
++    MIN_PORT = 1
++    MAX_PORT = 65535
++
++    def __init__(self, protocol: str, port_number: int, description: str = ""):
++        self._protocol = protocol.upper()  # 唯讀，儲存後不允許修改
++        self.port_number = port_number     # 透過 setter 驗證
++        self.description = description     # 透過 setter 驗證
++
++    # ── 唯讀屬性：只有 getter，沒有 setter ──
++    @property
++    def protocol(self) -> str:
++        """通訊協定（建構後不可修改，唯讀）。"""
++        return self._protocol
++
++    # ── 帶驗證的 setter：port_number ──
++    @property
++    def port_number(self) -> int:
++        """埠號（1 ~ 65535 的整數）。"""
++        return self._port_number
++
++    @port_number.setter
++    def port_number(self, value: int) -> None:
++        """
++        驗證規則：
++          1. 必須是整數（拒絕浮點數、字串等）。
++          2. 必須在 1 ~ 65535 範圍內。
++        注意：使用 self._port_number 儲存，避免觸發 setter 遞迴。
++        """
++        if not isinstance(value, int) or isinstance(value, bool):
++            raise TypeError(f"port_number 必須是整數，收到 {type(value).__name__}")
++        if not (self.MIN_PORT <= value <= self.MAX_PORT):
++            raise ValueError(
++                f"port_number 必須介於 {self.MIN_PORT} ~ {self.MAX_PORT}，收到 {value}"
++            )
++        self._port_number = value
++
++    # ── 帶驗證的 setter：description ──
++    @property
++    def description(self) -> str:
++        """服務描述（純字串，長度不超過 128 字元）。"""
++        return self._description
++
++    @description.setter
++    def description(self, value: str) -> None:
++        if not isinstance(value, str):
++            raise TypeError(f"description 必須是字串，收到 {type(value).__name__}")
++        if len(value) > 128:
++            raise ValueError(f"description 長度不得超過 128 字元（收到 {len(value)} 字元）")
++        self._description = value
++
++    # ── 計算屬性：唯讀，動態計算 ──
++    @property
++    def service_endpoint(self) -> str:
++        """回傳服務端點字串，例如 'tcp/443'。"""
++        return f"{self._protocol.lower()}/{self._port_number}"
++
++    def __repr__(self) -> str:
++        return (
++            f"PortConfig(protocol={self._protocol!r}, "
++            f"port_number={self._port_number}, "
++            f"description={self._description!r})"
++        )
++
++    def __str__(self) -> str:
++        desc = f"  # {self._description}" if self._description else ""
++        return f"{self.service_endpoint}{desc}"
++
++
++print("=== PortConfig 示範 ===")
++
++http  = PortConfig("TCP", 80,  "HTTP 明文")
++https = PortConfig("TCP", 443, "HTTPS 加密")
++ssh   = PortConfig("TCP", 22)
++
++print(repr(http))
++print(str(https))
++print(f"SSH endpoint: {ssh.service_endpoint}")
++
++# 修改 description（透過 setter 驗證）
++ssh.description = "Secure Shell 管理埠"
++print(f"SSH: {ssh}")
++
++# 嘗試設定唯讀屬性
++try:
++    http.protocol = "UDP"
++except AttributeError as e:
++    print(f"[唯讀保護] {e}")
++
++# 驗證失敗範例
++for bad_port, label in [(0, "埠號=0"), (65536, "埠號=65536"), ("80", "字串'80'"), (3.14, "浮點數")]:
++    try:
++        PortConfig("TCP", bad_port)
++    except (TypeError, ValueError) as e:
++        print(f"[驗證拒絕] {label}: {e}")
++
++
++# ─────────────────────────────────────────────
++# 子類別：特權埠設定（Privileged Port Config）
++# ─────────────────────────────────────────────
++
++class PrivilegedPortConfig(PortConfig):
++    """
++    特權埠設定：僅允許 1 ~ 1023 的系統埠（well-known ports）。
++
++    覆寫 port_number setter 的正確方式：
++      1. 先定義新的 @property（必須重新宣告，即使 getter 邏輯相同）。
++      2. 在新的 @setter 中呼叫 super() 的 setter 以保留父類驗證，
++         再疊加子類的額外限制。
++
++    注意這個常見的坑：
++      若只寫 @PortConfig.port_number.setter 而不重新宣告 @property，
++      Python 會找不到對應的 getter，拋出 AttributeError 或行為異常。
++    """
++
++    MAX_PRIVILEGED_PORT = 1023
++
++    # 必須重新宣告完整的 @property（getter 邏輯與父類相同，但需重新綁定）
++    @property
++    def port_number(self) -> int:
++        """特權埠號（1 ~ 1023）。"""
++        return self._port_number   # 直接讀取私有變數（與父類 getter 邏輯相同）
++
++    @port_number.setter
++    def port_number(self, value: int) -> None:
++        """
++        先呼叫父類 setter 進行基本驗證（型別、1~65535 範圍），
++        再加上子類的額外限制（必須 <= 1023）。
++        這樣不會破壞父類邏輯，也能擴充限制。
++        """
++        # 透過父類的 setter property 物件呼叫其 fset 方法
++        PortConfig.port_number.fset(self, value)   # 呼叫父類 setter
++        # 疊加子類額外限制
++        if value > self.MAX_PRIVILEGED_PORT:
++            raise ValueError(
++                f"PrivilegedPortConfig 只允許 1~{self.MAX_PRIVILEGED_PORT}，收到 {value}"
++            )
++
++
++print("\n=== PrivilegedPortConfig（子類覆寫 setter）===")
++
++well_known = PrivilegedPortConfig("TCP", 443, "HTTPS（特權埠）")
++print(repr(well_known))
++
++# 父類驗證仍有效
++try:
++    PrivilegedPortConfig("TCP", 0)
++except ValueError as e:
++    print(f"[父類驗證] {e}")
++
++# 子類額外限制
++try:
++    PrivilegedPortConfig("TCP", 8080)
++except ValueError as e:
++    print(f"[子類限制] {e}")
++
++# 可以正常修改到合法的特權埠
++well_known.port_number = 80
++print(f"改埠後: {well_known}")
++
++
++# ─────────────────────────────────────────────
++# 進階：使用 __set_name__ 的通用驗證描述器
++# （展示 property 背後的 Descriptor Protocol）
++# ─────────────────────────────────────────────
++
++class ValidatedInt:
++    """
++    通用整數範圍驗證描述器（Descriptor），作為 property 的更可重用替代。
++    展示 property 本質上是描述器的語法糖。
++    """
++
++    def __init__(self, min_val: int, max_val: int):
++        self.min_val = min_val
++        self.max_val = max_val
++        self.attr_name = None
++
++    def __set_name__(self, owner, name: str) -> None:
++        self.attr_name = f"_{name}"
++
++    def __get__(self, obj, objtype=None):
++        if obj is None:
++            return self
++        return getattr(obj, self.attr_name, None)
++
++    def __set__(self, obj, value: int) -> None:
++        if not isinstance(value, int) or isinstance(value, bool):
++            raise TypeError(f"{self.attr_name} 必須是整數")
++        if not (self.min_val <= value <= self.max_val):
++            raise ValueError(f"{self.attr_name} 必須介於 {self.min_val}~{self.max_val}")
++        setattr(obj, self.attr_name, value)
++
++
++class VLANConfig:
++    """使用描述器的 VLAN 設定類別。"""
++    vlan_id   = ValidatedInt(1, 4094)
++    priority  = ValidatedInt(0, 7)
++
++    def __init__(self, vlan_id: int, name: str, priority: int = 0):
++        self.vlan_id  = vlan_id
++        self.name     = name
++        self.priority = priority
++
++    def __repr__(self) -> str:
++        return f"VLANConfig(vlan_id={self.vlan_id}, name={self.name!r}, priority={self.priority})"
++
++
++print("\n=== 描述器示範（ValidatedInt）===")
++mgmt_vlan = VLANConfig(100, "MGMT", priority=6)
++print(repr(mgmt_vlan))
++
++try:
++    VLANConfig(5000, "INVALID")
++except ValueError as e:
++    print(f"[描述器驗證] {e}")
+diff --git a/weeks/week-13/solutions/1114405019/U01-closures-traps.py b/weeks/week-13/solutions/1114405019/U01-closures-traps.py
+new file mode 100644
+index 0000000..75d59fd
+--- /dev/null
++++ b/weeks/week-13/solutions/1114405019/U01-closures-traps.py
+@@ -0,0 +1,270 @@
++"""
++U01-closures-traps.py - 閉包與常見陷阱
++
++進階觀念：
++  閉包（Closure）是一個函數，它記住了定義時所在的詞法作用域（lexical scope），
++  即使那個作用域已經執行完畢。閉包「捕獲」的是「變數本身」（name binding），
++  而非變數當時的值，這正是「晚期綁定」的根源。
++
++  本檔示範三大陷阱與對應解法：
++    1. 可變動預設參數（Mutable default arguments）
++    2. 閉包晚期綁定（Late binding in closures）
++    3. nonlocal 關鍵字的正確使用時機
++
++常見陷阱：
++  1. def f(x=[])：預設參數在「函數定義時」只求值一次，
++     所有呼叫共用同一個 list 物件，導致狀態在呼叫間積累。
++  2. 在迴圈中建立 lambda 捕獲迴圈變數：
++     所有 lambda 共用同一個 i 的綁定，結束後 i 是最終值。
++  3. 在巢狀函數中對外部變數賦值而不加 nonlocal：
++     Python 會視為在本地作用域新建一個同名變數，
++     導致 UnboundLocalError 或修改無效。
++
++標準寫法：
++  - 預設參數用 None，函數體內再初始化可變物件。
++  - 迴圈中的閉包，用預設參數 (i=i) 強制在定義時複製當前值。
++  - 需要修改外層區域變數時，明確加 nonlocal 宣告。
++"""
++
++
++# ─────────────────────────────────────────────
++# 陷阱 1：可變動預設參數（Mutable Default Argument）
++# ─────────────────────────────────────────────
++
++print("=" * 60)
++print("陷阱 1：可變動預設參數")
++print("=" * 60)
++
++# ── 錯誤示範 ──
++def add_device_BAD(device, device_list=[]):
++    """
++    問題：device_list=[] 這個 [] 只在函數「定義時」建立一次。
++    所有呼叫（未傳入 device_list 時）共用同一個 list 物件。
++    結果：後續呼叫會看到前次呼叫留下的資料！
++    """
++    device_list.append(device)
++    return device_list
++
++print("\n[錯誤] add_device_BAD:")
++print(add_device_BAD("CPE-001"))    # ['CPE-001']
++print(add_device_BAD("CPE-002"))    # ['CPE-001', 'CPE-002']  ← 預期只有 CPE-002！
++print(add_device_BAD("CPE-003"))    # ['CPE-001', 'CPE-002', 'CPE-003'] ← 越來越長
++
++# 檢查預設參數物件的 id（證明是同一個物件）
++print(f"預設 list 的 id: {id(add_device_BAD.__defaults__[0])}")
++print(f"預設 list 的現況: {add_device_BAD.__defaults__[0]}")  # 已被污染
++
++# ── 正確解法 ──
++def add_device_GOOD(device, device_list=None):
++    """
++    解法：預設值設為 None（不可變，無污染問題），
++    函數體內每次呼叫時再建立新的 list。
++    """
++    if device_list is None:
++        device_list = []     # 每次呼叫都建立全新的 list
++    device_list.append(device)
++    return device_list
++
++print("\n[正確] add_device_GOOD:")
++print(add_device_GOOD("CPE-001"))   # ['CPE-001']
++print(add_device_GOOD("CPE-002"))   # ['CPE-002']  ← 正確！各呼叫互不影響
++
++# 仍可傳入現有 list 進行追加
++existing = ["CPE-000"]
++print(add_device_GOOD("CPE-001", existing))  # ['CPE-000', 'CPE-001']
++
++# 使用可變預設參數的唯一合理情境：刻意共享狀態（效能快取）
++def cached_lookup(key, _cache={}):
++    """
++    此處刻意利用共享 dict 作為快取，是有意為之的設計。
++    但應在註解中明確說明，避免後人誤認為 bug。
++    """
++    if key not in _cache:
++        _cache[key] = f"computed_{key}"
++    return _cache[key]
++
++print("\n[刻意共享] 快取示範:")
++print(cached_lookup("a"))  # computed_a
++print(cached_lookup("a"))  # computed_a（從快取取）
++print(cached_lookup("b"))  # computed_b
++
++
++# ─────────────────────────────────────────────
++# 陷阱 2：閉包晚期綁定（Late Binding）
++# ─────────────────────────────────────────────
++
++print("\n" + "=" * 60)
++print("陷阱 2：閉包晚期綁定")
++print("=" * 60)
++
++# ── 錯誤示範 ──
++def make_handlers_BAD():
++    """
++    在迴圈中建立 lambda（或一般函數），每個 lambda 都捕獲了「i 這個名字」，
++    而不是「i 當時的值」。迴圈結束後，i=4（最後一個值），
++    所以所有 lambda 呼叫時都查詢到 i=4。
++    """
++    handlers = []
++    for i in range(5):
++        handlers.append(lambda: i)  # 捕獲了 i 的「名字」，而非當時值
++    return handlers
++
++print("\n[錯誤] make_handlers_BAD（預期 0,1,2,3,4）:")
++bad_handlers = make_handlers_BAD()
++print([h() for h in bad_handlers])  # [4, 4, 4, 4, 4] ← 全都是 4！
++
++# 具體的 CPE 情境：動態建立不同埠號的連線函數
++def make_port_connectors_BAD(ports):
++    """
++    為每個埠建立一個「連線函數」，但晚期綁定導致所有函數都用最後一個埠號。
++    """
++    connectors = {}
++    for port in ports:
++        connectors[port] = lambda: f"connecting to port {port}"
++    return connectors
++
++print("\n[錯誤] make_port_connectors_BAD（埠號 80, 443, 8080）:")
++bad_connectors = make_port_connectors_BAD([80, 443, 8080])
++for p, conn in bad_connectors.items():
++    print(f"  connector[{p}]() = {conn()}")  # 全都輸出 8080！
++
++# ── 正確解法 1：預設參數強制即時綁定 ──
++def make_handlers_GOOD_v1():
++    """
++    解法：lambda 加上預設參數 (i=i)。
++    Python 在「定義 lambda」時就求值預設參數，將當時的 i 值複製一份。
++    """
++    handlers = []
++    for i in range(5):
++        handlers.append(lambda val=i: val)  # i=i 在定義時就確定了值
++    return handlers
++
++print("\n[正確 v1] make_handlers_GOOD_v1（預設參數）:")
++good_handlers_v1 = make_handlers_GOOD_v1()
++print([h() for h in good_handlers_v1])  # [0, 1, 2, 3, 4] ← 正確！
++
++# ── 正確解法 2：使用工廠函數（更清晰的閉包用法）──
++def make_handler(i):
++    """
++    工廠函數：每次呼叫都建立一個新的作用域，i 在這個作用域中是「本地變數」，
++    不受迴圈後續迭代的影響。
++    """
++    def handler():
++        return i  # 捕獲的是 make_handler 作用域中的 i，每次呼叫都不同
++    return handler
++
++def make_handlers_GOOD_v2():
++    return [make_handler(i) for i in range(5)]
++
++print("\n[正確 v2] make_handlers_GOOD_v2（工廠函數）:")
++good_handlers_v2 = make_handlers_GOOD_v2()
++print([h() for h in good_handlers_v2])  # [0, 1, 2, 3, 4] ← 正確！
++
++# ── 正確解法 3：partial（最具語義的寫法）──
++from functools import partial
++
++def make_port_connectors_GOOD(ports):
++    """
++    使用 partial 固定參數，避免晚期綁定，同時具有最清楚的 repr。
++    """
++    def connect(port):
++        return f"connecting to port {port}"
++    return {port: partial(connect, port) for port in ports}
++
++print("\n[正確 v3] make_port_connectors_GOOD（partial）:")
++good_connectors = make_port_connectors_GOOD([80, 443, 8080])
++for p, conn in good_connectors.items():
++    print(f"  connector[{p}]() = {conn()}")  # 各自輸出正確的埠號
++
++
++# ─────────────────────────────────────────────
++# nonlocal 關鍵字：修改外部區域變數
++# ─────────────────────────────────────────────
++
++print("\n" + "=" * 60)
++print("nonlocal 關鍵字示範")
++print("=" * 60)
++
++# ── 沒有 nonlocal 的問題 ──
++def make_counter_BAD():
++    count = 0
++
++    def increment():
++        count = count + 1   # Python 把 count 視為本地變數（因為有賦值操作）
++        return count        # 但本地 count 在賦值前被讀取 → UnboundLocalError
++
++    return increment
++
++print("\n[錯誤] make_counter_BAD（UnboundLocalError）:")
++bad_counter = make_counter_BAD()
++try:
++    bad_counter()
++except UnboundLocalError as e:
++    print(f"  {e}")
++
++# ── 正確：使用 nonlocal ──
++def make_counter():
++    """
++    nonlocal 告訴 Python：count 不是本地變數，
++    而是在最近的「非全域的外層作用域」中尋找。
++    """
++    count = 0
++
++    def increment(step: int = 1):
++        nonlocal count        # 宣告 count 是外層作用域的變數
++        count += step
++        return count
++
++    def reset():
++        nonlocal count
++        count = 0
++
++    def get():
++        return count          # 讀取不需要 nonlocal（只有「賦值」才需要）
++
++    return increment, reset, get
++
++print("\n[正確] make_counter（nonlocal）:")
++inc, rst, get = make_counter()
++print(f"  inc()    = {inc()}")     # 1
++print(f"  inc()    = {inc()}")     # 2
++print(f"  inc(5)   = {inc(5)}")    # 7
++print(f"  get()    = {get()}")     # 7
++rst()
++print(f"  reset → get() = {get()}")  # 0
++
++# ── 實際應用：CPE 連線重試計數器 ──
++def make_retry_manager(max_retries: int = 3):
++    """
++    閉包實作的重試管理器，使用 nonlocal 追蹤重試次數。
++    比類別更輕量，適合簡單的有狀態行為。
++    """
++    attempts = 0
++
++    def try_connect(host: str) -> str:
++        nonlocal attempts
++        attempts += 1
++        if attempts <= max_retries:
++            result = f"嘗試連線 {host}（第 {attempts}/{max_retries} 次）"
++        else:
++            result = f"已超過最大重試次數 {max_retries}，放棄連線 {host}"
++        return result
++
++    def get_attempts() -> int:
++        return attempts   # 只讀，不需要 nonlocal
++
++    def reset_attempts() -> None:
++        nonlocal attempts
++        attempts = 0
++
++    return try_connect, get_attempts, reset_attempts
++
++print("\n[應用] CPE 連線重試管理器:")
++connect, get_attempts, reset = make_retry_manager(max_retries=3)
++print(connect("192.168.1.1"))
++print(connect("192.168.1.1"))
++print(connect("192.168.1.1"))
++print(connect("192.168.1.1"))  # 超過限制
++print(f"共嘗試: {get_attempts()} 次")
++reset()
++print(f"重置後嘗試次數: {get_attempts()}")
+diff --git a/weeks/week-13/solutions/1114405019/U02-classmethod-factory.py b/weeks/week-13/solutions/1114405019/U02-classmethod-factory.py
+new file mode 100644
+index 0000000..8d3fda2
+--- /dev/null
++++ b/weeks/week-13/solutions/1114405019/U02-classmethod-factory.py
+@@ -0,0 +1,269 @@
++"""
++U02-classmethod-factory.py - Classmethod 工廠方法
++
++進階觀念：
++  @classmethod 裝飾器讓方法的第一個參數接收「類別本身」（習慣命名為 cls）
++  而非實例（self）。這使得 classmethod 可以作為「替代建構子（Alternative Constructor）」，
++  從各種資料來源初始化物件，同時正確支援繼承。
++
++  為何用 cls 而非硬編碼類別名稱？
++    若工廠方法寫 return MyClass(...)，子類別繼承後呼叫工廠方法，
++    建立的仍是父類別 MyClass 的實例，而非子類別的實例。
++    改用 return cls(...)，子類別繼承後呼叫，cls 就是子類別，
++    確保多型（polymorphism）正確運作。
++
++  相關方法比較：
++    instance method  : 第一個參數 self → 操作實例狀態
++    @classmethod     : 第一個參數 cls  → 操作類別狀態，或作為替代建構子
++    @staticmethod    : 無隱含第一個參數 → 邏輯上屬於類別但不依賴類別或實例狀態
++
++常見陷阱：
++  1. 在 classmethod 中硬編碼父類別名稱，導致繼承後建立錯誤型別。
++  2. 工廠方法中解析資料後忘記驗證，直接傳入可能導致 __init__ 拋出難以追蹤的錯誤。
++  3. 混淆 @classmethod 與 @staticmethod 的使用時機。
++
++標準寫法：
++  - 工廠方法命名慣例：from_<source>（如 from_json, from_dict, from_csv_row）。
++  - 永遠使用 cls(...)，不要用 ClassName(...)。
++  - 在工廠方法中加入資料解析錯誤的明確提示（用 raise ... from err）。
++"""
++
++import json
++from datetime import datetime, timezone
++from typing import Optional
++
++
++# ─────────────────────────────────────────────
++# CPE（Customer Premises Equipment）裝置記錄
++# ─────────────────────────────────────────────
++
++class CPERecord:
++    """
++    代表一筆 CPE 裝置的管理記錄，包含設備識別資訊與最後上線時間。
++
++    設計背景：
++      ACS（Auto Configuration Server，如 TR-069）在管理 CPE 時，
++      裝置資訊可能來自不同來源：
++        - 資料庫查詢結果（tuple）
++        - REST API 回應（JSON 字串）
++        - CSV 匯出檔（字串列表）
++        - 另一個 CPERecord 物件（複製）
++      每種來源都可用工廠方法提供友善的初始化介面。
++    """
++
++    def __init__(
++        self,
++        mac_address: str,
++        hostname: str,
++        firmware_version: str,
++        last_seen: Optional[datetime] = None,
++        is_online: bool = False,
++    ):
++        self.mac_address = mac_address.upper().strip()
++        self.hostname = hostname.strip()
++        self.firmware_version = firmware_version.strip()
++        self.last_seen = last_seen or datetime.now(timezone.utc)
++        self.is_online = is_online
++
++    # ── 工廠方法 1：從 JSON 字串初始化 ──
++    @classmethod
++    def from_json(cls, json_str: str) -> "CPERecord":
++        """
++        從 ACS 的 REST API 回應（JSON 字串）建立 CPERecord。
++
++        使用 cls(...)：
++          若子類別（如 ManagedCPERecord）繼承並呼叫 from_json，
++          cls 就是 ManagedCPERecord，建立的是子類別實例而非父類別。
++
++        錯誤處理：
++          使用 raise ValueError(...) from err 保留原始錯誤堆疊，
++          方便追蹤是 JSON 格式問題還是欄位缺失問題。
++        """
++        try:
++            data = json.loads(json_str)
++        except json.JSONDecodeError as err:
++            raise ValueError(f"from_json: 無效的 JSON 字串: {json_str!r}") from err
++
++        # 解析 last_seen（ISO 8601 格式）
++        last_seen = None
++        if raw_ts := data.get("last_seen"):
++            try:
++                last_seen = datetime.fromisoformat(raw_ts)
++            except ValueError as err:
++                raise ValueError(f"from_json: last_seen 格式錯誤: {raw_ts!r}") from err
++
++        try:
++            return cls(
++                mac_address=data["mac_address"],
++                hostname=data["hostname"],
++                firmware_version=data["firmware_version"],
++                last_seen=last_seen,
++                is_online=data.get("is_online", False),
++            )
++        except KeyError as err:
++            raise ValueError(f"from_json: JSON 缺少必要欄位 {err}") from err
++
++    # ── 工廠方法 2：從 Tuple 初始化（例如資料庫查詢結果）──
++    @classmethod
++    def from_tuple(cls, record: tuple) -> "CPERecord":
++        """
++        從資料庫查詢結果（tuple）建立 CPERecord。
++
++        欄位順序約定：(mac_address, hostname, firmware_version, last_seen_iso, is_online)
++        使用 cls 確保子類別繼承時能建立正確的型別。
++        """
++        if len(record) < 3:
++            raise ValueError(
++                f"from_tuple: 至少需要 3 個欄位（mac, hostname, firmware），"
++                f"收到 {len(record)} 個: {record!r}"
++            )
++
++        mac, hostname, fw = record[0], record[1], record[2]
++        last_seen_str = record[3] if len(record) > 3 else None
++        is_online = bool(record[4]) if len(record) > 4 else False
++
++        last_seen = None
++        if last_seen_str:
++            try:
++                last_seen = datetime.fromisoformat(last_seen_str)
++            except (ValueError, TypeError) as err:
++                raise ValueError(f"from_tuple: last_seen 格式錯誤: {last_seen_str!r}") from err
++
++        return cls(mac, hostname, fw, last_seen, is_online)
++
++    # ── 工廠方法 3：從 CSV 行字串初始化 ──
++    @classmethod
++    def from_csv_row(cls, csv_line: str, delimiter: str = ",") -> "CPERecord":
++        """
++        從 CSV 匯出的一行文字建立 CPERecord。
++        示範工廠方法也可以接受額外的設定參數（delimiter）。
++        """
++        parts = [p.strip() for p in csv_line.split(delimiter)]
++        return cls.from_tuple(tuple(parts))
++
++    # ── 工廠方法 4：建立「離線佔位」記錄 ──
++    @classmethod
++    def create_placeholder(cls, mac_address: str) -> "CPERecord":
++        """
++        當裝置 MAC 已知但詳細資訊尚未取得時，建立一個佔位記錄。
++        語義比 CPERecord("aa:bb:...", "unknown", "unknown") 更清晰。
++        """
++        return cls(
++            mac_address=mac_address,
++            hostname="(未知主機名稱)",
++            firmware_version="(未知版本)",
++            is_online=False,
++        )
++
++    def __repr__(self) -> str:
++        ts = self.last_seen.strftime("%Y-%m-%d %H:%M") if self.last_seen else "N/A"
++        status = "●" if self.is_online else "○"
++        return (
++            f"{self.__class__.__name__}("
++            f"mac={self.mac_address}, "
++            f"host={self.hostname!r}, "
++            f"fw={self.firmware_version!r}, "
++            f"last_seen={ts}, "
++            f"online={status})"
++        )
++
++
++# ─────────────────────────────────────────────
++# 子類別：受管 CPE（帶有 ACS 連線設定）
++# ─────────────────────────────────────────────
++
++class ManagedCPERecord(CPERecord):
++    """
++    繼承 CPERecord，額外記錄 ACS 管理資訊。
++
++    驗證工廠方法繼承行為：
++      from_json / from_tuple 都使用 cls(...)，
++      所以 ManagedCPERecord.from_json(...) 建立的是 ManagedCPERecord 實例，
++      而非 CPERecord 實例——即使工廠方法定義在父類別中。
++    """
++
++    def __init__(self, *args, acs_url: str = "", connection_key: str = "", **kwargs):
++        super().__init__(*args, **kwargs)
++        self.acs_url = acs_url
++        self.connection_key = connection_key
++
++    @classmethod
++    def from_json(cls, json_str: str) -> "ManagedCPERecord":
++        """
++        覆寫 from_json，先呼叫父類邏輯，再設定子類欄位。
++        """
++        # 先取出子類專屬欄位（避免 __init__ 出現意外關鍵字引數）
++        data = json.loads(json_str)
++        acs_url = data.pop("acs_url", "")
++        connection_key = data.pop("connection_key", "")
++
++        # 把剩餘欄位重新序列化，呼叫父類的 from_json
++        base = super().from_json(json.dumps(data))
++
++        # 補充子類欄位
++        base.acs_url = acs_url
++        base.connection_key = connection_key
++        return base  # cls 已由 super().from_json 決定（因為 super() 使用 cls）
++
++    def __repr__(self) -> str:
++        base = super().__repr__()
++        return f"{base[:-1]}, acs={self.acs_url!r})"
++
++
++# ─────────────────────────────────────────────
++# 示範各工廠方法
++# ─────────────────────────────────────────────
++
++print("=== from_json 工廠方法 ===")
++json_str = json.dumps({
++    "mac_address": "aa:bb:cc:dd:ee:01",
++    "hostname": "cpe-living-room",
++    "firmware_version": "v3.2.1",
++    "last_seen": "2026-05-21T10:30:00",
++    "is_online": True,
++})
++cpe1 = CPERecord.from_json(json_str)
++print(cpe1)
++
++print("\n=== from_tuple 工廠方法（模擬資料庫查詢）===")
++db_row = ("bb:cc:dd:ee:ff:02", "cpe-bedroom", "v3.1.0", "2026-05-21T08:15:00", 0)
++cpe2 = CPERecord.from_tuple(db_row)
++print(cpe2)
++
++print("\n=== from_csv_row 工廠方法 ===")
++csv_line = "CC:DD:EE:FF:00:03, cpe-kitchen, v3.2.1, 2026-05-20T22:00:00, 1"
++cpe3 = CPERecord.from_csv_row(csv_line)
++print(cpe3)
++
++print("\n=== create_placeholder 工廠方法 ===")
++placeholder = CPERecord.create_placeholder("DD:EE:FF:00:11:04")
++print(placeholder)
++
++print("\n=== 子類別繼承工廠方法（cls 的重要性）===")
++managed_json = json.dumps({
++    "mac_address": "EE:FF:00:11:22:05",
++    "hostname": "managed-cpe-01",
++    "firmware_version": "v4.0.0",
++    "is_online": True,
++    "acs_url": "http://acs.example.com:7547",
++    "connection_key": "secret-key-abc",
++})
++managed_cpe = ManagedCPERecord.from_json(managed_json)
++print(f"型別: {type(managed_cpe).__name__}")   # ManagedCPERecord（非 CPERecord）
++print(managed_cpe)
++
++# 驗證 from_tuple 也能正確建立子類別實例
++managed_via_tuple = ManagedCPERecord.from_tuple(
++    ("FF:00:11:22:33:06", "managed-cpe-02", "v4.0.0")
++)
++print(f"\nfrom_tuple 型別: {type(managed_via_tuple).__name__}")  # ManagedCPERecord
++
++print("\n=== 錯誤處理示範 ===")
++for bad_input, method_name in [
++    ("{not valid json}", "from_json"),
++    ('{"hostname": "missing-mac"}', "from_json"),
++]:
++    try:
++        CPERecord.from_json(bad_input)
++    except ValueError as e:
++        print(f"[{method_name}] {e}")
