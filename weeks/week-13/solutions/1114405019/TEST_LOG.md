@@ -59,3 +59,19 @@ OK
 1. **Red → 初步 Green（部分）**：建立 `task1_grouped_bar.py` 與 `task2_zipcode_heatmap.py`，`test_zip_to_county_*` 兩測試立即通過，其餘因路徑計算失誤（`parent` 層數少一層）仍失敗。
 2. **路徑修正**：將 `DATA_DIR` 的 `Path(__file__).parent` 層數從 4 層修正為 5 層（實作檔），測試檔從 5 層修正為 6 層，所有 FileNotFoundError 消失。
 3. **邏輯修正 `get_top_depts`**：函式原先回傳三年聯集（最多可達 24 項），違反 `assertLessEqual(len(top), top_n)` 約束，改為先取聯集後以六年合計排序，再截取 top_n 項。
+
+---
+
+## Task 3 補充驗證（新增儀表板後）
+
+執行時間：2026-05-21
+
+新增 `task3_dashboard.py` 後，Task 1 / Task 2 的 10 個 unittest 仍維持 **10/10 全通過**（Task 3 為純視覺產出，未增加測試）。
+
+```
+Ran 10 tests in 0.478s
+
+OK
+```
+
+`output/task3_dashboard.png` 成功產出，包含四象限：全校趨勢折線圖、114 入學方式圓餅圖、114 各系前 10 名長條圖、主要系所歷年多線折線圖。
