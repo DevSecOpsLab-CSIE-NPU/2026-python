@@ -1,6 +1,12 @@
-# R02. 物件特殊方法
-# 讓自訂的 class 表現得像 Python 內建型別
-# 對應 Bloom's Taxonomy：記憶（Remember）— 背得出哪個場景用哪個方法
+# R02. 物件特殊方法（Special Methods / Dunder Methods）
+# 範例與說明（繁體中文）：
+# Python 的許多內建運作（印出、比較、排序、取長度、成員檢查）都靠特殊方法（以 __ 開頭與結尾），
+# 實作這些方法可以讓自訂 class 行為更貼近內建型別，並改善除錯可讀性與 API 體驗。
+# 常見用途：
+# - __repr__/__str__：物件的文字描述（開發者 vs 使用者）
+# - __eq__/比較：自訂相等與排序邏輯
+# - __slots__：大量小物件時節省記憶體
+# 本檔示範典型方法與設計建議。
 
 # ── __repr__ 和 __str__：物件的自我介紹 ──────────────────
 # __repr__：給「開發者」看的（在 REPL、debug 時出現）
@@ -12,9 +18,12 @@ class Student:
         self.grade = grade
 
     def __repr__(self):
+        # __repr__ 應該回傳一個「可重現」(or 明確) 的字串，方便開發與 debug。
+        # 使用 !r 可以呼叫屬性的 repr，讓字串更精確（例如在 name 中有特殊字元時）。
         return f"Student(name={self.name!r}, grade={self.grade})"
 
     def __str__(self):
+        # __str__ 提供給使用者閱讀的友善字串，通常較簡潔。
         return f"{self.name}：{self.grade} 分"
 
 print("=== __repr__ vs __str__ ===")
@@ -35,8 +44,11 @@ class Point:
         return f"Point({self.x}, {self.y})"
 
     def __eq__(self, other):
+        # 若 other 不是 Point，回傳 NotImplemented，
+        # 讓 Python 有機會嘗試對方的 __eq__ 或回退到預設行為。
         if not isinstance(other, Point):
             return NotImplemented
+        # 若型別相同，逐欄位比較以定義「相等」的語意
         return self.x == other.x and self.y == other.y
 
 print("\n=== __eq__：自訂相等條件 ===")
@@ -62,9 +74,14 @@ class Score:
         return f"Score({self.value})"
 
     def __eq__(self, other):
+        # 簡單示範：假設 other 也是 Score，直接比較 value
+        if not isinstance(other, Score):
+            return NotImplemented
         return self.value == other.value
 
     def __lt__(self, other):
+        if not isinstance(other, Score):
+            return NotImplemented
         return self.value < other.value
 
 print("\n=== @total_ordering：只寫兩個，自動補齊全部 ===")
@@ -94,8 +111,11 @@ print(p.x, p.y)   # 3 4
 # p.z = 5  # 這行會 AttributeError，因為 z 不在 __slots__ 裡
 
 # 記憶重點 ──────────────────────────────────────────────────
-# __repr__  → 開發者用，要能「重現」物件
-# __str__   → 使用者用，print() 呼叫
-# __eq__    → 自訂 == 的意義
-# @total_ordering + __lt__ → 自動補齊 <, <=, >, >=
-# __slots__ → 固定屬性，大量物件時省記憶體
+# - __repr__  → 開發者用，應該盡可能提供可重建或精確資訊（方便 debug）
+# - __str__   → 使用者用，提供友善易讀的格式，print() 優先使用
+# - __eq__    → 定義相等語意；對不同型別回傳 NotImplemented 是良好習慣
+# - 實作比較時：先檢查型別再回傳 NotImplemented，可避免不合理比較結果
+# - @total_ordering：只要定義 __eq__ 和 任一比較（例如 __lt__），會自動補齊其餘比較運算
+# - __slots__ → 限制物件可用屬性、移除 __dict__，在建立大量小物件時可節省記憶體
+# - 設計建議：實作特殊方法時要考量型別安全（isinstance 檢查）與對稱性（返回 NotImplemented），
+#   並盡量以可讀性與預期語意為主，避免把副作用或大量計算放進 __repr__/__str__。
