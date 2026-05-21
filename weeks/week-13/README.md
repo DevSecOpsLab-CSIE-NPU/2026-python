@@ -12,13 +12,13 @@
 
 | 檔案 | 層級 | 主題 |
 |------|------|------|
-| [R01-function-signatures.py](./in-class/R01-function-signatures.py) | 記憶 | `*args` / `**kwargs` / keyword-only 參數 |
-| [R02-special-methods.py](./in-class/R02-special-methods.py) | 記憶 | `__repr__` / `__eq__` / `@total_ordering` / `__slots__` |
-| [R03-property.py](./in-class/R03-property.py) | 記憶 | `@property` getter／setter／唯讀屬性 |
-| [U01-closures-traps.py](./in-class/U01-closures-traps.py) | 理解 | 可變預設值陷阱、閉包延遲綁定、`nonlocal` |
-| [U02-classmethod-factory.py](./in-class/U02-classmethod-factory.py) | 理解 | `@classmethod` 多重構造器 |
+| [R01-function-signatures.py](solutions/1114405019/R01-function-signatures.py) | 記憶 | `*args` / `**kwargs` / keyword-only 參數 |
+| [R02-special-methods.py](solutions/1114405019/R02-special-methods.py) | 記憶 | `__repr__` / `__eq__` / `@total_ordering` / `__slots__` |
+| [R03-property.py](solutions/1114405019/R03-property.py) | 記憶 | `@property` getter／setter／唯讀屬性 |
+| [U01-closures-traps.py](solutions/1114405019/U01-closures-traps.py) | 理解 | 可變預設值陷阱、閉包延遲綁定、`nonlocal` |
+| [U02-classmethod-factory.py](solutions/1114405019/U02-classmethod-factory.py) | 理解 | `@classmethod` 多重構造器 |
 | [A01-partial.py](./in-class/A01-partial.py) | 應用 | `functools.partial` 固定參數 |
-| [A02-context-manager.py](./in-class/A02-context-manager.py) | 應用 | `with` 語句 / `__enter__` / `@contextmanager` |
+| [A02-context-manager.py](solutions/1114405019/A02-context-manager.py) | 應用 | `with` 語句 / `__enter__` / `@contextmanager` |
 
 ---
 
