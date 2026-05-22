@@ -1,0 +1,19 @@
+import unittest
+from cheapest_base import cheapest_bases
+
+class TestCheapestBase(unittest.TestCase):
+    def test_zero_number_all_bases(self):
+        costs = list(range(36))  # 任意成本設定
+        res = cheapest_bases(costs, 0)
+        self.assertEqual(res, list(range(2, 37)))
+    def test_all_ones_prefers_single_digit(self):
+        costs = [1] * 36
+        res = cheapest_bases(costs, 10)
+        self.assertEqual(res, list(range(11, 37)))
+    def test_custom_costs_prefer_A(self):
+        costs = [100] * 36
+        costs[10] = 1  # 將 'A' 的成本設為 1
+        res = cheapest_bases(costs, 10)
+        self.assertEqual(res, list(range(11, 37)))
+        if __name__ == "__main__":
+            unittest.main()

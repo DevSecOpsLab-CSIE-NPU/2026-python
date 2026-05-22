@@ -1,0 +1,21 @@
+Ran 16 tests, all OK.
+
+Summary (brief):
+- test_all_ones_prefers_single_digit ... ok
+- test_custom_costs_prefer_A ... ok
+- test_zero_number_all_bases ... ok
+- test_single_pixel_example ... ok
+- test_two_pixels_average ... ok
+- test_single_pixel_easy ... ok
+- test_two_pixels_easy ... ok
+- test_example_with_choice_zero ... ok
+- test_fixed_step_all_stones ... ok
+- test_no_stones_easy ... ok
+- test_optimized_matches_bruteforce_small ... ok
+- test_two_stones_fixed3 ... ok
+- test_block_middle_column_sequential ... ok
+- test_no_blocking_when_path_exists ... ok
+- test_single_cell_reject ... ok
+- test_single_center ... ok
+
+Full run was executed via unittest -v; all tests passed.

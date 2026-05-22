@@ -35,10 +35,55 @@
 
 ## 解題代碼
 
-```python
+步驟說明（詳細）：
+
+1. 了解題意
+	- 給定一張 n*n 的影像，共 n^2 個像素。
+	- 每個像素有三個整數 R, G, B（範圍 0..255）。
+	- 對每個像素計算 X、Y、Z 三個值，Y 為亮度（luminance），最後還要算出所有像素的平均 Y。
+
+2. 轉換公式（直接帶入浮點數係數）：
+	- X = 0.5149 * R + 0.3244 * G + 0.1607 * B
+	- Y = 0.2654 * R + 0.6704 * G + 0.0642 * B
+	- Z = 0.0248 * R + 0.1248 * G + 0.8504 * B
+
+3. 輸出格式要求
+	- 對於每個像素，依照輸入順序（由左到右，由上到下）輸出一行：X Y Z。
+	- 每個數值需「四捨五入到小數第 4 位」，例如使用 Python 的格式化 `f"{val:.4f}"` 即可。
+	- 在所有像素輸出完後，另外輸出一行：
+	  The average of Y is <avg>
+	  其中 `<avg>` 亦四捨五入到小數第 4 位。
+
+4. 演算法與實作細節
+	- 逐像素計算 X、Y、Z 並累積 Y 的總和以便最後計算平均。
+	- 若 n 很小或很大，複雜度仍為 O(n^2)（因需處理每個像素一次），空間複雜度為 O(1)（只需累積總和與輸出行）。
+	- 注意浮點數四捨五入誤差：題目允許在 1e-4 之內的誤差，使用四捨五入至第 4 位輸出通常能符合。
+
+5. 邊界與錯誤處理
+	- 若輸入為空或格式錯誤（像素數量不足），實作應當適當報錯或忽略（Judge 題目通常保證輸入格式正確）。
+	- R/G/B 為整數，但計算時使用浮點數；請保留足夠精度再最後格式化輸出。
+
+
 # 你的代碼這裡
 ```
 
-## 測試用例
+# 範例一：使用完整模組實作（見 weeks/week-13/1114405006/question_11063.py）
+from question_11063 import parse_input_and_process
+
+# 假如你已經把輸入內容放在字串 input_text 中，呼叫：
+# lines = parse_input_and_process(input_text)
+# for l in lines:
+#     print(l)
+
+# 範例二（簡易版，便於記憶）：使用 weeks/week-13/1114405006/question_11063-easy.py
+# 由於檔名包含 '-'，無法直接 import，示範動態載入方式：
+import importlib.util
+spec = importlib.util.spec_from_file_location("q_easy", "weeks/week-13/1114405006/question_11063-easy.py")
+mod = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(mod)
+# 呼叫簡易版函式
+# lines = mod.convert_rgb_to_xyz(pixels)
+# for l in lines:
+#     print(l)
 
 *測試輸入與預期輸出*

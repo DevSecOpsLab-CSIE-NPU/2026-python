@@ -1,0 +1,12 @@
+Test run: 2026-05-20
+Command: python -m unittest -v test_question_11150.py
+
+test_no_stones_easy (test_question_11150.TestQuestion11150) ... ok
+test_fixed_step_all_stones (test_question_11150.TestQuestion11150) ... ok
+test_example_with_choice_zero (test_question_11150.TestQuestion11150) ... ok
+test_two_stones_fixed3 (test_question_11150.TestQuestion11150) ... ok
+test_optimized_matches_bruteforce_small (test_question_11150.TestQuestion11150) ... ok
+
+Ran 5 tests in 0.00s
+
+OK

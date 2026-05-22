@@ -1,0 +1,34 @@
+from collections import deque
+from typing import List,Tuple
+def simulate_traps(N: int, M: int, proposals: List[Tuple[int, int]]) -> List[str]:
+    grid = [[0] * M for _ in range(N)]
+    outputs: List[str] = []
+
+    for x, y in proposals:
+        if grid[x][y] == 1:
+            outputs.append('>_<')
+            continue
+
+        grid[x][y] = 1
+        if path_exists(grid):
+            outputs.append('<(_ _)>')
+        else:
+            outputs.append('>_<')
+            grid[x][y] = 0
+
+    return outputs
+def main():
+    import sys
+    data = sys.stdin.read().strip().splitlines()
+    if not data:
+        return  
+        it = iter(data)
+        N = int(next(it)); M = int(next(it)); T = int(next(it))
+        proposals = []
+        for _ in range(T):
+            x = int(next(it)); y = int(next(it))
+            proposals.append((x, y))
+            for line in simulate_traps(N, M, proposals):
+                print(line)
+                if __name__ == "__main__":
+    main()

@@ -40,10 +40,37 @@
 
 ## 解題代碼
 
-```python
+思路：
+
+- 對於每個進位 b（2 到 36），把輸入的十進位整數 N 轉換成 base-b 的各位數字，
+  並將每個位元對應的印刷成本相加，得到該進位的總成本。
+- 對所有進位計算後，找出總成本的最小值，並回傳所有達到該最小值的進位（升序）。
+
+實作細節：
+
+- 若 N == 0，任何進位的表示皆為單一字元 '0'，因此總成本為 costs[0]。
+- 轉換過程可使用不斷對 base 取餘數與整除直到 x==0 的方式取得各位數字。
+- 因為進位範圍固定（2..36），時間與空間複雜度可視為常數級，足以在題目限制內執行。
+
+
 # 你的代碼這裡
 ```
 
-## 測試用例
+# 範例：使用剛才撰寫的 cheapest_bases 函式
+from cheapest_base import cheapest_bases
+
+def process_case(costs, queries):
+    """處理一組測資：costs 為長度 36 的成本列表，queries 為要查詢的整數列表。"""
+    results = []
+    for n in queries:
+        bases = cheapest_bases(costs, n)
+        results.append((n, bases))
+    return results
+
+# 範例使用（讀入輸入時請依題目格式處理）：
+# costs = [...]  # 36 個整數
+# queries = [0, 10, 100000]
+# for n, bases in process_case(costs, queries):
+#     print(f"Cheapest base(s) for number {n}:", ' '.join(map(str, bases)))
 
 *測試輸入與預期輸出*

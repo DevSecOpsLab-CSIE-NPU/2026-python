@@ -1,0 +1,51 @@
+
+from collections import deque
+from typing import List, Tuple
+
+
+def simulate_traps_easy(N: int, M: int, proposals: List[Tuple[int, int]]) -> List[str]:
+    grid: List[List[int]] = [[0] * M for _ in range(N)]
+    results: List[str] = []
+    for x, y in proposals:
+        if grid[x][y] == 1:
+            results.append('>_<')
+            continue
+        grid[x][y] = 1
+        q = deque()
+        visited = [[False] * M for _ in range(N)]
+        for i in range(N):
+            if grid[i][0] == 0:
+                visited[i][0] = True
+                q.append((i, 0))
+        found = False
+        while q:
+            i, j = q.popleft()
+            if j == M - 1:
+                found = True
+                break
+            for di, dj in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                ni, nj = i + di, j + dj
+                if 0 <= ni < N and 0 <= nj < M and not visited[ni][nj] and grid[ni][nj] == 0:
+                    visited[ni][nj] = True
+                    q.append((ni, nj))
+        if found:
+            results.append('<(_ _)>')
+        else:
+            results.append('>_<')
+            grid[x][y] = 0
+    return results
+def main():
+    import sys
+    data = sys.stdin.read().strip().splitlines()
+    if not data:
+        return  
+    it = iter(data)
+    N = int(next(it)); M = int(next(it)); T = int(next(it))
+    proposals = []
+    for _ in range(T):
+        x = int(next(it)); y = int(next(it))
+        proposals.append((x, y))
+    for line in simulate_traps_easy(N, M, proposals):
+        print(line)
+if __name__ == "__main__":
+    main()

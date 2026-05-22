@@ -1,0 +1,26 @@
+import unittest
+import importlib.util
+import os
+
+# 此檔測試 question_11332-easy.py（簡潔版本），使用 importlib 動態載入含 '-' 的檔名
+spec = importlib.util.spec_from_file_location('q11332e', os.path.join(os.path.dirname(__file__), 'question_11332-easy.py'))
+mod = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(mod)
+
+
+class TestQuestion11332Easy(unittest.TestCase):
+    def test_single_segment_visible(self):
+        segs = [(1, 0, 2, 0)]
+        self.assertEqual(mod.visible_segments_easy(segs), [1])
+
+    def test_two_colinear_same_ray(self):
+        segs = [(1, 0, 2, 0), (3, 0, 4, 0)]
+        self.assertEqual(mod.visible_segments_easy(segs), [1, 0])
+
+    def test_two_different_angles(self):
+        segs = [(1, 0, 2, 0), (0, 1, 0, 2)]
+        self.assertEqual(mod.visible_segments_easy(segs), [1, 1])
+
+
+if __name__ == '__main__':
+    unittest.main()
