@@ -1,0 +1,13 @@
+test_boundaries (weeks.week-12.solutions.1114405013.test_solution_10931.TestUVA10931.test_boundaries)
+最小值 1、2 的冪次（只有一個 1） ... ok
+test_max_and_all_ones (weeks.week-12.solutions.1114405013.test_solution_10931.TestUVA10931.test_max_and_all_ones)
+最大值 2147483647（全 1 共 31 位）、Mersenne 數 ... ok
+test_misc (weeks.week-12.solutions.1114405013.test_solution_10931.TestUVA10931.test_misc)
+一般常見數字 ... ok
+test_sample (weeks.week-12.solutions.1114405013.test_solution_10931.TestUVA10931.test_sample)
+4 筆官方範例 ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK

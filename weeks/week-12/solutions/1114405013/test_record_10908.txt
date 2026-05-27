@@ -1,0 +1,9 @@
+test_full_same_char (__main__.TestUVA10908.test_full_same_char) ... ok
+test_odd_center_and_singlecell (__main__.TestUVA10908.test_odd_center_and_singlecell) ... ok
+test_out_of_bound (__main__.TestUVA10908.test_out_of_bound) ... ok
+test_sample_case (__main__.TestUVA10908.test_sample_case) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.002s
+
+OK

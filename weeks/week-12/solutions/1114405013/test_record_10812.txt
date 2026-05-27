@@ -1,0 +1,10 @@
+test_diff_greater_than_sum_impossible (__main__.TestUVA10812.test_diff_greater_than_sum_impossible) ... ok
+test_odd_sum_plus_diff_impossible (__main__.TestUVA10812.test_odd_sum_plus_diff_impossible) ... ok
+test_sample_case (__main__.TestUVA10812.test_sample_case) ... ok
+test_valid_cases (__main__.TestUVA10812.test_valid_cases) ... ok
+test_zero_zero (__main__.TestUVA10812.test_zero_zero) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK

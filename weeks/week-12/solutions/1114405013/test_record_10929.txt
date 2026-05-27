@@ -1,0 +1,13 @@
+test_large_number (weeks.week-12.solutions.1114405013.test_solution_10929.TestUVA10929.test_large_number)
+極長字串：全是 1 共 1000 位 → 奇偶差 0 → 11 倍數 ... ok
+test_official_samples (weeks.week-12.solutions.1114405013.test_solution_10929.TestUVA10929.test_official_samples)
+來自 ZeroJudge d235 的 6 筆樣例 ... ok
+test_single_digit (weeks.week-12.solutions.1114405013.test_solution_10929.TestUVA10929.test_single_digit)
+單位數：0 不算、1~9 都不是 11 倍數、11 本身是 ... ok
+test_typical_multiples (weeks.week-12.solutions.1114405013.test_solution_10929.TestUVA10929.test_typical_multiples)
+常見 11 倍數：121, 999999, 1000000001 ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK

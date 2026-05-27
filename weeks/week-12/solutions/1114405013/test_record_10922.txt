@@ -1,0 +1,11 @@
+test_edge_cases (weeks.week-12.solutions.1114405013.test_solution_10922.TestUVA10922.test_edge_cases)
+個位數非 9、極長 20 位數 ... ok
+test_examples (weeks.week-12.solutions.1114405013.test_solution_10922.TestUVA10922.test_examples)
+包含 9 的倍數（各種 degree）與非倍數 ... ok
+test_huge_number (weeks.week-12.solutions.1114405013.test_solution_10922.TestUVA10922.test_huge_number)
+超長字串（超過 50 位），混合非倍數與超大倍數 ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK
