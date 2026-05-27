@@ -26,20 +26,26 @@ def get_repo_root() -> Path:
     return here.parents[4]
 
 def find_csv_file() -> Path:
+    """尋找 113 年新生資料庫 CSV。"""
     root = get_repo_root()
+
     candidates = [
-        root / "weeks/week-08/in-class/stu-data/113年新生資料庫.csv",
-        root / "weeks/week-08/assets/stu-data/113年新生資料庫.csv",
-        root / "weeks/week-08/stu-data/113年新生資料庫.csv",
-        root / "weeks/week-13/assets/stu-data/113年新生資料庫.csv",
+        root / "assets" / "stu-data" / "113年新生資料庫.csv",
+        root / "weeks" / "week-08" / "in-class" / "stu-data" / "113年新生資料庫.csv",
+        root / "weeks" / "week-08" / "assets" / "stu-data" / "113年新生資料庫.csv",
+        root / "weeks" / "week-08" / "stu-data" / "113年新生資料庫.csv",
     ]
-    for c in candidates:
-        if c.exists():
-            return c
-    matches = list((root / "weeks").rglob("113年新生資料庫.csv")) or list((root / "weeks").rglob("*113*新生*資料*.csv"))
+
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+
+    matches = list(root.rglob("*113*新生*資料*.csv"))
     if matches:
         return sorted(matches, key=lambda p: len(str(p)))[0]
-    raise FileNotFoundError("找不到 113年新生資料庫.csv，請先同步 upstream/main。")
+
+    raise FileNotFoundError("找不到 113年新生資料庫.csv，請確認 assets/stu-data 是否存在。")
+
 
 @timeit
 def read_csv(filepath: str | Path) -> list[dict[str, str]]:
