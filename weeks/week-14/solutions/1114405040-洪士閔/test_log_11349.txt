@@ -1,0 +1,13 @@
+test_even_size_symmetric (test_11349.TestSymmetricMatrix.test_even_size_symmetric) ... ok
+test_large_values (test_11349.TestSymmetricMatrix.test_large_values) ... ok
+test_negative_element_is_not_symmetric (test_11349.TestSymmetricMatrix.test_negative_element_is_not_symmetric) ... ok
+test_not_square_matrix (test_11349.TestSymmetricMatrix.test_not_square_matrix) ... ok
+test_sample_non_symmetric (test_11349.TestSymmetricMatrix.test_sample_non_symmetric) ... ok
+test_sample_symmetric (test_11349.TestSymmetricMatrix.test_sample_symmetric) ... ok
+test_single_non_negative_element (test_11349.TestSymmetricMatrix.test_single_non_negative_element) ... ok
+test_solve_sample_input (test_11349.TestSymmetricMatrix.test_solve_sample_input) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.001s
+
+OK

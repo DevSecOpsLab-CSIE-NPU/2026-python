@@ -1,0 +1,9 @@
+test_doomsday_anchor_dates_are_monday (test_12019.TestWeekday2011.test_doomsday_anchor_dates_are_monday) ... ok
+test_known_dates (test_12019.TestWeekday2011.test_known_dates) ... ok
+test_matches_datetime_for_more_dates (test_12019.TestWeekday2011.test_matches_datetime_for_more_dates) ... ok
+test_solve_sample_input (test_12019.TestWeekday2011.test_solve_sample_input) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+OK

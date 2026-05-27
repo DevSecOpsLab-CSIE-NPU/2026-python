@@ -1,0 +1,9 @@
+test_ranges_not_starting_at_one (test_11461.TestCountSquares.test_ranges_not_starting_at_one) ... ok
+test_samples (test_11461.TestCountSquares.test_samples) ... ok
+test_single_square_range (test_11461.TestCountSquares.test_single_square_range) ... ok
+test_solve_sample_input (test_11461.TestCountSquares.test_solve_sample_input) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+OK

@@ -1,0 +1,9 @@
+test_precomputed_values_match_direct_function (test_11417.TestGcdSum.test_precomputed_values_match_direct_function) ... ok
+test_samples (test_11417.TestGcdSum.test_samples) ... ok
+test_small_values (test_11417.TestGcdSum.test_small_values) ... ok
+test_solve_sample_input (test_11417.TestGcdSum.test_solve_sample_input) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.033s
+
+OK
