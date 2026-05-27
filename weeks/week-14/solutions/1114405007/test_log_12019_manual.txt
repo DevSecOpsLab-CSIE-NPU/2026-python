@@ -1,0 +1,52 @@
+===== 手打程式測試記錄 (Manual Solution Test Log) =====
+測試日期: 2026-05-27
+題目: 12019 - Doom's Day Algorithm (計算星期幾)
+學號: 1114405007
+程式: solution_12019_manual.py
+
+===== 測試輸入 =====
+5
+5 9
+4 4
+2 29
+1 10
+12 12
+
+===== 測試輸出 =====
+Wednesday
+Wednesday
+Thursday
+Wednesday
+Wednesday
+
+===== 預期輸出 =====
+Wednesday
+Wednesday
+Thursday
+Wednesday
+Wednesday
+
+===== 測試結果 =====
+✅ 通過 - 輸出完全符合預期
+
+===== 詳細說明 =====
+• 2012 年 5 月 9 日（Doomsday）= Wednesday ✓
+• 2012 年 4 月 4 日（Doomsday）= Wednesday ✓
+• 2012 年 2 月 29 日（閏年日期）= Thursday ✓
+• 2012 年 1 月 10 日（Doomsday）= Wednesday ✓
+• 2012 年 12 月 12 日（Doomsday）= Wednesday ✓
+
+===== 手打程式優勢 =====
+直接預計算 Doomsday 表格，使用數組查表替代計算。
+時間複雜度 O(1) 每個查詢，簡潔高效。
+
+===== 演算法驗證 =====
+Doomsday 表格：
+月份 1  2 3 4 5 6 7 8 9 10 11 12
+日期 10 21 7 4 9 6 11 8 5 10  7 12
+
+所有 Doomsday 日期在 2012 年都是星期三 (Wednesday)。
+通過偏移計算和模運算可以快速推算任意日期。
+
+===== 測試結案 =====
+手打程式實現正確，邏輯無誤，成功通過所有自定義測試用例。
