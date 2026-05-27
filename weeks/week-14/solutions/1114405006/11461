@@ -1,0 +1,23 @@
+import sys 
+import math
+def count_squares_easy(a: int, b: int) -> int:
+    if a > b:
+        return 0
+    low = math.isqrt(a)
+    if low * low < a:
+        low += 1
+    high = math.isqrt(b)
+    return max(0, high - low + 1)
+    def main() -> None:
+    data = sys.stdin.read().strip().split()
+    if not data:
+        return
+        it = iter(data)
+    for a_s, b_s in zip(it, it):
+        a = int(a_s)
+        b = int(b_s)
+        if a == 0 and b == 0:
+            break
+        print(count_squares_easy(a, b))
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,27 @@
+import sys 
+from datetime import date
+WEEKDAY_NAMES = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",    
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+]
+def weekday_2012_easy(month: int, day: int) -> str:
+    current_date = date(2012, month, day)
+    return WEEKDAY_NAMES[current_date.weekday()]
+def main() -> None:
+    data = sys.stdin.read().strip().split()
+    if not data:
+        return
+    t = int(data[0])
+    index = 1
+    for _ in range(t):
+        month = int(data[index])
+        day = int(data[index + 1])
+        index += 2
+        print(weekday_2012_easy(month, day))
+if __name__ == '__main__':
+    main()
