@@ -1,0 +1,35 @@
+import sys
+
+
+def is_ok(mat):
+    n = len(mat)
+    for i in range(n):
+        for j in range(n):
+            if mat[i][j] < 0:
+                return False
+            if mat[i][j] != mat[n - 1 - i][n - 1 - j]:
+                return False
+    return True
+
+
+def solve(text):
+    lines = [x.strip() for x in text.splitlines() if x.strip()]
+    t = int(lines[0])
+    p = 1
+    ans = []
+    for case_id in range(1, t + 1):
+        n = int(lines[p].split('=')[1].strip())
+        p += 1
+        mat = []
+        for _ in range(n):
+            mat.append(list(map(int, lines[p].split())))
+            p += 1
+        if is_ok(mat):
+            ans.append(f"Test #{case_id}: Symmetric.")
+        else:
+            ans.append(f"Test #{case_id}: Non-symmetric.")
+    return "\n".join(ans)
+
+
+if __name__ == "__main__":
+    print(solve(sys.stdin.read()))
