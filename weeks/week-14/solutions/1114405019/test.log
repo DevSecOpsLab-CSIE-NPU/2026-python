@@ -1,0 +1,40 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.9, pytest-9.0.3, pluggy-1.6.0 -- C:\Users\yiteng\AppData\Local\Programs\Python\Python311\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\yiteng\Downloads\20260527\2026-python\weeks\week-14\solutions\1114405019
+plugins: anyio-4.13.0
+collecting ... collected 31 items
+
+test_11349.py::TestSymmetricMatrix::test_1x1_negative PASSED             [  3%]
+test_11349.py::TestSymmetricMatrix::test_1x1_symmetric PASSED            [  6%]
+test_11349.py::TestSymmetricMatrix::test_2x2_non_symmetric PASSED        [  9%]
+test_11349.py::TestSymmetricMatrix::test_2x2_symmetric PASSED            [ 12%]
+test_11349.py::TestSymmetricMatrix::test_all_zeros PASSED                [ 16%]
+test_11349.py::TestSymmetricMatrix::test_example_from_problem PASSED     [ 19%]
+test_11349.py::TestSymmetricMatrix::test_multiple_cases_numbering PASSED [ 22%]
+test_11349.py::TestSymmetricMatrix::test_negative_element PASSED         [ 25%]
+test_11417.py::TestGCDSum::test_multiple_inputs PASSED                   [ 29%]
+test_11417.py::TestGCDSum::test_n10 PASSED                               [ 32%]
+test_11417.py::TestGCDSum::test_n100 PASSED                              [ 35%]
+test_11417.py::TestGCDSum::test_n2 PASSED                                [ 38%]
+test_11417.py::TestGCDSum::test_n3 PASSED                                [ 41%]
+test_11417.py::TestGCDSum::test_n500 PASSED                              [ 45%]
+test_11417.py::TestGCDSum::test_zero_terminates PASSED                   [ 48%]
+test_11461.py::TestSquareNumbers::test_case1 PASSED                      [ 51%]
+test_11461.py::TestSquareNumbers::test_case2 PASSED                      [ 54%]
+test_11461.py::TestSquareNumbers::test_case3 PASSED                      [ 58%]
+test_11461.py::TestSquareNumbers::test_exact_square PASSED               [ 61%]
+test_11461.py::TestSquareNumbers::test_multiple_inputs PASSED            [ 64%]
+test_11461.py::TestSquareNumbers::test_no_square PASSED                  [ 67%]
+test_11461.py::TestSquareNumbers::test_single_1 PASSED                   [ 70%]
+test_11461.py::TestSquareNumbers::test_start_at_square PASSED            [ 74%]
+test_12019.py::TestDoomsDay::test_all_doomsday_dates_are_wednesday PASSED [ 77%]
+test_12019.py::TestDoomsDay::test_consecutive_seven_days PASSED          [ 80%]
+test_12019.py::TestDoomsDay::test_dec25_tuesday PASSED                   [ 83%]
+test_12019.py::TestDoomsDay::test_feb29_wednesday PASSED                 [ 87%]
+test_12019.py::TestDoomsDay::test_jan1_sunday PASSED                     [ 90%]
+test_12019.py::TestDoomsDay::test_jan4_wednesday PASSED                  [ 93%]
+test_12019.py::TestDoomsDay::test_mar7_wednesday PASSED                  [ 96%]
+test_12019.py::TestDoomsDay::test_oct1_monday PASSED                     [100%]
+
+============================= 31 passed in 0.84s ==============================

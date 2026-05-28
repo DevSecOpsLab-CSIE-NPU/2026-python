@@ -1,0 +1,17 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.9, pytest-9.0.3, pluggy-1.6.0 -- C:\Users\yiteng\AppData\Local\Programs\Python\Python311\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\yiteng\Downloads\20260527\2026-python\weeks\week-14\solutions\1114405019
+plugins: anyio-4.13.0
+collecting ... collected 8 items
+
+test_11461.py::TestSquareNumbers::test_case1 PASSED                      [ 12%]
+test_11461.py::TestSquareNumbers::test_case2 PASSED                      [ 25%]
+test_11461.py::TestSquareNumbers::test_case3 PASSED                      [ 37%]
+test_11461.py::TestSquareNumbers::test_exact_square PASSED               [ 50%]
+test_11461.py::TestSquareNumbers::test_multiple_inputs PASSED            [ 62%]
+test_11461.py::TestSquareNumbers::test_no_square PASSED                  [ 75%]
+test_11461.py::TestSquareNumbers::test_single_1 PASSED                   [ 87%]
+test_11461.py::TestSquareNumbers::test_start_at_square PASSED            [100%]
+
+============================== 8 passed in 0.24s ==============================
