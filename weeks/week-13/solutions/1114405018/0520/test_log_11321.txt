@@ -1,0 +1,10 @@
+執行時間：2026-05-20
+執行指令：c:/Users/nina9/OneDrive/桌面/python/python2/.venv/Scripts/python.exe -m unittest -v test_11321.py
+
+測試輸出：
+test_simple (test_11321.Test11321.test_simple) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.166s
+
+OK

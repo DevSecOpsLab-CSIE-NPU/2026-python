@@ -1,0 +1,11 @@
+執行時間：2026-05-20
+執行指令：c:/Users/nina9/OneDrive/桌面/python/python2/.venv/Scripts/python.exe -m unittest -v test_11005_easy.py
+
+測試輸出：
+test_all_costs_are_one (test_11005_easy.TestUVA11005Easy.test_all_costs_are_one) ... ok
+test_simple_tie (test_11005_easy.TestUVA11005Easy.test_simple_tie) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.361s
+
+OK
