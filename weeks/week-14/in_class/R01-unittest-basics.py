@@ -18,16 +18,19 @@ from unittest.mock import MagicMock, patch
 # ---------- 被測函式 ----------
 def url_print(host, domain):
     print(f"https://{host}.{domain}")
+# 將 host 與 domain 組合成完整的 URL，並印出到標準輸出
 
 
 def parse_int(s):
     if not s:
         raise ValueError("空字串無法轉成整數")
     return int(s)
+# 將字串轉成整數；若傳入空字串則拋出 ValueError
 
 
 def fetch_user(api, user_id):
     return api.get(f"/users/{user_id}")
+# 使用傳入的 API 物件呼叫 get 方法，回傳指定 user_id 的使用者資料
 
 
 # ---------- 14.1 測試 stdout ----------

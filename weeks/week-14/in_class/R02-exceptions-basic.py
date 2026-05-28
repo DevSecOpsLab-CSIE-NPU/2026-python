@@ -13,26 +13,31 @@ import traceback
 
 
 # ---------- 14.6 多個例外 ----------
+# 嘗試將輸入轉成整數；若輸入為不能轉換的型別或值，捕捉多種類別的例外
 def parse_value(s):
     """同一個 except 用 tuple 列出多種例外類別"""
     try:
         return int(s)
     except (ValueError, TypeError) as e:
+        # 印出錯誤類別與訊息，並回傳 None 表示解析失敗
         print(f"[14.6] 解析失敗 {type(e).__name__}: {e}")
         return None
 
 
 # ---------- 14.7 捕獲所有例外 ----------
+# 執行傳入的 callable，並統一處理發生的例外（避免使用裸 except）
 def safe_run(func, *args):
     """except Exception，而不是裸 except:（裸 except 會抓到 KeyboardInterrupt）"""
     try:
         return func(*args)
     except Exception as e:
+        # 印出簡短錯誤資訊並列印完整的 traceback，方便除錯
         print(f"[14.7] 發生例外 {type(e).__name__}: {e}")
         traceback.print_exc()
 
 
 # ---------- 14.8 自定義例外 ----------
+# 自定義例外類別群組：將網路相關錯誤統一由 `NetworkError` 派生
 class NetworkError(Exception):
     """所有網路錯誤的基底類別；繼承 Exception 而不是 BaseException"""
 
@@ -44,15 +49,19 @@ class HostnameError(NetworkError):
 class ConnectionTimeout(NetworkError):
     """連線逾時，附帶 host / seconds 屬性，方便上層判斷"""
     def __init__(self, host, seconds):
+        # 建構帶有描述的例外訊息，並保留屬性以供呼叫端使用
         super().__init__(f"連線 {host} 超過 {seconds} 秒")
         self.host = host
         self.seconds = seconds
 
 
 def connect(host, timeout):
+    # 範例的連線函式：驗證參數並在遇到問題時拋出對應的自定義例外
     if host == "":
+        # 主機名稱不可為空，使用 HostnameError 表示這類錯誤
         raise HostnameError("主機名稱為空")
     if timeout < 1:
+        # 若 timeout 太小，拋出 ConnectionTimeout，並帶入相關屬性
         raise ConnectionTimeout(host, timeout)
     return f"connected to {host}"
 
@@ -63,6 +72,7 @@ if __name__ == "__main__":
     parse_value(None)
 
     print("\n--- 14.7 ---")
+    # safe_run 會捕捉並列印例外而不中斷程式
     safe_run(lambda: 1 / 0)
 
     print("\n--- 14.8 ---")
@@ -70,4 +80,5 @@ if __name__ == "__main__":
         try:
             print(connect(host, t))
         except NetworkError as e:
+            # 捕捉到任何 NetworkError（含其子類別），並印出錯誤類別與訊息
             print(f"接到 {type(e).__name__}: {e}")
