@@ -1,0 +1,35 @@
+def safe_int(value):
+    try:
+        return int(value)
+    except (ValueError, TypeError):
+        return None
+
+
+def run_guard(func, *args):
+    try:
+        return True, func(*args)
+    except Exception as exc:
+        return False, type(exc).__name__
+
+
+class NetErr(Exception):
+    pass
+
+
+class HostErr(NetErr):
+    pass
+
+
+class TimeoutErr(NetErr):
+    def __init__(self, host, seconds):
+        super().__init__(f"連線 {host} 超過 {seconds} 秒")
+        self.host = host
+        self.seconds = seconds
+
+
+def simple_connect(host, timeout):
+    if host == "":
+        raise HostErr("主機名稱為空")
+    if timeout < 1:
+        raise TimeoutErr(host, timeout)
+    return f"connected to {host}"

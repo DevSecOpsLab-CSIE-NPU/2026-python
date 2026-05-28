@@ -1,0 +1,12 @@
+def make_url(host, domain):
+    print(f"https://{host}.{domain}")
+
+
+def to_int(text):
+    if text == "":
+        raise ValueError("空字串無法轉成整數")
+    return int(text)
+
+
+def get_user(api, user_id):
+    return api.get(f"/users/{user_id}")

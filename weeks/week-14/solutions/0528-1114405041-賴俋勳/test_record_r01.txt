@@ -1,0 +1,10 @@
+test_fetch_user (test_r01_unittest.TestR01Unittest.test_fetch_user) ... ok
+test_parse_int_raises (test_r01_unittest.TestR01Unittest.test_parse_int_raises) ... ok
+test_parse_int_success (test_r01_unittest.TestR01Unittest.test_parse_int_success) ... ok
+test_url_print_patch (test_r01_unittest.TestR01Unittest.test_url_print_patch) ... ok
+test_url_print_stdout (test_r01_unittest.TestR01Unittest.test_url_print_stdout) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.002s
+
+OK

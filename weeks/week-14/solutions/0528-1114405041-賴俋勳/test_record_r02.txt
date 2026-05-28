@@ -1,0 +1,11 @@
+test_connect_hostname_error (test_r02_exceptions.TestR02Exceptions.test_connect_hostname_error) ... ok
+test_connect_success (test_r02_exceptions.TestR02Exceptions.test_connect_success) ... ok
+test_connect_timeout_error (test_r02_exceptions.TestR02Exceptions.test_connect_timeout_error) ... ok
+test_parse_value (test_r02_exceptions.TestR02Exceptions.test_parse_value) ... ok
+test_safe_run_error (test_r02_exceptions.TestR02Exceptions.test_safe_run_error) ... ok
+test_safe_run_success (test_r02_exceptions.TestR02Exceptions.test_safe_run_success) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+OK

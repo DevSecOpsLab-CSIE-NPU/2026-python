@@ -1,0 +1,18 @@
+test_connect_hostname_error (test_week14_tools.TestExceptionsBasic.test_connect_hostname_error) ... ok
+test_connect_success (test_week14_tools.TestExceptionsBasic.test_connect_success) ... ok
+test_connect_timeout_error (test_week14_tools.TestExceptionsBasic.test_connect_timeout_error) ... ok
+test_parse_value (test_week14_tools.TestExceptionsBasic.test_parse_value) ... ok
+test_safe_run (test_week14_tools.TestExceptionsBasic.test_safe_run) ... ok
+test_bench_cprofile (test_week14_tools.TestProfileBasic.test_bench_cprofile) ... ok
+test_bench_timeit (test_week14_tools.TestProfileBasic.test_bench_timeit) ... ok
+test_sum_of_squares (test_week14_tools.TestProfileBasic.test_sum_of_squares) ... ok
+test_fetch_user_mock_api (test_week14_tools.TestUnittestBasics.test_fetch_user_mock_api) ... ok
+test_parse_int_raise_with_message (test_week14_tools.TestUnittestBasics.test_parse_int_raise_with_message) ... ok
+test_parse_int_success (test_week14_tools.TestUnittestBasics.test_parse_int_success) ... ok
+test_url_print_patch (test_week14_tools.TestUnittestBasics.test_url_print_patch) ... ok
+test_url_print_stdout (test_week14_tools.TestUnittestBasics.test_url_print_stdout) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.008s
+
+OK

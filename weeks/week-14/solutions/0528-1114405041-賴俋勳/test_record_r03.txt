@@ -1,0 +1,8 @@
+test_bench_cprofile (test_r03_profile.TestR03Profile.test_bench_cprofile) ... ok
+test_bench_timeit (test_r03_profile.TestR03Profile.test_bench_timeit) ... ok
+test_sum_of_squares (test_r03_profile.TestR03Profile.test_sum_of_squares) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.007s
+
+OK
