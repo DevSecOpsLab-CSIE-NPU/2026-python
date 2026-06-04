@@ -23,7 +23,7 @@ def build_answers(limit: int) -> list[int]:
 
 
 def main() -> None:
-	answers = build_answers(500)
+	answers = build_answers(500) 
 	output = []
 	for line in sys.stdin:
 		n = int(line.strip())

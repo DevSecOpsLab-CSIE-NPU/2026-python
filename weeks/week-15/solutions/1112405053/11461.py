@@ -21,7 +21,7 @@ def main() -> None:
 	out = []
 	for line in sys.stdin:
 		line = line.strip()
-		if not line:
+		if not line: 
 			continue
 		a, b = map(int, line.split())
 		if a == 0 and b == 0:
