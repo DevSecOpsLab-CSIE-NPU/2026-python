@@ -5,12 +5,7 @@
 """
 
 import unittest
-
-# 紅燈階段：匯入預期會失敗
-try:
-    from square_counter import count_squares
-except ImportError:
-    count_squares = None
+from square_counter import count_squares
 
 
 class TestCountSquares(unittest.TestCase):
