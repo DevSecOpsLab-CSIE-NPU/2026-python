@@ -1,14 +1,13 @@
-import math
+"""Count perfect squares in an inclusive range."""
+
+from math import isqrt
 
 
 def count_squares(a: int, b: int) -> int:
+    """Return how many perfect squares are in [a, b]."""
     if a > b:
         raise ValueError("a must be <= b")
 
-    start = math.isqrt(a - 1) + 1
-    end = math.isqrt(b)
-
-    if start > end:
-        return 0
-
-    return end - start + 1
+    left = isqrt(a - 1)
+    right = isqrt(b)
+    return right - left

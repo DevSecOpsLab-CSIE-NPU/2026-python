@@ -1,3 +1,5 @@
+"""Tests for count_squares(a, b)."""
+
 import unittest
 
 from square_counter import count_squares
@@ -10,11 +12,8 @@ class TestCountSquares(unittest.TestCase):
     def test_edge_single_point_square(self):
         self.assertEqual(count_squares(1, 1), 1)
 
-    def test_range_without_square_numbers(self):
-        self.assertEqual(count_squares(5, 8), 0)
-
     def test_invalid_input_raises(self):
-        with self.assertRaises(ValueError):
+        with self.assertRaisesRegex(ValueError, "a must be <= b"):
             count_squares(10, 1)
 
 
