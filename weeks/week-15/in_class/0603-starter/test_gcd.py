@@ -11,21 +11,21 @@
 
 import unittest
 
-# from gcd import sum_of_gcd  # 完成 gcd.py 後解除註解
+from gcd import sum_of_gcd  # 完成 gcd.py 後解除註解
 
 
 class TestSumOfGcd(unittest.TestCase):
     def test_n_equals_2(self):
         # TODO: gcd(1,2) = 1，總和應為 1
-        self.fail("尚未實作 — 請跟 AI 討論後補上斷言")
+        self.assertEqual(sum_of_gcd(2), 1)
 
     def test_n_equals_10(self):
         # TODO: 範例答案 67
-        self.fail("尚未實作")
+        self.assertEqual(sum_of_gcd(10), 67)
 
     def test_edge_case(self):
         # TODO: 想一個 edge case（提示：n=1 時應為多少？）
-        self.fail("尚未實作")
+        self.assertEqual(sum_of_gcd(1), 0)
 
 
 if __name__ == "__main__":
