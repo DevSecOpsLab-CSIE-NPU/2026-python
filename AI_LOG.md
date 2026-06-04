@@ -36,3 +36,17 @@ python -m unittest test_gcd.py -q
 - 將 `gcd.py` 優化為更高效的演算法（若你要處理較大 n）。
 
 如需我執行後續步驟，請告訴我你要我做哪一件。
+
+---
+
+補充紀錄（2026-06-04 進一步操作）：
+
+- 新增測試與實作：weeks/week-15/in_class/0604-starter/test_square_counter.py、
+	weeks/week-15/solutions/1114405006-0604/square_counter.py、
+	weeks/week-15/in_class/0604-starter/square_counter.py (shim)
+- Commit & push：分支 `feat/square-counter` 推到 `fang/feat/square-counter`
+- 測試結果：在 starter 目錄執行 `test_square_counter.py`，Ran 3 tests — OK
+
+PR 建議網址： https://github.com/FangLongJiao/2026-python/pull/new/feat/square-counter
+
+以上皆已在本地 repo 執行並推送到你的遠端。若要我代開 PR 或合併，回覆要我執行的動作即可。
