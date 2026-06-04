@@ -15,22 +15,24 @@
 
 import unittest
 
-# from square_counter import count_squares  # 完成後解除註解
+from square_counter import count_squares  # 完成後解除註解
 
 
 class TestCountSquares(unittest.TestCase):
     def test_basic_range(self):
         # TODO: count_squares(1, 10) 應為 3 (1, 4, 9)
-        self.fail("尚未實作")
+        self.assertEqual(count_squares(1, 10), 3)
 
     def test_edge_case(self):
         # TODO: 想一個 edge case（單點區間？最小區間？）
-        self.fail("尚未實作")
+        # 單點區間且該數為完全平方數，例如 16
+        self.assertEqual(count_squares(16, 16), 1)
 
     def test_invalid_input_raises(self):
         # TODO: 使用 assertRaises 驗證 a > b 會丟 ValueError
         # 提示：with self.assertRaises(ValueError): count_squares(5, 2)
-        self.fail("尚未實作")
+        with self.assertRaises(ValueError):
+            count_squares(5, 2)
 
 
 if __name__ == "__main__":
