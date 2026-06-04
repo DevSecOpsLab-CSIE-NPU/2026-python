@@ -2,6 +2,9 @@ from math import gcd
 
 
 def sum_of_gcd(n: int) -> int:
+    if n < 1:
+        raise ValueError("n must be >= 1")
+
     total = 0
     for i in range(1, n):
         for j in range(i + 1, n + 1):
