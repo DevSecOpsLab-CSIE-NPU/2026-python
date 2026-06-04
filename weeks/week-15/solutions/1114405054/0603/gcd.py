@@ -8,5 +8,8 @@ from math import gcd
 
 def sum_of_gcd(n: int) -> int:
     """計算所有 gcd(i, j) 的總和，其中 1 <= i < j <= n"""
-    # TODO: 待實作
-    return 0
+    total = 0
+    for i in range(1, n + 1):
+        for j in range(i + 1, n + 1):
+            total += gcd(i, j)
+    return total
