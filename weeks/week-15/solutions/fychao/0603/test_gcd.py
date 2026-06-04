@@ -1,4 +1,9 @@
 import unittest
+import os
+import sys
+
+# 確保能匯入同目錄下的 gcd.py
+sys.path.insert(0, os.path.dirname(__file__))
 
 from gcd import sum_of_gcd
 
