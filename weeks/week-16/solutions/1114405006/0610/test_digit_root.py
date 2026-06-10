@@ -16,7 +16,7 @@
 
 import unittest
 
-# from digit_root import digit_root  # 測試紅燈階段暫時註解
+from digit_root import digit_root
 
 
 class TestDigitRoot(unittest.TestCase):
