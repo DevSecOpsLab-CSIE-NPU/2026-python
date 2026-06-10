@@ -1,14 +1,6 @@
-"""Tests for digit_root.
-
-Requirements covered:
-- At least 3 test cases
-- Includes edge case(s)
-- Includes invalid-input exception case
-"""
-
 import unittest
 
-from digit_root import digit_root
+from .digit_root import digit_root
 
 
 class TestDigitRoot(unittest.TestCase):
