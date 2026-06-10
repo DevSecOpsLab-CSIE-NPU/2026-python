@@ -4,6 +4,7 @@
 - 課堂範例：[`in_class/`](./in_class/) — 6/3 流程熱身、6/4 應用
 - 解題：本週無 `QUESTION-*.md`
 - 作業：依 6/3、6/4 課堂教案完成 PR；6/4 起需附 `AI_LOG.md`
+- 期末考 SOP：[`in_class/exam-sop-checklist-lite.md`](./in_class/exam-sop-checklist-lite.md) — 6/22 當天會發的精簡版檢查表
 
 ---
 
