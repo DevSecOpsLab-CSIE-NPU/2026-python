@@ -2,7 +2,7 @@
 
 import unittest
 
-# from digit_root import digit_root  # 完成 digit_root.py 後解除註解
+from digit_root import digit_root
 
 
 class TestDigitRoot(unittest.TestCase):
