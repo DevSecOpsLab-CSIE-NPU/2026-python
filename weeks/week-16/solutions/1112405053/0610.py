@@ -5,7 +5,7 @@ ZeroJudge c813 / UVA 11332 - Summing Digits
 Read integers (one per line) until a line containing 0. For each n != 0,
 print g(n) where g(n) is the repeated digit-sum until a single digit remains.
 
-This file implements the solution in-place as requested.
+This file implements the solution in-place as requested. 
 """
 
 import sys
