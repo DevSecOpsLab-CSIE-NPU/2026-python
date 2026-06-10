@@ -2,11 +2,17 @@
 
 ## 我問 AI 什麼
 
+「請幫我讀week-16裡的README.md」
+
+「再來幫我讀week-16裡的in_class中有0610的所有檔案和README.md」
+
+「幫我讀這個」
+
 「幫我讀這個，依照要求幫我做出成品在week-16中solution中1114405029檔案裏面加上你做出0610的東西，我學號是1114405029」
 
 ## AI 給了什麼
 
-AI 依照 6/10 計時演練題目建立 `0610` 成品，補上 `test_digit_root.py` 的 unittest 測試案例，並建立 `digit_root.py` 實作數字根函式。
+AI 先讀完 week-16 與 0610 題目、starter 檔和 SOP 要求，再依照 6/10 計時演練題目建立 `0610` 成品，補上 `test_digit_root.py` 的 unittest 測試案例，並建立 `digit_root.py` 實作數字根函式。
 
 ## 我改了什麼
 
