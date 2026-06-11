@@ -3,12 +3,23 @@ import unittest
 
 from sorts import bubble_sort, quick_sort, merge_sort
 
+# Stage 3: 試圖引入加速版排序函式
+try:
+    from sorts import bubble_sort_fast, quick_sort_fast
+    _FAST_SORTS_AVAILABLE = True
+except (ImportError, AttributeError):
+    _FAST_SORTS_AVAILABLE = False
+
 
 SORT_FUNCTIONS = [
     bubble_sort,
     quick_sort,
     merge_sort,
 ]
+
+# Stage 3: 如果加速版可用，加入測試清單
+if _FAST_SORTS_AVAILABLE:
+    SORT_FUNCTIONS.extend([bubble_sort_fast, quick_sort_fast])
 
 
 class TestSortFunctions(unittest.TestCase):
@@ -64,6 +75,15 @@ class TestSortFunctions(unittest.TestCase):
                 with self.subTest(sort=sort_fn.__name__, bad=bad):
                     with self.assertRaises(TypeError):
                         sort_fn(bad)
+
+
+class TestStage3AcceleratedSorts(unittest.TestCase):
+    """Stage 3: 驗證加速版排序函式的存在與正確性"""
+
+    def test_accelerated_sorts_available(self):
+        """驗證加速版函式已被引入測試清單"""
+        if not _FAST_SORTS_AVAILABLE:
+            self.fail("尚未實作加速版排序 — bubble_sort_fast 與 quick_sort_fast")
 
 
 if __name__ == "__main__":
