@@ -1,0 +1,34 @@
+{
+  "500": {
+    "bubble_sort": 0.0056,
+    "quick_sort": 0.000472,
+    "merge_sort": 0.00051,
+    "quick_sort_fast": 0.000239,
+    "merge_sort_fast": 0.000461,
+    "sorted_baseline": 2.3e-05
+  },
+  "1000": {
+    "bubble_sort": 0.025688,
+    "quick_sort": 0.000907,
+    "merge_sort": 0.00106,
+    "quick_sort_fast": 0.000536,
+    "merge_sort_fast": 0.001024,
+    "sorted_baseline": 5.1e-05
+  },
+  "2000": {
+    "bubble_sort": 0.111591,
+    "quick_sort": 0.001996,
+    "merge_sort": 0.002256,
+    "quick_sort_fast": 0.001153,
+    "merge_sort_fast": 0.002403,
+    "sorted_baseline": 0.000124
+  },
+  "4000": {
+    "bubble_sort": 0.459419,
+    "quick_sort": 0.004053,
+    "merge_sort": 0.005037,
+    "quick_sort_fast": 0.002547,
+    "merge_sort_fast": 0.004912,
+    "sorted_baseline": 0.000258
+  }
+}

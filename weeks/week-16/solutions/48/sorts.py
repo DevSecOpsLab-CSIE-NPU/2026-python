@@ -47,8 +47,72 @@ def sorted_baseline(data: list) -> list:
 
 
 def quick_sort_fast(data: list) -> list:
-    return []
+    if len(data) <= 1:
+        return data[:]
+    result = data[:]
+    _qsort_inplace(result, 0, len(result) - 1)
+    return result
+
+
+def _qsort_inplace(arr, low, high):
+    while low < high:
+        p = _partition(arr, low, high)
+        if p - low < high - p:
+            _qsort_inplace(arr, low, p - 1)
+            low = p + 1
+        else:
+            _qsort_inplace(arr, p + 1, high)
+            high = p - 1
+
+
+def _partition(arr, low, high):
+    pivot = arr[(low + high) // 2]
+    i = low - 1
+    j = high + 1
+    while True:
+        i += 1
+        while arr[i] < pivot:
+            i += 1
+        j -= 1
+        while arr[j] > pivot:
+            j -= 1
+        if i >= j:
+            return j
+        arr[i], arr[j] = arr[j], arr[i]
 
 
 def merge_sort_fast(data: list) -> list:
-    return []
+    result = data[:]
+    n = len(result)
+    step = 1
+    while step < n:
+        for left in range(0, n, step * 2):
+            mid = left + step
+            right = min(left + step * 2, n)
+            if mid < right:
+                _merge_inplace(result, left, mid, right)
+        step *= 2
+    return result
+
+
+def _merge_inplace(arr, left, mid, right):
+    left_part = arr[left:mid]
+    right_part = arr[mid:right]
+    i = j = 0
+    k = left
+    while i < len(left_part) and j < len(right_part):
+        if left_part[i] <= right_part[j]:
+            arr[k] = left_part[i]
+            i += 1
+        else:
+            arr[k] = right_part[j]
+            j += 1
+        k += 1
+    while i < len(left_part):
+        arr[k] = left_part[i]
+        i += 1
+        k += 1
+    while j < len(right_part):
+        arr[k] = right_part[j]
+        j += 1
+        k += 1
