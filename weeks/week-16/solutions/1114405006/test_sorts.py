@@ -17,17 +17,11 @@
 
 import unittest
 
-# from sorts import bubble_sort, quick_sort, merge_sort  # 完成 sorts.py 後解除註解
+from sorts import bubble_sort, quick_sort, merge_sort
 
 # 三個排序函式都放進這個 list,每個測試用 subTest 跑一輪;
 # Stage 3 的加速版 append 進來就能吃到同一組測試。
-
-
-def _not_implemented(data):
-    raise NotImplementedError("sorts.py not yet implemented")
-
-
-SORT_FUNCTIONS = [_not_implemented]  # 實作後換成 [bubble_sort, quick_sort, merge_sort]
+SORT_FUNCTIONS = [bubble_sort, quick_sort, merge_sort]
 
 
 class TestSortFunctions(unittest.TestCase):
