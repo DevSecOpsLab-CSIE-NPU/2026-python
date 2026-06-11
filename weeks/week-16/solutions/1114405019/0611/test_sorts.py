@@ -1,13 +1,17 @@
-"""Stage 2 — 排序正確性測試（三種基本排序共用同一組測試）"""
+"""Stage 2 & 3 — 排序正確性測試（基本版 + 加速版共用同一組測試）"""
 import random
 import unittest
 
 from sorts import bubble_sort, merge_sort, quick_sort
+from sorts_fast import bubble_sort_fast, merge_sort_fast, quick_sort_fast
 
 SORT_FUNCTIONS = [
     bubble_sort,
     quick_sort,
     merge_sort,
+    bubble_sort_fast,
+    quick_sort_fast,
+    merge_sort_fast,
 ]
 
 
