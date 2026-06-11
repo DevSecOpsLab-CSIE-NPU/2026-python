@@ -25,12 +25,20 @@ SORT_FUNCTIONS = {
 
 def make_data(n: int, seed: int = 42) -> list:
     """Create reproducible random integer data for benchmarks."""
+    if not isinstance(n, int):
+        raise TypeError("n must be an integer")
+    if n < 0:
+        raise ValueError("n must be non-negative")
+
     rng = random.Random(seed)
     return [rng.randint(-n, n) for _ in range(n)]
 
 
 def run_benchmark(sizes=(500, 1000, 2000, 4000), repeats=3) -> dict:
     """Run each sorting function multiple times and return average seconds."""
+    if repeats <= 0:
+        raise ValueError("repeats must be positive")
+
     results = {}
 
     for name, sort_func in SORT_FUNCTIONS.items():
@@ -38,6 +46,11 @@ def run_benchmark(sizes=(500, 1000, 2000, 4000), repeats=3) -> dict:
         results[name] = {}
 
         for size in sizes:
+            if not isinstance(size, int):
+                raise TypeError("benchmark size must be an integer")
+            if size < 0:
+                raise ValueError("benchmark size must be non-negative")
+
             timed_sort.records.clear()
             for repeat in range(repeats):
                 data = make_data(size, seed=42 + repeat)

@@ -13,11 +13,19 @@ import matplotlib.pyplot as plt
 def load_results(path: str) -> dict:
     """Load benchmark results from a JSON file."""
     with open(path, "r", encoding="utf-8") as file:
-        return json.load(file)
+        results = json.load(file)
+
+    if not isinstance(results, dict):
+        raise ValueError("benchmark results must be a mapping")
+
+    return results
 
 
 def plot_results(results: dict, out_path: str) -> None:
     """Plot benchmark results to a PNG file."""
+    if not isinstance(results, dict) or not results:
+        raise ValueError("results must be a non-empty mapping")
+
     out_dir = os.path.dirname(out_path)
     if out_dir:
         os.makedirs(out_dir, exist_ok=True)

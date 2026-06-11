@@ -54,56 +54,61 @@ def quick_sort(data: list) -> list:
 
 
 def optimized_quick_sort(data: list) -> list:
-    """Return a sorted copy using quick sort with median pivot and insertion sort."""
-    values = data[:]
-    return _optimized_quick(values)
-
-
-def _optimized_quick(values: list) -> list:
-    if len(values) <= 16:
-        return _insertion_sort(values)
-
-    first = values[0]
-    middle = values[len(values) // 2]
-    last = values[-1]
-    pivot = _median_of_three(first, middle, last)
-    lower = []
-    equal = []
-    higher = []
-
-    for value in values:
-        if value < pivot:
-            lower.append(value)
-        elif value > pivot:
-            higher.append(value)
-        else:
-            equal.append(value)
-
-    return _optimized_quick(lower) + equal + _optimized_quick(higher)
-
-
-def _median_of_three(first, second, third):
-    if first > second:
-        first, second = second, first
-    if second > third:
-        second, third = third, second
-    if first > second:
-        first, second = second, first
-    return second
-
-
-def _insertion_sort(data: list) -> list:
+    """Return a sorted copy using in-place quick sort on a copy."""
     result = data[:]
-
-    for index in range(1, len(result)):
-        current = result[index]
-        position = index - 1
-        while position >= 0 and result[position] > current:
-            result[position + 1] = result[position]
-            position -= 1
-        result[position + 1] = current
-
+    _quick_sort_in_place(result, 0, len(result) - 1)
     return result
+
+
+def _quick_sort_in_place(values: list, low: int, high: int) -> None:
+    while low < high:
+        if high - low <= 24:
+            _insertion_sort_range(values, low, high)
+            return
+
+        pivot_index = _median_index(values, low, (low + high) // 2, high)
+        values[pivot_index], values[high] = values[high], values[pivot_index]
+        pivot = values[high]
+        store_index = low
+
+        for index in range(low, high):
+            if values[index] < pivot:
+                values[store_index], values[index] = values[index], values[store_index]
+                store_index += 1
+
+        values[store_index], values[high] = values[high], values[store_index]
+
+        left_size = store_index - low
+        right_size = high - store_index
+
+        if left_size < right_size:
+            _quick_sort_in_place(values, low, store_index - 1)
+            low = store_index + 1
+        else:
+            _quick_sort_in_place(values, store_index + 1, high)
+            high = store_index - 1
+
+
+def _median_index(values: list, first: int, second: int, third: int) -> int:
+    first_value = values[first]
+    second_value = values[second]
+    third_value = values[third]
+
+    if first_value <= second_value <= third_value or third_value <= second_value <= first_value:
+        return second
+    if second_value <= first_value <= third_value or third_value <= first_value <= second_value:
+        return first
+    return third
+
+
+def _insertion_sort_range(values: list, low: int, high: int) -> None:
+    for index in range(low + 1, high + 1):
+        current = values[index]
+        position = index - 1
+        while position >= low and values[position] > current:
+            values[position + 1] = values[position]
+            position -= 1
+        values[position + 1] = current
 
 
 def merge_sort(data: list) -> list:
