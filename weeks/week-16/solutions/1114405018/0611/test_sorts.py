@@ -4,8 +4,9 @@ import unittest
 import random
 
 from sorts import bubble_sort, quick_sort, merge_sort
+from sorts_fast import quick_sort_fast
 
-SORT_FUNCTIONS = [bubble_sort, quick_sort, merge_sort]
+SORT_FUNCTIONS = [bubble_sort, quick_sort, merge_sort, quick_sort_fast]
 
 
 class TestSortFunctions(unittest.TestCase):

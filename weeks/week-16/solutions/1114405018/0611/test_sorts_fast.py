@@ -3,7 +3,7 @@
 import unittest
 import random
 
-# from sorts_fast import quick_sort_fast  # 完成 sorts_fast.py 後解除註解
+from sorts_fast import quick_sort_fast
 
 
 class TestSortsFast(unittest.TestCase):
