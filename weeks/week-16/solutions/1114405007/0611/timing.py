@@ -1,0 +1,19 @@
+import time
+from functools import wraps
+
+
+def timeit(func):
+    records = []
+
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        start = time.perf_counter()
+        result = func(*args, **kwargs)
+        elapsed = time.perf_counter() - start
+        wrapper.last_elapsed = elapsed
+        records.append(elapsed)
+        return result
+
+    wrapper.last_elapsed = 0.0
+    wrapper.records = records
+    return wrapper
