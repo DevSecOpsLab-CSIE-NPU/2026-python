@@ -9,12 +9,16 @@ import unittest
 
 from sorts import bubble_sort, quick_sort, merge_sort
 
-SORT_FUNCTIONS = [bubble_sort, quick_sort, merge_sort]
+try:
+    from sorts import builtin_sort, quick_sort_opt
+    SORT_FUNCTIONS = [bubble_sort, quick_sort, merge_sort, builtin_sort, quick_sort_opt]
+except ImportError:
+    SORT_FUNCTIONS = [bubble_sort, quick_sort, merge_sort]
 
 
 class TestSortFunctions(unittest.TestCase):
     def _assert_sort_functions_defined(self):
-        self.assertGreater(len(SORT_FUNCTIONS), 0, "No sort functions defined")
+        self.assertGreaterEqual(len(SORT_FUNCTIONS), 5, "Not all sort functions (bubble, quick, merge, builtin, quick_opt) defined")
 
     def test_basic_cases(self):
         self._assert_sort_functions_defined()
