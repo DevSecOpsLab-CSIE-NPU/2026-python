@@ -1,7 +1,8 @@
 import json
 import random
+import time
 from timing import timeit
-from sorts import bubble_sort, quick_sort, merge_sort
+from sorts import bubble_sort, quick_sort, merge_sort, bubble_sort_fast, quick_sort_fast
 
 
 def make_data(n: int, seed: int = 42) -> list:
@@ -12,7 +13,7 @@ def make_data(n: int, seed: int = 42) -> list:
 
 def run_benchmark(sizes=(500, 1000, 2000, 4000), repeats=3) -> dict:
     """
-    對每個資料量大小量測三種排序演算法。
+    對每個資料量大小量測排序演算法。
     
     Args:
         sizes: 要測試的資料量列表
@@ -25,6 +26,8 @@ def run_benchmark(sizes=(500, 1000, 2000, 4000), repeats=3) -> dict:
         'bubble_sort': bubble_sort,
         'quick_sort': quick_sort,
         'merge_sort': merge_sort,
+        'bubble_sort_fast': bubble_sort_fast,
+        'quick_sort_fast': quick_sort_fast,
     }
 
     results = {}
@@ -51,6 +54,22 @@ def run_benchmark(sizes=(500, 1000, 2000, 4000), repeats=3) -> dict:
                 'max': max(timed_sort.records),
             }
 
+        # Stage 3: 量測內建 sorted() baseline
+        builtin_times = []
+        for _ in range(repeats):
+            start = time.perf_counter()
+            _ = sorted(list(data))
+            end = time.perf_counter()
+            builtin_times.append(end - start)
+        
+        avg_builtin = sum(builtin_times) / len(builtin_times)
+        results[size]['builtin_sorted'] = {
+            'avg': avg_builtin,
+            'records': builtin_times,
+            'min': min(builtin_times),
+            'max': max(builtin_times),
+        }
+
     return results
 
 
@@ -59,21 +78,25 @@ if __name__ == '__main__':
     results = run_benchmark()
 
     # 印出比較表
-    print("\n" + "=" * 70)
-    print("Benchmark Results")
-    print("=" * 70)
-    print(f"{'Size':<10} {'bubble_sort':<18} {'quick_sort':<18} {'merge_sort':<18}")
-    print("-" * 70)
+    print("\n" + "=" * 100)
+    print("Benchmark Results (Stage 1-3)")
+    print("=" * 100)
+    print(f"{'Size':<10} {'bubble':<12} {'quick':<12} {'merge':<12} {'bubble_f':<12} {'quick_f':<12} {'sorted()':<12}")
+    print("-" * 100)
 
     for size in sorted(results.keys()):
         bubble_avg = results[size]['bubble_sort']['avg']
         quick_avg = results[size]['quick_sort']['avg']
         merge_avg = results[size]['merge_sort']['avg']
+        bubble_fast_avg = results[size]['bubble_sort_fast']['avg']
+        quick_fast_avg = results[size]['quick_sort_fast']['avg']
+        sorted_avg = results[size]['builtin_sorted']['avg']
         print(
-            f"{size:<10} {bubble_avg:<18.6f} {quick_avg:<18.6f} {merge_avg:<18.6f}"
+            f"{size:<10} {bubble_avg:<12.6f} {quick_avg:<12.6f} {merge_avg:<12.6f} "
+            f"{bubble_fast_avg:<12.6f} {quick_fast_avg:<12.6f} {sorted_avg:<12.6f}"
         )
 
-    print("=" * 70)
+    print("=" * 100)
 
     # 把結果存成 results.json
     with open('results.json', 'w', encoding='utf-8') as f:
