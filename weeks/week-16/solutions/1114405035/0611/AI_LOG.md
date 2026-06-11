@@ -66,3 +66,26 @@
 將 `quick_sort_optimized` 加入共用測試，並寫入空 stub 跑出紅燈；之後在 `sorts.py` 實作了當 $n \le 10$ 時切換至插入排序的混合快速排序，並在 `benchmark.py` 中新增該演算法與 Python 內建 `sorted()` 當 baseline。數據測得：在 $n=4000$ 時，原始 `quick_sort` 耗時約 0.0078 秒，優化後的 `quick_sort_optimized` 提升至約 0.0069 秒，加速比約為 12% 左右。
 
 
+## Stage 4: 畫圖與報告
+
+### 訪談摘要與檢查表狀態
+
+| 項目 | 問了什麼 | 學生答了什麼 / AI 提供的內容 | 檢查表狀態 |
+| --- | --- | --- | --- |
+| 1. 函式簽名與回傳型別 | 讀取與繪圖的函式簽名與儲存路徑 | `load_results(path: str) -> dict` 與 `plot_results(results: dict, out_path: str) -> None`。圖片儲存於 `assets/benchmark.png`。 | ✅ 已確認 |
+| 2. 輸入範圍／邊界條件 | X與Y軸的物理意義，與為什麼Y軸要用 log scale | X軸為資料量，Y軸為耗時。因為 Bubble sort (O(n^2)) 與 Quick sort (O(n log n)) 耗時跨度達數個數量級，不使用對數尺度會導致 O(n log n) 曲線被壓扁在最底部。 | ✅ 已確認 |
+| 3. 例外行為 | 讀檔不存在或格式損毀的行為 | 應捕捉 `FileNotFoundError` 與 `json.JSONDecodeError` 並優雅退出。 | ✅ 已確認 |
+| 4. edge case 清單 | 繪圖輸出的邊緣案例測試 | 輸出目錄不存在時應自動建立，生成的 PNG 檔案大小不能為 0 字節，若資料為空應安全 return。 | ✅ 已確認 |
+| 5. 驗收標準 | 實作繪圖前的 TDD 紅燈 | 建立 `test_plot.py`，因尚未實作 `plot.py` 而出現 `ModuleNotFoundError`。建立空 stub 後測試斷言失敗。 | ✅ 已確認 |
+
+### 我問 AI 什麼
+請幫我規劃 Stage 4 繪圖模組的紅燈測試與 `plot.py` 實作，包含 y 軸 Log 尺度的設定與 matplotlib 無介面環境（Agg）的配置。
+
+### AI 給了什麼
+建立了 `test_plot.py` 測試以檢查圖表生成與 JSON 讀取功能，並在 `plot.py` 實作中設定 `matplotlib.use("Agg")` 以及 `plt.yscale("log")` 繪製比較折線圖。
+
+### 我改了什麼
+執行紅燈測試發現環境缺 `matplotlib` 套件，手動執行 `pip install matplotlib` 進行安裝。安裝完成後，執行 `test_plot.py` 通過所有測試，隨後執行 `python plot.py` 順利產出 `assets/benchmark.png` 比較圖表。
+
+
+
