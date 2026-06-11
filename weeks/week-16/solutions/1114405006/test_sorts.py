@@ -16,9 +16,11 @@
 """
 
 import unittest
+import os
 
 from sorts import bubble_sort, quick_sort, merge_sort
 from optimized import optimized_sort
+from plot import plot_results
 
 # 三個排序函式都放進這個 list,每個測試用 subTest 跑一輪;
 # Stage 3 的加速版 append 進來就能吃到同一組測試。
@@ -68,6 +70,20 @@ class TestSortFunctions(unittest.TestCase):
                 copy_before = original[:]
                 sort_fn(original)
                 self.assertEqual(original, copy_before)
+
+
+class TestPlotResults(unittest.TestCase):
+    def test_plot_creates_file(self):
+        output = plot_results()
+        self.assertTrue(os.path.exists(output))
+
+    def test_plot_output_not_empty(self):
+        output = plot_results()
+        self.assertGreater(os.path.getsize(output), 0)
+
+    def test_plot_raises_file_not_found(self):
+        with self.assertRaises(FileNotFoundError):
+            plot_results("non_existent.json")
 
 
 if __name__ == "__main__":
