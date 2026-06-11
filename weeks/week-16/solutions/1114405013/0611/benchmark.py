@@ -7,11 +7,18 @@ from timing import timeit
 
 
 def make_data(n: int, seed: int = 42) -> list:
+    if n < 0:
+        raise ValueError("n must be non-negative")
     rng = random.Random(seed)
     return [rng.randint(0, n * 10) for _ in range(n)]
 
 
 def run_benchmark(sizes=(500, 1000, 2000, 4000), repeats=3) -> dict:
+    if repeats <= 0:
+        raise ValueError("repeats must be positive")
+    if any(size < 0 for size in sizes):
+        raise ValueError("sizes must be non-negative")
+
     algorithms = {
         "bubble_sort": bubble_sort,
         "bubble_sort_fast": bubble_sort_fast,

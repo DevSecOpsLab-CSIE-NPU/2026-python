@@ -8,6 +8,8 @@ import matplotlib.pyplot as plt
 
 
 def load_results(path: str) -> dict:
+    if not path.endswith(".json"):
+        raise ValueError("results path must end with .json")
     with open(path, "r", encoding="utf-8") as file:
         return json.load(file)
 
