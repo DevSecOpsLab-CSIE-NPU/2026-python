@@ -14,7 +14,7 @@
 ```
 [ ] 0. Fork + clone 自己的 fork（第一次才要做）
 [ ] 1. 從 main 開 feature 分支
-[ ] 2. 跟 AI 拆 ≥3 個 test case（含 ≥1 個 edge case）
+[ ] 2. 跟 AI 拆 ≥3 個 test case（含 ≥1 個 edge case） 
 [ ] 3. 寫測試 → 確認紅燈 → commit
 [ ] 4. 寫實作 → 跑到綠燈 → commit
 [ ] 5. push 到自己的 fork
