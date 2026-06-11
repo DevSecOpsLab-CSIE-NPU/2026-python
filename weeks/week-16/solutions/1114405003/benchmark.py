@@ -30,6 +30,11 @@ def timed_builtin(data):
 
 
 def run_benchmark(sizes=(500, 1000, 2000, 4000), repeats=3) -> dict:
+    if not isinstance(sizes, (tuple, list)) or len(sizes) == 0:
+        raise ValueError("sizes must be a non-empty tuple or list")
+    for n in sizes:
+        if not isinstance(n, int) or n <= 0:
+            raise ValueError("all sizes must be positive integers")
     results = {}
     for n in sizes:
         data = make_data(n)

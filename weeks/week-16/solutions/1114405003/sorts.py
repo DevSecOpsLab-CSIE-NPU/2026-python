@@ -47,5 +47,7 @@ def merge_sort(data: list) -> list:
 
 
 def make_data(n: int, seed: int = 42) -> list:
+    if not isinstance(n, int) or n <= 0:
+        raise ValueError("n must be a positive integer")
     rng = random.Random(seed)
     return [rng.randint(0, 1000) for _ in range(n)]
