@@ -8,8 +8,15 @@ import matplotlib.pyplot as plt
 
 
 def load_results(path: str) -> dict:
-    with Path(path).open("r", encoding="utf-8") as fp:
-        return json.load(fp)
+    file_path = Path(path)
+    if file_path.suffix.lower() != ".json":
+        raise ValueError("results file must be .json")
+
+    try:
+        with file_path.open("r", encoding="utf-8") as fp:
+            return json.load(fp)
+    except json.JSONDecodeError as exc:
+        raise ValueError("invalid json format") from exc
 
 
 def plot_results(results: dict, out_path: str) -> None:

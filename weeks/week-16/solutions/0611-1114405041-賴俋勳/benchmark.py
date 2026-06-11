@@ -8,6 +8,8 @@ from timing import timeit
 
 
 def make_data(n: int, seed: int = 42) -> list:
+    if n < 0:
+        raise ValueError("n must be >= 0")
     rng = random.Random(seed)
     return [rng.randint(0, 10_000_000) for _ in range(n)]
 
