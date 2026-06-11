@@ -2,12 +2,14 @@ import json
 import random
 import time
 
-from sorts import bubble_sort, quick_sort, merge_sort
+from sorts import bubble_sort, quick_sort, merge_sort, builtin_sort, quick_sort_opt
 
 SORT_FUNCTIONS = {
     "bubble_sort": bubble_sort,
     "quick_sort": quick_sort,
     "merge_sort": merge_sort,
+    "builtin_sort": builtin_sort,
+    "quick_sort_opt": quick_sort_opt,
 }
 
 
@@ -39,13 +41,14 @@ def run_benchmark(sizes=(500, 1000, 2000, 4000), repeats=3) -> dict:
 
 if __name__ == "__main__":
     results = run_benchmark()
-    header = f"{'Size':>6} | {'bubble_sort':>12} | {'quick_sort':>12} | {'merge_sort':>12}"
+    names = list(SORT_FUNCTIONS.keys())
+    header = " | ".join(f"{name:>12}" for name in ["Size"] + names)
     sep = "-" * len(header)
     print(header)
     print(sep)
     for size in sorted(results):
-        row = f"{size:>6} |"
-        for name in ["bubble_sort", "quick_sort", "merge_sort"]:
+        row = f"{size:>12} |"
+        for name in names:
             avg = results[size][name]["avg"]
             row += f" {avg:>10.4f}s |"
         print(row)

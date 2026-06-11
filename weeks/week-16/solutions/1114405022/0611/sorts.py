@@ -39,3 +39,35 @@ def _merge(left: list, right: list) -> list:
     result.extend(left[i:])
     result.extend(right[j:])
     return result
+
+
+def builtin_sort(data: list) -> list:
+    return sorted(data)
+
+
+def quick_sort_opt(data: list) -> list:
+    if len(data) <= 1:
+        return data[:]
+    if len(data) < 20:
+        return _insertion_sort(data[:])
+    pivot = _median_of_three(data)
+    left = [x for x in data if x < pivot]
+    mid = [x for x in data if x == pivot]
+    right = [x for x in data if x > pivot]
+    return quick_sort_opt(left) + mid + quick_sort_opt(right)
+
+
+def _insertion_sort(data: list) -> list:
+    for i in range(1, len(data)):
+        key = data[i]
+        j = i - 1
+        while j >= 0 and data[j] > key:
+            data[j + 1] = data[j]
+            j -= 1
+        data[j + 1] = key
+    return data
+
+
+def _median_of_three(data: list) -> list:
+    first, mid, last = data[0], data[len(data) // 2], data[-1]
+    return sorted([first, mid, last])[1]
