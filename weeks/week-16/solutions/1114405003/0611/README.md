@@ -80,23 +80,17 @@ The figure shows the performance comparison of all sorting algorithms across dif
 
 ## Acceleration Ratio
 
-### Bubble Sort
-- 500 elements: 2.31s → 0.18s, 12.8x speedup
-- 1000 elements: 2.31s → 0.18s, 12.8x speedup
-- 2000 elements: 2.31s → 0.18s, 12.8x speedup
-- 4000 elements: 2.31s → 0.18s, 12.8x speedup
+| Data Size | bubble → bubble_fast | quick → quick_fast | merge → merge_fast |
+|-----------|---------------------|-------------------|-------------------|
+| 500       | 0.0096s → 0.0109s (-13.9% slower) | 0.00072s → 0.00070s (+2.1% faster) | 0.00082s → 0.00055s (+32.9% faster) |
+| 1000      | 0.0446s → 0.0475s (-6.5% slower) | 0.00151s → 0.00200s (-32.5% slower) | 0.00169s → 0.00143s (+15.4% faster) |
+| 2000      | 0.1300s → 0.1375s (-5.8% slower) | 0.00234s → 0.00233s (+0.6% faster) | 0.00261s → 0.00233s (+10.7% faster) |
+| 4000      | 0.6914s → 1.5902s (-130.1% slower) | 0.01426s → 0.01379s (+3.3% faster) | 0.01666s → 0.01197s (+28.1% faster) |
 
-### Quick Sort
-- 500 elements: 0.18s → 0.17s, 1.1x speedup
-- 1000 elements: 0.18s → 0.17s, 1.1x speedup
-- 2000 elements: 0.18s → 0.17s, 1.1x speedup
-- 4000 elements: 0.18s → 0.17s, 1.1x speedup
-
-### Merge Sort
-- 500 elements: 0.18s → 0.17s, 1.1x speedup
-- 1000 elements: 0.18s → 0.17s, 1.1x speedup
-- 2000 elements: 0.18s → 0.17s, 1.1x speedup
-- 4000 elements: 0.18s → 0.17s, 1.1x speedup
+### Analysis
+- **Bubble Sort**: Optimization makes it slower due to overhead of checking termination condition
+- **Quick Sort**: Median-of-three provides minimal improvement on this dataset
+- **Merge Sort**: Insertion sort optimization for small subarrays shows consistent 10-33% improvement
 
 ## Security Self-Scan
 
