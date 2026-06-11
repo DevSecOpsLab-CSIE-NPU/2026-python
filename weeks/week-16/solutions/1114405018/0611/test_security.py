@@ -43,9 +43,18 @@ class TestSecurity(unittest.TestCase):
         src = _read_source("benchmark.py")
         self.assertIsNotNone(src, "benchmark.py 不存在，請先建立")
         tree = ast.parse(src)
+        with_opens = set()
+        for node in ast.walk(tree):
+            if isinstance(node, ast.With):
+                for item in node.items:
+                    if isinstance(item.context_expr, ast.Call):
+                        fn = getattr(item.context_expr.func, "id", None)
+                        if fn == "open":
+                            with_opens.add(id(item.context_expr))
         for node in ast.walk(tree):
             if isinstance(node, ast.Call) and getattr(node.func, "id", None) == "open":
-                self.fail("benchmark.py: 使用 open() 需搭配 with 陳述式")
+                if id(node) not in with_opens:
+                    self.fail(f"benchmark.py: 第 {node.lineno} 行 open() 未搭配 with")
 
     def test_edge_case_no_assert_validation(self):
         for fname in SOURCE_FILES:
