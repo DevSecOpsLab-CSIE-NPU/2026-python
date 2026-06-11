@@ -65,5 +65,39 @@ def merge_sort(data: list) -> list:
 
 def quick_sort_optimized(data: list) -> list:
     """優化版快速排序（混合插入排序）。"""
-    pass
+    if not isinstance(data, list):
+        raise TypeError("Input must be a list")
+    
+    def _insertion_sort(arr):
+        res = list(arr)
+        for i in range(1, len(res)):
+            key = res[i]
+            j = i - 1
+            while j >= 0 and res[j] > key:
+                res[j + 1] = res[j]
+                j -= 1
+            res[j + 1] = key
+        return res
+
+    def _qs(arr):
+        if len(arr) <= 10:
+            return _insertion_sort(arr)
+        
+        # Median of three
+        first = arr[0]
+        last = arr[-1]
+        mid = arr[len(arr) // 2]
+        
+        candidates = [first, mid, last]
+        candidates.sort()
+        pivot = candidates[1]
+        
+        left = [x for x in arr if x < pivot]
+        middle = [x for x in arr if x == pivot]
+        right = [x for x in arr if x > pivot]
+        
+        return _qs(left) + middle + _qs(right)
+        
+    return _qs(data)
+
 

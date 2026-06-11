@@ -59,6 +59,17 @@ FAILED (failures=8)
 ```
 引入優化版快速排序 `quick_sort_optimized` 但尚未實作時，測試結果出現 8 個失敗（測試包含 basic cases, invalid inputs, random data 對照等）。
 
+### Green Test (綠燈測試成功紀錄)
+```
+....
+----------------------------------------------------------------------
+Ran 4 tests in 0.003s
+
+OK
+```
+優化版快速排序 `quick_sort_optimized` 已正確實作，且通過與前面三種排序相同的完整正確性與邊緣測試。
+
+
 
 
 

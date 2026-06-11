@@ -1,7 +1,7 @@
 import json
 import random
 from timing import timeit
-from sorts import bubble_sort, quick_sort, merge_sort
+from sorts import bubble_sort, quick_sort, merge_sort, quick_sort_optimized
 
 
 def make_data(n: int, seed: int = 42) -> list:
@@ -16,6 +16,8 @@ def run_benchmark(sizes=(500, 1000, 2000, 4000), repeats=3) -> dict:
         "bubble_sort": bubble_sort,
         "quick_sort": quick_sort,
         "merge_sort": merge_sort,
+        "quick_sort_optimized": quick_sort_optimized,
+        "builtin_sorted": sorted,
     }
     
     results = {name: {} for name in algorithms}
@@ -42,13 +44,13 @@ if __name__ == "__main__":
     results = run_benchmark()
     
     # 輸出比較表
-    print("\n" + "="*50)
-    print(f"{'Algorithm':<15} | {'Size':<6} | {'Average Time (seconds)':<22}")
-    print("="*50)
+    print("\n" + "="*60)
+    print(f"{'Algorithm':<22} | {'Size':<6} | {'Average Time (seconds)':<22}")
+    print("="*60)
     for algo_name, size_data in results.items():
         for size, avg_t in size_data.items():
-            print(f"{algo_name:<15} | {size:<6} | {avg_t:.6f}s")
-        print("-"*50)
+            print(f"{algo_name:<22} | {size:<6} | {avg_t:.6f}s")
+        print("-"*60)
         
     # 存檔至 results.json
     with open("results.json", "w", encoding="utf-8") as f:
