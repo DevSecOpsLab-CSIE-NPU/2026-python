@@ -97,6 +97,17 @@ FAILED (failures=3)
 ```
 引入 `test_security.py` 以檢查安全性規則。在尚未修補前，`test_make_data_rejects_negative`、`test_make_data_rejects_huge_size`、`test_make_data_rejects_invalid_seed_type` 三個測試皆因未拋出預期例外而斷言失敗（`AssertionError: ValueError not raised` 與 `AssertionError: TypeError not raised`）。
 
+### Green Test (綠燈測試成功紀錄)
+```
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK
+```
+修補 `benchmark.py` 中的 `make_data` 函式，新增對 `n`（非整數、負數、超過 100000 安全限制）與 `seed`（非整數）的防禦性型態與邊界檢查，所有安全性測試全數通過。
+
+
 
 
 

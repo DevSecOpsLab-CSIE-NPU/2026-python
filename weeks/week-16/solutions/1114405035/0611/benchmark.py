@@ -6,6 +6,15 @@ from sorts import bubble_sort, quick_sort, merge_sort, quick_sort_optimized
 
 def make_data(n: int, seed: int = 42) -> list:
     """固定 seed 產生隨機整數 list，確保實驗可重現。"""
+    if not isinstance(n, int):
+        raise TypeError("Size n must be an integer")
+    if not isinstance(seed, int):
+        raise TypeError("Seed must be an integer")
+    if n < 0:
+        raise ValueError("Size n cannot be negative")
+    if n > 100000:
+        raise ValueError("Size n exceeds the safety limit of 100000")
+
     random.seed(seed)
     return [random.randint(-100000, 100000) for _ in range(n)]
 
