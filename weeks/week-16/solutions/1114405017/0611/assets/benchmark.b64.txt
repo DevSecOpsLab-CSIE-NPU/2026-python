@@ -1,0 +1,15 @@
+This file is a placeholder with instructions to produce a base64 encoding of
+`assets/benchmark.png`.
+
+I added `make_b64.py` in the same folder which will generate this file when run.
+
+To generate locally (PowerShell):
+
+    cd d:\2026-python\weeks\week-16\solutions\1114405017\0611
+    python make_b64.py
+
+Or with a one-liner in PowerShell:
+
+    python -c "import base64; from pathlib import Path; p=Path('assets')/ 'benchmark.png'; Path('assets')/'benchmark.b64.txt'.write_text(base64.b64encode(p.read_bytes()).decode('ascii'))"
+
+After running, `assets/benchmark.b64.txt` will contain the base64 string of the PNG.
