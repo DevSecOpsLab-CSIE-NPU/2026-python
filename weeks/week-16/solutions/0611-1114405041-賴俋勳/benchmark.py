@@ -3,6 +3,7 @@ import random
 from pathlib import Path
 
 from sorts import bubble_sort, merge_sort, quick_sort
+from sorts_fast import quick_sort_median
 from timing import timeit
 
 
@@ -20,6 +21,8 @@ def run_benchmark(sizes=(500, 1000, 2000, 4000), repeats=3) -> dict:
         "bubble_sort": bubble_sort,
         "quick_sort": quick_sort,
         "merge_sort": merge_sort,
+        "quick_sort_median": quick_sort_median,
+        "sorted_builtin": lambda d: sorted(d),
     }
     results = {"sizes": list(sizes), "algorithms": {name: [] for name in algorithms}}
 
