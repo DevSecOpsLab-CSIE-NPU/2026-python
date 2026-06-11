@@ -14,12 +14,26 @@ def load_results(path: str) -> dict:
     with result_path.open('r', encoding='utf-8') as handle:
         loaded = json.load(handle)
 
+    if not isinstance(loaded, dict):
+        raise ValueError('Loaded results must be a JSON object')
+
     normalized = {}
     for algorithm, data in loaded.items():
-        if isinstance(data, dict):
-            normalized[algorithm] = {int(k): v for k, v in data.items()}
-        else:
-            normalized[algorithm] = data
+        if not isinstance(algorithm, str):
+            raise ValueError('Algorithm names must be strings')
+        if not isinstance(data, dict):
+            raise ValueError('Benchmark data must be an object of sizes to times')
+
+        normalized_data = {}
+        for key, value in data.items():
+            try:
+                size = int(key)
+            except (TypeError, ValueError):
+                raise ValueError('Data size keys must be integers')
+            if not isinstance(value, (int, float)):
+                raise ValueError('Benchmark values must be numeric')
+            normalized_data[size] = float(value)
+        normalized[algorithm] = normalized_data
     return normalized
 
 

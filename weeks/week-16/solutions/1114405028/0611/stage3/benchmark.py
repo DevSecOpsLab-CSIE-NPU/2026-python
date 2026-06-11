@@ -38,7 +38,10 @@ def run_benchmark(sizes=(500, 1000, 2000, 4000), repeats=3) -> dict:
 
 
 def save_results(results: dict, path: str = 'results.json') -> None:
-    Path(path).write_text(json.dumps(results, indent=2), encoding='utf-8')
+    output_path = Path(path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with output_path.open('w', encoding='utf-8') as handle:
+        json.dump(results, handle, indent=2)
 
 
 if __name__ == '__main__':
