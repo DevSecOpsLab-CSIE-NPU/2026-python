@@ -3,7 +3,13 @@
 import json
 import random
 
-from sorts import bubble_sort, merge_sort, quick_sort
+from sorts import (
+    bubble_sort,
+    merge_sort,
+    optimized_bubble_sort,
+    optimized_quick_sort,
+    quick_sort,
+)
 from timing import timeit
 
 
@@ -11,6 +17,9 @@ SORT_FUNCTIONS = {
     "bubble_sort": bubble_sort,
     "quick_sort": quick_sort,
     "merge_sort": merge_sort,
+    "built_in_sorted": sorted,
+    "optimized_bubble_sort": optimized_bubble_sort,
+    "optimized_quick_sort": optimized_quick_sort,
 }
 
 
