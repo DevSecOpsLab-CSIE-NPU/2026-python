@@ -1,3 +1,6 @@
+import random
+
+
 def _validate_list(data):
     if not isinstance(data, list):
         raise TypeError(f"Expected list, got {type(data).__name__}")
@@ -58,26 +61,43 @@ def quick_sort_opt(data: list) -> list:
     _validate_list(data)
     if len(data) <= 1:
         return data[:]
-    if len(data) < 20:
-        return _insertion_sort(data[:])
-    pivot = _median_of_three(data)
-    left = [x for x in data if x < pivot]
-    mid = [x for x in data if x == pivot]
-    right = [x for x in data if x > pivot]
-    return quick_sort_opt(left) + mid + quick_sort_opt(right)
+    arr = data[:]
+    _quick_sort_inplace(arr, 0, len(arr) - 1)
+    return arr
 
 
-def _insertion_sort(data: list) -> list:
-    for i in range(1, len(data)):
-        key = data[i]
+def _quick_sort_inplace(arr, low, high):
+    while low < high:
+        if high - low < 20:
+            _insertion_sort_range(arr, low, high)
+            return
+        pivot_idx = _partition(arr, low, high)
+        if pivot_idx - low < high - pivot_idx:
+            _quick_sort_inplace(arr, low, pivot_idx - 1)
+            low = pivot_idx + 1
+        else:
+            _quick_sort_inplace(arr, pivot_idx + 1, high)
+            high = pivot_idx - 1
+
+
+def _partition(arr, low, high):
+    pivot_idx = random.randint(low, high)
+    arr[pivot_idx], arr[high] = arr[high], arr[pivot_idx]
+    pivot = arr[high]
+    i = low - 1
+    for j in range(low, high):
+        if arr[j] <= pivot:
+            i += 1
+            arr[i], arr[j] = arr[j], arr[i]
+    arr[i + 1], arr[high] = arr[high], arr[i + 1]
+    return i + 1
+
+
+def _insertion_sort_range(arr, low, high):
+    for i in range(low + 1, high + 1):
+        key = arr[i]
         j = i - 1
-        while j >= 0 and data[j] > key:
-            data[j + 1] = data[j]
+        while j >= low and arr[j] > key:
+            arr[j + 1] = arr[j]
             j -= 1
-        data[j + 1] = key
-    return data
-
-
-def _median_of_three(data: list) -> list:
-    first, mid, last = data[0], data[len(data) // 2], data[-1]
-    return sorted([first, mid, last])[1]
+        arr[j + 1] = key
