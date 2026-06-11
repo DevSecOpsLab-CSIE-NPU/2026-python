@@ -78,6 +78,17 @@ FAILED (failures=2)
 ```
 引入繪圖程式測試 `test_plot.py`，因為尚未實作 `plot.py`，導致 `test_load_results` 與 `test_plot_results_generates_non_empty_file` 均斷言失敗（如 `AssertionError: None != ...` 與 `AssertionError: False is not true : PNG file was not created!`）。
 
+### Green Test (綠燈測試成功紀錄)
+```
+..
+----------------------------------------------------------------------
+Ran 2 tests in 1.501s
+
+OK
+```
+`plot.py` 實作完成後，成功通過 JSON 讀取解析測試，並於 `assets/` 目錄下繪製出非空的 `benchmark.png` 圖表。
+
+
 
 
 
