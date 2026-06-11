@@ -13,6 +13,8 @@ class TestBenchmark(unittest.TestCase):
         self.assertIn("bubble_sort", result["algorithms"])
         self.assertIn("quick_sort", result["algorithms"])
         self.assertIn("merge_sort", result["algorithms"])
+        self.assertIn("quick_sort_median", result["algorithms"])
+        self.assertIn("sorted_builtin", result["algorithms"])
 
 
 if __name__ == "__main__":

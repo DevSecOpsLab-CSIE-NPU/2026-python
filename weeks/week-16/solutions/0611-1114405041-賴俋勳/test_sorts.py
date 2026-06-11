@@ -1,9 +1,10 @@
 import unittest
 
 from sorts import bubble_sort, merge_sort, quick_sort
+from sorts_fast import quick_sort_median
 
 
-SORT_FUNCTIONS = [bubble_sort, quick_sort, merge_sort]
+SORT_FUNCTIONS = [bubble_sort, quick_sort, merge_sort, quick_sort_median]
 
 
 class TestSorts(unittest.TestCase):
