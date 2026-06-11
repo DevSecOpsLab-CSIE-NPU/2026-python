@@ -21,13 +21,21 @@ import unittest
 
 class TestDigitRoot(unittest.TestCase):
     def test_basic(self):
-        self.fail("尚未實作 — 自己打提示詞跟 AI 討論後補上")
+        self.assertEqual(digit_root(199), 1)
+        self.assertEqual(digit_root(38), 2)
+        self.assertEqual(digit_root(7), 7)
 
     def test_edge_case(self):
-        self.fail("尚未實作")
+        self.assertEqual(digit_root(1), 1)
+        self.assertEqual(digit_root(10), 1)
+        self.assertEqual(digit_root(2000000000), 2)
 
     def test_invalid_input_raises(self):
-        self.fail("尚未實作")
+        with self.assertRaises(ValueError) as cm:
+            digit_root(0)
+        self.assertEqual(str(cm.exception), "n must be >= 1")
+        with self.assertRaises(ValueError):
+            digit_root(-1)
 
 
 if __name__ == "__main__":
