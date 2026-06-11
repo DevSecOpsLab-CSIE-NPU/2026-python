@@ -43,3 +43,26 @@
 ### 我改了什麼
 確認以 subTest 的迴圈形式測試 bubble_sort, quick_sort, merge_sort。跑紅燈後，實作 `sorts.py` 中的三種排序演算法，隨後建立 `benchmark.py` 記錄量測時間並導出 `results.json`，完成綠燈測試。
 
+
+## Stage 3: 加速與 Timsort 對照實驗
+
+### 訪談摘要與檢查表狀態
+
+| 項目 | 問了什麼 | 學生答了什麼 / AI 提供的內容 | 檢查表狀態 |
+| --- | --- | --- | --- |
+| 1. 函式簽名與回傳型別 | 加速版排序函式的名稱與簽名 | 優化快速排序命名為 `quick_sort_optimized(data: list) -> list`，回傳全新已排序的 list。 | ✅ 已確認 |
+| 2. 輸入範圍／邊界條件 | 處理小規模數據時的臨界點優化 | 當陣列大小 $n \le 10$ 時，切換至插入排序（Insertion Sort）以減少遞迴呼叫的 overhead。 | ✅ 已確認 |
+| 3. 例外行為 | 例外行為是否與 Stage 2 保持一致 | 一致，傳入 None 或非 list 時拋出 `TypeError`。 | ✅ 已確認 |
+| 4. edge case 清單 | 優化策略的特定邊緣情況 | 初始陣列長度即小於臨界點（如 5）、完全排序或反向排序，均須能直接交由插入排序或正確劃分，無遞迴溢出。 | ✅ 已確認 |
+| 5. 驗收標準 | 加速實作前的測試紅燈 | 在 `test_sorts.py` 中導入並添加 `quick_sort_optimized`，確認未定義時拋出 `ImportError`；定義空 stub 時測試出 `AssertionError`。 | ✅ 已確認 |
+
+### 我問 AI 什麼
+請幫我確認 Stage 3 的加速方案與測試整合，如何優化快速排序並加入 built-in sorted 作為 baseline。
+
+### AI 給了什麼
+提供了在 `test_sorts.py` 中引入 `quick_sort_optimized` 的紅燈測試代碼，並提供混合快速排序/插入排序的優化實作，以及在 `benchmark.py` 中添加 `builtin_sorted` 及 `quick_sort_optimized`。
+
+### 我改了什麼
+將 `quick_sort_optimized` 加入共用測試，並寫入空 stub 跑出紅燈；之後在 `sorts.py` 實作了當 $n \le 10$ 時切換至插入排序的混合快速排序，並在 `benchmark.py` 中新增該演算法與 Python 內建 `sorted()` 當 baseline。數據測得：在 $n=4000$ 時，原始 `quick_sort` 耗時約 0.0078 秒，優化後的 `quick_sort_optimized` 提升至約 0.0069 秒，加速比約為 12% 左右。
+
+
