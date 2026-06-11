@@ -51,4 +51,14 @@ OK
 三種排序演算法皆已正確實作，並通過基本測試案例、隨機數對照組、輸入不被修改性以及例外處理等所有驗收標準。
 
 
+## Stage 3: 加速與 Timsort 對照實驗
+
+### Red Test (紅燈測試失敗紀錄)
+```
+FAILED (failures=8)
+```
+引入優化版快速排序 `quick_sort_optimized` 但尚未實作時，測試結果出現 8 個失敗（測試包含 basic cases, invalid inputs, random data 對照等）。
+
+
+
 

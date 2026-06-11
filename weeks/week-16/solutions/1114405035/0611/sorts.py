@@ -61,3 +61,9 @@ def merge_sort(data: list) -> list:
         return result
         
     return _ms(data)
+
+
+def quick_sort_optimized(data: list) -> list:
+    """優化版快速排序（混合插入排序）。"""
+    pass
+
