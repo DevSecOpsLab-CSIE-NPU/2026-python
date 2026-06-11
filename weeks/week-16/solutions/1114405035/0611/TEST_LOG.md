@@ -70,6 +70,16 @@ OK
 優化版快速排序 `quick_sort_optimized` 已正確實作，且通過與前面三種排序相同的完整正確性與邊緣測試。
 
 
+## Stage 4: 畫圖與報告
+
+### Red Test (紅燈測試失敗紀錄)
+```
+FAILED (failures=2)
+```
+引入繪圖程式測試 `test_plot.py`，因為尚未實作 `plot.py`，導致 `test_load_results` 與 `test_plot_results_generates_non_empty_file` 均斷言失敗（如 `AssertionError: None != ...` 與 `AssertionError: False is not true : PNG file was not created!`）。
+
+
+
 
 
 
