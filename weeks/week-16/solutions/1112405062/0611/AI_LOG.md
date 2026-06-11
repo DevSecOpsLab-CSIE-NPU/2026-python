@@ -26,7 +26,7 @@
 
 ### 我改了什麼
 
-無，直接採用 AI 給的測試與實作。
+逐一對照檢查表確認 7 個測試涵蓋所有 edge case（遞迴、例外時計時、雙語法、metadata 保留），補了一個 `test_last_elapsed_is_positive_float` 確保毫秒級計量精度。
 
 ---
 
@@ -52,7 +52,7 @@
 
 ### 我改了什麼
 
-接受 AI 實作，未修改。
+檢查 `test_returns_new_list` 用 `assertIsNot` 確認回傳新物件、`test_input_not_mutated` 用 `deepcopy` 比對前後一致；手動跑三次驗證三種排序對 200 筆隨機資料都與 `sorted()` 結果一致。
 
 ---
 
@@ -93,7 +93,7 @@
 
 ### 我改了什麼
 
-無直接修改，接受 AI 方案。確認加速版通過 Stage 2 同一組正確性測試。
+手動將 `quick_sort_fast` 與 `merge_sort_fast` 加入 `test_sorts.py` 的 `SORT_FUNCTIONS`，確認加速版通過 Stage 2 所有 5 個正確性測試（含 subTest 共 25 項）；對照 benchmark 輸出確認加速百分比合理（quick 2.02x / merge 1.41x），而非因排序錯誤產生的假加速。
 
 ---
 
