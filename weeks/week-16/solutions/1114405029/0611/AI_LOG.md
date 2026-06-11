@@ -30,6 +30,104 @@
 | Stage 4 | 我確認線性 y 軸會讓 O(n log n) 曲線被 O(n^2) 壓扁，因此使用 log scale。 |
 | Stage 5 | 我判斷 `random.Random(seed)` 在 benchmark 中是為了可重現，非安全用途，所以不改成 `secrets`；但補上 `ValueError` / `TypeError` 驗證避免錯誤輸入。 |
 
+## 我用什麼策略完成
+
+### 整體策略：照 TDD 分階段推進
+
+我沒有一次請 AI 產生完整成品，而是依照題目要求把工作拆成五個階段，每個階段都遵守：
+
+1. 先讀該階段規格，確認函式簽名、輸入行為、例外行為、edge case 與驗收標準。
+2. 先寫測試，讓測試因為缺少檔案或功能尚未完成而紅燈。
+3. 紅燈後 commit `test: stageN ...`，保留開發證據。
+4. 再寫最小可用實作，跑到全部 unittest 綠燈。
+5. 綠燈後 commit `feat: stageN ...`。
+
+這樣做的目的是讓 `git log --reverse` 可以清楚證明每一階段都是先測試、後實作，而不是先寫完程式再補測試。
+
+### Stage 1 策略：先驗證裝飾器行為，不只測時間
+
+`timeit` 的重點不是只量到時間，而是不能破壞被裝飾函式原本行為。因此我設計測試時先覆蓋：
+
+- 回傳值是否保持不變
+- `functools.wraps` 是否保留 `__name__` 與 `__doc__`
+- 每次呼叫後是否更新 `last_elapsed`
+- `records` 是否累積每次耗時
+- 裝飾器內是否沒有 `print`
+
+我採用 `time.perf_counter()` 量測時間，因為它適合做短時間效能量測；耗時記錄掛在 wrapper 上，而不是全域變數，避免多個被裝飾函式互相污染。
+
+### Stage 2 策略：共用測試驗證三種排序一致性
+
+三個排序函式規格相同，所以我使用同一組測試資料搭配 `subTest` 跑過 `bubble_sort`、`quick_sort`、`merge_sort`，避免複製三份幾乎一樣的測試。
+
+測試案例包含：
+
+- 一般亂序資料
+- 空 list
+- 單元素 list
+- 重複值
+- 負數
+- 已排序資料
+- 反向排序資料
+- 隨機資料
+- 原始 list 不可被修改
+
+實作時我避免使用 `sorted()` 與 `list.sort()`，因為那是 Stage 3 baseline 的用途。排序函式都先複製 `data[:]`，再對複製後的資料排序，確保不會修改呼叫者傳入的原 list。
+
+Benchmark 的策略是固定 `seed`，每個資料量重複多次並取平均，讓不同演算法比較時使用可重現且公平的資料。
+
+### Stage 3 策略：先做 baseline，再用數據驗證加速是否有效
+
+我先把 Python 內建 `sorted()` 加入 benchmark，作為 Timsort baseline。接著嘗試演算法優化，而不是 Cython，原因是 Cython 需要額外編譯環境，課堂時間有限，演算法優化比較穩定。
+
+一開始我嘗試 `optimized_bubble_sort` 的提前停止與縮小邊界策略，但在隨機資料下加速效果不穩定，不能當作可靠證據。因此我改用 `optimized_quick_sort`：
+
+- 使用 median-of-three pivot，降低 pivot 選到極端值的機率。
+- 小區間改用 insertion sort，減少遞迴與 partition overhead。
+- 先 copy 原 list，再在 copy 上做 in-place partition，兼顧不修改輸入與降低中間 list 建立成本。
+
+最後用 benchmark 數據確認 `optimized_quick_sort` 比原本 `quick_sort` 更快，並把加速前後數據寫進 `results.json` 與 README 報告。
+
+### Stage 4 策略：用 log scale 避免曲線被 bubble sort 壓扁
+
+因為 `bubble_sort` 是 O(n^2)，時間會比 O(n log n) 的 quick / merge / sorted 大很多。如果用線性 y 軸，其他演算法會全部擠在圖底部，很難比較。因此我在 `plot.py` 使用 log scale。
+
+繪圖測試不只檢查函式能呼叫，還檢查 PNG 檔案真的產生且不是空檔。`matplotlib.use("Agg")` 放在 `plot.py` 開頭，確保在沒有 GUI 的環境也能產生圖片。
+
+README 報告則用 2-3 句說明：
+
+- 誰最快
+- O(n^2) 與 O(n log n) 的差異
+- 加速版的策略與加速比
+
+### Stage 5 策略：把安全問題寫成會紅的測試再修
+
+我依 OpenSSF Secure Coding Guide for Python 從 Stage 1-4 的程式找出適用項目，沒有盲目套用所有安全建議。
+
+我選擇三個會影響這份程式品質的問題寫成紅燈測試：
+
+- `make_data(-1)` 原本沒有拒絕負數，會產生不合理的空資料。
+- `run_benchmark(repeats=0)` 原本會造成除以零。
+- `load_results` 原本沒有檢查 JSON 結構，讀到 list 也會接受。
+
+修補策略是：
+
+- 對數字輸入加入 `TypeError` / `ValueError`。
+- `load_results` 讀 JSON 後確認結果必須是 mapping。
+- 保留 `with open(...)` 管理檔案，避免資源未關閉。
+- 明確記錄 `random.Random(seed)` 不適用安全亂數規則，因為 benchmark 需要可重現，不需要不可預測。
+
+### 最後檢查策略
+
+完成後我用以下方式確認成品可交：
+
+- `python -m unittest` 全部通過。
+- `python benchmark.py` 能產生 `results.json`。
+- `python plot.py` 能產生 `assets/benchmark.png`。
+- `git log --reverse` 能看到五階段 `test → feat` 順序。
+- 所有作業檔案都放在 `weeks/week-16/solutions/1114405029/0611/`。
+- `README.md`、`AI_LOG.md`、`TEST_LOG.md` 都存在。
+
 ## 訪談摘要
 
 | 階段 | 問了什麼 | 學生答了什麼 | 檢查表狀態 |
