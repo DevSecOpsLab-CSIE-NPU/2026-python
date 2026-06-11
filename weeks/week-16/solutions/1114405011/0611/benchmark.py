@@ -7,6 +7,9 @@ from sorts import bubble_sort, quick_sort, merge_sort, bubble_sort_fast, quick_s
 
 def make_data(n: int, seed: int = 42) -> list:
     """產生固定 seed 的隨機資料列表，保證可重現。"""
+    # Ch03 Numbers — 邊界檢查：n 必須為正整數，否則無意義的 benchmark
+    if n <= 0:
+        raise ValueError(f"n must be a positive integer, got {n}")
     random.seed(seed)
     return [random.randint(-10000, 10000) for _ in range(n)]
 

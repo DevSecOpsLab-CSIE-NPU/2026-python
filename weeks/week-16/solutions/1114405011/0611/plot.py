@@ -16,6 +16,9 @@ def load_results(path: str) -> dict:
 
 def plot_results(results: dict, out_path: str) -> None:
     """把 benchmark 結果畫成 log-scale 折線圖。"""
+    # Ch08 Coding Standards — 邊界檢查：空 dict 應拋 ValueError 而非讓 IndexError 往外透
+    if not results:
+        raise ValueError("results dict must not be empty")
     sizes = sorted(int(size) for size in results.keys())
     algorithms = list(results[str(sizes[0])].keys())
 
