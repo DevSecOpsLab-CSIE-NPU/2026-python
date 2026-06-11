@@ -89,6 +89,16 @@ OK
 `plot.py` 實作完成後，成功通過 JSON 讀取解析測試，並於 `assets/` 目錄下繪製出非空的 `benchmark.png` 圖表。
 
 
+## Stage 5: 安全性自掃
+
+### Red Test (紅燈測試失敗紀錄)
+```
+FAILED (failures=3)
+```
+引入 `test_security.py` 以檢查安全性規則。在尚未修補前，`test_make_data_rejects_negative`、`test_make_data_rejects_huge_size`、`test_make_data_rejects_invalid_seed_type` 三個測試皆因未拋出預期例外而斷言失敗（`AssertionError: ValueError not raised` 與 `AssertionError: TypeError not raised`）。
+
+
+
 
 
 
