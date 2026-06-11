@@ -8,10 +8,22 @@ import builtins
 import random
 import unittest
 
-from sorts import bubble_sort, merge_sort, quick_sort
+from sorts import (
+    bubble_sort,
+    merge_sort,
+    optimized_bubble_sort,
+    optimized_quick_sort,
+    quick_sort,
+)
 
 
-SORT_FUNCTIONS = [bubble_sort, quick_sort, merge_sort]
+SORT_FUNCTIONS = [
+    bubble_sort,
+    quick_sort,
+    merge_sort,
+    optimized_bubble_sort,
+    optimized_quick_sort,
+]
 
 
 class TestSortFunctions(unittest.TestCase):
