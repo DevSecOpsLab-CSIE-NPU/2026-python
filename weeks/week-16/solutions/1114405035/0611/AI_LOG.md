@@ -88,4 +88,27 @@
 執行紅燈測試發現環境缺 `matplotlib` 套件，手動執行 `pip install matplotlib` 進行安裝。安裝完成後，執行 `test_plot.py` 通過所有測試，隨後執行 `python plot.py` 順利產出 `assets/benchmark.png` 比較圖表。
 
 
+## Stage 5: 安全性自掃
+
+### 訪談摘要與檢查表狀態
+
+| 項目 | 問了什麼 | 學生答了什麼 / AI 提供的內容 | 檢查表狀態 |
+| --- | --- | --- | --- |
+| 1. 函式簽名與回傳型別 | 安全性檢查是否修改原有簽名 | 不需要，安全性檢查旨在加強程式碼魯棒性，故原有函式名與簽名不作修改。 | ✅ 已確認 |
+| 2. 輸入範圍／邊界條件 | 防範 make_data 負數或極大值輸入 | 限制 size 必須為正數，並設定最大上限為 100000 避免 DoS 攻擊與記憶體耗盡。 | ✅ 已確認 |
+| 3. 例外行為 | 讀檔與寫檔例外處理 | 必須捕捉具體例外（如 FileNotFoundError, JSONDecodeError, PermissionError），禁止使用 except 全包。 | ✅ 已確認 |
+| 4. edge case 清單 | 三個安全性規則檢查案例 | 檔案洩漏與 Context Manager with 語句檢查、make_data 負數/巨大數防禦、make_data 傳入非法參數型態檢查。 | ✅ 已確認 |
+| 5. 驗收標準 | 安全檢查實作前測試紅燈 | 建立 `test_security.py`，因原 `make_data` 無例外拋出檢查而出現 `AssertionError: ValueError/TypeError not raised`。 | ✅ 已確認 |
+
+### 我問 AI 什麼
+請幫我規劃 Stage 5 安全自掃，找出 Stage 1-4 程式碼中的安全性隱患，編寫 `test_security.py` 並修復。
+
+### AI 給了什麼
+規劃了針對 `make_data` 函式傳入負數、巨大數以及非整數參數之安全性防衛測試（`test_security.py`），並提供 `make_data` 對應之防衛檢查實作。
+
+### 我改了什麼
+執行 `test_security.py` 得到 3 個預期的紅燈失敗。隨後在 `benchmark.py` 中的 `make_data` 新增了對 `n`（非 int、負數、大於 100000）與 `seed`（非 int）的型態與邊界防禦性檢查，使所有安全性與功能性測試皆轉為綠燈。
+
+
+
 
