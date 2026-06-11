@@ -40,3 +40,15 @@ def _merge(left: list, right: list) -> list:
     result.extend(left[i:])
     result.extend(right[j:])
     return result
+
+
+def sorted_baseline(data: list) -> list:
+    return sorted(data)
+
+
+def quick_sort_fast(data: list) -> list:
+    return []
+
+
+def merge_sort_fast(data: list) -> list:
+    return []
