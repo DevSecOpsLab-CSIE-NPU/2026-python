@@ -1,4 +1,10 @@
+def _require_list(data):
+    if not isinstance(data, list):
+        raise TypeError(f"Expected list, got {type(data).__name__}")
+
+
 def bubble_sort(data: list) -> list:
+    _require_list(data)
     result = data[:]
     n = len(result)
     for i in range(n):
@@ -9,6 +15,7 @@ def bubble_sort(data: list) -> list:
 
 
 def quick_sort(data: list) -> list:
+    _require_list(data)
     if len(data) <= 1:
         return data[:]
     pivot = data[len(data) // 2]
@@ -19,6 +26,7 @@ def quick_sort(data: list) -> list:
 
 
 def merge_sort(data: list) -> list:
+    _require_list(data)
     if len(data) <= 1:
         return data[:]
     mid = len(data) // 2
@@ -43,10 +51,12 @@ def _merge(left: list, right: list) -> list:
 
 
 def sorted_baseline(data: list) -> list:
+    _require_list(data)
     return sorted(data)
 
 
 def quick_sort_fast(data: list) -> list:
+    _require_list(data)
     if len(data) <= 1:
         return data[:]
     result = data[:]
@@ -82,6 +92,7 @@ def _partition(arr, low, high):
 
 
 def merge_sort_fast(data: list) -> list:
+    _require_list(data)
     result = data[:]
     n = len(result)
     step = 1

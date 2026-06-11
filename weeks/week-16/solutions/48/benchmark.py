@@ -28,6 +28,10 @@ FUNCTIONS = [
 
 
 def make_data(n: int, seed: int = 42) -> list:
+    if not isinstance(n, int):
+        raise TypeError(f"n must be int, got {type(n).__name__}")
+    if n < 0:
+        raise ValueError(f"n must be non-negative, got {n}")
     random.seed(seed)
     return [random.randint(-10000, 10000) for _ in range(n)]
 
