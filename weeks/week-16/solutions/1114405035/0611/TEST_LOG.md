@@ -31,3 +31,13 @@ Ran 4 tests in 0.032s
 OK
 ```
 
+
+## Stage 2: 三種排序與量測
+
+### Red Test (紅燈測試失敗紀錄)
+```
+FAILED (failures=24)
+```
+由於尚未實作 sorts.py 中的排序演算法，測試結果出現 24 個失敗（如 AssertionError: None != [1, 2, 3, 4, 5] 與 AssertionError: TypeError not raised）。
+
+
