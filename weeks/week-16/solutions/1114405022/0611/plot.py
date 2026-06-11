@@ -7,6 +7,10 @@ import matplotlib.pyplot as plt
 
 
 def plot_results(data_path: str = "results.json", output_path: str = "assets/benchmark.png"):
+    allowed = os.path.normpath("assets")
+    output = os.path.normpath(output_path)
+    if not output.startswith(allowed):
+        raise ValueError(f"output_path must be under assets/, got {output_path}")
     if not os.path.exists(data_path):
         raise FileNotFoundError(f"Data file not found: {data_path}")
 

@@ -1,4 +1,10 @@
+def _validate_list(data):
+    if not isinstance(data, list):
+        raise TypeError(f"Expected list, got {type(data).__name__}")
+
+
 def bubble_sort(data: list) -> list:
+    _validate_list(data)
     result = data[:]
     n = len(result)
     for i in range(n):
@@ -9,6 +15,7 @@ def bubble_sort(data: list) -> list:
 
 
 def quick_sort(data: list) -> list:
+    _validate_list(data)
     if len(data) <= 1:
         return data[:]
     pivot = data[0]
@@ -18,6 +25,7 @@ def quick_sort(data: list) -> list:
 
 
 def merge_sort(data: list) -> list:
+    _validate_list(data)
     if len(data) <= 1:
         return data[:]
     mid = len(data) // 2
@@ -42,10 +50,12 @@ def _merge(left: list, right: list) -> list:
 
 
 def builtin_sort(data: list) -> list:
+    _validate_list(data)
     return sorted(data)
 
 
 def quick_sort_opt(data: list) -> list:
+    _validate_list(data)
     if len(data) <= 1:
         return data[:]
     if len(data) < 20:
