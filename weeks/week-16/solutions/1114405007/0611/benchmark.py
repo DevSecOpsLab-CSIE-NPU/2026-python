@@ -2,7 +2,7 @@ import json
 import time
 import random
 
-from sorts import bubble_sort, quick_sort, merge_sort
+from sorts import bubble_sort, quick_sort, merge_sort, quick_sort_fast
 
 
 def make_data(n: int, seed: int = 42) -> list:
@@ -15,6 +15,8 @@ def run_benchmark(sizes=(500, 1000, 2000, 4000), repeats=3) -> dict:
         "bubble_sort": bubble_sort,
         "quick_sort": quick_sort,
         "merge_sort": merge_sort,
+        "quick_sort_fast": quick_sort_fast,
+        "builtin_sorted": lambda data: sorted(data),
     }
 
     results = {name: {} for name in sorters}
