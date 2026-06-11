@@ -5,7 +5,7 @@ import json
 import os
 import tempfile
 
-# from plot import load_results, plot_results
+from plot import load_results, plot_results
 
 
 SAMPLE_RESULTS = {
