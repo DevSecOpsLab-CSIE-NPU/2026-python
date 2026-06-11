@@ -3,6 +3,7 @@ import random
 import time
 
 from sorts import bubble_sort, quick_sort, merge_sort
+from optimized import optimized_sort
 
 
 def make_data(n: int, seed: int = 42) -> list:
@@ -12,9 +13,11 @@ def make_data(n: int, seed: int = 42) -> list:
 
 def run_benchmark(sizes=(500, 1000, 2000, 4000), repeats=3) -> dict:
     sorts = {
+        "builtin_sorted": sorted,
         "bubble_sort": bubble_sort,
         "quick_sort": quick_sort,
         "merge_sort": merge_sort,
+        "optimized_sort": optimized_sort,
     }
     results = {}
 
