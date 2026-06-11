@@ -24,7 +24,7 @@ class TestTimeit(unittest.TestCase):
         def add(a, b):
             return a + b
         self.assertEqual(add(3, 5), 8)
-        self.assertIsNone(add(1, 2))
+        self.assertEqual(add(1, 2), 3)
 
     def test_preserves_function_metadata(self):
         @timeit

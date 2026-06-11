@@ -84,7 +84,3 @@ class TestPlotResults(unittest.TestCase):
     def test_plot_raises_file_not_found(self):
         with self.assertRaises(FileNotFoundError):
             plot_results("non_existent.json")
-
-
-if __name__ == "__main__":
-    unittest.main()
