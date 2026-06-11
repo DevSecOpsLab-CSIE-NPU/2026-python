@@ -2,8 +2,8 @@ import json
 import random
 from pathlib import Path
 
-from stage1 import timing
-from stage2 import sorts
+import timing
+import sorts
 
 
 def make_data(n: int, seed: int = 42) -> list:

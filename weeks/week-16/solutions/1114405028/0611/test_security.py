@@ -5,8 +5,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from stage3 import benchmark
-from stage4 import plot
+import benchmark
+import plot
 
 
 class TestSecurity(unittest.TestCase):

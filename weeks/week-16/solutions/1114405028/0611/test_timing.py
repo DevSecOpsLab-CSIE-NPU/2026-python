@@ -2,7 +2,7 @@ import io
 import sys
 import unittest
 
-from stage1 import timing
+import timing
 
 
 class TestTimeit(unittest.TestCase):

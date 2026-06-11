@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from stage4 import plot
+import plot
 
 
 class TestPlot(unittest.TestCase):

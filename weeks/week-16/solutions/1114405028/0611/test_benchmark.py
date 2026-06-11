@@ -1,6 +1,6 @@
 import unittest
 
-from stage3 import benchmark
+import benchmark
 
 
 class TestBenchmark(unittest.TestCase):
