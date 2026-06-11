@@ -1,7 +1,7 @@
 import inspect
 import unittest
 
-import sorts
+from stage2 import sorts
 
 
 class TestSortsExtra(unittest.TestCase):

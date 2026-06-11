@@ -1,7 +1,7 @@
 import unittest
 import random
 
-import sorts
+from stage2 import sorts
 
 
 class TestSorts(unittest.TestCase):
