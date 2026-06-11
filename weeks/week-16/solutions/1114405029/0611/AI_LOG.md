@@ -78,7 +78,9 @@ Benchmark 的策略是固定 `seed`，每個資料量重複多次並取平均，
 
 ### Stage 3 策略：先做 baseline，再用數據驗證加速是否有效
 
-我先把 Python 內建 `sorted()` 加入 benchmark，作為 Timsort baseline。接著嘗試演算法優化，而不是 Cython，原因是 Cython 需要額外編譯環境，課堂時間有限，演算法優化比較穩定。
+我選擇的加速策略是**演算法優化**，不是 Cython / C 擴充。原因是 Cython 需要額外編譯環境，課堂時間有限，若編譯環境出問題會拖慢進度；演算法優化可以直接用 Python 完成，也比較容易用 unittest 驗證正確性。
+
+我先把 Python 內建 `sorted()` 加入 benchmark，作為 Timsort baseline。接著嘗試演算法優化。
 
 一開始我嘗試 `optimized_bubble_sort` 的提前停止與縮小邊界策略，但在隨機資料下加速效果不穩定，不能當作可靠證據。因此我改用 `optimized_quick_sort`：
 
@@ -87,6 +89,27 @@ Benchmark 的策略是固定 `seed`，每個資料量重複多次並取平均，
 - 先 copy 原 list，再在 copy 上做 in-place partition，兼顧不修改輸入與降低中間 list 建立成本。
 
 最後用 benchmark 數據確認 `optimized_quick_sort` 比原本 `quick_sort` 更快，並把加速前後數據寫進 `results.json` 與 README 報告。
+
+依 `results.json` 中 4000 筆資料的結果：
+
+```text
+quick_sort:           0.0038757666 秒
+optimized_quick_sort: 0.0033977667 秒
+```
+
+加速倍數：
+
+```text
+0.0038757666 / 0.0033977667 = 1.14x
+```
+
+時間減少百分比：
+
+```text
+(0.0038757666 - 0.0033977667) / 0.0038757666 * 100 = 12.33%
+```
+
+所以我的加速策略是**演算法優化 quick sort**，在 4000 筆資料下約 **1.14 倍加速**，也就是執行時間約**減少 12.33%**。
 
 ### Stage 4 策略：用 log scale 避免曲線被 bubble sort 壓扁
 
