@@ -20,10 +20,12 @@ import random
 
 # 我們在測試階段先定義 mock function 或者直接 import（會引發 ModuleNotFoundError 達成紅燈）
 from sorts import bubble_sort, quick_sort, merge_sort  
+# Stage 3: 引入演算法優化版本的排序 (這裡選擇快速排序的優化版)
+from sorts_fast import quick_sort_fast
 
 # 三個排序函式都放進這個 list,每個測試用 subTest 跑一輪;
 # Stage 3 的加速版 append 進來就能吃到同一組測試。
-SORT_FUNCTIONS = [bubble_sort, quick_sort, merge_sort]  
+SORT_FUNCTIONS = [bubble_sort, quick_sort, merge_sort, quick_sort_fast]  
 
 
 class TestSortFunctions(unittest.TestCase):
