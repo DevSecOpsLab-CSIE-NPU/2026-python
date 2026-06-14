@@ -1,31 +1,9 @@
-# TEST_LOG.md
+# TEST LOG
 
-## Red 階段（先寫測試）
+## Red
 
-執行指令：
+- 先寫 `tests/test_task1.py` 與 `tests/test_task2.py`，初次執行 `python -m unittest discover -s tests -v` 時因 `DATA_DIR` 路徑少一層目錄而失敗。
 
-```bash
-python -m unittest discover -s tests -p "test_*.py" -v
-```
+## Green
 
-結果（摘要）：
-
-- `ModuleNotFoundError: No module named 'task1_grouped_bar'`
-- `ModuleNotFoundError: No module named 'task2_zipcode_heatmap'`
-- 測試失敗（2 errors）
-
-## Green 階段（完成實作後）
-
-執行指令：
-
-```bash
-python task1_grouped_bar.py
-python task2_zipcode_heatmap.py
-python -m unittest discover -s tests -p "test_*.py" -v
-```
-
-結果（摘要）：
-
-- 已成功產生 `output/task1.png`
-- 已成功產生 `output/task2.png`
-- 10 個測試全部通過（`OK`）
+- 修正 `task1_grouped_bar.py` 與 `task2_zipcode_heatmap.py` 的資料路徑後，重新執行 `python -m unittest discover -s tests -v`，10 個測試全數通過。
