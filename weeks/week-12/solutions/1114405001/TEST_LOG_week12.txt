@@ -1,0 +1,10 @@
+test_10812 (test_week12_solutions.TestWeek12Solutions.test_10812) ... ok
+test_10908 (test_week12_solutions.TestWeek12Solutions.test_10908) ... ok
+test_10922 (test_week12_solutions.TestWeek12Solutions.test_10922) ... ok
+test_10929 (test_week12_solutions.TestWeek12Solutions.test_10929) ... ok
+test_10931 (test_week12_solutions.TestWeek12Solutions.test_10931) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK
