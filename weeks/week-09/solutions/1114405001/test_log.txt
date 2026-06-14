@@ -1,0 +1,86 @@
+﻿python : test_line_by_line_read (__main__.TestR01FileIO.test_line_by_line_read)
+位於 線路:1 字元:66
++ ... ks\week-09\solutions\1114405001" ; python test_week09.py 2>&1 | Out-F ...
++                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_line_by_li...e_by_line_read) 
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+測試：逐行讀取檔案 ... ok
+test_print_to_file (__main__.TestR01FileIO.test_print_to_file)
+測試：print 函數導向檔案 ... ok
+test_separator_and_line_ending (__main__.TestR01FileIO.test_separator_and_line_
+ending)
+測試：分隔符與行終止符 ... ok
+test_write_and_read_text_file (__main__.TestR01FileIO.test_write_and_read_text_
+file)
+測試：寫入和讀取文本檔 ... ok
+test_exists_check (__main__.TestR02PathAndListing.test_exists_check)
+測試：存在判定 ... ok
+test_file_properties (__main__.TestR02PathAndListing.test_file_properties)
+測試：檔案屬性 ... ok
+test_glob_files (__main__.TestR02PathAndListing.test_glob_files)
+測試：當層檔案搜尋 ... ok
+test_path_composition (__main__.TestR02PathAndListing.test_path_composition)
+測試：路徑組合 ... ok
+test_rglob_recursive (__main__.TestR02PathAndListing.test_rglob_recursive)
+測試：遞迴檔案搜尋 ... ok
+test_binary_file_write_read (__main__.TestU03BytesAndEncoding.test_binary_file_
+write_read)
+測試：二進位檔案讀寫 ... ok
+test_encode_decode (__main__.TestU03BytesAndEncoding.test_encode_decode)
+測試：編碼轉換 ... ok
+test_encoding_error_handling (__main__.TestU03BytesAndEncoding.test_encoding_er
+ror_handling)
+測試：編碼錯誤 ... ok
+test_csv_in_memory (__main__.TestU04StringIOAndLines.test_csv_in_memory)
+測試：記憶體中的 CSV 操作 ... ok
+test_line_numbering (__main__.TestU04StringIOAndLines.test_line_numbering)
+測試：逐行處理與行號加工 ... ok
+test_stringio_line_iteration (__main__.TestU04StringIOAndLines.test_stringio_li
+ne_iteration)
+測試：StringIO 逐行迭代 ... ok
+test_stringio_write_and_read (__main__.TestU04StringIOAndLines.test_stringio_wr
+ite_and_read)
+測試：StringIO 寫入與讀取 ... ok
+test_chain (__main__.TestU02Itertools.test_chain)
+測試：chain 串聯 ... ok
+test_combinations (__main__.TestU02Itertools.test_combinations)
+測試：combinations 組合 ... ok
+test_dropwhile (__main__.TestU02Itertools.test_dropwhile)
+測試：dropwhile 條件跳過 ... ok
+test_islice (__main__.TestU02Itertools.test_islice)
+測試：islice 切片 ... ok
+test_permutations_full (__main__.TestU02Itertools.test_permutations_full)
+測試：permutations 全排列 ... ok
+test_permutations_partial (__main__.TestU02Itertools.test_permutations_partial)
+測試：permutations 部分排列 ... ok
+test_takewhile (__main__.TestU02Itertools.test_takewhile)
+測試：takewhile 條件取用 ... ok
+test_count_py_files (__main__.TestA05FileOperations.test_count_py_files)
+測試：計算 .py 檔案行數 ... ok
+test_exclusive_create_mode (__main__.TestA05FileOperations.test_exclusive_creat
+e_mode)
+測試：獨占建立模式 'x' ... ok
+test_gzip_write_read (__main__.TestA06GzipAndTempfile.test_gzip_write_read)
+測試：gzip 壓縮檔讀寫 ... ok
+test_pickle_serialization (__main__.TestA06GzipAndTempfile.test_pickle_serializ
+ation)
+測試：pickle 物件序列化 ... ok
+
+======================================================================
+測試總結
+======================================================================
+執行測試數：28
+成功數：28
+失敗數：0
+錯誤數：0
+成功率：100.0%
+test_temporary_directory (__main__.TestA06GzipAndTempfile.test_temporary_direct
+ory)
+測試：臨時資料夾自動清理 ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 0.032s
+
+OK
