@@ -2,22 +2,31 @@ import random
 import json
 from timing import timeit
 from sorts import bubble_sort, quick_sort, merge_sort
+from sorts_fast import quick_sort_fast
 
 # 裝飾排序函式以測量效能
 timed_bubble = timeit(bubble_sort)
 timed_quick = timeit(quick_sort)
 timed_merge = timeit(merge_sort)
+timed_fast = timeit(quick_sort_fast)
+
+# 對內建 sorted 進行包裝，確保與我們的排序函式簽名一致，並加上計時
+@timeit
+def builtin_sort(data: list) -> list:
+    return sorted(data)
 
 def make_data(n: int, seed: int = 42) -> list:
     random.seed(seed)
     return [random.randint(-10000, 10000) for _ in range(n)]
 
 def run_benchmark(sizes=(500, 1000, 2000, 4000), repeats=3) -> dict:
-    results = {"bubble_sort": {}, "quick_sort": {}, "merge_sort": {}}
+    results = {"baseline": {}, "bubble_sort": {}, "quick_sort": {}, "merge_sort": {}, "quick_sort_fast": {}}
     funcs = {
+        "baseline": builtin_sort,
         "bubble_sort": timed_bubble,
         "quick_sort": timed_quick,
-        "merge_sort": timed_merge
+        "merge_sort": timed_merge,
+        "quick_sort_fast": timed_fast
     }
 
     for size in sizes:
