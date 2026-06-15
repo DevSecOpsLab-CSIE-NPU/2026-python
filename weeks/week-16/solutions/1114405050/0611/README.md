@@ -92,6 +92,13 @@ def run_benchmark(sizes=(500, 1000, 2000, 4000), repeats=3) -> dict: ...
 在 N=4000 的資料量下，`quick_sort_fast` 的耗時從 0.00471s 降至 0.00231s。
 **加速比約為 2.04 倍** (`0.00471 / 0.00231 = 2.0389`)。
 
+## Stage 4 繪圖與報告
+
+![Benchmark Results](assets/benchmark.png)
+
+**解讀：**
+從折線圖可以明顯看出（注意 Y 軸為對數 log scale），O(n²) 的 Bubble Sort 斜率最陡，隨著資料量增加耗時呈指數級別大幅攀升。而 O(n log n) 的 Quick Sort、Merge Sort 與內建的 Timsort (Baseline) 成長趨勢線相對平緩。其中內建 Baseline C 實作速度最快，而我們自己實作的 `quick_sort_fast` 加速版在自製排序演算法中表現最優，線段位居下方。
+
 <!-- 以下為 AI 協作協議,供學生與 AI 助理共同參考 -->
 
 > **AI 協作協議** — 以下規則對學生與 AI 助理雙方均有約束力。
