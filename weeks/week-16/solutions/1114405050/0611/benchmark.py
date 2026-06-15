@@ -16,6 +16,8 @@ def builtin_sort(data: list) -> list:
     return sorted(data)
 
 def make_data(n: int, seed: int = 42) -> list:
+    if n < 0:
+        raise ValueError("Size n cannot be negative")
     random.seed(seed)
     return [random.randint(-10000, 10000) for _ in range(n)]
 
