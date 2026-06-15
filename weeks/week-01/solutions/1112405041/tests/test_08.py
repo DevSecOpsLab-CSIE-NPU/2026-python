@@ -1,0 +1,52 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+# ?ÆÂ?Ê∏¨Ë©¶Ôºö‰∏ªÈ°?08ÔºàÂÆπ?®Ê?‰ΩúË??®Â?ÂºèÔ?
+
+import unittest
+import sys
+import importlib
+
+# ?ïÊ?Â∞éÂÖ• 08_formal Ê®°Á?
+formal_08 = importlib.import_module('08_hand')
+filter_positive = formal_08.filter_positive
+double_values = formal_08.double_values
+create_dict_from_pairs = formal_08.create_dict_from_pairs
+invert_dict = formal_08.invert_dict
+unique_squares = formal_08.unique_squares
+sum_of_squares = formal_08.sum_of_squares
+replace_negative_with_zero = formal_08.replace_negative_with_zero
+
+class TestComprehensions(unittest.TestCase):
+    
+    def test_filter_positive(self):
+        """Ê∏¨Ë©¶ÁØ©ÈÅ∏Ê≠?ï∏"""
+        result = filter_positive([1, -2, 3, -4])
+        self.assertEqual(result, [1, 3])
+    
+    def test_double_values(self):
+        """Ê∏¨Ë©¶?ôÂÄ?""
+        result = double_values([1, 2, 3])
+        self.assertEqual(result, [2, 4, 6])
+    
+    def test_create_dict(self):
+        """Ê∏¨Ë©¶Âª∫Á?Â≠óÂÖ∏"""
+        pairs = [('a', 1), ('b', 2)]
+        result = create_dict_from_pairs(pairs)
+        self.assertEqual(result, {'a': 1, 'b': 2})
+    
+    def test_invert_dict(self):
+        """Ê∏¨Ë©¶?çË?Â≠óÂÖ∏"""
+        result = invert_dict({'a': 1, 'b': 2})
+        self.assertEqual(result, {1: 'a', 2: 'b'})
+    
+    def test_sum_of_squares(self):
+        """Ê∏¨Ë©¶Âπ≥Êñπ??""
+        result = sum_of_squares([1, 2, 3])
+        self.assertEqual(result, 14)
+
+if __name__ == '__main__':
+    unittest.main()
