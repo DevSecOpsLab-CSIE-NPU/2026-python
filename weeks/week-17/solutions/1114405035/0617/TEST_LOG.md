@@ -24,3 +24,14 @@ Ran 1 test in 0.001s
 
 FAILED (errors=1)
 ```
+
+### 2. 綠燈 (Green Light) 測試紀錄
+執行指令：`python -m unittest test_timing.py`
+
+```text
+.....
+----------------------------------------------------------------------
+Ran 5 tests in 0.063s
+
+OK
+```
