@@ -3,7 +3,7 @@
 import unittest
 from functools import wraps
 
-# from timing import timeit  # 完成 timing.py 後解除註解
+from timing import timeit
 
 
 class TestTimeit(unittest.TestCase):
