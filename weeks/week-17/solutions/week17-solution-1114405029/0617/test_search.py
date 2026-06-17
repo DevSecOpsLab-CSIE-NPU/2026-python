@@ -26,6 +26,16 @@ class TestSearchFunctions(unittest.TestCase):
             with self.subTest(name=name):
                 self.assertEqual(func(data, target), -1)
 
+    def test_duplicate_items_return_first_matching_index(self):
+        cases = [
+            ("linear", linear_search, [1, 2, 2, 2, 3], 2, 1),
+            ("binary", binary_search, [1, 2, 2, 2, 3], 2, 1),
+        ]
+
+        for name, func, data, target, expected in cases:
+            with self.subTest(name=name):
+                self.assertEqual(func(data, target), expected)
+
     def test_search_does_not_mutate_input(self):
         cases = [
             ("linear", linear_search, [3, 1, 2], 1),

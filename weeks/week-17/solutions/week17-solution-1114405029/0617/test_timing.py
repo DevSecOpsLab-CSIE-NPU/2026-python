@@ -56,6 +56,15 @@ class TestTimeit(unittest.TestCase):
         self.assertIsInstance(first_elapsed, float)
         self.assertEqual(timed_sample.last_elapsed, timed_sample.records[-1])
 
+    def test_supports_keyword_repeat_decorator_style(self):
+        @timeit(repeat=2)
+        def sample():
+            return "ok"
+
+        self.assertEqual(sample(), "ok")
+        self.assertEqual(len(sample.records), 1)
+        self.assertIsInstance(sample.last_elapsed, float)
+
     def test_repeat_below_one_raises_valueerror(self):
         def sample():
             return "ok"
