@@ -21,8 +21,8 @@ class TestSearch(unittest.TestCase):
         self.assertEqual(binary_search(data, 5), -1)
 
     def test_binary_on_unsorted_returns_minus1(self):
-        data = [3, 7, 1, 9, 4]
-        self.assertEqual(binary_search(data, 9), -1)
+        data = [1, 3, 7, 9, 4]
+        self.assertEqual(binary_search(data, 4), -1)
 
     def test_does_not_modify_input(self):
         data = [3, 7, 1, 9, 4]
