@@ -6,8 +6,10 @@ from sorts_fast import bubble_sort_fast, quick_sort_fast, merge_sort_fast
 
 
 def make_data(n: int, seed: int = 42) -> list:
-    random.seed(seed)
-    return [random.randint(-10000, 10000) for _ in range(n)]
+    if n < 0:
+        raise ValueError("n must be >= 0")
+    rng = random.Random(seed)
+    return [rng.randint(-10000, 10000) for _ in range(n)]
 
 
 def run_benchmark(sizes=(500, 1000, 2000, 4000), repeats=3) -> dict:
