@@ -1,0 +1,4 @@
+# The contents of the requirements.txt file
+
+numpy
+pytest

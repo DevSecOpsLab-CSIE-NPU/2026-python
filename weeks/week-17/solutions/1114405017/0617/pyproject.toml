@@ -1,0 +1,10 @@
+[tool]
+name = "0617"
+version = "0.1.0"
+description = "A project for measuring execution time of functions and evaluating search algorithms."
+authors = ["Your Name <your.email@example.com>"]
+license = "MIT"
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
