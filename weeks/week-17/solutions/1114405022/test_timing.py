@@ -59,12 +59,11 @@ class TestTimeit(unittest.TestCase):
     def test_rejects_invalid_repeat(self):
         for invalid in (0, -1, -100):
             with self.subTest(repeat=invalid):
-                @timeit(repeat=invalid)
-                def f():
-                    pass
-
                 with self.assertRaises(ValueError):
-                    f()
+
+                    @timeit(repeat=invalid)
+                    def f():
+                        pass
 
 
 if __name__ == "__main__":
