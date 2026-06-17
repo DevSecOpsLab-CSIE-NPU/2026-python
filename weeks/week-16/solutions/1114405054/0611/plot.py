@@ -7,7 +7,10 @@ import matplotlib.pyplot as plt
 
 def load_results(path: str) -> dict:
     with open(path) as f:
-        return json.load(f)
+        try:
+            return json.load(f)
+        except json.JSONDecodeError:
+            raise ValueError("invalid JSON in results file")
 
 
 def plot_results(results: dict, out_path: str) -> None:
