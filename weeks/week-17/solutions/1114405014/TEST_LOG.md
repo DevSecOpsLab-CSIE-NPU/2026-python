@@ -20,3 +20,14 @@ E   ModuleNotFoundError: No module named 'timing'
 ERROR test_timing.py
 !!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!! 
 =============================== 1 error in 0.09s ================================ 
+
+PS D:\2026-python\weeks\week-17\solutions\1114405014> pytest
+============================== test session starts ==============================
+platform win32 -- Python 3.13.9, pytest-8.4.2, pluggy-1.5.0
+rootdir: D:\2026-python\weeks\week-17\solutions\1114405014
+plugins: anyio-4.10.0
+collected 6 items                                                                
+
+test_timing.py ......                                                      [100%]
+
+=============================== 6 passed in 0.02s ===============================
