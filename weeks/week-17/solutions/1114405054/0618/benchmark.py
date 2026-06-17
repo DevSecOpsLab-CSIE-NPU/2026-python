@@ -8,6 +8,8 @@ from timing import timeit
 
 
 def make_data(n: int, seed: int = 42) -> list:
+    if n < 1:
+        raise ValueError(f"n must be >= 1, got {n}")
     rng = random.Random(seed)
     return sorted(rng.sample(range(n * 10), n))
 
@@ -119,7 +121,7 @@ def run_benchmark(sizes=(100, 500, 1000, 5000, 10000, 50000, 100000), queries=10
     print(f"\nSingle-query crossover: n = {crossover_n} (never crossed, sort always dominates)")
     print(f"100-query crossover: n = {multi_crossover_n}")
 
-    with open("results.json", "w") as f:
+    with open("results.json", "w", encoding="utf-8") as f:
         json.dump(results, f, indent=2)
     print("\nResults saved to results.json")
 

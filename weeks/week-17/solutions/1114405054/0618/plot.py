@@ -9,7 +9,7 @@ import numpy as np
 
 
 def load_results(path="results.json"):
-    with open(path) as f:
+    with open(path, encoding="utf-8") as f:
         return json.load(f)
 
 
