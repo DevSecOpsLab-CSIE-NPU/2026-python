@@ -1,0 +1,17 @@
+import datetime
+names = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+
+def solve():
+    import sys
+    data = [line.strip() for line in sys.stdin if line.strip()]
+    if not data:
+        return
+    t = int(data[0])
+    ans = []
+    for i in range(1, t + 1):
+        m, d = map(int, data[i].split())
+        ans.append(names[datetime.date(2012, m, d).weekday()])
+    print("\n".join(ans))
+
+if __name__ == "__main__":
+    solve()

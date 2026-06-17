@@ -1,0 +1,357 @@
+{
+  "metadata": {
+    "system": "CPE 題目系統 v1.0",
+    "generated_date": "2026-02-25",
+    "total_questions": 49
+  },
+  "待補充": [
+    {
+      "週次": "W03",
+      "題號": 10035,
+      "ZJ_ID": "a028",
+      "ZJ_URL": "https://zerojudge.tw/ShowProblem?problemid=a028",
+      "UVA_URL": "https://uva.onlinejudge.org/external/10035.pdf",
+      "檔案": "weeks/week-03/QUESTION-10035.md"
+    },
+    {
+      "週次": "W03",
+      "題號": 10038,
+      "ZJ_ID": "a031",
+      "ZJ_URL": "https://zerojudge.tw/ShowProblem?problemid=a031",
+      "UVA_URL": "https://uva.onlinejudge.org/external/10038.pdf",
+      "檔案": "weeks/week-03/QUESTION-10038.md"
+    },
+    {
+      "週次": "W04",
+      "題號": 10050,
+      "ZJ_ID": "a043",
+      "ZJ_URL": "https://zerojudge.tw/ShowProblem?problemid=a043",
+      "UVA_URL": "https://uva.onlinejudge.org/external/10050.pdf",
+      "檔案": "weeks/week-04/QUESTION-10050.md"
+    },
+    {
+      "週次": "W04",
+      "題號": 10056,
+      "ZJ_ID": "a049",
+      "ZJ_URL": "https://zerojudge.tw/ShowProblem?problemid=a049",
+      "UVA_URL": "https://uva.onlinejudge.org/external/10056.pdf",
+      "檔案": "weeks/week-04/QUESTION-10056.md"
+    },
+    {
+      "週次": "W04",
+      "題號": 10057,
+      "ZJ_ID": "a050",
+      "ZJ_URL": "https://zerojudge.tw/ShowProblem?problemid=a050",
+      "UVA_URL": "https://uva.onlinejudge.org/external/10057.pdf",
+      "檔案": "weeks/week-04/QUESTION-10057.md"
+    },
+    {
+      "週次": "W06",
+      "題號": 10170,
+      "ZJ_ID": "a163",
+      "ZJ_URL": "https://zerojudge.tw/ShowProblem?problemid=a163",
+      "UVA_URL": "https://uva.onlinejudge.org/external/10170.pdf",
+      "檔案": "weeks/week-06/QUESTION-10170.md"
+    },
+    {
+      "週次": "W07",
+      "題號": 10221,
+      "ZJ_ID": "a214",
+      "ZJ_URL": "https://zerojudge.tw/ShowProblem?problemid=a214",
+      "UVA_URL": "https://uva.onlinejudge.org/external/10221.pdf",
+      "檔案": "weeks/week-07/QUESTION-10221.md"
+    },
+    {
+      "週次": "W10",
+      "題號": 10409,
+      "ZJ_ID": "a402",
+      "ZJ_URL": "https://zerojudge.tw/ShowProblem?problemid=a402",
+      "UVA_URL": "https://uva.onlinejudge.org/external/10409.pdf",
+      "檔案": "weeks/week-10/QUESTION-10409.md"
+    },
+    {
+      "週次": "W10",
+      "題號": 10415,
+      "ZJ_ID": "a408",
+      "ZJ_URL": "https://zerojudge.tw/ShowProblem?problemid=a408",
+      "UVA_URL": "https://uva.onlinejudge.org/external/10415.pdf",
+      "檔案": "weeks/week-10/QUESTION-10415.md"
+    },
+    {
+      "週次": "W10",
+      "題號": 10420,
+      "ZJ_ID": "a413",
+      "ZJ_URL": "https://zerojudge.tw/ShowProblem?problemid=a413",
+      "UVA_URL": "https://uva.onlinejudge.org/external/10420.pdf",
+      "檔案": "weeks/week-10/QUESTION-10420.md"
+    },
+    {
+      "週次": "W10",
+      "題號": 10642,
+      "ZJ_ID": "a635",
+      "ZJ_URL": "https://zerojudge.tw/ShowProblem?problemid=a635",
+      "UVA_URL": "https://uva.onlinejudge.org/external/10642.pdf",
+      "檔案": "weeks/week-10/QUESTION-10642.md"
+    },
+    {
+      "週次": "W10",
+      "題號": 10783,
+      "ZJ_ID": "a776",
+      "ZJ_URL": "https://zerojudge.tw/ShowProblem?problemid=a776",
+      "UVA_URL": "https://uva.onlinejudge.org/external/10783.pdf",
+      "檔案": "weeks/week-10/QUESTION-10783.md"
+    },
+    {
+      "週次": "W11",
+      "題號": 10812,
+      "ZJ_ID": "a805",
+      "ZJ_URL": "https://zerojudge.tw/ShowProblem?problemid=a805",
+      "UVA_URL": "https://uva.onlinejudge.org/external/10812.pdf",
+      "檔案": "weeks/week-11/QUESTION-10812.md"
+    },
+    {
+      "週次": "W11",
+      "題號": 10908,
+      "ZJ_ID": "a901",
+      "ZJ_URL": "https://zerojudge.tw/ShowProblem?problemid=a901",
+      "UVA_URL": "https://uva.onlinejudge.org/external/10908.pdf",
+      "檔案": "weeks/week-11/QUESTION-10908.md"
+    },
+    {
+      "週次": "W11",
+      "題號": 10929,
+      "ZJ_ID": "a922",
+      "ZJ_URL": "https://zerojudge.tw/ShowProblem?problemid=a922",
+      "UVA_URL": "https://uva.onlinejudge.org/external/10929.pdf",
+      "檔案": "weeks/week-11/QUESTION-10929.md"
+    },
+    {
+      "週次": "W11",
+      "題號": 10931,
+      "ZJ_ID": "a924",
+      "ZJ_URL": "https://zerojudge.tw/ShowProblem?problemid=a924",
+      "UVA_URL": "https://uva.onlinejudge.org/external/10931.pdf",
+      "檔案": "weeks/week-11/QUESTION-10931.md"
+    },
+    {
+      "週次": "W12",
+      "題號": 11005,
+      "ZJ_ID": "a998",
+      "ZJ_URL": "https://zerojudge.tw/ShowProblem?problemid=a998",
+      "UVA_URL": "https://uva.onlinejudge.org/external/11005.pdf",
+      "檔案": "weeks/week-12/QUESTION-11005.md"
+    },
+    {
+      "週次": "W13",
+      "題號": 11417,
+      "ZJ_ID": "b410",
+      "ZJ_URL": "https://zerojudge.tw/ShowProblem?problemid=b410",
+      "UVA_URL": "https://uva.onlinejudge.org/external/11417.pdf",
+      "檔案": "weeks/week-13/QUESTION-11417.md"
+    }
+  ],
+  "部分填充": [
+    {
+      "週次": "W02",
+      "題號": 490,
+      "缺失欄位": "輸出",
+      "檔案": "weeks/week-02/QUESTION-490.md"
+    },
+    {
+      "週次": "W03",
+      "題號": 10008,
+      "缺失欄位": "輸入,輸出",
+      "檔案": "weeks/week-03/QUESTION-10008.md"
+    },
+    {
+      "週次": "W03",
+      "題號": 10019,
+      "缺失欄位": "輸入,輸出",
+      "檔案": "weeks/week-03/QUESTION-10019.md"
+    },
+    {
+      "週次": "W04",
+      "題號": 10041,
+      "缺失欄位": "敘述,輸入,輸出",
+      "檔案": "weeks/week-04/QUESTION-10041.md"
+    },
+    {
+      "週次": "W04",
+      "題號": 10055,
+      "缺失欄位": "無",
+      "檔案": "weeks/week-04/QUESTION-10055.md"
+    },
+    {
+      "週次": "W06",
+      "題號": 10071,
+      "缺失欄位": "無",
+      "檔案": "weeks/week-06/QUESTION-10071.md"
+    },
+    {
+      "週次": "W07",
+      "題號": 10193,
+      "缺失欄位": "輸入",
+      "檔案": "weeks/week-07/QUESTION-10193.md"
+    },
+    {
+      "週次": "W07",
+      "題號": 10222,
+      "缺失欄位": "輸出",
+      "檔案": "weeks/week-07/QUESTION-10222.md"
+    },
+    {
+      "週次": "W09",
+      "題號": 10226,
+      "缺失欄位": "輸出",
+      "檔案": "weeks/week-09/QUESTION-10226.md"
+    },
+    {
+      "週次": "W09",
+      "題號": 10235,
+      "缺失欄位": "無",
+      "檔案": "weeks/week-09/QUESTION-10235.md"
+    },
+    {
+      "週次": "W09",
+      "題號": 10268,
+      "缺失欄位": "無",
+      "檔案": "weeks/week-09/QUESTION-10268.md"
+    },
+    {
+      "週次": "W11",
+      "題號": 10922,
+      "缺失欄位": "輸出",
+      "檔案": "weeks/week-11/QUESTION-10922.md"
+    },
+    {
+      "週次": "W12",
+      "題號": 11150,
+      "缺失欄位": "輸出",
+      "檔案": "weeks/week-12/QUESTION-11150.md"
+    },
+    {
+      "週次": "W12",
+      "題號": 11332,
+      "缺失欄位": "無",
+      "檔案": "weeks/week-12/QUESTION-11332.md"
+    },
+    {
+      "週次": "W13",
+      "題號": 11349,
+      "缺失欄位": "輸出",
+      "檔案": "weeks/week-13/QUESTION-11349.md"
+    },
+    {
+      "週次": "W13",
+      "題號": 11461,
+      "缺失欄位": "敘述,輸入",
+      "檔案": "weeks/week-13/QUESTION-11461.md"
+    },
+    {
+      "週次": "W13",
+      "題號": 12019,
+      "缺失欄位": "敘述,輸入",
+      "檔案": "weeks/week-13/QUESTION-12019.md"
+    }
+  ],
+  "完整填充": [
+    {
+      "週次": "W02",
+      "題號": 100,
+      "ZJ_ID": "c039",
+      "ZJ_URL": "https://zerojudge.tw/ShowProblem?problemid=c039",
+      "檔案": "weeks/week-02/QUESTION-100.md"
+    },
+    {
+      "週次": "W02",
+      "題號": 118,
+      "ZJ_ID": "c082",
+      "ZJ_URL": "https://zerojudge.tw/ShowProblem?problemid=c082",
+      "檔案": "weeks/week-02/QUESTION-118.md"
+    },
+    {
+      "週次": "W02",
+      "題號": 272,
+      "ZJ_ID": "c007",
+      "ZJ_URL": "https://zerojudge.tw/ShowProblem?problemid=c007",
+      "檔案": "weeks/week-02/QUESTION-272.md"
+    },
+    {
+      "週次": "W02",
+      "題號": 299,
+      "ZJ_ID": "e561",
+      "ZJ_URL": "https://zerojudge.tw/ShowProblem?problemid=e561",
+      "檔案": "weeks/week-02/QUESTION-299.md"
+    },
+    {
+      "週次": "W03",
+      "題號": 948,
+      "ZJ_ID": "c095",
+      "ZJ_URL": "https://zerojudge.tw/ShowProblem?problemid=c095",
+      "檔案": "weeks/week-03/QUESTION-948.md"
+    },
+    {
+      "週次": "W06",
+      "題號": 10062,
+      "ZJ_ID": "a055",
+      "ZJ_URL": "https://zerojudge.tw/ShowProblem?problemid=a055",
+      "檔案": "weeks/week-06/QUESTION-10062.md"
+    },
+    {
+      "週次": "W06",
+      "題號": 10093,
+      "ZJ_ID": "a086",
+      "ZJ_URL": "https://zerojudge.tw/ShowProblem?problemid=a086",
+      "檔案": "weeks/week-06/QUESTION-10093.md"
+    },
+    {
+      "週次": "W06",
+      "題號": 10101,
+      "ZJ_ID": "a094",
+      "ZJ_URL": "https://zerojudge.tw/ShowProblem?problemid=a094",
+      "檔案": "weeks/week-06/QUESTION-10101.md"
+    },
+    {
+      "週次": "W07",
+      "題號": 10189,
+      "ZJ_ID": "a182",
+      "ZJ_URL": "https://zerojudge.tw/ShowProblem?problemid=a182",
+      "檔案": "weeks/week-07/QUESTION-10189.md"
+    },
+    {
+      "週次": "W07",
+      "題號": 10190,
+      "ZJ_ID": "a183",
+      "ZJ_URL": "https://zerojudge.tw/ShowProblem?problemid=a183",
+      "檔案": "weeks/week-07/QUESTION-10190.md"
+    },
+    {
+      "週次": "W09",
+      "題號": 10242,
+      "ZJ_ID": "a235",
+      "ZJ_URL": "https://zerojudge.tw/ShowProblem?problemid=a235",
+      "檔案": "weeks/week-09/QUESTION-10242.md"
+    },
+    {
+      "週次": "W09",
+      "題號": 10252,
+      "ZJ_ID": "a245",
+      "ZJ_URL": "https://zerojudge.tw/ShowProblem?problemid=a245",
+      "檔案": "weeks/week-09/QUESTION-10252.md"
+    },
+    {
+      "週次": "W12",
+      "題號": 11063,
+      "ZJ_ID": "b056",
+      "ZJ_URL": "https://zerojudge.tw/ShowProblem?problemid=b056",
+      "檔案": "weeks/week-12/QUESTION-11063.md"
+    },
+    {
+      "週次": "W12",
+      "題號": 11321,
+      "ZJ_ID": "b314",
+      "ZJ_URL": "https://zerojudge.tw/ShowProblem?problemid=b314",
+      "檔案": "weeks/week-12/QUESTION-11321.md"
+    }
+  ]
+}

@@ -1,0 +1,511 @@
+[
+  {
+    "uva_id": "100",
+    "current_week": 2,
+    "suggested_week": 6,
+    "title": "題目 100",
+    "description": "題目 100\n\n**題名**: UVA 100\n\n**相關連結**:\n- \n- \n\n題目敘述\n\n考慮以下的演算法：1.         輸入 n2.         印出 n3.         如果 n = 1 結束4.         如果 n 是奇數 那麼 n=3*n+15.         否則 n=n/26.         GOTO 2例如輸入 22, 得到的數列： 22 11 34 ",
+    "keywords": [
+      "graph"
+    ],
+    "estimated_difficulty": "Medium",
+    "content_length": 827
+  },
+  {
+    "uva_id": "118",
+    "current_week": 2,
+    "suggested_week": 10,
+    "title": "題目 118",
+    "description": "題目 118\n\n**題名**: UVA 118\n\n**相關連結**:\n- \n- \n\n題目敘述\n\n給你一塊矩形土地的長寬，再依序給定每個機器人的初始位置狀況及一連串的指令集，你必須用你的程式求出每個機器人最後的位置狀況。一個機器人的位置狀況包括了其坐標（ x 坐標， y 坐標），和它面向的方向（用 N , S , E , W 來分別代表北、南、東、西）。至於一個機器人所收到的指令集，是一個由字母 '",
+    "keywords": [],
+    "estimated_difficulty": "Medium-Hard",
+    "content_length": 1165
+  },
+  {
+    "uva_id": "272",
+    "current_week": 2,
+    "suggested_week": 10,
+    "title": "題目 272",
+    "description": "題目 272\n\n**題名**: UVA 272\n\n**相關連結**:\n- \n- \n\n題目敘述\n\nTeX 是一種由 Donald Knuth 所發展出的一套文書排版軟體。這套軟體可以將原始文件檔加上一些像字型等型態後，轉成一份很漂亮的文件。而一份漂亮的文件是需要用 `` 和 \" 來把別人說的話給「引」出來，而不是用大部份鍵盤上有的 \" 。雖然鍵盤裡通常不會有這種有方向的雙引號鍵，不過上面有左單引號 ",
+    "keywords": [
+      "string"
+    ],
+    "estimated_difficulty": "Medium-Hard",
+    "content_length": 1164
+  },
+  {
+    "uva_id": "299",
+    "current_week": 2,
+    "suggested_week": 6,
+    "title": "題目 299",
+    "description": "題目 299\n\n**題名**: UVA 299\n\n**相關連結**:\n- \n- \n\n題目敘述\n\n在老舊的火車站，您也許會遇到少數僅存的\"車箱置換員\"。\"車箱置換員\"是鐵路部門的員工，主要工作就是重新排列火車車廂。一旦以最佳順序排列了車廂，所有火車司機要做的就是將車廂逐一卸下即可。\"車箱置換員\"源自在鐵路橋附近的車站中執行此任務的第一人。這座橋並不會垂直打開，而是繞著河中央的一根支柱旋轉。將橋旋轉9",
+    "keywords": [
+      "greedy"
+    ],
+    "estimated_difficulty": "Medium",
+    "content_length": 771
+  },
+  {
+    "uva_id": "490",
+    "current_week": 2,
+    "suggested_week": 2,
+    "title": "題目 490",
+    "description": "題目 490\n\n**題名**: UVA 490\n\n**相關連結**:\n- \n- \n\n題目敘述\n\n在這個問題中你必須將數列文字往順時針方向旋轉90度。也就是說將原本由左到右，由上到下的句子輸出成由上到下，由右到左。\n\n輸入說明\n\n輸入最多不會超過100列，每列最多不會超過100個字元。 合法的字元包括：換行，空白，所有的標點符號，數字，以及大小寫字母。（注意：Tabs並不算是合法字元。） 最後一列輸",
+    "keywords": [],
+    "estimated_difficulty": "Easy",
+    "content_length": 482
+  },
+  {
+    "uva_id": "10008",
+    "current_week": 3,
+    "suggested_week": 3,
+    "title": "題目 10008",
+    "description": "題目 10008\n\n**題名**: UVA 10008\n\n**相關連結**:\n- \n- \n\n題目敘述\n\n學習所有程式語言的第一個練習題請寫一個程式，可以讀入指定的字串，並且輸出指定的字串。比如：輸入字串 \"world\", 則請輸出 \"hello, world\"\n\n輸入說明\n\n輸入總共一行，內含一組文字\n\n輸出說明\n\n輸出題目指定的文字。\n\n---\n\n解題思路\n\n*請填入你的解題思路*\n\n解題代碼\n",
+    "keywords": [],
+    "estimated_difficulty": "Easy",
+    "content_length": 373
+  },
+  {
+    "uva_id": "10019",
+    "current_week": 3,
+    "suggested_week": 3,
+    "title": "題目 10019",
+    "description": "題目 10019\n\n**題名**: UVA 10019\n\n**相關連結**:\n- \n- \n\n題目敘述\n\nHashmat是一個勇敢的將領，他帶著年輕的士兵從這個城市移動到另一個城市與敵人對抗。在打仗之前他會計算己方與敵方士兵的數目差距，來決定是要開打或不開打。Hashmat的士兵數絕不會比敵人的士兵數大。\n\n輸入說明\n\n每組測試資料1列，有2個整數，代表Hashmat及敵人的士兵數或反之。這些數不會",
+    "keywords": [],
+    "estimated_difficulty": "Easy",
+    "content_length": 449
+  },
+  {
+    "uva_id": "10035",
+    "current_week": 3,
+    "suggested_week": 6,
+    "title": "題目 10035",
+    "description": "題目 10035\n\n**題名**: UVA 10035\n\n> ⚠️ **【待補充】** 此題的內容暫時無法從 ZeroJudge 爬取\n>\n> 【狀態】題目敘述、輸入說明、輸出說明待補充\n>\n> 【建議】請參考以下連結自行補充：\n> - \n> - \n> - \n\n**相關連結**:\n- \n- \n\n題目敘述\n\n[【待補充】請從上述連結複製題目敘述]\n\n輸入說明\n\n[【待補充】請從上述連結複製輸入說明]",
+    "keywords": [],
+    "estimated_difficulty": "Medium",
+    "content_length": 634
+  },
+  {
+    "uva_id": "10038",
+    "current_week": 3,
+    "suggested_week": 6,
+    "title": "題目 10038",
+    "description": "題目 10038\n\n**題名**: UVA 10038\n\n> ⚠️ **【待補充】** 此題的內容暫時無法從 ZeroJudge 爬取\n>\n> 【狀態】題目敘述、輸入說明、輸出說明待補充\n>\n> 【建議】請參考以下連結自行補充：\n> - \n> - \n> - \n\n**相關連結**:\n- \n- \n\n題目敘述\n\n[【待補充】請從上述連結複製題目敘述]\n\n輸入說明\n\n[【待補充】請從上述連結複製輸入說明]",
+    "keywords": [],
+    "estimated_difficulty": "Medium",
+    "content_length": 634
+  },
+  {
+    "uva_id": "948",
+    "current_week": 3,
+    "suggested_week": 6,
+    "title": "題目 948",
+    "description": "題目 948\n\n**題名**: UVA 948\n\n**相關連結**:\n- \n- \n\n題目敘述\n\n「金條」銀行根據可靠消息，他們的最後一批（有N個）硬幣裡有一個是假的，而且它的重量和真的不同（每個真的硬幣都一樣重）。在金融危機之後，他們只剩下如上圖的天平。那個天平能用來確定左邊盤子裡的東西比右邊的重、輕、還是一樣。為了找出假幣，銀行職員把所有的硬幣編號（從 1 到 N   ），然後他們就開始秤重了。",
+    "keywords": [],
+    "estimated_difficulty": "Medium",
+    "content_length": 859
+  },
+  {
+    "uva_id": "10041",
+    "current_week": 4,
+    "suggested_week": 4,
+    "title": "題目 10041",
+    "description": "題目 10041\n\n**題名**: UVA 10041\n\n**相關連結**:\n- \n- \n\n題目敘述\n\n還記得計算機概論嗎？還記得二進位嗎？現在我們來計算一下將一個10進位的數字換成二進位數字\n\n輸入說明\n\n輸入若干行直到 EOF 為止。每一行包含一個十進位的整數\n\n輸出說明\n\n針對每一行的整數輸出其二進位制的結果\n\n---\n\n解題思路\n\n*請填入你的解題思路*\n\n解題代碼\n\n```python\n",
+    "keywords": [],
+    "estimated_difficulty": "Easy",
+    "content_length": 362
+  },
+  {
+    "uva_id": "10050",
+    "current_week": 4,
+    "suggested_week": 6,
+    "title": "題目 10050",
+    "description": "題目 10050\n\n**題名**: UVA 10050\n\n> ⚠️ **【待補充】** 此題的內容暫時無法從 ZeroJudge 爬取\n>\n> 【狀態】題目敘述、輸入說明、輸出說明待補充\n>\n> 【建議】請參考以下連結自行補充：\n> - \n> - \n> - \n\n**相關連結**:\n- \n- \n\n題目敘述\n\n[【待補充】請從上述連結複製題目敘述]\n\n輸入說明\n\n[【待補充】請從上述連結複製輸入說明]",
+    "keywords": [],
+    "estimated_difficulty": "Medium",
+    "content_length": 634
+  },
+  {
+    "uva_id": "10055",
+    "current_week": 4,
+    "suggested_week": 6,
+    "title": "題目 10055",
+    "description": "題目 10055\n\n**題名**: UVA 10055\n\n**相關連結**:\n- \n- \n\n題目敘述\n\n单调函数的增减性的判断想必大家都很清楚了吧...这里有N个函数f1(x),f2(x),…,fN(x)，开始时我告诉你他们全都是增函数。由于我记性不好，我会时不时发现哪个函数的增减性我说错了，要进行更改。当然，更改的话，肯定告诉你不是增（减）函数而是减（增）函数。这里，我们定义一个函数F(x)=f",
+    "keywords": [],
+    "estimated_difficulty": "Medium",
+    "content_length": 696
+  },
+  {
+    "uva_id": "10056",
+    "current_week": 4,
+    "suggested_week": 6,
+    "title": "題目 10056",
+    "description": "題目 10056\n\n**題名**: UVA 10056\n\n> ⚠️ **【待補充】** 此題的內容暫時無法從 ZeroJudge 爬取\n>\n> 【狀態】題目敘述、輸入說明、輸出說明待補充\n>\n> 【建議】請參考以下連結自行補充：\n> - \n> - \n> - \n\n**相關連結**:\n- \n- \n\n題目敘述\n\n[【待補充】請從上述連結複製題目敘述]\n\n輸入說明\n\n[【待補充】請從上述連結複製輸入說明]",
+    "keywords": [],
+    "estimated_difficulty": "Medium",
+    "content_length": 634
+  },
+  {
+    "uva_id": "10057",
+    "current_week": 4,
+    "suggested_week": 6,
+    "title": "題目 10057",
+    "description": "題目 10057\n\n**題名**: UVA 10057\n\n> ⚠️ **【待補充】** 此題的內容暫時無法從 ZeroJudge 爬取\n>\n> 【狀態】題目敘述、輸入說明、輸出說明待補充\n>\n> 【建議】請參考以下連結自行補充：\n> - \n> - \n> - \n\n**相關連結**:\n- \n- \n\n題目敘述\n\n[【待補充】請從上述連結複製題目敘述]\n\n輸入說明\n\n[【待補充】請從上述連結複製輸入說明]",
+    "keywords": [],
+    "estimated_difficulty": "Medium",
+    "content_length": 634
+  },
+  {
+    "uva_id": "10062",
+    "current_week": 6,
+    "suggested_week": 12,
+    "title": "題目 10062",
+    "description": "題目 10062\n\n**題名**: UVA 10062\n\n**相關連結**:\n- \n- \n\n題目敘述\n\nN (2 <= N <= 80,000) cows have unique brands in the range 1..N. In a spectacular display of poor judgment, they visited the neighborhood 'watering h",
+    "keywords": [
+      "geometry",
+      "math",
+      "sort"
+    ],
+    "estimated_difficulty": "Hard",
+    "content_length": 1617
+  },
+  {
+    "uva_id": "10071",
+    "current_week": 6,
+    "suggested_week": 6,
+    "title": "題目 10071",
+    "description": "題目 10071\n\n**題名**: UVA 10071\n\n**相關連結**:\n- \n- \n\n題目敘述\n\nYou are given a set S of integers between -30000 and 30000 (inclusive).Find the total number of sextuplesthat satisfy:\n\n輸入說明\n\nThe first line contain",
+    "keywords": [
+      "geometry",
+      "hash",
+      "math",
+      "search"
+    ],
+    "estimated_difficulty": "Medium",
+    "content_length": 604
+  },
+  {
+    "uva_id": "10093",
+    "current_week": 6,
+    "suggested_week": 6,
+    "title": "題目 10093",
+    "description": "題目 10093\n\n**題名**: UVA 10093\n\n**相關連結**:\n- \n- \n\n題目敘述\n\n司令部的将军们打算在N*M的网格地图上部署他们的炮兵部队。一个N*M的地图由N行M列组成，地图的每一格可能是山地（用“H” 表示），也可能是平原（用“P”表示），如下图。在每一格平原地形上最多可以布置一支炮兵部队（山地上不能够部署炮兵部队）；一支炮兵部队在地图上的攻击范围如图中黑色区域所示：PP",
+    "keywords": [],
+    "estimated_difficulty": "Medium",
+    "content_length": 792
+  },
+  {
+    "uva_id": "10101",
+    "current_week": 6,
+    "suggested_week": 6,
+    "title": "題目 10101",
+    "description": "題目 10101\n\n**題名**: UVA 10101\n\n**相關連結**:\n- \n- \n\n題目敘述\n\n【问题描述】这是一个很古老的游戏。用木棒在桌上拼出一个不成立的等式，移动且只移动一根木棒使得等式成立。现在轮到你了。【任务】从文件读入一个式子。如果移动一根木棒可以使等式成立，则输出新的等式，否则输出No。【说明和限制】1．式子中只会出现加号和减号（包括负号），并且有且仅有一个等号，不会出现括号",
+    "keywords": [],
+    "estimated_difficulty": "Medium",
+    "content_length": 781
+  },
+  {
+    "uva_id": "10170",
+    "current_week": 6,
+    "suggested_week": 6,
+    "title": "題目 10170",
+    "description": "題目 10170\n\n**題名**: UVA 10170\n\n> ⚠️ **【待補充】** 此題的內容暫時無法從 ZeroJudge 爬取\n>\n> 【狀態】題目敘述、輸入說明、輸出說明待補充\n>\n> 【建議】請參考以下連結自行補充：\n> - \n> - \n> - \n\n**相關連結**:\n- \n- \n\n題目敘述\n\n[【待補充】請從上述連結複製題目敘述]\n\n輸入說明\n\n[【待補充】請從上述連結複製輸入說明]",
+    "keywords": [],
+    "estimated_difficulty": "Medium",
+    "content_length": 634
+  },
+  {
+    "uva_id": "10189",
+    "current_week": 7,
+    "suggested_week": 12,
+    "title": "題目 10189",
+    "description": "題目 10189\n\n**題名**: UVA 10189\n\n**相關連結**:\n- \n- \n\n題目敘述\n\nPlants vs. Zombies（PVZ）是最近十分风靡的一款小游戏。Plants（植物）和Zombies（僵尸）是游戏的主角，其中Plants防守，而Zombies进攻。该款游戏包含多种不同的挑战系列，比如Protect Your Brain、Bowling等等。其中最为经典的，莫过于玩家",
+    "keywords": [],
+    "estimated_difficulty": "Hard",
+    "content_length": 1664
+  },
+  {
+    "uva_id": "10190",
+    "current_week": 7,
+    "suggested_week": 10,
+    "title": "題目 10190",
+    "description": "題目 10190\n\n**題名**: UVA 10190\n\n**相關連結**:\n- \n- \n\n題目敘述\n\nM国是个多雨的国家，尤其是P城，频繁的降雨给人们的出行带来了不少麻烦。为了方便行人雨天过马路，有关部门在每处人行横道的上空都安装了一种名为“自动伞”的装置。（如图1所示）每把自动伞都可以近似地看作一块长方形的板，厚度不计。这种伞有相当出色的吸水能力，落到上面的雨水都会完全被伞顶的小孔吸入，并通过",
+    "keywords": [],
+    "estimated_difficulty": "Medium-Hard",
+    "content_length": 1089
+  },
+  {
+    "uva_id": "10193",
+    "current_week": 7,
+    "suggested_week": 7,
+    "title": "題目 10193",
+    "description": "題目 10193\n\n**題名**: UVA 10193\n\n**相關連結**:\n- \n- \n\n題目敘述\n\nAlice和Bob兩個人又在玩遊戲了。他們決定玩一種遊戲，準備三堆石頭，數量分別是A, B, C。其中0≤A≤B≤C且皆為整數。兩人輪流取，每個人每次可以從一些堆中同時拿走一樣數量的石頭，例如A=2, B=4, C=4時，可能可以從A和B同時拿走2顆，會剩下(0,2,4)，但不能同時拿走三顆，因",
+    "keywords": [],
+    "estimated_difficulty": "Medium",
+    "content_length": 685
+  },
+  {
+    "uva_id": "10221",
+    "current_week": 7,
+    "suggested_week": 7,
+    "title": "題目 10221",
+    "description": "題目 10221\n\n**題名**: UVA 10221\n\n> ⚠️ **【待補充】** 此題的內容暫時無法從 ZeroJudge 爬取\n>\n> 【狀態】題目敘述、輸入說明、輸出說明待補充\n>\n> 【建議】請參考以下連結自行補充：\n> - \n> - \n> - \n\n**相關連結**:\n- \n- \n\n題目敘述\n\n[【待補充】請從上述連結複製題目敘述]\n\n輸入說明\n\n[【待補充】請從上述連結複製輸入說明]",
+    "keywords": [],
+    "estimated_difficulty": "Medium",
+    "content_length": 634
+  },
+  {
+    "uva_id": "10222",
+    "current_week": 7,
+    "suggested_week": 7,
+    "title": "題目 10222",
+    "description": "題目 10222\n\n**題名**: UVA 10222\n\n**相關連結**:\n- \n- \n\n題目敘述\n\n明明是一個愛數（ㄕㄨˇ）數（ㄕㄨˋ）的好學生，這天媽媽叫他從 n 開始數，下一個數字是 n+1，再下一個數字是 n+2，以此類推。媽媽想知道，明明數了幾個數字之後，他數過的這些數字的總和會超過 m。請幫助明明的媽媽吧。\n\n輸入說明\n\n輸入以 EOF 結束。每一筆測試資料有兩個數字，分別為 n 和",
+    "keywords": [],
+    "estimated_difficulty": "Easy",
+    "content_length": 440
+  },
+  {
+    "uva_id": "10226",
+    "current_week": 9,
+    "suggested_week": 10,
+    "title": "題目 10226",
+    "description": "題目 10226\n\n**題名**: UVA 10226\n\n**相關連結**:\n- \n- \n\n題目敘述\n\n小光的 DFS 剪枝技巧, 在這個暑假進步了一些些, 但是仍然無法通過 DP 的噩夢,現在給你 N 個人, 編號分別是 A, B, ... Z, 接著總是會有人不想排哪裡,請你把所有可能列出來, 但是輸出檔隨便生一生就爆表了 !因此希望你如果新的排列跟上次一樣的部分就不輸出了, 僅僅輸出不同的部",
+    "keywords": [
+      "dynamic",
+      "graph",
+      "search"
+    ],
+    "estimated_difficulty": "Medium-Hard",
+    "content_length": 539
+  },
+  {
+    "uva_id": "10235",
+    "current_week": 9,
+    "suggested_week": 9,
+    "title": "題目 10235",
+    "description": "題目 10235\n\n**題名**: UVA 10235\n\n**相關連結**:\n- \n- \n\n題目敘述\n\n小P家裡養了很多隻蛇，他每天都會陪牠們玩。怎麼玩呢？ 他把家裡劃分成N*M的方格，接著把這些蛇擺上地板。每個方格只能被一隻蛇的身體容納，所以每隻蛇的位置都可以用一串連續方格表示。這些蛇由於很害羞，所以他們都咬著自己的尾巴。也就是每隻蛇都形成一個環狀。然而有些格子上有插座，如果一隻蛇佔據了有插座的",
+    "keywords": [],
+    "estimated_difficulty": "Medium",
+    "content_length": 739
+  },
+  {
+    "uva_id": "10242",
+    "current_week": 9,
+    "suggested_week": 9,
+    "title": "題目 10242",
+    "description": "題目 10242\n\n**題名**: UVA 10242\n\n**相關連結**:\n- \n- \n\n題目敘述\n\nSiruseri城中的道路都是单向的。不同的道路由路口连接。按照法律的规定，在每个路口都设立了一个Siruseri银行的ATM取款机。令人奇怪的是，Siruseri的酒吧也都设在路口，虽然并不是每个路口都设有酒吧。 Banditji计划实施Siruseri有史以来最惊天动地的ATM抢劫。他将从市",
+    "keywords": [],
+    "estimated_difficulty": "Medium",
+    "content_length": 941
+  },
+  {
+    "uva_id": "10252",
+    "current_week": 9,
+    "suggested_week": 12,
+    "title": "題目 10252",
+    "description": "題目 10252\n\n**題名**: UVA 10252\n\n**相關連結**:\n- \n- \n\n題目敘述\n\n最近，柏油高中的數學老師們忽然愛上了兩條線，於是柏油高中的學生們就倒楣了......他們的作業全部都是滿滿的兩條線，不管是題目還是答案，就連廁所每個磁磚的兩側，每個學生的頭上，都是滿滿的兩條線。這真的是太愚蠢了......。於是在虹原大學上課的你，你的筆電「嘟」的一聲，學弟傳訊息過來了：「學長救",
+    "keywords": [],
+    "estimated_difficulty": "Hard",
+    "content_length": 1938
+  },
+  {
+    "uva_id": "10268",
+    "current_week": 9,
+    "suggested_week": 9,
+    "title": "題目 10268",
+    "description": "題目 10268\n\n**題名**: UVA 10268\n\n**相關連結**:\n- \n- \n\n題目敘述\n\n這是個乾燥的一禮拜，你的朋友已經決定要藉由砸學生水球來教他們計算機科學的奧義，他們已經裝了一卡車一模一樣的水球準備砸學生，但這如同命運交會的時刻，這些水球居然變得比剛才更硬了，而且在幾層樓高的地方丟下來還不會破！因此你的朋友找你來幫個忙，他們計畫要從校園中一個很高的建築物往下丟水球，但是要花費最",
+    "keywords": [],
+    "estimated_difficulty": "Medium",
+    "content_length": 751
+  },
+  {
+    "uva_id": "10409",
+    "current_week": 10,
+    "suggested_week": 10,
+    "title": "題目 10409",
+    "description": "題目 10409\n\n**題名**: UVA 10409\n\n> ⚠️ **【待補充】** 此題的內容暫時無法從 ZeroJudge 爬取\n>\n> 【狀態】題目敘述、輸入說明、輸出說明待補充\n>\n> 【建議】請參考以下連結自行補充：\n> - \n> - \n> - \n\n**相關連結**:\n- \n- \n\n題目敘述\n\n[【待補充】請從上述連結複製題目敘述]\n\n輸入說明\n\n[【待補充】請從上述連結複製輸入說明]",
+    "keywords": [],
+    "estimated_difficulty": "Medium",
+    "content_length": 634
+  },
+  {
+    "uva_id": "10415",
+    "current_week": 10,
+    "suggested_week": 10,
+    "title": "題目 10415",
+    "description": "題目 10415\n\n**題名**: UVA 10415\n\n> ⚠️ **【待補充】** 此題的內容暫時無法從 ZeroJudge 爬取\n>\n> 【狀態】題目敘述、輸入說明、輸出說明待補充\n>\n> 【建議】請參考以下連結自行補充：\n> - \n> - \n> - \n\n**相關連結**:\n- \n- \n\n題目敘述\n\n[【待補充】請從上述連結複製題目敘述]\n\n輸入說明\n\n[【待補充】請從上述連結複製輸入說明]",
+    "keywords": [],
+    "estimated_difficulty": "Medium",
+    "content_length": 634
+  },
+  {
+    "uva_id": "10420",
+    "current_week": 10,
+    "suggested_week": 10,
+    "title": "題目 10420",
+    "description": "題目 10420\n\n**題名**: UVA 10420\n\n> ⚠️ **【待補充】** 此題的內容暫時無法從 ZeroJudge 爬取\n>\n> 【狀態】題目敘述、輸入說明、輸出說明待補充\n>\n> 【建議】請參考以下連結自行補充：\n> - \n> - \n> - \n\n**相關連結**:\n- \n- \n\n題目敘述\n\n[【待補充】請從上述連結複製題目敘述]\n\n輸入說明\n\n[【待補充】請從上述連結複製輸入說明]",
+    "keywords": [],
+    "estimated_difficulty": "Medium",
+    "content_length": 634
+  },
+  {
+    "uva_id": "10642",
+    "current_week": 10,
+    "suggested_week": 10,
+    "title": "題目 10642",
+    "description": "題目 10642\n\n**題名**: UVA 10642\n\n> ⚠️ **【待補充】** 此題的內容暫時無法從 ZeroJudge 爬取\n>\n> 【狀態】題目敘述、輸入說明、輸出說明待補充\n>\n> 【建議】請參考以下連結自行補充：\n> - \n> - \n> - \n\n**相關連結**:\n- \n- \n\n題目敘述\n\n[【待補充】請從上述連結複製題目敘述]\n\n輸入說明\n\n[【待補充】請從上述連結複製輸入說明]",
+    "keywords": [],
+    "estimated_difficulty": "Medium",
+    "content_length": 634
+  },
+  {
+    "uva_id": "10783",
+    "current_week": 10,
+    "suggested_week": 10,
+    "title": "題目 10783",
+    "description": "題目 10783\n\n**題名**: UVA 10783\n\n> ⚠️ **【待補充】** 此題的內容暫時無法從 ZeroJudge 爬取\n>\n> 【狀態】題目敘述、輸入說明、輸出說明待補充\n>\n> 【建議】請參考以下連結自行補充：\n> - \n> - \n> - \n\n**相關連結**:\n- \n- \n\n題目敘述\n\n[【待補充】請從上述連結複製題目敘述]\n\n輸入說明\n\n[【待補充】請從上述連結複製輸入說明]",
+    "keywords": [],
+    "estimated_difficulty": "Medium",
+    "content_length": 634
+  },
+  {
+    "uva_id": "10812",
+    "current_week": 11,
+    "suggested_week": 11,
+    "title": "題目 10812",
+    "description": "題目 10812\n\n**題名**: UVA 10812\n\n> ⚠️ **【待補充】** 此題的內容暫時無法從 ZeroJudge 爬取\n>\n> 【狀態】題目敘述、輸入說明、輸出說明待補充\n>\n> 【建議】請參考以下連結自行補充：\n> - \n> - \n> - \n\n**相關連結**:\n- \n- \n\n題目敘述\n\n[【待補充】請從上述連結複製題目敘述]\n\n輸入說明\n\n[【待補充】請從上述連結複製輸入說明]",
+    "keywords": [],
+    "estimated_difficulty": "Medium",
+    "content_length": 634
+  },
+  {
+    "uva_id": "10908",
+    "current_week": 11,
+    "suggested_week": 11,
+    "title": "題目 10908",
+    "description": "題目 10908\n\n**題名**: UVA 10908\n\n> ⚠️ **【待補充】** 此題的內容暫時無法從 ZeroJudge 爬取\n>\n> 【狀態】題目敘述、輸入說明、輸出說明待補充\n>\n> 【建議】請參考以下連結自行補充：\n> - \n> - \n> - \n\n**相關連結**:\n- \n- \n\n題目敘述\n\n[【待補充】請從上述連結複製題目敘述]\n\n輸入說明\n\n[【待補充】請從上述連結複製輸入說明]",
+    "keywords": [],
+    "estimated_difficulty": "Medium",
+    "content_length": 634
+  },
+  {
+    "uva_id": "10922",
+    "current_week": 11,
+    "suggested_week": 11,
+    "title": "題目 10922",
+    "description": "題目 10922\n\n**題名**: UVA 10922\n\n**相關連結**:\n- \n- \n\n題目敘述\n\n给你n个二维平面上的点，要求你把他们按照以x轴坐标为第一关键字，y轴坐标为第二关键字的方式从小到大来进行排序。\n\n輸入說明\n\n第一行输入一个正整数n。接下来n行，第i行有两个个以空格隔开的正整数x[i]和y[i]，表示第i个点为(x[i],y[i])。\n\n輸出說明\n\n输出n行，第i行表示排序好后",
+    "keywords": [],
+    "estimated_difficulty": "Easy",
+    "content_length": 412
+  },
+  {
+    "uva_id": "10929",
+    "current_week": 11,
+    "suggested_week": 11,
+    "title": "題目 10929",
+    "description": "題目 10929\n\n**題名**: UVA 10929\n\n> ⚠️ **【待補充】** 此題的內容暫時無法從 ZeroJudge 爬取\n>\n> 【狀態】題目敘述、輸入說明、輸出說明待補充\n>\n> 【建議】請參考以下連結自行補充：\n> - \n> - \n> - \n\n**相關連結**:\n- \n- \n\n題目敘述\n\n[【待補充】請從上述連結複製題目敘述]\n\n輸入說明\n\n[【待補充】請從上述連結複製輸入說明]",
+    "keywords": [],
+    "estimated_difficulty": "Medium",
+    "content_length": 634
+  },
+  {
+    "uva_id": "10931",
+    "current_week": 11,
+    "suggested_week": 11,
+    "title": "題目 10931",
+    "description": "題目 10931\n\n**題名**: UVA 10931\n\n> ⚠️ **【待補充】** 此題的內容暫時無法從 ZeroJudge 爬取\n>\n> 【狀態】題目敘述、輸入說明、輸出說明待補充\n>\n> 【建議】請參考以下連結自行補充：\n> - \n> - \n> - \n\n**相關連結**:\n- \n- \n\n題目敘述\n\n[【待補充】請從上述連結複製題目敘述]\n\n輸入說明\n\n[【待補充】請從上述連結複製輸入說明]",
+    "keywords": [],
+    "estimated_difficulty": "Medium",
+    "content_length": 634
+  },
+  {
+    "uva_id": "11005",
+    "current_week": 12,
+    "suggested_week": 12,
+    "title": "題目 11005",
+    "description": "題目 11005\n\n**題名**: UVA 11005\n\n> ⚠️ **【待補充】** 此題的內容暫時無法從 ZeroJudge 爬取\n>\n> 【狀態】題目敘述、輸入說明、輸出說明待補充\n>\n> 【建議】請參考以下連結自行補充：\n> - \n> - \n> - \n\n**相關連結**:\n- \n- \n\n題目敘述\n\n[【待補充】請從上述連結複製題目敘述]\n\n輸入說明\n\n[【待補充】請從上述連結複製輸入說明]",
+    "keywords": [],
+    "estimated_difficulty": "Medium",
+    "content_length": 634
+  },
+  {
+    "uva_id": "11063",
+    "current_week": 12,
+    "suggested_week": 12,
+    "title": "題目 11063",
+    "description": "題目 11063\n\n**題名**: UVA 11063\n\n**相關連結**:\n- \n- \n\n題目敘述\n\n一個 n*n 影像檔包含 n2 個像素。每個像素包含紅(R)綠(G)藍(B)三個顏色。寫一個程式，讀入一個 n*n 影像檔，根據下列式子，將紅綠藍三個顏色轉換成 XYZ 表色系統，其中 Y 為影像亮度，將轉換成的 XYZ 根據輸入順序輸出，並算出影像平均亮度，將答案輸出。表示X = 0.5149",
+    "keywords": [],
+    "estimated_difficulty": "Medium",
+    "content_length": 943
+  },
+  {
+    "uva_id": "11150",
+    "current_week": 12,
+    "suggested_week": 12,
+    "title": "題目 11150",
+    "description": "題目 11150\n\n**題名**: UVA 11150\n\n**相關連結**:\n- \n- \n\n題目敘述\n\n在河上有一座独木桥，一只青蛙想沿着独木桥从河的一侧跳到另一侧。在桥上有一些石子，青蛙很讨厌踩在这些石子上。由于桥的长度和青蛙一次跳过的距离都是正整数，我们可以把独木桥上青蛙可能到达的点看成数轴上的一串整点：0，1，……，L（其中L是桥的长度）。坐标为0的点表示桥的起点，坐标为L的点表示桥的终点。",
+    "keywords": [],
+    "estimated_difficulty": "Medium",
+    "content_length": 766
+  },
+  {
+    "uva_id": "11321",
+    "current_week": 12,
+    "suggested_week": 12,
+    "title": "題目 11321",
+    "description": "題目 11321\n\n**題名**: UVA 11321\n\n**相關連結**:\n- \n- \n\n題目敘述\n\n相信大家都知道紅圓茵可是誰，就不多介紹了。最近他有一個煩惱，身為一位大魔法師，每天都有成千上萬的人來膜拜他<(_ _)>。因為人數實在太多了，這麼多人跑到他家膜拜他，害他都無法好好練習魔法了。茵可家門前有一條柏油路，要到他家一定得經過這條柏油路，他決定把這條柏油路(長方形)切成N*M個格子，並且",
+    "keywords": [],
+    "estimated_difficulty": "Medium",
+    "content_length": 993
+  },
+  {
+    "uva_id": "11332",
+    "current_week": 12,
+    "suggested_week": 12,
+    "title": "題目 11332",
+    "description": "題目 11332\n\n**題名**: UVA 11332\n\n**相關連結**:\n- \n- \n\n題目敘述\n\n某 M 現在正在平面座標上的原點 $(0, 0)$，現在四周被擺放了很多很多鏡子，某 M 可以藉由鏡子與他的人格小夥伴對話，請問那些鏡子可以見到小夥伴。鏡子可以當作一個線段，線段之間不會交任何一點，只要能見到該鏡子中一小段區域就算可見到。備註：不考慮反射看到，保證鏡子不會通過原點。\n\n輸入說明\n",
+    "keywords": [],
+    "estimated_difficulty": "Medium",
+    "content_length": 612
+  },
+  {
+    "uva_id": "11349",
+    "current_week": 13,
+    "suggested_week": 13,
+    "title": "題目 11349",
+    "description": "題目 11349\n\n**題名**: UVA 11349\n\n**相關連結**:\n- \n- \n\n題目敘述\n\n給一個等高線二維地圖，每一個等高線由一個平行兩軸的矩形構成，有 $N$ 個矩形、 $M$ 個地點，輸出每一個地點的所在位置高度，以及當前的所在矩形編號。\n\n輸入說明\n\n有多組測資，每一組第一行會有一個整數 $N$，表示接下來有多少個等高線。接下來會有 $N$ 行，每行上會有四個整數 $(lx, ",
+    "keywords": [],
+    "estimated_difficulty": "Medium",
+    "content_length": 635
+  },
+  {
+    "uva_id": "11417",
+    "current_week": 13,
+    "suggested_week": 13,
+    "title": "題目 11417",
+    "description": "題目 11417\n\n**題名**: UVA 11417\n\n> ⚠️ **【待補充】** 此題的內容暫時無法從 ZeroJudge 爬取\n>\n> 【狀態】題目敘述、輸入說明、輸出說明待補充\n>\n> 【建議】請參考以下連結自行補充：\n> - \n> - \n> - \n\n**相關連結**:\n- \n- \n\n題目敘述\n\n[【待補充】請從上述連結複製題目敘述]\n\n輸入說明\n\n[【待補充】請從上述連結複製輸入說明]",
+    "keywords": [],
+    "estimated_difficulty": "Medium",
+    "content_length": 634
+  },
+  {
+    "uva_id": "11461",
+    "current_week": 13,
+    "suggested_week": 13,
+    "title": "題目 11461",
+    "description": "題目 11461\n\n**題名**: UVA 11461\n\n**相關連結**:\n- \n- \n\n題目敘述\n\n[題目敘述請見上方連結]\n\n輸入說明\n\n無\n\n輸出說明\n\n一張圖片：兩個整數 W H (W = H = 64)，是圖片的寬和高；接下來的 H 行，每行有 W*3 個整數，是每個像素的 RGB 值 (0 <= R, G, B <= 255)。\n\n---\n\n解題思路\n\n*請填入你的解題思路*\n\n解題",
+    "keywords": [],
+    "estimated_difficulty": "Easy",
+    "content_length": 376
+  },
+  {
+    "uva_id": "12019",
+    "current_week": 13,
+    "suggested_week": 13,
+    "title": "題目 12019",
+    "description": "題目 12019\n\n**題名**: UVA 12019\n\n**相關連結**:\n- \n- \n\n題目敘述\n\n給你一列文字，請你找出各字元出現的次數。\n\n輸入說明\n\n每筆測試資料一列。每列最大長度為1000。\n\n輸出說明\n\n對每一列輸入，請輸出各字元的ASCII值及其出現的次數。請根據出現的次數由小到大輸出。如果有2個以上的字元有相同的次數，則ASCII值較大的先輸出。 測試資料間請空一列，參考Samp",
+    "keywords": [],
+    "estimated_difficulty": "Easy",
+    "content_length": 413
+  }
+]

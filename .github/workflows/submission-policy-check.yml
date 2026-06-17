@@ -1,0 +1,57 @@
+name: Submission Policy Check
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+jobs:
+  policy-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate PR title format
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          echo "PR title: $PR_TITLE"
+          if [[ ! "$PR_TITLE" =~ ^Week[[:space:]][0-9]{2}[[:space:]]-[[:space:]]([0-9]+)[[:space:]]-[[:space:]].+ ]]; then
+            echo "❌ PR title must match: 'Week XX - <student-id> - <name>'"
+            exit 1
+          fi
+
+      - name: Validate changed files scope
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+
+          git diff --name-only "$BASE_SHA" "$HEAD_SHA" > changed_files.txt
+          echo "Changed files:"
+          cat changed_files.txt
+
+          if [[ ! -s changed_files.txt ]]; then
+            echo "❌ No changed files found in this PR."
+            exit 1
+          fi
+
+          invalid=0
+          while IFS= read -r file; do
+            if [[ "$file" =~ ^weeks/week-[0-9]{2}/solutions/[0-9]+/ ]]; then
+              continue
+            fi
+            echo "❌ Disallowed path: $file"
+            invalid=1
+          done < changed_files.txt
+
+          if [[ "$invalid" -ne 0 ]]; then
+            echo "❌ Only changes under weeks/week-XX/solutions/<student-id>/ are allowed."
+            exit 1
+          fi
+
+          echo "✅ Submission path policy passed."
