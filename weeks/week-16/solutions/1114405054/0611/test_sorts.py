@@ -17,9 +17,11 @@
 
 import unittest
 from sorts import bubble_sort, quick_sort, merge_sort
+from sorts_fast import bubble_sort_fast, quick_sort_fast, merge_sort_fast
 
 
-SORT_FUNCTIONS = [bubble_sort, quick_sort, merge_sort]
+SORT_FUNCTIONS = [bubble_sort, quick_sort, merge_sort,
+                 bubble_sort_fast, quick_sort_fast, merge_sort_fast]
 
 
 class TestSortFunctions(unittest.TestCase):
