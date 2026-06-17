@@ -2,6 +2,7 @@ import json
 import random
 from timing import timeit
 from sorts import bubble_sort, quick_sort, merge_sort
+from sorts_fast import bubble_sort_fast, quick_sort_fast, merge_sort_fast
 
 
 def make_data(n: int, seed: int = 42) -> list:
@@ -17,6 +18,10 @@ def run_benchmark(sizes=(500, 1000, 2000, 4000), repeats=3) -> dict:
             ("bubble", bubble_sort),
             ("quick", quick_sort),
             ("merge", merge_sort),
+            ("bubble_fast", bubble_sort_fast),
+            ("quick_fast", quick_sort_fast),
+            ("merge_fast", merge_sort_fast),
+            ("sorted_builtin", sorted),
         ]:
             timed_sort = timeit(sort_fn)
             for _ in range(repeats):
