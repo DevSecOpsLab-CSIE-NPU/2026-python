@@ -19,7 +19,7 @@ python -m unittest
 Expected result:
 
 ```text
-Ran 8 tests
+Ran 10 tests
 
 OK
 ```
@@ -34,3 +34,7 @@ time grows much more slowly.
 I did not make `binary_search` check whether `data` is sorted. That check would
 require scanning the whole list first, which is `O(n)` and would remove the main
 benefit of binary search.
+
+`binary_search` uses Python's standard-library `bisect_left`, which keeps the
+search behavior logarithmic for sorted input and returns the first matching
+index when duplicates are present.
