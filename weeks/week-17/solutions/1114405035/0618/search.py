@@ -1,3 +1,6 @@
+import bisect
+
+
 def linear_search(data: list, target) -> int:
     if not isinstance(data, list):
         raise TypeError("data must be a list")
@@ -29,3 +32,22 @@ def set_search(data: list, target) -> bool:
         raise TypeError("data must be a list")
     data_set = set(data)
     return target in data_set
+
+
+def builtin_linear_search(data: list, target) -> int:
+    if not isinstance(data, list):
+        raise TypeError("data must be a list")
+    try:
+        return data.index(target)
+    except ValueError:
+        return -1
+
+
+def builtin_binary_search(data: list, target) -> int:
+    if not isinstance(data, list):
+        raise TypeError("data must be a list")
+    idx = bisect.bisect_left(data, target)
+    if idx < len(data) and data[idx] == target:
+        return idx
+    return -1
+
