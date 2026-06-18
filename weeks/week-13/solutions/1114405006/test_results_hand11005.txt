@@ -1,0 +1,38 @@
+test_all_ones_prefers_single_digit (test_question_11005.TestCheapestBase.test_all_ones_prefers_single_digit)
+若所有字元成本都為 1，則成本等於位數長度。對於 N=10， ... ok
+test_custom_costs_prefer_A (test_question_11005.TestCheapestBase.test_custom_costs_prefer_A)
+自訂成本使得字元 A (數值 10) 的成本遠低於其他字元， ... ok
+test_zero_number_all_bases (test_question_11005.TestCheapestBase.test_zero_number_all_bases)
+測試 N = 0 時，所有進位的表示皆為單一數字 '0'，成本相同。 ... ok
+test_single_pixel_example (test_question_11063.TestQuestion11063.test_single_pixel_example)
+使用題目敘述中的範例像素：R=255, G=3, B=192 ... ok
+test_two_pixels_average (test_question_11063.TestQuestion11063.test_two_pixels_average)
+測試兩個像素：第一個為題目範例，第二個為黑色 (0,0,0)， ... ok
+test_single_pixel_easy (test_question_11063_easy.TestQuestion11063Easy.test_single_pixel_easy) ... ok
+test_two_pixels_easy (test_question_11063_easy.TestQuestion11063Easy.test_two_pixels_easy) ... ok
+test_example_with_choice_zero (test_question_11150.TestQuestion11150.test_example_with_choice_zero)
+有選擇時可完全避開石子： ... ok
+test_fixed_step_all_stones (test_question_11150.TestQuestion11150.test_fixed_step_all_stones)
+固定步長且每個踏點剛好都是石子時，需踩到所有中間石子。 ... ok
+test_no_stones_easy (test_question_11150.TestQuestion11150.test_no_stones_easy)
+沒有石子的情況：理論最少踩石子數為 0。 ... ok
+test_optimized_matches_bruteforce_small (test_question_11150.TestQuestion11150.test_optimized_matches_bruteforce_small)
+比較暴力解與優化解在小型測資上的結果是否一致。 ... ok
+test_two_stones_fixed3 (test_question_11150.TestQuestion11150.test_two_stones_fixed3)
+固定步長 3，兩顆石子在每次著地點上，理論需要踩兩次。 ... ok
+test_block_middle_column_sequential (test_question_11321.TestQuestion11321.test_block_middle_column_sequential) ... ok
+test_no_blocking_when_path_exists (test_question_11321.TestQuestion11321.test_no_blocking_when_path_exists) ... ok
+test_single_cell_reject (test_question_11321.TestQuestion11321.test_single_cell_reject) ... ok
+test_single_center (test_question_11321.TestQuestion11321.test_single_center) ... ok
+test_blocking_by_near_segment (test_question_11332.TestQuestion11332.test_blocking_by_near_segment) ... ok
+test_single_segment_visible (test_question_11332.TestQuestion11332.test_single_segment_visible) ... ok
+test_two_colinear_same_ray (test_question_11332.TestQuestion11332.test_two_colinear_same_ray) ... ok
+test_two_different_angles (test_question_11332.TestQuestion11332.test_two_different_angles) ... ok
+test_single_segment_visible (test_question_11332_easy.TestQuestion11332Easy.test_single_segment_visible) ... ok
+test_two_colinear_same_ray (test_question_11332_easy.TestQuestion11332Easy.test_two_colinear_same_ray) ... ok
+test_two_different_angles (test_question_11332_easy.TestQuestion11332Easy.test_two_different_angles) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 0.008s
+
+OK

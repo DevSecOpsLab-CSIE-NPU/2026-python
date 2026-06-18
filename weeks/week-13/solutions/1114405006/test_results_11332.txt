@@ -1,0 +1,9 @@
+test_blocking_by_near_segment (test_question_11332.TestQuestion11332.test_blocking_by_near_segment) ... ok
+test_single_segment_visible (test_question_11332.TestQuestion11332.test_single_segment_visible) ... ok
+test_two_colinear_same_ray (test_question_11332.TestQuestion11332.test_two_colinear_same_ray) ... ok
+test_two_different_angles (test_question_11332.TestQuestion11332.test_two_different_angles) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK

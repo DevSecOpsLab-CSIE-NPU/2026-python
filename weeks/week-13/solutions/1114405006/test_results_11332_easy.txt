@@ -1,0 +1,8 @@
+test_single_segment_visible (test_question_11332_easy.TestQuestion11332Easy.test_single_segment_visible) ... ok
+test_two_colinear_same_ray (test_question_11332_easy.TestQuestion11332Easy.test_two_colinear_same_ray) ... ok
+test_two_different_angles (test_question_11332_easy.TestQuestion11332Easy.test_two_different_angles) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK

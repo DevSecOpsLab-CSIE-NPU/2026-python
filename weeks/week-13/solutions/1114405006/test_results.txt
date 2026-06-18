@@ -1,0 +1,10 @@
+Test run: 2026-05-20
+Command: python -m unittest -v weeks/week-13/1114405006/test_question_11005.py
+
+test_all_ones_prefers_single_digit (test_question_11005.TestCheapestBase) ... ok
+test_custom_costs_prefer_A (test_question_11005.TestCheapestBase) ... ok
+test_zero_number_all_bases (test_question_11005.TestCheapestBase) ... ok
+
+Ran 3 tests in 0.000s
+
+OK
