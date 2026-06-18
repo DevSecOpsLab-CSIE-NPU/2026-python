@@ -57,3 +57,21 @@ AI 常說「binary 一定比 linear 快」，但在以下條件不成立：
 - **set**：速度最快、不需排序，但**不支援 index**（只能回 True/False）
 
 **沒有絕對贏家** — 要先問自己：我要 index 還是只要存在？資料已排序嗎？查幾次？
+
+---
+
+## Stage 5 安全自掃報告
+
+### 適用條目
+
+| OpenSSF 章節 | 測試 | 問題 | 處理方式 |
+|------------|------|------|---------|
+| 03 Numbers (CWE-682) | test_make_data_rejects_negative | make_data 接收 n<0 沒拋錯 | 加 `if n < 0: raise ValueError` |
+| 05 Exception Handling | test_results_file_closed | 確認檔案有用 with 關閉 | 已用 `with open()`，不需修改 |
+| 04 Neutralization (CWE-502) | test_load_uses_json_not_pickle | 確認用 json 非 pickle | 已用 `json.dump`，不需修改 |
+
+### 不適用條目
+
+| OpenSSF 章節 | 條目 | 不適用理由 |
+|------------|------|------------|
+| 08 Coding Standards | 隨機數安全 | benchmark 用 random 正確，非安全敏感，不需改 secrets |
