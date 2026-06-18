@@ -11,10 +11,13 @@ from search import (
 
 
 def make_data(n: int, seed: int = 42) -> list:
+    if not isinstance(n, int) or n <= 0:
+        raise ValueError("n 必須是正整數")
     random.seed(seed)
     data = [random.randint(1, n * 10) for _ in range(n)]
     data.sort()
     return data
+
 
 
 def run_benchmark(sizes=(1000, 5000, 20000, 80000), queries=100) -> dict:
