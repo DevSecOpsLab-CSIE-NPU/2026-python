@@ -23,9 +23,15 @@
 
 import unittest
 
-from search import linear_search, binary_search, set_search
+from search import (
+    linear_search, binary_search, set_search,
+    builtin_linear_search, builtin_binary_search
+)
 
-SEARCH_FUNCTIONS = [linear_search, binary_search, set_search]
+SEARCH_FUNCTIONS = [
+    linear_search, binary_search, set_search,
+    builtin_linear_search, builtin_binary_search
+]
 
 
 class TestSearchFunctions(unittest.TestCase):
