@@ -1,44 +1,24 @@
 # 測試執行紀錄 (TEST_LOG.md)
 
-## 執行指令
+## 1. 測試環境
+* **執行日期**：2026-06-18
+* **測試框架**：pytest
+* **計時器底層**：`time.perf_counter()`
+* **圖形輸出**：matplotlib (使用 Agg backend)
 
-```
-python -m unittest discover -p "test_*.py" -v
-```
+## 2. 測試範疇與驗收標準
+* **Stage 1 (裝飾器功能與例外)**
+  * 驗證其不改變原函式簽名與回傳值（透過 `functools.wraps`）。
+  * 邊界測試：`repeat=1` 可正常執行。
+  * 異常/紅燈測試：驗證 `repeat=0`、`repeat=-1` 等小於 1 的不合法數值會精準拋出 `ValueError`。
+* **Stage 2 (搜尋演算法邊界)**
+  * 空陣列測試：`linear_search` 與 `binary_search` 傳入 `[]` 回傳 `-1`；`set_search` 回傳 `False`。
+  * 防禦性測試：`data` 或 `target` 傳入 `None` 時，精準拋出 `TypeError`。
+  * 唯讀測試：使用 `copy` 深度比對，確保演算法執行前後完全沒有修改原始 `data` 內容。
+* **Stage 4 & 5 (效能視覺化與防禦性強化)**
+  * 驗證 `assets/radar.png` 雷達圖正確產生且檔案非空。
+  * 強健性測試：確保型態檢查使用 `type(repeat) is not int`，阻絕 `repeat=True` 等不合法型態輸入。
 
-## 測試結果 (全部 18 項)
-
-```
-test_png_exists_and_nonempty (test_plot.TestRadarPlot) ... ok
-test_binary_search_exact_index (test_search.TestSearchFunctions) ... ok
-test_found_cases (test_search.TestSearchFunctions) ... ok
-test_input_not_mutated (test_search.TestSearchFunctions) ... ok
-test_linear_search_exact_index (test_search.TestSearchFunctions) ... ok
-test_none_input_raises_typeerror (test_search.TestSearchFunctions) ... ok
-test_not_found_cases (test_search.TestSearchFunctions) ... ok
-test_plot_closes_figure (test_security.TestSecurity) ... ok
-test_search_rejects_non_list_data (test_security.TestSecurity) ... ok
-test_timeit_rejects_bool_repeat (test_security.TestSecurity) ... ok
-test_default_repeat_is_three (test_timing.TestTimeit) ... ok
-test_exception_pass_through (test_timing.TestTimeit) ... ok
-test_non_integer_repeat_type_error (test_timing.TestTimeit) ... ok
-test_preserves_function_metadata (test_timing.TestTimeit) ... ok
-test_repeat_below_one_raises_valueerror (test_timing.TestTimeit) ... ok
-test_repeat_records_and_average (test_timing.TestTimeit) ... ok
-test_returns_original_result (test_timing.TestTimeit) ... ok
-test_timing_records_positive (test_timing.TestTimeit) ... ok
-----------------------------------------------------------------------
-Ran 18 tests in 0.607s
-OK
-```
-
-## 各階段測試涵蓋
-
-| Stage | 測試檔案 | 測試數 |
-|:-----|:---------|:------:|
-| 1 — `@timeit` 裝飾器 | `test_timing.py` | 8 |
-| 2 — 三種搜尋 | `test_search.py` | 6 |
-| 3 — 加速實驗 | (無測試) | — |
-| 4 — 雷達圖 | `test_plot.py` | 1 |
-| 5 — 安全性 | `test_security.py` | 3 |
-| **總計** | | **18** |
+## 3. 測試結果
+* **測試通過狀態**：PASSED
+* 所有邊界條件、正常綠燈、異常紅燈斷言皆符合預期，成功串接基準測試與數據視覺化輸出。
