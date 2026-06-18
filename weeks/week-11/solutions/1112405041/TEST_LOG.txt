@@ -1,0 +1,16 @@
+test_run (test_R01_class_basic.Test_R01_class_basic.test_run) ... ok
+test_run (test_R02_property.Test_R02_property.test_run) ... ok
+test_run (test_R03_inheritance.Test_R03_inheritance.test_run) ... ok
+test_run (test_R04_special_methods.Test_R04_special_methods.test_run) ... ok
+test_run (test_R05_dataclass.Test_R05_dataclass.test_run) ... ok
+test_run (test_U01_die_game.Test_U01_die_game.test_run) ... ok
+test_run (test_q10409.Test_q10409.test_run) ... ok
+test_run (test_q10415.Test_q10415.test_run) ... ok
+test_run (test_q10420.Test_q10420.test_run) ... ok
+test_run (test_q10642.Test_q10642.test_run) ... ok
+test_run (test_q10783.Test_q10783.test_run) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.000s
+
+OK
