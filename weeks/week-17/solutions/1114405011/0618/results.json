@@ -1,0 +1,76 @@
+{
+  "sizes": [
+    1000,
+    5000,
+    20000,
+    80000
+  ],
+  "queries": 100,
+  "repeat": 3,
+  "rows": [
+    {
+      "n": 1000,
+      "queries": 100,
+      "repeat": 3,
+      "sort_once_seconds": 6.273334535459678e-05,
+      "set_build_once_seconds": 3.0800001695752144e-05,
+      "linear_search_seconds": 0.0038070666681354246,
+      "builtin_in_seconds": 0.0007291333361839255,
+      "binary_search_seconds": 0.010070933339496454,
+      "bisect_left_seconds": 2.6366673409938812e-05,
+      "set_search_seconds": 0.0017373999968792002,
+      "set_contains_seconds": 1.0733298646907011e-05,
+      "binary_with_sort_seconds": 0.01013366668485105,
+      "bisect_with_sort_seconds": 8.910001876453559e-05,
+      "set_with_build_seconds": 4.153330034265915e-05
+    },
+    {
+      "n": 5000,
+      "queries": 100,
+      "repeat": 3,
+      "sort_once_seconds": 0.0006308666585634152,
+      "set_build_once_seconds": 0.000346499999674658,
+      "linear_search_seconds": 0.019360500038601458,
+      "builtin_in_seconds": 0.004335666696230571,
+      "binary_search_seconds": 0.05368793336674571,
+      "bisect_left_seconds": 2.816668711602688e-05,
+      "set_search_seconds": 0.04155486663027356,
+      "set_contains_seconds": 1.5933338242272537e-05,
+      "binary_with_sort_seconds": 0.05431880002530912,
+      "bisect_with_sort_seconds": 0.000659033345679442,
+      "set_with_build_seconds": 0.00036243333791693055
+    },
+    {
+      "n": 20000,
+      "queries": 100,
+      "repeat": 3,
+      "sort_once_seconds": 0.003497000007579724,
+      "set_build_once_seconds": 0.0012938666623085737,
+      "linear_search_seconds": 0.0754493666657557,
+      "builtin_in_seconds": 0.01953309999468426,
+      "binary_search_seconds": 0.2017177000331382,
+      "bisect_left_seconds": 3.053333299855391e-05,
+      "set_search_seconds": 0.1318062333157286,
+      "set_contains_seconds": 1.379998866468668e-05,
+      "binary_with_sort_seconds": 0.2052147000407179,
+      "bisect_with_sort_seconds": 0.0035275333405782776,
+      "set_with_build_seconds": 0.0013076666509732604
+    },
+    {
+      "n": 80000,
+      "queries": 100,
+      "repeat": 3,
+      "sort_once_seconds": 0.01669476666332533,
+      "set_build_once_seconds": 0.004562133302291234,
+      "linear_search_seconds": 0.3597447333158925,
+      "builtin_in_seconds": 0.09364063331546883,
+      "binary_search_seconds": 0.7951365999955063,
+      "bisect_left_seconds": 3.620000400890907e-05,
+      "set_search_seconds": 0.46405483336032677,
+      "set_contains_seconds": 1.8699987170596916e-05,
+      "binary_with_sort_seconds": 0.8118313666588317,
+      "bisect_with_sort_seconds": 0.016730966667334236,
+      "set_with_build_seconds": 0.004580833289461831
+    }
+  ]
+}
