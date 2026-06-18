@@ -1,0 +1,7 @@
+python -m unittest discover -s weeks/week-14/solutions/1114405028/tests -p "test_12019.py" -v
+test_doomsday_2012 (test_12019.Test12019) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK

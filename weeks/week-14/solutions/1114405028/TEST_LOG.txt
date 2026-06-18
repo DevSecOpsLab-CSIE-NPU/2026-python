@@ -1,0 +1,15 @@
+Week 14 練習題測試紀錄
+
+測試指令:
+python -m unittest discover -s weeks/week-14/solutions/1114405028/tests -p "test_*.py" -v
+
+測試結果:
+test_symmetric_and_non_symmetric (test_11349.Test11349) ... ok
+test_gcd_sum (test_11417.Test11417) ... ok
+test_square_numbers (test_11461.Test11461) ... ok
+test_doomsday_2012 (test_12019.Test12019) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.010s
+
+OK

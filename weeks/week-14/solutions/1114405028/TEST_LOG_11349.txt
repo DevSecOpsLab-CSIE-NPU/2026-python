@@ -1,0 +1,7 @@
+python -m unittest discover -s weeks/week-14/solutions/1114405028/tests -p "test_11349.py" -v
+test_symmetric_and_non_symmetric (test_11349.Test11349) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK
