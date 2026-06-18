@@ -15,6 +15,10 @@ def bisect_search(data, target):
     return i < len(data) and data[i] == target
 
 
+def fast_set_search(data, target):
+    return target in data
+
+
 def run_benchmark(sizes, queries=100):
     results = {}
     for n in sizes:
@@ -35,6 +39,7 @@ def run_benchmark(sizes, queries=100):
             ("set", set_search, raw),
             ("in_op", lambda d, t: t in d, raw),
             ("bisect", bisect_search, sorted_data),
+            ("fast_set", fast_set_search, set(raw)),
         ]
 
         for label, func, data in configs:
@@ -46,7 +51,7 @@ def run_benchmark(sizes, queries=100):
 
 def print_table(results):
     sizes = sorted(results.keys())
-    headers = ["n", "linear", "binary", "set", "in_op", "bisect"]
+    headers = ["n", "linear", "binary", "set", "in_op", "bisect", "fast_set"]
     print(f"{'n':>8}", end="")
     for h in headers[1:]:
         print(f" {h:>12}", end="")
