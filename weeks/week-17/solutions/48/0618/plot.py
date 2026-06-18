@@ -41,3 +41,4 @@ ax.set_title("五種搜尋演算法多維權衡雷達圖", pad=20, fontsize=14)
 
 os.makedirs("assets", exist_ok=True)
 fig.savefig("assets/radar.png", bbox_inches="tight")
+plt.close(fig)

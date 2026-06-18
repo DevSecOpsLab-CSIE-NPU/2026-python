@@ -1,6 +1,8 @@
 def linear_search(data, target):
     if data is None or target is None:
         raise TypeError("data and target must not be None")
+    if not isinstance(data, list):
+        raise TypeError("data must be a list")
     for i, value in enumerate(data):
         if value == target:
             return i
@@ -10,6 +12,8 @@ def linear_search(data, target):
 def binary_search(data, target):
     if data is None or target is None:
         raise TypeError("data and target must not be None")
+    if not isinstance(data, list):
+        raise TypeError("data must be a list")
     left, right = 0, len(data) - 1
     while left <= right:
         mid = (left + right) // 2
@@ -25,4 +29,6 @@ def binary_search(data, target):
 def set_search(data, target):
     if data is None or target is None:
         raise TypeError("data and target must not be None")
+    if not isinstance(data, list):
+        raise TypeError("data must be a list")
     return target in set(data)

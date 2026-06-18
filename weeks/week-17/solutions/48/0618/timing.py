@@ -3,7 +3,7 @@ import time
 
 
 def timeit(repeat=3):
-    if not isinstance(repeat, int):
+    if type(repeat) is not int:
         raise TypeError(f"repeat must be an int, got {type(repeat).__name__}")
     if repeat < 1:
         raise ValueError(f"repeat must be >= 1, got {repeat}")
