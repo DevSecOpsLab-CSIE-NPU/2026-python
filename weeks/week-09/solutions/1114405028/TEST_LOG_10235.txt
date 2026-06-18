@@ -1,0 +1,7 @@
+10235 測試紀錄
+
+測試指令：
+python -m unittest tests/test_10235.py -v
+
+測試結果：
+OK
