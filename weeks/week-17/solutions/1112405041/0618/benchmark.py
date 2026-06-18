@@ -6,6 +6,8 @@ from search import linear_search, binary_search, set_search
 
 
 def make_data(n, seed=42):
+    if n < 0:
+        raise ValueError(f"n 不能為負數: {n}")
     rng = random.Random(seed)
     return [rng.randint(0, 100000) for _ in range(n)]
 
