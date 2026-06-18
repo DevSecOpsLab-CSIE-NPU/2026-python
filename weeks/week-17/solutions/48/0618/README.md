@@ -74,6 +74,16 @@ def set_search(data: list, target) -> bool:      # 回傳是否存在
 
 > 細節見 [`../0618-search-lab.md`](../0618-search-lab.md)。
 
+### 已掃但判定不適用的條目
+
+| 條目 | 理由 |
+|:----|:----|
+| pyscg-0009 OS Command Injection | 無任何 subprocess / os.system 呼叫 |
+| pyscg-0010 SQL Injection | 無資料庫操作 |
+| pyscg-0023 Secure Deserialization | 無 pickle / json.load 等反序列化 |
+| pyscg-0027 Race Conditions | 全為單執行緒程式碼 |
+| pyscg-0028 Preserve Exceptions in Finally | 無 try/finally 區塊 |
+
 ## Stage 4 雷達圖說明
 
 ### 五個維度（每項 1–5 分，越高越好）
