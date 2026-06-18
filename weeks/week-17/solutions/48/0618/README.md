@@ -74,6 +74,27 @@ def set_search(data: list, target) -> bool:      # 回傳是否存在
 
 > 細節見 [`../0618-search-lab.md`](../0618-search-lab.md)。
 
+## Stage 3 預測（由你填入再 commit）
+
+### 五種搜尋速度預測排名（$n=100000$，1 最快 → 5 最慢）
+
+| 排名 | 方法 | 理論複雜度 | 預測理由 |
+|:---:|:---|---:|:---|
+| **1** | `bisect` 模組 | $O(\log n)$ | C 底層實作的二分搜尋，無 Python 迴圈開銷 |
+| **2** | `binary_search` (自訂) | $O(\log n)$ | 二分搜尋演算法，但純 Python 實作有 bytecode 成本 |
+| **3** | `set_search` | $O(1)$ | 排除建 set 成本後理論最快，但 Python 呼叫與碰撞開銷 |
+| **4** | 內建 `in` | $O(n)$ | C 底層線性掃描，雖是 $O(n)$ 但速度快於純 Python 迴圈 |
+| **5** | `linear_search` (自訂) | $O(n)$ | 純 Python 迴圈 + 線性掃描，大 n 最慢 |
+
+### 預測交叉點
+
+| 對決組合 | 預測 n 範圍 | 理由 |
+|---------|:--------:|:----|
+| 內建 `in` vs 自訂 `binary_search` | $n \approx 100 \sim 1000$ | 小 n 時 C 底層 `in` 贏過純 Python 二分；n 超過數百後演算法優勢反超 |
+| 自訂 `linear_search` vs 自訂 `binary_search` | $n \approx 10 \sim 50$ | 兩者開銷相當，二分 $O(\log n)$ 很快壓制線性 $O(n)$ |
+
+---
+
 ## 本日規則
 
 - [ ] 每階段先紅燈 commit(`test:`)再綠燈 commit(`feat:`),五階段共十個 commit
