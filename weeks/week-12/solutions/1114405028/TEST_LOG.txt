@@ -1,0 +1,78 @@
+Week 12 練習題測試紀錄
+
+測試指令:
+python -m unittest discover -s weeks/week-12/solutions/1114405028/tests -p "test_*.py" -v
+
+測試結果:
+test_impossible_when_difference_too_large (test_10812.Test10812) ... ERROR
+test_valid_scores (test_10812.Test10812) ... ERROR
+test_largest_square_query (test_10908.Test10908) ... ERROR
+test_9_degree_and_not_multiple (test_10922.Test10922) ... ERROR
+test_multiple_of_11_and_not_multiple (test_10929.Test10929) ... ERROR
+test_parity_examples (test_10931.Test10931) ... ERROR
+
+======================================================================
+ERROR: test_impossible_when_difference_too_large (test_10812.Test10812)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "d:\2026-python\weeks\week-12\solutions\1114405028\tests\test_10812.py", line 18, in test_impossible_when_difference_too_large
+    self.assertEqual(run_solution("10812.py", input_data), expected)
+  File "D:\2026-python\weeks\week-12\solutions\1114405028\tests\utils.py", line 25, in run_solution
+    with open(solution_path, "r", encoding=encoding) as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\2026-python\\weeks\\week-12\\solutions\\1114405028\\10812.py'
+
+======================================================================
+ERROR: test_valid_scores (test_10812.Test10812)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "d:\2026-python\weeks\week-12\solutions\1114405028\tests\test_10812.py", line 13, in test_valid_scores
+    self.assertEqual(run_solution("10812.py", input_data), expected)
+  File "D:\2026-python\weeks\week-12\solutions\1114405028\tests\utils.py", line 25, in run_solution
+    with open(solution_path, "r", encoding=encoding) as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\2026-python\\weeks\\week-12\\solutions\\1114405028\\10812.py'
+
+======================================================================
+ERROR: test_largest_square_query (test_10908.Test10908)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\2026-python\weeks\week-12\solutions\1114405028\tests\test_10908.py", line 13, in test_largest_square_query
+    self.assertEqual(run_solution("10908.py", input_data), expected)
+  File "D:\2026-python\weeks\week-12\solutions\1114405028\tests\utils.py", line 25, in run_solution
+    with open(solution_path, "r", encoding=encoding) as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\2026-python\\weeks\\week-12\\solutions\\1114405028\\10908.py'
+
+======================================================================
+ERROR: test_9_degree_and_not_multiple (test_10922.Test10922)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\2026-python\weeks\week-12\solutions\1114405028\tests\test_10922.py", line 13, in test_9_degree_and_not_multiple
+    self.assertEqual(run_solution("10922.py", input_data), expected)
+  File "D:\2026-python\weeks\week-12\solutions\1114405028\tests\utils.py", line 25, in run_solution
+    with open(solution_path, "r", encoding=encoding) as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\2026-python\\weeks\\week-12\\solutions\\1114405028\\10922.py'
+
+======================================================================
+ERROR: test_multiple_of_11_and_not_multiple (test_10929.Test10929)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\2026-python\weeks\week-12\solutions\1114405028\tests\test_10929.py", line 18, in test_multiple_of_11_and_not_multiple
+    self.assertEqual(run_solution("10929.py", input_data), expected)
+  File "D:\2026-python\weeks\week-12\solutions\1114405028\tests\utils.py", line 25, in run_solution
+    with open(solution_path, "r", encoding=encoding) as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\2026-python\\weeks\\week-12\\solutions\\1114405028\\10929.py'
+
+======================================================================
+ERROR: test_parity_examples (test_10931.Test10931)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\2026-python\weeks\week-12\solutions\1114405028\tests\test_10931.py", line 18, in test_parity_examples
+    self.assertEqual(run_solution("10931.py", input_data), expected)
+  File "D:\2026-python\weeks\week-12\solutions\1114405028\tests\utils.py", line 25, in run_solution
+    with open(solution_path, "r", encoding=encoding) as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\2026-python\\weeks\\week-12\\solutions\\1114405028\\10931.py'
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+FAILED (errors=6)
+

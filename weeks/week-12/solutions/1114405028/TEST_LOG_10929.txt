@@ -1,0 +1,17 @@
+python -m unittest discover -s weeks/week-12/solutions/1114405028/tests -p "test_10929.py" -v
+test_multiple_of_11_and_not_multiple (test_10929.Test10929) ... ERROR
+
+======================================================================
+ERROR: test_multiple_of_11_and_not_multiple (test_10929.Test10929)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "d:\2026-python\weeks\week-12\solutions\1114405028\tests\test_10929.py", line 18, in test_multiple_of_11_and_not_multiple
+    self.assertEqual(run_solution("10929.py", input_data), expected)
+  File "D:\2026-python\weeks\week-12\solutions\1114405028\tests\utils.py", line 25, in run_solution
+    with open(solution_path, "r", encoding=encoding) as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\2026-python\\weeks\\week-12\\solutions\\1114405028\\10929.py'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

@@ -1,0 +1,17 @@
+python -m unittest discover -s weeks/week-12/solutions/1114405028/tests -p "test_10908.py" -v
+test_largest_square_query (test_10908.Test10908) ... ERROR
+
+======================================================================
+ERROR: test_largest_square_query (test_10908.Test10908)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "d:\2026-python\weeks\week-12\solutions\1114405028\tests\test_10908.py", line 13, in test_largest_square_query
+    self.assertEqual(run_solution("10908.py", input_data), expected)
+  File "D:\2026-python\weeks\week-12\solutions\1114405028\tests\utils.py", line 25, in run_solution
+    with open(solution_path, "r", encoding=encoding) as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\2026-python\\weeks\\week-12\\solutions\\1114405028\\10908.py'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)
