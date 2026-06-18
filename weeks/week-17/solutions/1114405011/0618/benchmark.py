@@ -22,6 +22,8 @@ def make_data(n, seed=42):
 
 
 def make_queries(n, count, seed=42):
+    if count < 0:
+        raise ValueError("count must be at least 0")
     rng = random.Random(seed + n)
     upper_bound = max(1, n * 2)
     return [rng.randrange(0, upper_bound) for _ in range(count)]
@@ -41,6 +43,8 @@ def _format_seconds(value):
 
 
 def run_benchmark(sizes=DEFAULT_SIZES, queries=100, repeat=3):
+    if queries < 0:
+        raise ValueError("queries must be at least 0")
     rows = []
 
     for size in sizes:

@@ -37,7 +37,10 @@ STRATEGY_FIELDS = {
 
 def load_results(path):
     with Path(path).open("r", encoding="utf-8") as stream:
-        return load(stream)
+        data = load(stream)
+    if not isinstance(data, dict):
+        raise ValueError("results.json must be a JSON object, not a list or scalar")
+    return data
 
 
 def _latest_row(results):
@@ -65,8 +68,20 @@ def _build_angles(count):
     return angles + angles[:1]
 
 
+REQUIRED_FIELDS = (
+    "linear_search_seconds",
+    "binary_search_seconds",
+    "set_search_seconds",
+    "binary_with_sort_seconds",
+    "set_with_build_seconds",
+)
+
+
 def plot_results(results, out_path):
     row = _latest_row(results)
+    missing = [field for field in REQUIRED_FIELDS if field not in row]
+    if missing:
+        raise ValueError(f"row is missing required fields: {missing}")
     normalized = _normalize_series(row)
 
     angles = _build_angles(len(AXES))
