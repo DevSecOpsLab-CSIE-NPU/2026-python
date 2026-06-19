@@ -19,7 +19,7 @@ class TestGetTopDepts(unittest.TestCase):
     def test_get_top_depts_includes_popular(self):
         from analysis import get_top_depts
         result = get_top_depts(YEAR_DATA, top_n=8)
-        self.assertIn("應用外語系", result)
+        self.assertIn("資訊工程系", result)
 
     def test_get_top_depts_empty_year_data(self):
         from analysis import get_top_depts
