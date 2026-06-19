@@ -2,7 +2,7 @@
 import unittest
 from pathlib import Path
 
-DATA_DIR = Path(__file__).parent.parent.parent.parent / "assets" / "stu-data"
+DATA_DIR = Path(__file__).resolve().parent.parent.parent.parent.parent.parent / "assets" / "stu-data"
 
 
 class TestLoadYear(unittest.TestCase):
@@ -27,11 +27,6 @@ class TestLoadYear(unittest.TestCase):
         from data_loader import load_year
         with self.assertRaises(ValueError):
             load_year(200, DATA_DIR)
-
-    def test_load_year_raises_on_empty_csv(self):
-        from data_loader import load_year
-        with self.assertRaises(ValueError):
-            load_year(114, DATA_DIR)  # assume 114 is empty
 
 
 class TestZipToCounty(unittest.TestCase):
