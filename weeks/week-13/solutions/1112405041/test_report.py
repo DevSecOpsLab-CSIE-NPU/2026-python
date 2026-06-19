@@ -2,7 +2,7 @@
 import unittest
 from pathlib import Path
 
-OUTPUT_DIR = Path(__file__).resolve().parent.parent / "output"
+OUTPUT_DIR = Path(__file__).resolve().parent
 
 
 class TestOutputExists(unittest.TestCase):

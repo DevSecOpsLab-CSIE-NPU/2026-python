@@ -2,7 +2,7 @@
 import unittest
 from pathlib import Path
 
-SOLUTION_DIR = Path(__file__).resolve().parent.parent
+SOLUTION_DIR = Path(__file__).resolve().parent
 
 
 class TestSecurityScan(unittest.TestCase):

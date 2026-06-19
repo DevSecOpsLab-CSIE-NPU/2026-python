@@ -3,7 +3,7 @@ import unittest
 from pathlib import Path
 from data_loader import load_year, load_county_counts
 
-DATA_DIR = Path(__file__).resolve().parent.parent.parent.parent.parent.parent / "assets" / "stu-data"
+DATA_DIR = Path(__file__).resolve().parent.parent.parent.parent.parent / "assets" / "stu-data"
 
 # 預載資料供測試使用（只載一次）
 YEAR_DATA = {y: load_year(y, DATA_DIR) for y in range(109, 115)}

@@ -2,8 +2,8 @@
 import unittest
 from pathlib import Path
 
-DATA_DIR = Path(__file__).resolve().parent.parent.parent.parent.parent.parent / "assets" / "stu-data"
-OUTPUT_DIR = Path(__file__).resolve().parent.parent / "output"
+DATA_DIR = Path(__file__).resolve().parent.parent.parent.parent.parent / "assets" / "stu-data"
+OUTPUT_DIR = Path(__file__).resolve().parent
 
 
 class TestPlotGroupedBar(unittest.TestCase):
