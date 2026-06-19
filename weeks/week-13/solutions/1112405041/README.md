@@ -20,6 +20,6 @@ python -m unittest discover -s tests -p "test_*.py" -v
 ```
 
 ## 輸出圖片
+- `task1.png` — 各系 112/113/114 學年度招生人數並排長條圖
 
-- `output/task1.png` — 各系 112/113/114 學年度招生人數並排長條圖
-- `output/task2.png` — 各縣市 109～114 學年度招生人數熱力圖
+- `task2.png` — 各縣市 109～114 學年度招生人數熱力圖
