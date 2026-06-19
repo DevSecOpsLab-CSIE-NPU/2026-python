@@ -4,14 +4,12 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 
-plt.rcParams["font.sans-serif"] = ["Microsoft JhengHei", "SimSun", "Arial Unicode MS"]
+plt.rcParams["font.sans-serif"] = ["Microsoft JhengHei"] + plt.rcParams["font.sans-serif"]
 plt.rcParams["axes.unicode_minus"] = False
 
 
 def plot_grouped_bar(year_data: dict[int, dict[str, int]], top_depts: list[str], out_path: str):
-    """三年並排長條圖"""
     years = sorted(year_data.keys())
-
     values = []
     for y in years:
         depts = year_data[y]
@@ -40,9 +38,7 @@ def plot_grouped_bar(year_data: dict[int, dict[str, int]], top_depts: list[str],
 
 
 def plot_heatmap(county_data: dict[int, dict[str, int]], top_counties: list[str], out_path: str):
-    """縣市 × 年份熱力圖"""
     years = sorted(county_data.keys())
-
     matrix = []
     for c in top_counties:
         row = []
