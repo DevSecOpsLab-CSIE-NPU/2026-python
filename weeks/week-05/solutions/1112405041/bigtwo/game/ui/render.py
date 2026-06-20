@@ -20,8 +20,11 @@ class Renderer:
 
     def __init__(self, screen):
         self.screen = screen
-        self.font = pygame.font.SysFont("Arial", 28)
-        self.small_font = pygame.font.SysFont("Arial", 20)
+        font_name = "microsoftjhenghei"
+        if font_name not in pygame.font.get_fonts():
+            font_name = "mingliu"
+        self.font = pygame.font.SysFont(font_name, 28)
+        self.small_font = pygame.font.SysFont(font_name, 20)
 
     def draw_card(self, card, x, y, selected=False):
         rect = pygame.Rect(x, y, self.CARD_WIDTH, self.CARD_HEIGHT)
