@@ -42,6 +42,7 @@ class BigTwoGame:
         player.play_cards(cards)
         self.last_play = (cards, player.name)
         self.pass_count = 0
+        self.next_turn()
         if len(player.hand) == 0:
             self.winner = player
         return True
@@ -49,6 +50,7 @@ class BigTwoGame:
     def pass_(self, player):
         self.pass_count += 1
         self.check_round_reset()
+        self.next_turn()
         return True
 
     def next_turn(self):
@@ -83,14 +85,11 @@ class BigTwoGame:
         valid = HandFinder.get_all_valid_plays(player.hand, last_cards)
         if not valid:
             self.pass_(player)
-            self.next_turn()
             return False
         is_first = self.last_play is None
         chosen = AIStrategy.select_best(valid, player.hand, is_first)
         if chosen is None:
             self.pass_(player)
-            self.next_turn()
             return False
         self.play(player, chosen)
-        self.next_turn()
         return True
