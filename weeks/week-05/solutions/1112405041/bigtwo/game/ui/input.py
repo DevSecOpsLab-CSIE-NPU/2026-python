@@ -1,4 +1,5 @@
 import pygame
+from game.ui.render import HAND_Y
 
 class InputHandler:
     def __init__(self, renderer):
@@ -23,8 +24,7 @@ class InputHandler:
         for label, rect in game.buttons.items():
             if rect.collidepoint(pos):
                 return self._button_action(label, game)
-        # 檢查選牌
-        hand_y = 500
+        hand_y = HAND_Y
         for i in range(len(player.hand)):
             rx = 20 + i * (self.renderer.CARD_WIDTH + 8)
             ry = hand_y

@@ -1,5 +1,8 @@
 import pygame
 
+HAND_Y = 380
+BUTTON_Y = 530
+
 class Renderer:
     COLORS = {
         "background": (45, 45, 45),

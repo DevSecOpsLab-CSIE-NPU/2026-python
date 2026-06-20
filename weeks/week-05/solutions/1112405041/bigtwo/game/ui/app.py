@@ -1,6 +1,6 @@
 import pygame
 from game.game import BigTwoGame
-from game.ui.render import Renderer
+from game.ui.render import Renderer, HAND_Y, BUTTON_Y
 from game.ui.input import InputHandler
 
 class BigTwoApp:
@@ -14,8 +14,8 @@ class BigTwoApp:
         self.game.setup()
         # 建立按鈕
         self.game.buttons = {
-            "出牌": pygame.Rect(600, 540, 80, 40),
-            "PASS": pygame.Rect(690, 540, 80, 40),
+            "出牌": pygame.Rect(600, BUTTON_Y, 80, 40),
+            "PASS": pygame.Rect(690, BUTTON_Y, 80, 40),
         }
 
     def run(self):
@@ -56,7 +56,7 @@ class BigTwoApp:
             self.renderer.draw_last_play(cards, name, 20, 200)
         # 人類玩家的手牌 + 按鈕
         if not player.is_ai and not self.game.is_game_over():
-            self.renderer.draw_hand(player.hand, 20, 420, self.input_handler.selected_indices)
+            self.renderer.draw_hand(player.hand, 20, HAND_Y, self.input_handler.selected_indices)
             self.renderer.draw_buttons(self.game.buttons)
         # 遊戲結束
         if self.game.is_game_over():

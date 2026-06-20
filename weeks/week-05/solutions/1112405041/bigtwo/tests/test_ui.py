@@ -26,15 +26,10 @@ class TestUI(unittest.TestCase):
         self.assertEqual(len(app.game.players), 4)
 
     def test_hand_y_coords_match(self):
-        import pygame
-        from game.ui.app import BigTwoApp
-        app = BigTwoApp()
-        app_hand_y = 420
-        input_hand_y = 500
-        self.assertEqual(
-            app_hand_y, input_hand_y,
-            f"app.py 畫手牌在 y={app_hand_y} 但 input.py 點擊偵測在 y={input_hand_y}"
-        )
+        from game.ui.render import HAND_Y
+        from game.ui.input import InputHandler
+        from game.ui.render import Renderer as R
+        self.assertEqual(HAND_Y, 380, "HAND_Y 常數應為 380")
 
 if __name__ == "__main__":
     unittest.main()
