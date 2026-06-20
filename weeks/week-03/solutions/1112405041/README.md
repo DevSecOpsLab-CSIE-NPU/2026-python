@@ -21,7 +21,7 @@ python robot_game.py
 ## 測試方式
 
 ```
-python -m unittest discover -s tests -p "test_*.py" -v
+python -m unittest discover -p "test_*.py" -v
 ```
 
 27 tests 全部 PASS。
@@ -38,8 +38,8 @@ python -m unittest discover -s tests -p "test_*.py" -v
 
 ## 遊玩截圖
 
-![gameplay](assets/gameplay.png)
+![gameplay](gameplay.png)
 
 ## 重播方式
 
-按 G 鍵會自動匯出 `assets/replay.gif`，可用瀏覽器或圖片檢視器播放。
+按 G 鍵會自動匯出 `replay.gif`，可用瀏覽器或圖片檢視器播放。

@@ -17,10 +17,9 @@ game.new_robot()
 for cmd in ["R", "F", "F"]:
     game.run_cmd(cmd)
 game.draw(screen)
-out = os.path.join(os.path.dirname(__file__), "assets", "gameplay.png")
-os.makedirs(os.path.dirname(out), exist_ok=True)
+out = os.path.join(os.path.dirname(__file__), "gameplay.png")
 pygame.image.save(screen, out)
-print("Screenshot saved to assets/gameplay.png")
+print("Screenshot saved to gameplay.png")
 
-game.export_gif(screen, "assets/replay.gif")
+game.export_gif(screen, "replay.gif")
 pygame.quit()

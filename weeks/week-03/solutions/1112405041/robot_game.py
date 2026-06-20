@@ -77,7 +77,7 @@ class RobotGame:
         self.world.scents.clear()
         self.msg = "scent 已清除"
 
-    def export_gif(self, screen, out="assets/replay.gif"):
+    def export_gif(self, screen, out="replay.gif"):
         try:
             from PIL import Image
         except ImportError:
