@@ -25,5 +25,16 @@ class TestUI(unittest.TestCase):
         app = BigTwoApp()
         self.assertEqual(len(app.game.players), 4)
 
+    def test_hand_y_coords_match(self):
+        import pygame
+        from game.ui.app import BigTwoApp
+        app = BigTwoApp()
+        app_hand_y = 420
+        input_hand_y = 500
+        self.assertEqual(
+            app_hand_y, input_hand_y,
+            f"app.py 畫手牌在 y={app_hand_y} 但 input.py 點擊偵測在 y={input_hand_y}"
+        )
+
 if __name__ == "__main__":
     unittest.main()
