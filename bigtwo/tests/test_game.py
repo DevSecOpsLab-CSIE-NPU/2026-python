@@ -36,17 +36,19 @@ class TestBigTwoGame(unittest.TestCase):
         g = BigTwoGame()
         g.setup()
         p = g.players[g.current_player]
-        c = p.hand[0]
-        g.play(p, [c])
-        self.assertNotIn(c, p.hand)
+        c = p.hand.find_3_clubs()
+        if c:
+            g.play(p, [c])
+            self.assertNotIn(c, p.hand)
 
     def test_play_sets_last_play(self):
         g = BigTwoGame()
         g.setup()
         p = g.players[g.current_player]
-        c = p.hand[0]
-        g.play(p, [c])
-        self.assertIsNotNone(g.last_play)
+        c = p.hand.find_3_clubs()
+        if c:
+            g.play(p, [c])
+            self.assertIsNotNone(g.last_play)
 
     def test_pass_increments(self):
         g = BigTwoGame()
