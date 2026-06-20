@@ -2,23 +2,23 @@
 
 ## 我問 AI 的問題
 
-1. 「幫我設計 Robot Lost 的 Robot 和 RobotWorld 類別，要支援 L/R/F、LOST、scent」
-2. 「測試案例要覆蓋哪些面向才算完整？」
-3. 「pygame 視覺化要顯示地圖、機器人方向、scent 標記」
+1. Robot 和 RobotWorld 怎麼拆比較好？要支援 L/R/F 還有 LOST 跟 scent
+2. 測試要測哪些？怕漏掉 edge case
+3. 能不能幫我弄一個 pygame 的畫面顯示地圖和機器人方向
 
 ## 我採用的建議與原因
 
-- **Robot/RobotWorld 分離**：讓核心邏輯可獨立測試，不依賴 pygame
-- **scent 用 set[tuple] 儲存**：O(1) 查詢效率高，自動去重
-- **DIR_ORDER 用 list + 模運算旋轉**：比 if-else 簡潔且不易出錯
-- **TDD 流程**：先寫測試（RED）再實作（GREEN），確保規格正確
+- **Robot/RobotWorld 分離**：核心邏輯獨立測試，不綁 pygame
+- **scent 用 set[tuple] 存**：查詢快，不用擔心重複
+- **旋轉用 list + mod**：比 if-else 乾淨
+- **TDD RED→GREEN**：先寫測試再實作比較穩
 
 ## 我拒絕的建議與原因
 
-- **整合 Robot 和 RobotWorld 為單一類別**：拒絕，耦合會讓測試和擴充都困難
-- **scent 用 dict 存**：拒絕，dict 的 value 不需要，set 就夠了
-- **用 argparse 做 CLI 版本**：拒絕，作業要求 pygame 互動優先
+- **Robot 跟 RobotWorld 合併**：耦合太緊，之後難改
+- **scent 用 dict**：沒必要，set 就夠了
+- **做 CLI 版**：作業要 pygame 就先做 pygame
 
 ## AI 建議不完整、我自行修正的案例
 
-AI 給的 `test_same_pos_different_dir_not_protected` 測試起點是 (0,5,E)，但 (0,5) 往 E 移動到 (1,5) 不會越界。我手動修正起點為 (5,5,E)，正確測試 scent 方向差異邏輯。
+AI 給的 `test_same_pos_different_dir_not_protected` 起點設 (0,5,E)，但 (0,5) 往 E 走到 (1,5) 不會出界。我改成 (5,5,E) 才對。
