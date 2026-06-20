@@ -1,6 +1,8 @@
 import pygame
 import sys
 import os
+import io
+from PIL import Image
 sys.path.insert(0, os.path.dirname(__file__))
 from robot_core import Robot, RobotWorld, DIR_ORDER
 
@@ -72,6 +74,32 @@ class RobotGame:
         self.world.scents.clear()
         self.msg = "scent 已清除"
 
+    def export_gif(self, screen, out="assets/replay.gif"):
+        if len(self.replay_steps) < 1:
+            self.msg = "沒有步驟可匯出"
+            return
+        frames = []
+        replay = RobotGame(self.world_w, self.world_h)
+        replay.new_robot()
+        replay.robot.x = self.replay_steps[0][0]
+        replay.robot.y = self.replay_steps[0][1]
+        replay.robot.dir = self.replay_steps[0][2]
+        replay.replay_steps = []
+        buf = pygame.Surface((W, H))
+        replay.draw(buf)
+        frames.append(Image.frombytes("RGB", (W, H), pygame.image.tobytes(buf, "RGB")))
+        for sx, sy, sdir, cmd in self.replay_steps:
+            if replay.robot.lost:
+                break
+            replay.robot.x, replay.robot.y, replay.robot.dir = sx, sy, sdir
+            replay.run_cmd(cmd)
+            replay.draw(buf)
+            frames.append(Image.frombytes("RGB", (W, H), pygame.image.tobytes(buf, "RGB")))
+        out_path = os.path.join(os.path.dirname(__file__), out)
+        os.makedirs(os.path.dirname(out_path), exist_ok=True)
+        frames[0].save(out_path, save_all=True, append_images=frames[1:], duration=300, loop=0)
+        self.msg = f"replay.gif 已存檔"
+
     def draw(self, screen):
         font, sfont = get_font()
         screen.fill(COLORS["bg"])
@@ -140,7 +168,7 @@ class RobotGame:
                     elif event.key == pygame.K_f:
                         self.run_cmd("F")
                     elif event.key == pygame.K_g:
-                        self.msg = "GIF 輸出未實作（可自行擴充）"
+                        self.export_gif(screen)
             self.draw(screen)
             pygame.display.flip()
             clock.tick(30)
