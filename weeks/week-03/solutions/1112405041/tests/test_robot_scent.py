@@ -58,8 +58,8 @@ class TestRobotWorldScent(unittest.TestCase):
 class TestScentDirectionMatters(unittest.TestCase):
     def test_same_pos_different_dir_not_protected(self):
         world = RobotWorld(5, 5)
-        world.scents = {(0, 5, "N")}
-        r = Robot(0, 5, "E", world=(5, 5), world_ref=world)
+        world.scents = {(5, 5, "N")}
+        r = Robot(5, 5, "E", world=(5, 5), world_ref=world)
         world.add_robot(r)
         r.execute("F")
         self.assertTrue(r.lost)
