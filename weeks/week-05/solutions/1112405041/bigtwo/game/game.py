@@ -18,7 +18,7 @@ class BigTwoGame:
         self.deck = Deck()
         self.deck.shuffle()
         self.players = [
-            Player("Player 1", is_ai=False),
+            Player("玩家 1", is_ai=False),
             Player("AI 1", is_ai=True),
             Player("AI 2", is_ai=True),
             Player("AI 3", is_ai=True),

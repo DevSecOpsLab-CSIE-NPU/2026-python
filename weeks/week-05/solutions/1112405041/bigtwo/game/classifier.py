@@ -1,7 +1,4 @@
-from enum import Enum, auto
-from itertools import combinations
-from game.models import Card
-
+from enum import Enum
 
 class CardType(Enum):
     SINGLE = 1
@@ -15,6 +12,7 @@ class CardType(Enum):
 
 
 class HandClassifier:
+    # 牌型分數對照表，用於 compare 跨牌型比較
     TYPE_SCORES = {
         CardType.SINGLE: 1, CardType.PAIR: 2, CardType.TRIPLE: 3,
         CardType.STRAIGHT: 4, CardType.FLUSH: 5, CardType.FULL_HOUSE: 6,
@@ -45,7 +43,7 @@ class HandClassifier:
         s = sorted(set(ranks))
         if s[-1] - s[0] == 4:
             return s[-1]
-        return 5  # A-2-3-4-5
+        return 5
 
     @staticmethod
     def _is_flush(suits):
