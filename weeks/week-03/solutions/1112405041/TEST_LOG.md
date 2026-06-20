@@ -1,45 +1,15 @@
-# TEST_LOG.md
+# 測試記錄
 
-## 第一次：RED（失敗）
+## RED → 缺 robot_core.py
 
-執行指令：
-```
-cd C:\Users\User\Downloads\pythonappeal\2026-python\weeks\week-03\solutions\1112405041
-python -m unittest discover -s tests -p "test_*.py" -v
-```
+- 跑了 2 個測試都掛，說找不到 module
+- 補上 robot_core.py 就綠燈
 
-測試總數：2 (module import failures)
-通過：0
-失敗：2 (ImportError: No module named 'robot_core')
+## 再跑 → 27 過 26
 
-修改：新增 `robot_core.py` 實作 Robot 和 RobotWorld 類別
+- 有一個 `test_same_pos_different_dir_not_protected` 起點設 (0,5)，不會越界
+- 改成 (5,5) 就對了
 
----
+## 全過
 
-## 第二次：GREEN（全部通過）
-
-執行指令：
-```
-cd C:\Users\User\Downloads\pythonappeal\2026-python\weeks\week-03\solutions\1112405041
-python -m unittest discover -s tests -p "test_*.py" -v
-```
-
-測試總數：27
-通過：26
-失敗：1（test_same_pos_different_dir_not_protected）
-
-修改：修正測試用例起點座標 (0,5) → (5,5)
-
----
-
-## 第三次：GREEN（全部通過）
-
-執行指令：
-```
-cd C:\Users\User\Downloads\pythonappeal\2026-python\weeks\week-03\solutions\1112405041
-python -m unittest discover -s tests -p "test_*.py" -v
-```
-
-測試總數：27
-通過：27
-失敗：0
+- 27/27 全部 PASS
