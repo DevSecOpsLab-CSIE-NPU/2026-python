@@ -1,4 +1,4 @@
-from game.classifier import HandClassifier, CardType
+﻿from classifier import HandClassifier, CardType
 
 
 class AIStrategy:

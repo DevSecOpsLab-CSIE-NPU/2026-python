@@ -1,6 +1,6 @@
-import unittest
-from game.models import Card
-from game.classifier import CardType, HandClassifier
+﻿import unittest
+from models import Card
+from classifier import CardType, HandClassifier
 
 class TestCardType(unittest.TestCase):
     def test_cardtype_values(self):

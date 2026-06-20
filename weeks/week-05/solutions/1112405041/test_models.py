@@ -1,5 +1,5 @@
-import unittest
-from game.models import Card, Deck, Hand, Player
+﻿import unittest
+from models import Card, Deck, Hand, Player
 
 class TestCard(unittest.TestCase):
     def test_card_creation(self):

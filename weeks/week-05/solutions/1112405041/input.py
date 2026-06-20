@@ -1,5 +1,5 @@
-import pygame
-from game.ui.render import HAND_Y
+﻿import pygame
+from render import HAND_Y
 
 class InputHandler:
     def __init__(self, renderer):
@@ -20,7 +20,7 @@ class InputHandler:
         player = game.get_current_player()
         if player.is_ai or game.is_game_over():
             return False
-        # 檢查按鈕
+        # 瑼Ｘ??
         for label, rect in game.buttons.items():
             if rect.collidepoint(pos):
                 return self._button_action(label, game)
@@ -39,7 +39,7 @@ class InputHandler:
 
     def _button_action(self, label, game):
         player = game.get_current_player()
-        if label == "出牌" and self.selected_indices:
+        if label == "?箇?" and self.selected_indices:
             cards = [player.hand[i] for i in sorted(self.selected_indices)]
             if game.play(player, cards):
                 self.selected_indices = []

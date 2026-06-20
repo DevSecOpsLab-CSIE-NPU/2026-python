@@ -1,8 +1,8 @@
-import unittest
-from game.models import Card, Hand, Player
-from game.classifier import HandClassifier, CardType
-from game.finder import HandFinder
-from game.ai import AIStrategy
+﻿import unittest
+from models import Card, Hand, Player
+from classifier import HandClassifier, CardType
+from finder import HandFinder
+from ai import AIStrategy
 
 class TestAIStrategy(unittest.TestCase):
     def test_score_single(self):

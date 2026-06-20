@@ -1,6 +1,6 @@
-import unittest
-from game.game import BigTwoGame
-from game.models import Card
+﻿import unittest
+from game import BigTwoGame
+from models import Card
 
 class TestBigTwoGame(unittest.TestCase):
     def test_game_has_4_players(self):

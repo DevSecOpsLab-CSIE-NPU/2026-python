@@ -1,7 +1,7 @@
-import unittest
-from game.models import Card, Hand
-from game.classifier import HandClassifier
-from game.finder import HandFinder
+﻿import unittest
+from models import Card, Hand
+from classifier import HandClassifier
+from finder import HandFinder
 
 class TestHandFinder(unittest.TestCase):
     def test_find_singles(self):

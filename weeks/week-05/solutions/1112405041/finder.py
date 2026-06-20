@@ -1,6 +1,6 @@
-from itertools import combinations
-from game.models import Card, Hand
-from game.classifier import HandClassifier
+﻿from itertools import combinations
+from models import Card, Hand
+from classifier import HandClassifier
 
 
 class HandFinder:

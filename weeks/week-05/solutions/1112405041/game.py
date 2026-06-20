@@ -1,7 +1,7 @@
-from game.models import Deck, Player
-from game.classifier import HandClassifier
-from game.ai import AIStrategy
-from game.finder import HandFinder
+﻿from models import Deck, Player
+from classifier import HandClassifier
+from ai import AIStrategy
+from finder import HandFinder
 
 
 class BigTwoGame:
@@ -18,7 +18,7 @@ class BigTwoGame:
         self.deck = Deck()
         self.deck.shuffle()
         self.players = [
-            Player("玩家 1", is_ai=False),
+            Player("?拙振 1", is_ai=False),
             Player("AI 1", is_ai=True),
             Player("AI 2", is_ai=True),
             Player("AI 3", is_ai=True),

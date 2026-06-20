@@ -1,20 +1,20 @@
-import pygame
-from game.game import BigTwoGame
-from game.ui.render import Renderer, HAND_Y, BUTTON_Y
-from game.ui.input import InputHandler
+﻿import pygame
+from game import BigTwoGame
+from render import Renderer, HAND_Y, BUTTON_Y
+from input import InputHandler
 
 class BigTwoApp:
     def __init__(self):
         pygame.init()
         self.screen = pygame.display.set_mode((800, 600))
-        pygame.display.set_caption("大老二")
+        pygame.display.set_caption("憭扯?")
         self.renderer = Renderer(self.screen)
         self.input_handler = InputHandler(self.renderer)
         self.game = BigTwoGame()
         self.game.setup()
-        # 建立按鈕
+        # 撱箇???
         self.game.buttons = {
-            "出牌": pygame.Rect(600, BUTTON_Y, 80, 40),
+            "?箇?": pygame.Rect(600, BUTTON_Y, 80, 40),
             "PASS": pygame.Rect(690, BUTTON_Y, 80, 40),
         }
 
@@ -46,18 +46,18 @@ class BigTwoApp:
     def render(self):
         self.screen.fill(self.renderer.COLORS["background"])
         player = self.game.get_current_player()
-        # 畫四位玩家
+        # ?怠?雿摰?
         for i, p in enumerate(self.game.players):
             y = 20 + i * 55
             self.renderer.draw_player(p, 20, y, p is player)
-        # 畫上家出的牌
+        # ?思?摰嗅??
         if self.game.last_play:
             cards, name = self.game.last_play
             self.renderer.draw_last_play(cards, name, 20, 200)
-        # 人類玩家的手牌 + 按鈕
+        # 鈭粹??拙振????+ ??
         if not player.is_ai and not self.game.is_game_over():
             self.renderer.draw_hand(player.hand, 20, HAND_Y, self.input_handler.selected_indices)
             self.renderer.draw_buttons(self.game.buttons)
-        # 遊戲結束
+        # ?蝯?
         if self.game.is_game_over():
             self.renderer.draw_winner(self.game.winner.name)
