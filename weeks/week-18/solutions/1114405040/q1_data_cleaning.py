@@ -6,6 +6,13 @@
 
 D = 2
 
+SAMPLE_INPUT = b"""8
+4 7 4 2 9 2 6 7
+3
+1 3 5
+0
+"""
+
 
 def data_cleaning(nums):
     """去除重複數字、保留可被 D 整除的數字，並依升冪排序。"""
@@ -31,7 +38,12 @@ def data_cleaning(nums):
 def main():
     import sys
 
-    data = sys.stdin.buffer.read().split()
+    # 右上角直接執行時沒有測資輸入，使用範例資料避免程式一直等待。
+    # 正式測試或線上評測用重新導向輸入時，仍讀取標準輸入資料。
+    if sys.stdin.isatty():
+        data = SAMPLE_INPUT.split()
+    else:
+        data = sys.stdin.buffer.read().split()
     index = 0
     output_lines = []
 
