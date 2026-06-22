@@ -1,0 +1,19 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.9, pytest-9.0.2, pluggy-1.6.0 -- C:\Users\yiteng\AppData\Local\Programs\Python\Python311\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\yiteng\Downloads\0622-2\2026-python\weeks\week-18\solutions\1114405019
+plugins: anyio-4.13.0
+collecting ... collected 10 items
+
+test_solution.py::test_shift_char_basic PASSED                           [ 10%]
+test_solution.py::test_shift_char_uppercase_wrap PASSED                  [ 20%]
+test_solution.py::test_shift_char_lowercase_wrap PASSED                  [ 30%]
+test_solution.py::test_shift_char_non_alpha_unchanged PASSED             [ 40%]
+test_solution.py::test_shift_line_sample1 PASSED                         [ 50%]
+test_solution.py::test_shift_line_sample2 PASSED                         [ 60%]
+test_solution.py::test_shift_line_empty PASSED                           [ 70%]
+test_solution.py::test_shift_line_all_non_alpha PASSED                   [ 80%]
+test_solution.py::test_shift_line_mixed_case_digit_punct PASSED          [ 90%]
+test_solution.py::test_main_eof_termination PASSED                       [100%]
+
+============================= 10 passed in 0.02s ==============================
