@@ -162,7 +162,7 @@ python weeks/week-18/solutions/1114405029/q3/q3.py
 
 Edge case：空陣列、單一元素、K 在第一個、K 在最後一個、找不到 K。
 
-驗收標準：回報 `FOUND` 或 `NOT FOUND`、`idx`、`cmp`、linear/binary timeit 秒數與 `-> binary faster` 或 `-> linear faster`。
+驗收標準：回報 `FOUND <idx> cmp=<次數>` 或 `NOT FOUND cmp=<次數>`、linear/binary timeit 秒數與 `=> binary faster` 或 `=> linear faster`。
 
 測試案例：找到 K、找不到 K、空陣列、單一元素、比較次數合理性、K 在第一個與最後一個、benchmark 結構、radar 檔案產生。
 
@@ -200,4 +200,3 @@ create_radar_chart("weeks/week-18/solutions/1114405029/q4/assets/radar.png")
 正規化方式：各項分數落在 `0..1`，越接近 1 代表越好。比較次數相關分數使用 `1 - cmp / max_cmp`，並保留最低 0.05，避免圖形完全貼近中心。
 
 Binary search 較有效率的原因：每次比較都能排除約一半搜尋範圍，因此在資料量變大時，比 linear search 逐一檢查更能降低比較次數與執行時間。
-
