@@ -7,10 +7,10 @@
 
 | 題號 | 題目 | 檔案 | 配分 |
 |------|------|------|------|
-| 1 | 資料清理 (Data Cleaning) | `DataCleaning/data_cleaning.py` | 30 |
-| 2 | 凱撒密碼 (Caesar Cipher) | `CaesarCipher/caesar_cipher.py` | 25 |
-| 3 | 任意進位的數字根 | `DigitalRoot/digital_root.py` | 30 |
-| 4 | 二分搜尋效能 | `BinarySearch/binary_search.py` | 20 |
+| 1 | 資料清理 (Data Cleaning) | `01_DataCleaning/data_cleaning.py` | 30 |
+| 2 | 凱撒密碼 (Caesar Cipher) | `02_CaesarCipher/caesar_cipher.py` | 25 |
+| 3 | 任意進位的數字根 | `03_DigitalRoot/digital_root.py` | 30 |
+| 4 | 二分搜尋效能 | `04_BinarySearch/binary_search.py` | 20 |
 
 ---
 
@@ -40,4 +40,4 @@ binary : 0.00000179 s
 
 **二分搜尋**在時間與比較次數上大幅領先，適合**資料已排序**且**查詢頻繁**的場景。**線性搜尋**的最大優勢在於**實作簡單**且**不要求資料有序**，適合小量資料或一次性查詢。實務上若資料量超過數百筆且需反覆查詢，應優先對資料排序後使用二分搜尋，以獲得數量級的時間改善。
 
-雷達圖儲存於 `BinarySearch/radar.png`。
+雷達圖儲存於 `04_BinarySearch/radar.png`。
