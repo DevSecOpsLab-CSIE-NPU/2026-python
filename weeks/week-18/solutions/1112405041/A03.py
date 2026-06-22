@@ -1,5 +1,20 @@
+def to_base_digits(n, base):
+    if n == 0:
+        return [0]
+    digits = []
+    while n > 0:
+        digits.append(n % base)
+        n //= base
+    return list(reversed(digits))
+
+
 def digit_root_in_base(x, base):
-    raise NotImplementedError
+    if x == 0:
+        return 0
+    while x >= base:
+        digits = to_base_digits(x, base)
+        x = sum(digits)
+    return x
 
 
 def main():
