@@ -1,0 +1,2 @@
+matplotlib>=3.10
+pytest>=8.0
