@@ -106,6 +106,14 @@ def create_radar_chart(out_path: str) -> None:
     Args:
         out_path: 輸出圖片路徑
     """
+    from matplotlib import font_manager
+
+    # 設定中文字型 (Windows)
+    font_path = "C:/Windows/Fonts/msjh.ttc"  # 微軟正黑體
+    font_prop = font_manager.FontProperties(fname=font_path)
+    plt.rcParams['font.family'] = font_prop.get_name()
+    plt.rcParams['axes.unicode_minus'] = False
+
     # 維度定義 (值越大越好)
     categories = [
         '小n速度',
@@ -132,21 +140,22 @@ def create_radar_chart(out_path: str) -> None:
     fig, ax = plt.subplots(figsize=(8, 8), subplot_kw=dict(polar=True))
 
     # 畫線
-    ax.plot(angles, linear_scores, 'o-', linewidth=2, label='線性搜尋', color='#FF6B6B')
+    ax.plot(angles, linear_scores, 'o-', linewidth=2, label='Linear Search', color='#FF6B6B')
     ax.fill(angles, linear_scores, alpha=0.25, color='#FF6B6B')
 
-    ax.plot(angles, binary_scores, 'o-', linewidth=2, label='二分搜尋', color='#4ECDC4')
+    ax.plot(angles, binary_scores, 'o-', linewidth=2, label='Binary Search', color='#4ECDC4')
     ax.fill(angles, binary_scores, alpha=0.25, color='#4ECDC4')
 
     # 設定標籤
     ax.set_xticks(angles[:-1])
-    ax.set_xticklabels(categories, fontsize=12)
+    ax.set_xticklabels(categories, fontproperties=font_prop, fontsize=12)
     ax.set_ylim(0, 1)
     ax.set_yticks([0.2, 0.4, 0.6, 0.8, 1.0])
     ax.set_yticklabels(['0.2', '0.4', '0.6', '0.8', '1.0'], fontsize=9)
 
     # 標題與圖例
-    ax.set_title('線性搜尋 vs 二分搜尋 - 多維權衡比較', fontsize=14, fontweight='bold', pad=20)
+    ax.set_title('Linear vs Binary Search - Multi-dimensional Comparison',
+                 fontproperties=font_prop, fontsize=14, fontweight='bold', pad=20)
     ax.legend(loc='upper right', bbox_to_anchor=(1.3, 1.1), fontsize=11)
 
     plt.tight_layout()
