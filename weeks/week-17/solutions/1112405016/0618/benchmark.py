@@ -14,6 +14,8 @@ from search import (
 
 def make_data(n: int, seed: int = 42) -> list:
     """產生指定長度且具備固定亂數種子的資料"""
+    if not isinstance(n, int) or n < 0:
+        raise ValueError("n must be a non-negative integer")
     random.seed(seed)
     return [random.randint(0, n * 10) for _ in range(n)]
 
