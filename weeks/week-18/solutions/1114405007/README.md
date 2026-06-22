@@ -26,9 +26,21 @@ weeks/week-18/solutions/1114405007/
 │   ├── test_search_lab.py      (18 tests)
 │   └── assets/radar.png
 │
+├── ai_log/
+│   ├── problem1.md
+│   ├── problem2.md
+│   ├── problem3.md
+│   └── problem4.md
+│
+├── test_log/
+│   ├── problem1.md
+│   ├── problem2.md
+│   ├── problem3.md
+│   └── problem4.md
+│
 ├── README.md          # 本檔
-├── AI_LOG.md          # AI 協作紀錄
-└── TEST_LOG.md        # 測試執行紀錄
+├── AI_LOG.md          # AI 協作紀錄索引
+└── TEST_LOG.md        # 測試執行紀錄索引
 ```
 
 ---
