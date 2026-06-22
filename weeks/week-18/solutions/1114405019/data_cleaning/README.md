@@ -1,4 +1,4 @@
-# Data Cleaning（D=3）— weeks/week-02/solutions/1114405019/data_cleaning
+# Data Cleaning（D=3）— weeks/week-18/solutions/1114405019/data_cleaning
 
 > 此題不在 `HOMEWORK.md` 的 Task1/2/3 範圍內，是另外指定的「資料清理」練習題，採同樣的 Red → Green → Refactor 流程交付。
 
