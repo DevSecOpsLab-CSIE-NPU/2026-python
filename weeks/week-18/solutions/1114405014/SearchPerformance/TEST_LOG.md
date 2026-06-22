@@ -150,3 +150,16 @@ ERROR test_plot.py
 ERROR test_search_performance.py
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Interrupted: 2 errors during collection !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ========================================= 2 errors in 0.25s ==========================================
+
+pytest
+PS D:\Edwin\program\program-python\2026-python\weeks\week-18\solutions\1114405014\SearchPerformance> pytest
+======================================== test session starts =========================================
+platform win32 -- Python 3.14.3, pytest-9.0.3, pluggy-1.6.0
+rootdir: D:\Edwin\program\program-python\2026-python\weeks\week-18\solutions\1114405014\SearchPerformance
+plugins: anyio-4.13.0
+collected 18 items                                                                                    
+
+test_plot.py ....                                                                               [ 22%]
+test_search_performance.py ..............                                                       [100%]
+
+========================================= 18 passed in 1.48s =========================================
