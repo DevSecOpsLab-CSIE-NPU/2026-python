@@ -217,6 +217,36 @@ avg_time = sum(times) / len(times)
 - AI_LOG.md（本檔）
 - assets/radar.png（執行主程式或繪圖函式產生）
 
+## 教授要求對照
+
+### 1. 函式簽名
+- `linear_search(arr, target)`：回傳 `(index, comparisons)`。
+- `binary_search(arr, target)`：回傳 `(index, comparisons)`。
+- `benchmark(arr, target, repeats, number)`：用 timeit 比較兩者耗時。
+- `save_radar_chart(output_path)`：輸出 `assets/radar.png`。
+
+### 2. 輸入邊界
+- 題目格式輸入時，第一行是數量，後續是整數序列。
+- 若輸入不足或沒有輸入，會自動產生大型升冪陣列。
+- 陣列若不是升冪，會先排序再做 binary search。
+
+### 3. 例外處理
+- 沒有目標值時輸出 `NOT FOUND`。
+- timeit 以多次平均降低雜訊。
+- 繪圖使用 `Agg`，避免無 GUI 環境失敗。
+
+### 4. edge case
+- 找得到目標值與找不到目標值。
+- 空輸入自動產生資料。
+- 陣列未排序。
+- 大資料量比較效能差異。
+
+### 5. 驗收標準
+- 必須回報 `FOUND/NOT FOUND` 與 `cmp`。
+- 必須輸出 linear / binary 的 timeit 結果與較快者。
+- 必須產出 `assets/radar.png`。
+- 測試需涵蓋搜尋結果、格式與工具函式。
+
 ## 十一、結論
 
 - 本題已完成搜尋、效能測量、視覺化與文件。
