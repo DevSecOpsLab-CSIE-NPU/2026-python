@@ -1,0 +1,72 @@
+{
+    "queries": 100,
+    "benchmark_results": {
+        "1000": {
+            "linear_manual": 0.0009834462932000558,
+            "linear_builtin": 0.0003145033260807395,
+            "binary_manual": 5.012302426621318e-05,
+            "binary_bisect": 1.3616324091951052e-05,
+            "set_unoptimized": 0.0007699716564578315,
+            "set_optimized": 1.0969990398734808e-05
+        },
+        "5000": {
+            "linear_manual": 0.004955069355977078,
+            "linear_builtin": 0.001618075999431312,
+            "binary_manual": 8.229565961907308e-05,
+            "binary_bisect": 1.6593335506816704e-05,
+            "set_unoptimized": 0.007612680667079985,
+            "set_optimized": 2.517634614681204e-05
+        },
+        "20000": {
+            "linear_manual": 0.022191452677361667,
+            "linear_builtin": 0.006967309338506311,
+            "binary_manual": 8.044601418077946e-05,
+            "binary_bisect": 1.637631794437766e-05,
+            "set_unoptimized": 0.03268309998869275,
+            "set_optimized": 9.236566256731749e-05
+        },
+        "80000": {
+            "linear_manual": 0.08347616369913642,
+            "linear_builtin": 0.025236606985951465,
+            "binary_manual": 9.32990030075113e-05,
+            "binary_bisect": 1.829998412479957e-05,
+            "set_unoptimized": 0.14953050032878915,
+            "set_optimized": 0.0003950656585705777
+        }
+    },
+    "crossover_point_n": 50,
+    "crossover_details": {
+        "50": {
+            "pure_linear": 5.00174006447196e-05,
+            "sort_and_binary": 3.4493603743612765e-05
+        },
+        "100": {
+            "pure_linear": 8.417100179940462e-05,
+            "sort_and_binary": 2.8711603954434393e-05
+        },
+        "200": {
+            "pure_linear": 0.0001561581972055137,
+            "sort_and_binary": 3.7723593413829805e-05
+        },
+        "300": {
+            "pure_linear": 0.0002753389999270439,
+            "sort_and_binary": 5.170139484107494e-05
+        },
+        "500": {
+            "pure_linear": 0.0004881567903794348,
+            "sort_and_binary": 7.367918733507395e-05
+        },
+        "1000": {
+            "pure_linear": 0.001048044813796878,
+            "sort_and_binary": 9.806498419493437e-05
+        },
+        "2000": {
+            "pure_linear": 0.0022587559884414076,
+            "sort_and_binary": 0.00015116437571123243
+        },
+        "5000": {
+            "pure_linear": 0.0058186624199151995,
+            "sort_and_binary": 0.00040884962072595954
+        }
+    }
+}
