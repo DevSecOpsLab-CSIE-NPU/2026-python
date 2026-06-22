@@ -22,7 +22,7 @@ def shift_letters(text: str, shift: int = 4) -> str:
 
 def main():
 	data = sys.stdin.read()
-	if not data: 
+	if not data:
 		return
 	result = shift_letters(data.rstrip('\n'))
 	print(result)

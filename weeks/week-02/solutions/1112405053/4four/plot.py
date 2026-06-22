@@ -17,7 +17,7 @@ num_vars = len(labels)
 # 數值設計呼應 README 中的多維權衡邏輯
 linear_scores = [0.1, 1.0, 1.0, 1.0, 0.1]
 binary_scores = [1.0, 0.8, 0.2, 0.6, 1.0]
-
+ 
 # 雷達圖需要首尾相連
 angles = np.linspace(0, 2 * np.pi, num_vars, endpoint=False).tolist()
 linear_scores += linear_scores[:1]

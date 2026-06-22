@@ -64,5 +64,5 @@ echo "abc XYZ" | python 2two.py
 ```text
 LIPPS,RTY!
 efg  BCD
-``` 
+```
 

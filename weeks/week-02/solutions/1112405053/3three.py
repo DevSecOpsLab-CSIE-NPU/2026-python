@@ -21,11 +21,14 @@ def iterative_base3_digit_sum_steps(n: int):
     if current == 0:
         steps.append("0 -> 0 -> sum: 0")
         return steps, 0
+    b3 = to_base3(current)
+    current = sum(int(d) for d in b3)
+    steps.append(f"{n} -> {b3} -> sum: {current}")
+
     while current >= 10:
-        b3 = to_base3(current)
-        s = sum(int(d) for d in b3)
-        steps.append(f"{current} -> {b3} -> sum: {s}")
-        current = s
+        digits_sum = sum(int(d) for d in str(current))
+        steps.append(f"{current} -> sum: {digits_sum}")
+        current = digits_sum
     return steps, current
 
 
