@@ -54,14 +54,14 @@ AI 建議搜尋函式回傳 `(found, idx, cmp)`，benchmark 另回傳 timeit 秒
 
 ### 我如何修改
 
-我確認 K 是 129，補了空陣列、單一元素、找不到、K 在第一個和最後一個的 edge case。也確認 `q4/assets/radar.png` 可以由 `create_radar_chart` 產生，並用 unittest 檢查檔案存在且大小大於 0。
+我確認 K 是 129，補了空陣列、單一元素、找不到、K 在第一個和最後一個的 edge case。我檢查 linear search 與 binary search 都會回傳 found 狀態、索引和 cmp 比較次數，並用 `timeit` 輸出 linear/binary 的時間與 faster 結論。我也把 Q4 主要輸出格式修正為 `FOUND 128 cmp=129` 這種考卷格式，確認 `q4/assets/radar.png` 可以由 `create_radar_chart` 產生，並用 unittest 檢查檔案存在且大小大於 0。
 
 ## TDD 與整體檢查
 
 - 我先建立 `test_*.py`，在尚未實作時確認 Red。
 - 我完成 `q1.py` 到 `q4.py` 後確認 Green。
 - 我檢查 EOF、多組輸入、空行、edge case 與例外處理。
-- 我調整 Q4 輸出格式，包含 `FOUND/NOT FOUND`、`idx`、`cmp`、timeit 秒數與較快策略。
+- 我調整 Q4 輸出格式，包含 `FOUND/NOT FOUND`、索引位置、`cmp`、timeit 秒數與 `=> binary faster` 形式的較快策略。
 - 我確認 unittest 全部通過。
 - 我確認 radar.png 能產生。
 - Red 證據：在 commit 8c03d84 `test: add failing tests for exam questions` 時，尚未建立 q1.py、q2.py、q3.py、q4.py。重新從該 commit 匯出後執行 unittest，結果為 FAILED (errors=4)，錯誤原因為四題實作檔不存在，符合先測試失敗再實作的 Red 階段。
