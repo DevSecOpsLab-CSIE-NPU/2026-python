@@ -1,0 +1,21 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.9, pytest-9.0.2, pluggy-1.6.0 -- C:\Users\yiteng\AppData\Local\Programs\Python\Python311\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\yiteng\Downloads\0622-4\2026-python\weeks\week-18\solutions\1114405019
+plugins: anyio-4.13.0
+collecting ... collected 12 items
+
+test_search_perf.py::test_binary_found_idx_matches_value PASSED          [  8%]
+test_search_perf.py::test_binary_not_found_in_gap_between_elements PASSED [ 16%]
+test_search_perf.py::test_binary_not_found_below_minimum PASSED          [ 25%]
+test_search_perf.py::test_binary_not_found_above_maximum PASSED          [ 33%]
+test_search_perf.py::test_single_element_found PASSED                    [ 41%]
+test_search_perf.py::test_single_element_not_found PASSED                [ 50%]
+test_search_perf.py::test_first_element_boundary PASSED                  [ 58%]
+test_search_perf.py::test_last_element_boundary PASSED                   [ 66%]
+test_search_perf.py::test_binary_cmp_upper_bound PASSED                  [ 75%]
+test_search_perf.py::test_linear_binary_consistency_found_and_not_found PASSED [ 83%]
+test_search_perf.py::test_generate_sorted_array_present_guarantees_target PASSED [ 91%]
+test_search_perf.py::test_generate_sorted_array_absent_guarantees_no_target PASSED [100%]
+
+============================= 12 passed in 0.02s ==============================
