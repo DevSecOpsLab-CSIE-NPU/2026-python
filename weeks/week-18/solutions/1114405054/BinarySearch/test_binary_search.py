@@ -1,5 +1,5 @@
 import unittest
-from q4 import linear_search, binary_search
+from binary_search import linear_search, binary_search
 
 
 class TestSearch(unittest.TestCase):

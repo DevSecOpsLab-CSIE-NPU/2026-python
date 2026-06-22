@@ -21,5 +21,5 @@
 | Edge case？ | 輸入等於基底（5），轉5進位為 `10` → `1+0=1` | ✅ |
 | 驗收標準？ | 每次相加後若仍 >= base 就繼續轉換相加，最後以十進位整數輸出 | ✅ |
 
-紅燈 commit：`test: add Q3 test cases (get_digital_root)`
-綠燈 commit：`feat: implement Q3 get_digital_root (base=5)`
+紅燈 commit：`test: add DigitalRoot test cases`
+綠燈 commit：`feat: implement DigitalRoot (base=5)`

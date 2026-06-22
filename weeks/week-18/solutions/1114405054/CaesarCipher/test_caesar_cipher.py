@@ -1,5 +1,5 @@
 import unittest
-from q2 import caesar_cipher
+from caesar_cipher import caesar_cipher
 
 
 class TestCaesarCipher(unittest.TestCase):

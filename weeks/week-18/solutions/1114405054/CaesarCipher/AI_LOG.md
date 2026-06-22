@@ -21,5 +21,5 @@
 | Edge case？ | 'V' → 'A'、'Z' → 'E'，循環繞回 | ✅ |
 | 驗收標準？ | 大小寫分開循環，一行對一行輸出加密字串 | ✅ |
 
-紅燈 commit：`test: add Q2 test cases (caesar_cipher)`
-綠燈 commit：`feat: implement Q2 caesar_cipher (shift=5)`
+紅燈 commit：`test: add CaesarCipher test cases`
+綠燈 commit：`feat: implement CaesarCipher (shift=5)`

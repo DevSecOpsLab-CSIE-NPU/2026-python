@@ -1,5 +1,5 @@
 import unittest
-from q1 import clean_data
+from data_cleaning import clean_data
 
 
 class TestCleanData(unittest.TestCase):

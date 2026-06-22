@@ -1,5 +1,5 @@
 import unittest
-from q3 import get_digital_root
+from digital_root import get_digital_root
 
 
 class TestDigitalRoot(unittest.TestCase):

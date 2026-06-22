@@ -23,5 +23,5 @@
 | Edge case？ | 目標在陣列最開頭、最末尾，或完全不在陣列中 | ✅ |
 | 驗收標準？ | 正確輸出 FOUND/NOT FOUND 與 cmp 次數、timeit 耗時對比、成功生成雷達圖 | ✅ |
 
-紅燈 commit：`test: add Q4 test cases (linear & binary search)`
-綠燈 commit：`feat: implement Q4 linear & binary search + radar chart`
+紅燈 commit：`test: add BinarySearch test cases`
+綠燈 commit：`feat: implement BinarySearch (linear & binary search + radar chart)`

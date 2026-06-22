@@ -21,5 +21,5 @@
 | Edge case？ | `[0, -2, -4, 4]` 應正確去重排序；全奇數輸出 `[]` | ✅ |
 | 驗收標準？ | 去重(保留首次)->留偶數->升冪排序；數字間單一空白分隔 | ✅ |
 
-紅燈 commit：`test: add Q1 test cases (clean_data)`
-綠燈 commit：`feat: implement Q1 clean_data (dedupe, filter, sort)`
+紅燈 commit：`test: add DataCleaning test cases`
+綠燈 commit：`feat: implement DataCleaning (dedupe, filter, sort)`

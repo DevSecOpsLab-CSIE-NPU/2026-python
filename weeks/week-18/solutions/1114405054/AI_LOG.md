@@ -6,10 +6,10 @@
 - **參數**：D=2, SHIFT=5, base=5, K=154
 
 各題詳細訪談紀錄請見：
-- [q1/AI_LOG.md](q1/AI_LOG.md)
-- [q2/AI_LOG.md](q2/AI_LOG.md)
-- [q3/AI_LOG.md](q3/AI_LOG.md)
-- [q4/AI_LOG.md](q4/AI_LOG.md)
+- [DataCleaning/AI_LOG.md](DataCleaning/AI_LOG.md)
+- [CaesarCipher/AI_LOG.md](CaesarCipher/AI_LOG.md)
+- [DigitalRoot/AI_LOG.md](DigitalRoot/AI_LOG.md)
+- [BinarySearch/AI_LOG.md](BinarySearch/AI_LOG.md)
 
 ---
 
