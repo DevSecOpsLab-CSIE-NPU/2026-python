@@ -6,10 +6,16 @@ import numpy as np
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
+# 設定中文字型與解決負號顯示問題
+matplotlib.rcParams['font.sans-serif'] = ['WenQuanYi Zen Hei', 'Microsoft JhengHei', 'DejaVu Sans', 'sans-serif']
+matplotlib.rcParams['axes.unicode_minus'] = False
+
 
 def draw_radar_chart():
     # 建立輸出目錄
-    os.makedirs("assets", exist_ok=True)
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    assets_dir = os.path.join(base_dir, "assets")
+    os.makedirs(assets_dir, exist_ok=True)
 
     # 五個評估維度（依期末考 PDF 建議維度設計）
     categories = [
@@ -81,9 +87,10 @@ def draw_radar_chart():
     plt.legend(loc="upper right", bbox_to_anchor=(0.1, 0.1))
 
     # 存檔
-    plt.savefig("assets/radar.png", dpi=150, bbox_inches="tight")
+    output_path = os.path.join(assets_dir, "radar.png")
+    plt.savefig(output_path, dpi=150, bbox_inches="tight")
     plt.close()
-    print("[*] 雷達圖 assets/radar.png 繪製成功！")
+    print(f"[*] 雷達圖 {output_path} 繪製成功！")
 
 
 if __name__ == "__main__":
