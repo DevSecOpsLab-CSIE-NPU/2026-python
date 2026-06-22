@@ -1,0 +1,16 @@
+{
+  "n": 1000,
+  "student_suffix": 36,
+  "target": 136,
+  "linear": {
+    "index": 136,
+    "comparisons": 137,
+    "time": 3.7999999999982492e-06
+  },
+  "binary": {
+    "index": 136,
+    "comparisons": 10,
+    "time": 1.9999999999985307e-06
+  },
+  "faster": "binary"
+}
