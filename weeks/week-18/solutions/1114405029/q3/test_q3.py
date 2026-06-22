@@ -30,7 +30,7 @@ class TestQ3DigitalRootInBase(unittest.TestCase):
         self.assertEqual(digital_root_in_base(63, 6), 3)
 
     def test_large_number(self):
-        self.assertEqual(digital_root_in_base(1_000_000_000, 6), 4)
+        self.assertEqual(digital_root_in_base(1_000_000_000, 6), 5)
 
     def test_multiple_lines_until_eof(self):
         self.assertEqual(solve("0\n8\n63\n", 6), "0\n3\n3")
