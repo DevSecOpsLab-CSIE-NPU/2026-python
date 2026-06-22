@@ -11,7 +11,7 @@ class TestCaesarCipher(unittest.TestCase):
     def test_basic_lowercase_and_special_chars(self):
         """Test Case 1: Basic functionality with lowercase and special characters"""
         input_text = "Hello, NPU!"
-        expected = "Jgnnq, PQW!"
+        expected = "Jgnnq, PRW!"
         self.assertEqual(caesar_cipher(input_text), expected)
     
     def test_wrap_around_edge_case(self):
@@ -29,7 +29,7 @@ class TestCaesarCipher(unittest.TestCase):
     def test_all_uppercase(self):
         """Test Case 4: All uppercase letters"""
         input_text = "ABCXYZ"
-        expected = "CDCZAB"
+        expected = "CDEZAB"
         self.assertEqual(caesar_cipher(input_text), expected)
     
     def test_only_special_chars(self):
