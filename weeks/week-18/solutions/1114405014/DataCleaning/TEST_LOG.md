@@ -20,3 +20,13 @@ E   ModuleNotFoundError: No module named 'data_cleaning'
 ERROR test_sata_cleaning.py
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ========================================== 1 error in 0.81s ==========================================
+PS D:\Edwin\program\program-python\2026-python\weeks\week-18\solutions\1114405014\DataCleaning> pytest
+======================================== test session starts =========================================
+platform win32 -- Python 3.14.3, pytest-9.0.3, pluggy-1.6.0
+rootdir: D:\Edwin\program\program-python\2026-python\weeks\week-18\solutions\1114405014\DataCleaning
+plugins: anyio-4.13.0
+collected 9 items                                                                                     
+
+test_data_cleaning.py .........                                                                 [100%]
+
+========================================= 9 passed in 0.16s ==========================================
