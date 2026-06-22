@@ -65,7 +65,7 @@ Compare: 0622-1114405040-洪士閔-q3
 - 逐行讀取輸入直到 EOF
 - 正確處理 `0`、`1`、`2`、`3` 等 edge case
 - 正確處理大數
-- 補上測試、README、開發紀錄
+- 補上測試、README、開發紀錄與 `EDGE_CASES.md`
 
 ## Why
 
@@ -83,7 +83,7 @@ py -m unittest test_q3_digit_root.py
 測試結果：
 
 ```text
-Ran 3 tests
+Ran 4 tests
 OK
 ```
 

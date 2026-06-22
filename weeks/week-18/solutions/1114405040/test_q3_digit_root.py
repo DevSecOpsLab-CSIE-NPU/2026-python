@@ -24,6 +24,10 @@ class TestQ3DigitRoot(unittest.TestCase):
     def test_zero(self):
         self.assertEqual(self.run_program("0\n"), "0")
 
+    def test_values_below_and_equal_base(self):
+        data = "1\n2\n3\n"
+        self.assertEqual(self.run_program(data), "1\n1\n1")
+
     def test_multiple_inputs_and_large_number(self):
         data = "1000000000\n1\n2\n3\n"
         self.assertEqual(self.run_program(data), "1\n1\n1\n1")
