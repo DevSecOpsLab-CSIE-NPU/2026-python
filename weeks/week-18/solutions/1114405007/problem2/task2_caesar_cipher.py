@@ -20,13 +20,13 @@ def solve(input_text, shift):
 
 def get_shift(student_id):
     u = student_id % 10
-    return (u % 4) + 2
+    return (u % 25) + 1
 
 
 def main():
     import sys
     STUDENT_ID = 1114405007
-    SHIFT = 8
+    SHIFT = get_shift(STUDENT_ID)
     input_text = sys.stdin.read()
     output = solve(input_text, SHIFT)
     sys.stdout.write(output)

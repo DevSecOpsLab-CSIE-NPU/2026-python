@@ -89,7 +89,7 @@ test_multiple_with_base11 ... ok
 test_sample_multi_line ... ok
 test_single_line_zero ... ok
 ----------------------------------------------------------------------
-Ran 11 tests in 0.000s
+Ran 12 tests in 0.000s
 OK
 ```
 
