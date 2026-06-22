@@ -111,7 +111,7 @@ weeks/week-18/solutions/1114405029/q4/test_q4.py
 
 測試案例：
 
-- `test_found_target`：找到 `K=129`，驗證 idx 與 cmp。
+- `test_found_target`：找到 `K=129`，驗證索引位置與 cmp。
 - `test_not_found_target`：找不到目標。
 - `test_empty_array`：空陣列。
 - `test_single_element`：單一元素。
