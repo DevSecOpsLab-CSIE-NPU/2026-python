@@ -1,0 +1,15 @@
+{
+  "n": 1000,
+  "target": 136,
+  "linear": {
+    "index": 136,
+    "comparisons": 137,
+    "time": 4.000000000004e-06
+  },
+  "binary": {
+    "index": 136,
+    "comparisons": 10,
+    "time": 2.1000000000048757e-06
+  },
+  "faster": "binary"
+}
