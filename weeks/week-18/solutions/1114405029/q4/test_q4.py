@@ -75,9 +75,10 @@ class TestQ4SearchPerformance(unittest.TestCase):
 
     def test_solve_output_mentions_faster_strategy(self):
         output = solve("1 2 3 129 300", target=129)
-        self.assertIn("FOUND idx=3 cmp=4", output)
+        self.assertIn("linear: FOUND 3 cmp=4", output)
+        self.assertIn("binary: FOUND 3 cmp=2", output)
         self.assertIn("binary:", output)
-        self.assertRegex(output, r"-> (linear|binary) faster")
+        self.assertRegex(output, r"=> (linear|binary) faster")
 
 
 if __name__ == "__main__":

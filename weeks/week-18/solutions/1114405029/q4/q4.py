@@ -116,8 +116,9 @@ def create_radar_chart(output_path):
 
 def _format_result(result):
     found, index, cmp_count = result
-    status = "FOUND" if found else "NOT FOUND"
-    return f"{status} idx={index} cmp={cmp_count}"
+    if found:
+        return f"FOUND {index} cmp={cmp_count}"
+    return f"NOT FOUND cmp={cmp_count}"
 
 
 def _parse_array(input_text):
@@ -134,11 +135,11 @@ def solve(input_text=None, target=129):
 
     return "\n".join(
         [
-            f"linear result: {_format_result(result['linear'])}",
-            f"binary result: {_format_result(result['binary'])}",
+            f"linear: {_format_result(result['linear'])}",
+            f"binary: {_format_result(result['binary'])}",
             f"linear: {result['linear_time']:.6f} s",
             f"binary: {result['binary_time']:.6f} s",
-            f"-> {faster} faster",
+            f"=> {faster} faster",
         ]
     )
 
