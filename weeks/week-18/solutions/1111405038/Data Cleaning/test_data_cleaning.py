@@ -1,11 +1,12 @@
 """
 測試案例：資料清理（Data Cleaning）- 第一題
-根據題目要求進行紅燈測試
+根據題目要求進行綠燈測試
 """
 
 import io
 import sys
 from contextlib import redirect_stdout
+from solution import data_cleaning
 
 
 def test_case_1_basic_with_duplicates_and_mixed_numbers():
@@ -21,23 +22,13 @@ def test_case_1_basic_with_duplicates_and_mixed_numbers():
     - 篩選被2整除：4 2 6
     - 排序：2 4 6
     """
-    input_data = """8
-4 7 4 2 9 2 6 7
-0
-"""
+    numbers = [4, 7, 4, 2, 9, 2, 6, 7]
     expected_output = "2 4 6"
     
-    # 模擬輸入和執行
-    sys.stdin = io.StringIO(input_data)
-    output = io.StringIO()
-    sys.stdout = output
+    result = data_cleaning(numbers)
+    result_str = ' '.join(map(str, result)) if result else 'NONE'
     
-    # TODO: 執行 data_cleaning 主程序
-    
-    sys.stdout = sys.__stdout__
-    result = output.getvalue().strip().split('\n')[0]
-    
-    assert result == expected_output, f"Test 1 失敗: 期望 '{expected_output}'，得到 '{result}'"
+    assert result_str == expected_output, f"Test 1 失敗: 期望 '{expected_output}'，得到 '{result_str}'"
     print("✓ Test Case 1 通過：基本情況（重複、混合數字）")
 
 
@@ -54,23 +45,13 @@ def test_case_2_all_odd_numbers():
     - 篩選被2整除：(空)
     - 結果：NONE
     """
-    input_data = """3
-1 3 5
-0
-"""
+    numbers = [1, 3, 5]
     expected_output = "NONE"
     
-    # 模擬輸入和執行
-    sys.stdin = io.StringIO(input_data)
-    output = io.StringIO()
-    sys.stdout = output
+    result = data_cleaning(numbers)
+    result_str = ' '.join(map(str, result)) if result else 'NONE'
     
-    # TODO: 執行 data_cleaning 主程序
-    
-    sys.stdout = sys.__stdout__
-    result = output.getvalue().strip().split('\n')[0]
-    
-    assert result == expected_output, f"Test 2 失敗: 期望 '{expected_output}'，得到 '{result}'"
+    assert result_str == expected_output, f"Test 2 失敗: 期望 '{expected_output}'，得到 '{result_str}'"
     print("✓ Test Case 2 通過：邊界情況（全奇數）")
 
 
@@ -87,23 +68,13 @@ def test_case_3_single_even_element():
     - 篩選被2整除：4
     - 排序：4
     """
-    input_data = """1
-4
-0
-"""
+    numbers = [4]
     expected_output = "4"
     
-    # 模擬輸入和執行
-    sys.stdin = io.StringIO(input_data)
-    output = io.StringIO()
-    sys.stdout = output
+    result = data_cleaning(numbers)
+    result_str = ' '.join(map(str, result)) if result else 'NONE'
     
-    # TODO: 執行 data_cleaning 主程序
-    
-    sys.stdout = sys.__stdout__
-    result = output.getvalue().strip().split('\n')[0]
-    
-    assert result == expected_output, f"Test 3 失敗: 期望 '{expected_output}'，得到 '{result}'"
+    assert result_str == expected_output, f"Test 3 失敗: 期望 '{expected_output}'，得到 '{result_str}'"
     print("✓ Test Case 3 通過：邊界情況（單個偶數）")
 
 
@@ -120,23 +91,13 @@ def test_case_4_all_even_numbers_with_duplicates():
     - 篩選被2整除：2 4 6
     - 排序：2 4 6
     """
-    input_data = """5
-2 4 2 6 4
-0
-"""
+    numbers = [2, 4, 2, 6, 4]
     expected_output = "2 4 6"
     
-    # 模擬輸入和執行
-    sys.stdin = io.StringIO(input_data)
-    output = io.StringIO()
-    sys.stdout = output
+    result = data_cleaning(numbers)
+    result_str = ' '.join(map(str, result)) if result else 'NONE'
     
-    # TODO: 執行 data_cleaning 主程序
-    
-    sys.stdout = sys.__stdout__
-    result = output.getvalue().strip().split('\n')[0]
-    
-    assert result == expected_output, f"Test 4 失敗: 期望 '{expected_output}'，得到 '{result}'"
+    assert result_str == expected_output, f"Test 4 失敗: 期望 '{expected_output}'，得到 '{result_str}'"
     print("✓ Test Case 4 通過：邊界情況（全偶數有重複）")
 
 
@@ -153,23 +114,13 @@ def test_case_5_negative_even_numbers():
     - 篩選被2整除：-4 -2
     - 排序：-4 -2
     """
-    input_data = """5
--4 -2 -4 3 -2
-0
-"""
+    numbers = [-4, -2, -4, 3, -2]
     expected_output = "-4 -2"
     
-    # 模擬輸入和執行
-    sys.stdin = io.StringIO(input_data)
-    output = io.StringIO()
-    sys.stdout = output
+    result = data_cleaning(numbers)
+    result_str = ' '.join(map(str, result)) if result else 'NONE'
     
-    # TODO: 執行 data_cleaning 主程序
-    
-    sys.stdout = sys.__stdout__
-    result = output.getvalue().strip().split('\n')[0]
-    
-    assert result == expected_output, f"Test 5 失敗: 期望 '{expected_output}'，得到 '{result}'"
+    assert result_str == expected_output, f"Test 5 失敗: 期望 '{expected_output}'，得到 '{result_str}'"
     print("✓ Test Case 5 通過：邊界情況（負偶數）")
 
 
@@ -183,41 +134,28 @@ def test_case_6_multiple_test_groups():
          1 3 5
          5
          2 4 2 6 4
-         0
     預期輸出：
          2 4 6
          NONE
          2 4 6
     """
-    input_data = """8
-4 7 4 2 9 2 6 7
-3
-1 3 5
-5
-2 4 2 6 4
-0
-"""
-    expected_outputs = ["2 4 6", "NONE", "2 4 6"]
+    test_groups = [
+        ([4, 7, 4, 2, 9, 2, 6, 7], "2 4 6"),
+        ([1, 3, 5], "NONE"),
+        ([2, 4, 2, 6, 4], "2 4 6"),
+    ]
     
-    # 模擬輸入和執行
-    sys.stdin = io.StringIO(input_data)
-    output = io.StringIO()
-    sys.stdout = output
-    
-    # TODO: 執行 data_cleaning 主程序
-    
-    sys.stdout = sys.__stdout__
-    results = output.getvalue().strip().split('\n')
-    
-    for i, expected in enumerate(expected_outputs):
-        assert results[i] == expected, f"Test 6 第{i+1}組失敗: 期望 '{expected}'，得到 '{results[i]}'"
+    for i, (numbers, expected) in enumerate(test_groups):
+        result = data_cleaning(numbers)
+        result_str = ' '.join(map(str, result)) if result else 'NONE'
+        assert result_str == expected, f"Test 6 第{i+1}組失敗: 期望 '{expected}'，得到 '{result_str}'"
     
     print("✓ Test Case 6 通過：多組測資")
 
 
 if __name__ == "__main__":
     print("=" * 60)
-    print("開始執行紅燈測試（Red Light Tests）")
+    print("開始執行綠燈測試（Green Light Tests）")
     print("=" * 60)
     
     tests = [
@@ -244,5 +182,8 @@ if __name__ == "__main__":
             failed += 1
     
     print("=" * 60)
-    print(f"測試結果：通過 {passed} 個，失敗 {failed} 個")
+    if failed == 0:
+        print(f"✓ 所有測試通過！{passed}/{passed + failed}")
+    else:
+        print(f"測試結果：通過 {passed} 個，失敗 {failed} 個")
     print("=" * 60)
