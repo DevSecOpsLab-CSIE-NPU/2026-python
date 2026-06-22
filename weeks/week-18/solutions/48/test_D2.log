@@ -1,0 +1,12 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.13.9, pytest-8.4.2, pluggy-1.5.0 -- C:\Users\User\anaconda3\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\User\Desktop\456\2026-python\weeks\week-18\solutions\48
+plugins: anyio-4.10.0
+collecting ... collected 3 items
+
+test_D2.py::TestD2Processing::test_no_even_numbers PASSED                [ 33%]
+test_D2.py::TestD2Processing::test_sample_input_1 PASSED                 [ 66%]
+test_D2.py::TestD2Processing::test_single_even_number PASSED             [100%]
+
+============================== 3 passed in 0.02s ==============================
