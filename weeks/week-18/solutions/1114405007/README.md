@@ -10,33 +10,29 @@
 weeks/week-18/solutions/1114405007/
 │
 ├── problem1/          # A區：資料清理 (D=5)
+│   ├── AI_LOG.md
+│   ├── TEST_LOG.md
 │   ├── task1_sequence_clean.py
 │   └── test_task1.py           (14 tests)
 │
 ├── problem2/          # A區：凱撒密碼 (SHIFT=8)
+│   ├── AI_LOG.md
+│   ├── TEST_LOG.md
 │   ├── task2_caesar_cipher.py
 │   └── test_caesar.py          (10 tests)
 │
 ├── problem3/          # B區：數字根 (base=11)
+│   ├── AI_LOG.md
+│   ├── TEST_LOG.md
 │   ├── task3_digit_root.py
 │   └── test_digit_root.py      (12 tests)
 │
 ├── problem4/          # C區：二分搜尋 (K=107)
+│   ├── AI_LOG.md
+│   ├── TEST_LOG.md
 │   ├── task4_search_lab.py
 │   ├── test_search_lab.py      (18 tests)
 │   └── assets/radar.png
-│
-├── ai_log/
-│   ├── problem1.md
-│   ├── problem2.md
-│   ├── problem3.md
-│   └── problem4.md
-│
-├── test_log/
-│   ├── problem1.md
-│   ├── problem2.md
-│   ├── problem3.md
-│   └── problem4.md
 │
 ├── README.md          # 本檔
 ├── AI_LOG.md          # AI 協作紀錄索引
