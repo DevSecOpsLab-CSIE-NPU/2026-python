@@ -64,3 +64,4 @@ AI 建議搜尋函式回傳 `(found, idx, cmp)`，benchmark 另回傳 timeit 秒
 - 我調整 Q4 輸出格式，包含 `FOUND/NOT FOUND`、`idx`、`cmp`、timeit 秒數與較快策略。
 - 我確認 unittest 全部通過。
 - 我確認 radar.png 能產生。
+- Red 證據：在 commit 8c03d84 `test: add failing tests for exam questions` 時，尚未建立 q1.py、q2.py、q3.py、q4.py。重新從該 commit 匯出後執行 unittest，結果為 FAILED (errors=4)，錯誤原因為四題實作檔不存在，符合先測試失敗再實作的 Red 階段。
