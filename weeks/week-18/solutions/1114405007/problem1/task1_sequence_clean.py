@@ -1,3 +1,8 @@
+def get_D(student_id):
+    u = student_id % 10
+    return (u % 4) + 2
+
+
 def process_sequence(numbers, D=5):
     seen = set()
     deduped = []
@@ -37,7 +42,8 @@ def solve(input_text, D=5):
 
 def main():
     import sys
-    D = 5
+    STUDENT_ID = 1114405007
+    D = get_D(STUDENT_ID)
     input_text = sys.stdin.read()
     output = solve(input_text, D)
     sys.stdout.write(output)

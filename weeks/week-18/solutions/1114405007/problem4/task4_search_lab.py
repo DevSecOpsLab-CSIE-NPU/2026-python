@@ -51,11 +51,11 @@ def plot_radar():
     import numpy as np
 
     categories = [
-        "大 n 速度",
-        "小 n 速度",
-        "不需排序",
-        "實作簡易度",
-        "最壞比較次數",
+        "Large N\nSpeed",
+        "Small N\nSpeed",
+        "No Sort\nNeeded",
+        "Easy to\nImplement",
+        "Worst-case\nComparisons",
     ]
     N = len(categories)
     angles = np.linspace(0, 2 * np.pi, N, endpoint=False).tolist()

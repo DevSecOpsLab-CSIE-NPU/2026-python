@@ -9,25 +9,26 @@
 ```
 weeks/week-18/solutions/1114405007/
 │
-├── A 區 ────
-│   ├── task1_sequence_clean.py   # 題1 資料清理 (D=5)
-│   ├── task2_caesar_cipher.py    # 題2 凱撒密碼 (SHIFT=8)
-│   ├── README.md                 # 本檔
-│   ├── AI_LOG.md                 # AI 協作紀錄
-│   └── TEST_LOG.md               # 測試執行紀錄
+├── problem1/          # A區：資料清理 (D=5)
+│   ├── task1_sequence_clean.py
+│   └── test_task1.py           (14 tests)
 │
-├── B 區 ────
-│   ├── task3_digit_root.py       # 題3 數字根 (base=11)
+├── problem2/          # A區：凱撒密碼 (SHIFT=8)
+│   ├── task2_caesar_cipher.py
+│   └── test_caesar.py          (10 tests)
 │
-├── C 區 ────
-│   ├── task4_search_lab.py       # 題4 二分搜尋 (K=107)
-│   └── assets/radar.png          # 雷達圖
+├── problem3/          # B區：數字根 (base=11)
+│   ├── task3_digit_root.py
+│   └── test_digit_root.py      (12 tests)
 │
-└── tests/
-    ├── test_task1.py             # 題1 測試 (14 cases)
-    ├── test_caesar.py            # 題2 測試 (10 cases)
-    ├── test_digit_root.py        # 題3 測試 (11 cases)
-    └── test_search_lab.py        # 題4 測試 (18 cases)
+├── problem4/          # C區：二分搜尋 (K=107)
+│   ├── task4_search_lab.py
+│   ├── test_search_lab.py      (18 tests)
+│   └── assets/radar.png
+│
+├── README.md          # 本檔
+├── AI_LOG.md          # AI 協作紀錄
+└── TEST_LOG.md        # 測試執行紀錄
 ```
 
 ---
@@ -45,19 +46,22 @@ weeks/week-18/solutions/1114405007/
 
 ```bash
 # 題1：資料清理
-python task1_sequence_clean.py < input.txt
+cd problem1 && python task1_sequence_clean.py < input.txt
 
 # 題2：凱撒密碼
-python task2_caesar_cipher.py < input.txt
+cd problem2 && python task2_caesar_cipher.py < input.txt
 
 # 題3：數字根
-python task3_digit_root.py < input.txt
+cd problem3 && python task3_digit_root.py < input.txt
 
 # 題4：二分搜尋 + 雷達圖
-python task4_search_lab.py
+cd problem4 && python task4_search_lab.py
 
-# 全部測試（54 項）
-python -m unittest discover -s tests -p "test_*.py" -v
+# 各題測試
+cd problem1 && python -m unittest -v
+cd problem2 && python -m unittest -v
+cd problem3 && python -m unittest -v
+cd problem4 && python -m unittest -v
 ```
 
 ---
