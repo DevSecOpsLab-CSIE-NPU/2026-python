@@ -11,6 +11,15 @@
 4. Edge Case：'V' 移 5 位循環回 'A'；'Z' 移 5 位循環回 'E'。
 5. 驗收標準：大小寫分開循環，一行對一行輸出加密字串。
 
-## AI 協作紀錄
-- 各項檢查項目皆已確認，無遺漏。
-- 程式碼已實際測試，`Hello, NPU!` → `Mjqqt, SUZ!`，`abc XYZ` → `fgh CDE`，符合預期。
+## AI 協作紀錄（訪談摘要）
+
+| 問題 | 學生回答 | checklist 狀態 |
+|---|---|---|
+| 函式簽名是什麼？ | `caesar_cipher(text: str, shift: int) -> str` | ✅ |
+| 輸入邊界？ | 長度 <= 1000，多行直到 EOF 結束 | ✅ |
+| 例外處理？ | 非字母字元原樣保留，不進行位移 | ✅ |
+| Edge case？ | 'V' → 'A'、'Z' → 'E'，循環繞回 | ✅ |
+| 驗收標準？ | 大小寫分開循環，一行對一行輸出加密字串 | ✅ |
+
+紅燈 commit：`test: add Q2 test cases (caesar_cipher)`
+綠燈 commit：`feat: implement Q2 caesar_cipher (shift=5)`
