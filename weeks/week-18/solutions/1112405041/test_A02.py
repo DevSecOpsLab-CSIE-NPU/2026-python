@@ -7,9 +7,9 @@ from A02 import caesar_encrypt, main
 class TestCaesarEncrypt(unittest.TestCase):
 
     def test_basic_case(self):
-        """基本案例：Hello, NPU! with shift=2 -> Jgnnq, NRW!"""
+        """基本案例：Hello, NPU! with shift=2 -> Jgnnq, PRW!"""
         result = caesar_encrypt("Hello, NPU!", shift=2)
-        self.assertEqual(result, "Jgnnq, NRW!")
+        self.assertEqual(result, "Jgnnq, PRW!")
 
     def test_lowercase_wrap(self):
         """小寫繞圈：xyz -> zab"""
@@ -47,7 +47,7 @@ class TestCaesarEncrypt(unittest.TestCase):
         sys.stdout = io.StringIO()
         main()
         output = sys.stdout.getvalue().strip()
-        self.assertEqual(output, "Jgnnq, NRW!\ncde ZAB")
+        self.assertEqual(output, "Jgnnq, PRW!\ncde ZAB")
 
 
 if __name__ == "__main__":
