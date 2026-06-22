@@ -1,90 +1,84 @@
 # AI_LOG.md — 期末考（Week 18）
 
-## 題目一：資料清理 (Data Cleaning)
-
-### 5 步驟流程記錄
-
-| 步驟 | 說明 | 狀態 |
-|------|------|------|
-| ① 設計測試 | 設計 3 組測試（一般、無偶數 NONE、單一負偶數邊界） | ✅ |
-| ② 寫程式並跑測試 | 寫出 `D2_easy.py` 並通過 3 組測試 | ✅ |
-| ③ 加中文註解 | `D2_easy.py` 每行關鍵邏輯加上中文註解 | ✅ |
-| ④ 製作簡易版 | 產出 `D2-easy.py`（邏輯乾淨、變數直覺、`dict.fromkeys` 去重） | ✅ |
-| ⑤ 加詳細註解 | 加入 docstring、時間 O(N log N)／空間 O(N) 複雜度說明 | ✅ |
-
-### 手打版
-
-`D2-handwritten.py` — 變數名稱與迴圈改為 basic 風格，無註解，通過全部測試。
-
-### TDD 紅綠燈 Commit
+## 檔案結構一覽
 
 ```
-508f2be test: add failing tests for Data Cleaning  ← 紅燈（3 FAILED）
-65ddfad feat: implement Data Cleaning               ← 綠燈（3 passed）
+solutions/48/
+├── A01_easy.py           ← A區① 資料清理（詳細註解版，D=2）
+├── A01_handwritten.py    ← A區① 資料清理（手打版）
+├── A01_test.py           ← A區① 測試程式（7 cases）
+├── test_A01.log
+├── test_A01-handwritten.log
+├── C2_easy.py            ← A區② 凱撒密碼（含中文註解，SHIFT=9）
+├── C2-easy.py            ← A區② 凱撒密碼（詳細註解版）
+├── C2-handwritten.py     ← A區② 凱撒密碼（手打版）
+├── test_C2.py            ← A區② 測試程式（5 cases）
+├── test_C2.log
+├── test_C2-handwritten.log
+├── B13_easy.py           ← B區③ Base-13 數字根（含中文註解，BASE=13）
+├── B13-easy.py           ← B區③ Base-13 數字根（詳細註解版）
+├── B13-handwritten.py    ← B區③ Base-13 數字根（手打版）
+├── B13_test.py           ← B區③ 測試程式（9 cases）
+├── test_B13.log
+├── test_B13-handwritten.log
+└── AI_LOG.md
 ```
-
-Sample Input：`8\n4 7 4 2 9 2 6 7` → 預期輸出 `2 4 6` ✅（學號末碼 8 → D=2）
 
 ---
 
-## 題目二：凱撒密碼 (Caesar Cipher)
-
-### 解題重點
+## A區① — 資料清理 (Data Cleaning)
 
 | 項目 | 說明 |
 |------|------|
-| 位移量 SHIFT | 學號末碼 8 → (8 % 4) + 2 = 2？不，本題直接代入 SHIFT = 9（老師指定） |
-| 輸入方式 | `sys.stdin.read().splitlines()` 讀到 EOF |
-| 大小寫處理 | 大寫 A-Z 循環，小寫 a-z 循環 |
-| 非字母處理 | 空白、數字、標點原樣保留 |
-| 時間複雜度 | O(N)，N = 總字元數 |
-| 空間複雜度 | O(N) |
+| D 值 | 學號末碼 8 → 8 % 4 + 2 = **2** |
+| 三步驟 | ① 去重（dict.fromkeys）② 篩選 %D==0 ③ 排序 |
+| 複雜度 | 時間 O(N log N)／空間 O(N) |
 
-### 測試案例（5 組）
+### 測試案例（7 組）
 
-| 測試 | 輸入 | 預期輸出 | 結果 |
-|------|------|----------|------|
-| Sample | `Hello, NPU!` / `abc XYZ` | `Qnuux, WYD!` / `jkl GHI` | ✅ |
-| 空字串 | `""` | `""` | ✅ |
-| 非字母 | `123 !@#` | `123 !@#` | ✅ |
-| 小寫繞圈 | `z` | `i` (z→i, shift 9) | ✅ |
-| 大寫繞圈 | `Z` | `I` (Z→I, shift 9) | ✅ |
+| 測試 | 輸入 | 預期輸出 | 類型 |
+|------|------|---------|------|
+| sample_1 | `4 7 4 2 9 2 6 7` | `2 4 6` | 題目範例 |
+| sample_2 | `1 3 5` | `NONE` | 題目範例 |
+| all_even_dup | `2 4 2 6 4 8` | `2 4 6 8` | 重複處理 |
+| single_even | `-8` | `-8` | 單一偶數 |
+| single_odd | `7` | `NONE` | 單一奇數 |
+| negative_even | `-4 6` | `-4 6` | 含負數 |
+| multiple_groups | 兩組合併 | `2 4 6` / `NONE` | 多組 |
 
-### TDD 紅綠燈 Commit
+---
+
+## A區② — 凱撒密碼 (Caesar Cipher) — ✅ 已完成
+
+| 項目 | 說明 |
+|------|------|
+| SHIFT | **9** |
+| 輸入 | `sys.stdin.read().splitlines()` 讀到 EOF |
+| 大小寫 | A-Z / a-z 各自循環 |
+| 非字母 | 原樣保留 |
+| 複雜度 | 時間 O(N)／空間 O(N) |
+
+### Commit 紀錄
 
 ```
-7d28208 test: add failing tests for Caesar Cipher  ← 紅燈（4 FAILED）
-3f382f2 feat: implement Caesar Cipher               ← 綠燈（5 passed）
+7d28208 test: add failing tests for Caesar Cipher   ← 🔴
+3f382f2 feat: implement Caesar Cipher                ← 🟢
+c9538d3 chore: add remaining Caesar Cipher files
 ```
 
 ---
 
-## 完整檔案清單
+## B區③ — Base-13 數字根 (Digital Root) — 🟢 已綠燈
+
+| 項目 | 說明 |
+|------|------|
+| BASE | **13**（硬編碼） |
+| 核心邏輯 | 轉 13 進位 → 拆位相加 → 重複到 < 13 |
+| 特例 | x=0 → 直接輸出 0 |
+| 複雜度 | 時間 O(log₁₃ x)／空間 O(1) |
+
+### 驗證範例
 
 ```
-weeks/week-18/solutions/48/
-├── D2_easy.py            ← 資料清理：簡易版含中文註解
-├── D2-easy.py             ← 資料清理：AI 簡易版含詳細註解與複雜度
-├── D2-handwritten.py      ← 資料清理：手打版（無註解）
-├── test_D2.py             ← 資料清理：測試程式
-├── test_D2.log            ← 資料清理：pytest LOG
-├── test_D2-handwritten.log ← 資料清理：手打版測試 LOG
-├── C2_easy.py            ← 凱撒密碼：含實作與中文註解
-├── C2-easy.py             ← 凱撒密碼：AI 詳細註解版（含 docstring、複雜度）
-├── C2-handwritten.py      ← 凱撒密碼：手打版（無註解）
-├── test_C2.py             ← 凱撒密碼：測試程式（5 cases）
-├── test_C2.log            ← 凱撒密碼：pytest LOG
-├── test_C2-handwritten.log ← 凱撒密碼：手打版測試 LOG
-└── AI_LOG.md              ← 本檔案
-```
-
-## TDD 紅綠燈 Commit 一覽（按時間順序）
-
-```
-508f2be test: add failing tests for Data Cleaning   ← D1 紅燈
-65ddfad feat: implement Data Cleaning                ← D1 綠燈
-8acc8a1 chore: add AI log, easy version, and handwritten version  ← D1 其餘檔案
-53aa902 chore: add test log files                   ← D1 LOG
-7d28208 test: add failing tests for Caesar Cipher   ← D2 紅燈
-3f382f2 feat: implement Caesar Cipher                ← D2 綠燈
+63 → 63÷13=4 餘11 → 4+11=15 → 15÷13=1 餘2 → 1+2=3 → 輸出 3 ✅
 ```
