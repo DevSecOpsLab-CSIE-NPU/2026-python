@@ -61,7 +61,7 @@ def run_gui():
             n = int(raw)
         except ValueError:
             messagebox.showerror('錯誤', '請輸入整數')
-            return
+            return 
         steps, result = iterative_base3_digit_sum_steps(n)
         for s in steps:
             txt_output.insert(tk.END, s + '\n')

@@ -34,7 +34,7 @@ def main():
 	data = sys.stdin.read()
 	if not data:
 		return
-	res = process_input(data)
+	res = process_input(data) 
 	if res:
 		print(' '.join(map(str, res)))
 	else:

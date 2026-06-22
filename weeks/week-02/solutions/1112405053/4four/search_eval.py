@@ -77,6 +77,6 @@ print(f"linear: {t_linear:.6f} s")
 print(f"binary: {t_binary:.6f} s")
 
 if t_binary < t_linear:
-    print("binary faster")
+    print("binary faster") 
 else:
     print("linear faster")

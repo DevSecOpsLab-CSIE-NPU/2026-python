@@ -30,7 +30,7 @@
 	- `k` 恰好是陣列末元素：執行最多 $\log_2(N)$ 次比較，約 16-17 次（N=100000）。
 	- `k` 不在陣列中：執行最多 $\log_2(N)$ 次比較後回傳 `(-1, cmp_count)`。
 	- 空陣列：`high = -1` 使 `low <= high` 為假，直接返回 `(-1, 0)`。
-
+ 
 2) `linear_search_cmp`
 
 - **函式簽名**: `def linear_search_cmp(array: list, k: int) -> tuple[int, int]`
