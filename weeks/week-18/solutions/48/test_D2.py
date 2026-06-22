@@ -17,10 +17,10 @@ def run_with_input(input_text):
 
 class TestD2Processing(unittest.TestCase):
 
-    def test_general_case(self):
-        input_data = "8\n4 2 4 6 3 2 8 10\n0\n"
+    def test_sample_input_1(self):
+        input_data = "8\n4 7 4 2 9 2 6 7\n0\n"
         output = run_with_input(input_data)
-        self.assertEqual(output.strip(), "2 4 6 8 10")
+        self.assertEqual(output.strip(), "2 4 6")
 
     def test_no_even_numbers(self):
         input_data = "5\n1 3 5 7 9\n0\n"
