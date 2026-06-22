@@ -20,5 +20,10 @@ class TestDigitalRootBase(unittest.TestCase):
         # 5 在八進位本身就是一位數 -> 5
         self.assertEqual(digital_root_base(5, 8), 5)
 
+    def test_invalid_base_raises(self):
+        """Edge Case: 非法進位（base < 2）應明確丟出例外，避免無限迴圈"""
+        from root import digital_root_base
+        with self.assertRaises(ValueError):
+            digital_root_base(10, 1)
 if __name__ == "__main__":
     unittest.main()

@@ -4,10 +4,13 @@ import random
 import os
 import math
 
-# 確保能在無視窗環境執行 matplotlib
-import matplotlib
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
+# 確保能在無視窗環境執行 matplotlib（若環境未安裝 matplotlib，仍可使用搜尋函式）
+try:
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+except ImportError:  # pragma: no cover
+    plt = None
 
 def binary_search_eval(arr, target):
     """
@@ -41,6 +44,10 @@ def generate_radar_chart():
     """
     自訂維度繪製雷達圖，並儲存至 assets/radar.png
     """
+    if plt is None:
+        print("matplotlib 未安裝，略過雷達圖輸出", file=sys.stderr)
+        return
+
     # 定義 4 個權衡維度
     labels = ['Small N Speed', 'Large N Speed', 'Worst Case Cmp', 'Simplicity']
     num_vars = len(labels)
@@ -80,9 +87,10 @@ def generate_radar_chart():
     plt.title("Search Performance Comparison", size=15, y=1.1)
     plt.legend(loc='upper right', bbox_to_anchor=(0.1, 0.1))
     
-    # 確保 assets 目錄存在
-    os.makedirs("assets", exist_ok=True)
-    plt.savefig("assets/radar.png", dpi=100)
+    # 確保 assets 目錄存在（固定輸出到本檔案所在資料夾下）
+    assets_dir = os.path.join(os.path.dirname(__file__), "assets")
+    os.makedirs(assets_dir, exist_ok=True)
+    plt.savefig(os.path.join(assets_dir, "radar.png"), dpi=100)
     plt.close()
 
 def main():

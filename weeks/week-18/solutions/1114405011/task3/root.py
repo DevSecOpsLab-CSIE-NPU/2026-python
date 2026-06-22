@@ -2,6 +2,8 @@ import sys
 
 def to_base_digits(n, base):
     """將十進位整數 n 轉換為指定 base 進位下的各位數字列表"""
+    if base < 2:
+        raise ValueError("進位 base 必須 >= 2")
     if n == 0:
         return [0]
     digits = []
@@ -12,6 +14,10 @@ def to_base_digits(n, base):
 
 def digital_root_base(n, base):
     """計算指定進位基底下的數字根"""
+    if base < 2:
+        raise ValueError("進位 base 必須 >= 2")
+    if n < 0:
+        raise ValueError("N 必須為非負整數")
     if n == 0:
         return 0
         
