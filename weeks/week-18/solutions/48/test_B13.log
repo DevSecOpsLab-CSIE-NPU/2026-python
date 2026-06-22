@@ -1,0 +1,18 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.13.9, pytest-8.4.2, pluggy-1.5.0 -- C:\Users\User\anaconda3\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\User\Desktop\456\2026-python\weeks\week-18\solutions\48
+plugins: anyio-4.10.0
+collecting ... collected 9 items
+
+B13_test.py::TestBase13DigitalRoot::test_input_0 PASSED                  [ 11%]
+B13_test.py::TestBase13DigitalRoot::test_input_12 PASSED                 [ 22%]
+B13_test.py::TestBase13DigitalRoot::test_input_13 PASSED                 [ 33%]
+B13_test.py::TestBase13DigitalRoot::test_input_169 PASSED                [ 44%]
+B13_test.py::TestBase13DigitalRoot::test_input_170 PASSED                [ 55%]
+B13_test.py::TestBase13DigitalRoot::test_input_25 PASSED                 [ 66%]
+B13_test.py::TestBase13DigitalRoot::test_input_63 PASSED                 [ 77%]
+B13_test.py::TestBase13DigitalRoot::test_input_8 PASSED                  [ 88%]
+B13_test.py::TestBase13DigitalRoot::test_multiple_lines PASSED           [100%]
+
+============================== 9 passed in 0.02s ==============================
