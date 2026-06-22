@@ -15,18 +15,7 @@ class TestBinarySearch(unittest.TestCase):
     def test_binary_search_found(self):
         found, cmp = binary_search(self.arr, self.K)
         self.assertTrue(found)
-        self.assertEqual(cmp, 1)  # 118 在索引 117, 二分搜尋中間落在 500, 250, 125, 62, 93, 109, 117 → 7 次
-        # 實際算：lo=0, hi=999, mid=499 → 500 > 118
-        # lo=0, hi=498, mid=249 → 250 > 118
-        # lo=0, hi=248, mid=124 → 125 > 118
-        # lo=0, hi=123, mid=61 → 62 < 118
-        # lo=62, hi=123, mid=92 → 93 < 118
-        # lo=93, hi=123, mid=108 → 109 < 118
-        # lo=109, hi=123, mid=116 → 117 < 118
-        # lo=117, hi=123, mid=120 → 121 > 118
-        # lo=117, hi=119, mid=118 → 119 > 118
-        # lo=117, hi=117, mid=117 → 118 = 118 找到
-        # 共 10 次比較
+        self.assertEqual(cmp, 10)  # 118 在索引 117, 二分搜尋路徑: mid=499→249→124→61→92→108→116→120→118→117 = 10 次
 
     def test_binary_search_not_found(self):
         found, cmp = binary_search(self.arr, 2000)
