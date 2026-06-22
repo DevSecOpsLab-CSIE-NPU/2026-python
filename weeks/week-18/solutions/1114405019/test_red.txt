@@ -1,0 +1,19 @@
+test_digital_root (unittest.loader._FailedTest.test_digital_root) ... ERROR
+
+======================================================================
+ERROR: test_digital_root (unittest.loader._FailedTest.test_digital_root)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_digital_root
+Traceback (most recent call last):
+  File "C:\Users\yiteng\AppData\Local\Programs\Python\Python311\Lib\unittest\loader.py", line 162, in loadTestsFromName
+    module = __import__(module_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yiteng\Downloads\0622-3\2026-python\weeks\week-18\solutions\1114405019\test_digital_root.py", line 3, in <module>
+    from digital_root import digit_sum_in_base, digital_root
+ModuleNotFoundError: No module named 'digital_root'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

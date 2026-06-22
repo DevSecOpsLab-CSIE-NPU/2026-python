@@ -1,0 +1,15 @@
+test_result_can_still_be_multi_digit (test_digital_root.TestDigitSumInBase.test_result_can_still_be_multi_digit) ... ok
+test_single_round_conversion (test_digital_root.TestDigitSumInBase.test_single_round_conversion) ... ok
+test_zero_has_no_digits_to_sum (test_digital_root.TestDigitSumInBase.test_zero_has_no_digits_to_sum) ... ok
+test_base16_digit_can_exceed_nine (test_digital_root.TestDigitalRoot.test_base16_digit_can_exceed_nine) ... ok
+test_base16_single_round (test_digital_root.TestDigitalRoot.test_base16_single_round) ... ok
+test_converges_after_one_round (test_digital_root.TestDigitalRoot.test_converges_after_one_round) ... ok
+test_converges_after_two_rounds (test_digital_root.TestDigitalRoot.test_converges_after_two_rounds) ... ok
+test_large_value_terminates_with_valid_single_digit (test_digital_root.TestDigitalRoot.test_large_value_terminates_with_valid_single_digit) ... ok
+test_value_less_than_base_needs_no_iteration (test_digital_root.TestDigitalRoot.test_value_less_than_base_needs_no_iteration) ... ok
+test_zero_is_fixed_to_zero_by_spec (test_digital_root.TestDigitalRoot.test_zero_is_fixed_to_zero_by_spec) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.000s
+
+OK
