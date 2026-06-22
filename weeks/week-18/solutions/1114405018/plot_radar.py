@@ -1,6 +1,9 @@
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+
+plt.rcParams['font.sans-serif'] = ['Microsoft JhengHei']  # Windows 微軟正黑體
+plt.rcParams['axes.unicode_minus'] = False  # 修正負號顯示
 import numpy as np
 from task4_binary_search import timeit_compare
 
