@@ -1,0 +1,22 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.9, pytest-8.4.2, pluggy-1.5.0 -- C:\Users\User\anaconda3\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\User\Desktop\0622-2\2026-python\weeks\week-18\solutions\1114405055
+plugins: anyio-4.10.0
+collecting ... collected 0 items / 1 error
+
+=================================== ERRORS ====================================
+___________________ ERROR collecting test_caesar_cipher.py ____________________
+ImportError while importing test module 'C:\Users\User\Desktop\0622-2\2026-python\weeks\week-18\solutions\1114405055\test_caesar_cipher.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Users\User\anaconda3\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test_caesar_cipher.py:9: in <module>
+    from caesar_cipher import shift_char, encrypt_line, main, SHIFT
+E   ModuleNotFoundError: No module named 'caesar_cipher'
+=========================== short test summary info ===========================
+ERROR test_caesar_cipher.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+============================== 1 error in 0.10s ===============================

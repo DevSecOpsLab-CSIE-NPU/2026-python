@@ -1,0 +1,18 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.9, pytest-8.4.2, pluggy-1.5.0 -- C:\Users\User\anaconda3\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\User\Desktop\0622-2\2026-python\weeks\week-18\solutions\1114405055
+plugins: anyio-4.10.0
+collecting ... collected 9 items
+
+test_caesar_cipher.py::test_full_line_sample1 PASSED                     [ 11%]
+test_caesar_cipher.py::test_full_line_sample2 PASSED                     [ 22%]
+test_caesar_cipher.py::test_lowercase_wraps_around_boundary PASSED       [ 33%]
+test_caesar_cipher.py::test_uppercase_wraps_around_boundary PASSED       [ 44%]
+test_caesar_cipher.py::test_non_alpha_chars_unchanged PASSED             [ 55%]
+test_caesar_cipher.py::test_empty_line_stays_empty PASSED                [ 66%]
+test_caesar_cipher.py::test_line_with_only_non_alpha_chars PASSED        [ 77%]
+test_caesar_cipher.py::test_mixed_case_digits_and_punctuation_in_one_line PASSED [ 88%]
+test_caesar_cipher.py::test_main_reads_until_eof_not_until_sentinel_value PASSED [100%]
+
+============================== 9 passed in 0.02s ==============================
