@@ -6,6 +6,11 @@
 
 SHIFT = 1
 
+SAMPLE_INPUT = """Hello, NPU!
+abc XYZ
+Zz 123!?
+"""
+
 
 def caesar_cipher(line):
     """將一行文字中的英文字母向右位移 SHIFT，其他字元保持原樣。"""
@@ -32,8 +37,14 @@ def caesar_cipher(line):
 def main():
     import sys
 
-    # 逐行讀取直到 EOF，不輸出任何提示文字。
-    for line in sys.stdin:
+    # 右上角直接執行時沒有測資輸入，使用範例資料避免程式一直等待。
+    # 正式測試或線上評測用重新導向輸入時，仍逐行讀取標準輸入。
+    if sys.stdin.isatty():
+        lines = SAMPLE_INPUT.splitlines(keepends=True)
+    else:
+        lines = sys.stdin
+
+    for line in lines:
         sys.stdout.write(caesar_cipher(line))
 
 
