@@ -1,6 +1,3 @@
-import sys
-
-
 D = 2
 
 
@@ -70,11 +67,29 @@ def solve(input_text: str, d: int = D) -> str:
 
 
 def main() -> None:
-    input_text = sys.stdin.read()
-    output = solve(input_text, D)
+    outputs = []
 
-    if output:
-        print(output)
+    while True:
+        n = int(input().strip())
+
+        if n == 0:
+            break
+
+        numbers = []
+
+        while len(numbers) < n:
+            numbers.extend(map(int, input().split()))
+
+        numbers = numbers[:n]
+        result = clean_sequence(numbers, D)
+
+        if result:
+            outputs.append(" ".join(map(str, result)))
+        else:
+            outputs.append("NONE")
+
+    if outputs:
+        print("\n".join(outputs))
 
 
 if __name__ == "__main__":
