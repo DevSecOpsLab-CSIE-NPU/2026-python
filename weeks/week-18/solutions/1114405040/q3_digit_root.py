@@ -6,6 +6,14 @@
 
 BASE = 2
 
+SAMPLE_INPUT = """63
+0
+1000000000
+1
+2
+3
+"""
+
 
 def digit_sum_in_base(x, base):
     """將 x 轉成 base 進位後，回傳所有位數字的總和。"""
@@ -35,8 +43,14 @@ def main():
 
     output_lines = []
 
-    # 逐行讀取直到 EOF，每行視為一個非負整數。
-    for line in sys.stdin:
+    # 右上角直接執行時沒有測資輸入，使用範例資料避免程式一直等待。
+    # 正式測試或線上評測用重新導向輸入時，仍逐行讀取標準輸入。
+    if sys.stdin.isatty():
+        lines = SAMPLE_INPUT.splitlines()
+    else:
+        lines = sys.stdin
+
+    for line in lines:
         line = line.strip()
         if line == "":
             continue
