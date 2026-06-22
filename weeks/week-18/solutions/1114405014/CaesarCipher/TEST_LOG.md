@@ -21,3 +21,15 @@ E   ModuleNotFoundError: No module named 'caesar_cipher'
 ERROR test_caesar_cipher.py
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ========================================== 1 error in 0.23s ==========================================
+
+pytest
+PS D:\Edwin\program\program-python\2026-python\weeks\week-18\solutions\1114405014\CaesarCipher> pytest
+======================================== test session starts =========================================
+platform win32 -- Python 3.14.3, pytest-9.0.3, pluggy-1.6.0
+rootdir: D:\Edwin\program\program-python\2026-python\weeks\week-18\solutions\1114405014\CaesarCipher
+plugins: anyio-4.13.0
+collected 10 items                                                                                    
+
+test_caesar_cipher.py ..........                                                                [100%]
+
+========================================= 10 passed in 0.05s =========================================
