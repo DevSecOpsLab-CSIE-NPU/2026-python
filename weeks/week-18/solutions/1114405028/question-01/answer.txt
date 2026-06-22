@@ -1,0 +1,7 @@
+D = 2
+
+Sample Input:
+8 3 2 4 2 6 7
+
+Sample Output (保留原序，僅首次出現，取能被 D 整除的數):
+8 2 4 6
