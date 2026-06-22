@@ -18,7 +18,7 @@
 import unittest
 from time import sleep
 
-# from timing import timeit  # 完成 timing.py 後解除註解
+from timing import timeit
 
 
 class TestTimeit(unittest.TestCase):
@@ -83,6 +83,8 @@ class TestTimeit(unittest.TestCase):
             pass
 
         # 預設 repeat=3，應該有記錄
+        # 呼叫一次後，wrapper 應該有 records 屬性
+        test()
         self.assertTrue(hasattr(test, "records"))
         self.assertEqual(len(test.records), 3)
 
