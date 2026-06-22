@@ -80,8 +80,8 @@ def main():
     ax.set_ylim(0, 6)
     ax.legend(loc="upper right")
     plt.title("Linear vs Binary Search Multi-Dimension Radar")
-    plt.savefig("assets/radar.png", dpi=150, bbox_inches="tight")
-    print("Radar chart saved to assets/radar.png")
+    plt.savefig("radar.png", dpi=150, bbox_inches="tight")
+    print("Radar chart saved to radar.png")
 
 
 if __name__ == "__main__":
