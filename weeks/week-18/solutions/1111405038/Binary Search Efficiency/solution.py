@@ -11,6 +11,10 @@ import timeit
 import matplotlib.pyplot as plt
 import numpy as np
 
+# 設置中文字體
+plt.rcParams['font.sans-serif'] = ['SimHei', 'Microsoft YaHei', 'DejaVu Sans']
+plt.rcParams['axes.unicode_minus'] = False
+
 
 def linear_search(arr, target):
     """線性搜尋：回傳 (found, idx, cmp)"""
@@ -55,23 +59,35 @@ def measure_performance(arr, target, search_func, repeat=1000):
 
 
 def plot_radar_chart(linear_cmp, binary_cmp, linear_time, binary_time):
-    """繪製雷達圖比較線性與二分搜尋"""
+    """繪製雷達圖比較線性與二分搜尋
+    
+    四個維度：
+    1. 執行時間 - 實際執行耗時
+    2. 平均性能 - 平均比較次數（越少越好）
+    3. 最壞性能 - 最壞情況下的比較次數
+    4. 緩存效率 - 記憶體存取效率
+    """
     # 正規化指標
     max_cmp = max(linear_cmp, binary_cmp)
     max_time = max(linear_time, binary_time)
-
-    categories = ["比較次數", "執行時間", "實作簡易度", "資料排序需求"]
+    
+    # 計算最壞情況比較次數（假設陣列大小為 100）
+    arr_size = 100
+    linear_worst = arr_size  # 線性最壞情況：全部比較
+    binary_worst = int(np.log2(arr_size)) + 1  # 二分最壞情況：log n
+    
+    categories = ["執行時間", "平均性能", "最壞性能", "緩存效率"]
     linear_scores = [
-        linear_cmp / max_cmp if max_cmp > 0 else 0,
-        linear_time / max_time if max_time > 0 else 0,
-        0.8,  # 實作簡易度（線性搜尋更簡單）
-        0.2,  # 資料排序需求（線性無需排序）
+        linear_time / max_time if max_time > 0 else 0,  # 執行時間
+        linear_cmp / max_cmp if max_cmp > 0 else 0,  # 平均性能（比較次數越少越好）
+        1.0 - (linear_worst / arr_size),  # 最壞性能（越接近 0 越好）
+        0.3,  # 緩存效率（線性搜尋：存取順序規律，但每次檢查後跳到下一個）
     ]
     binary_scores = [
-        binary_cmp / max_cmp if max_cmp > 0 else 0,
-        binary_time / max_time if max_time > 0 else 0,
-        0.5,  # 實作簡易度（二分複雜）
-        1.0,  # 資料排序需求（二分需排序）
+        binary_time / max_time if max_time > 0 else 0,  # 執行時間
+        binary_cmp / max_cmp if max_cmp > 0 else 0,  # 平均性能（比較次數越少越好）
+        1.0 - (binary_worst / arr_size),  # 最壞性能（越接近 1 越好）
+        0.9,  # 緩存效率（二分搜尋：二分邏輯導致更好的快取局部性）
     ]
 
     angles = np.linspace(0, 2 * np.pi, len(categories), endpoint=False).tolist()
@@ -100,15 +116,24 @@ def main():
     """主程式：按照題目要求執行四步驟"""
     import os
 
+    # ===== 參數設定 =====
+    # 學號末兩碼：38
+    # K = 100 + 末兩碼 = 100 + 38 = 138
+    student_id_last_two_digits = 38
+    target = 100 + student_id_last_two_digits  # = 138
+
     # Step 1: 產生升冪排序整數陣列
     arr = generate_sorted_array(100, start=1, step=2)
-    target = 138
 
     print("=" * 70)
     print("第四題：二分搜尋效能")
     print("=" * 70)
-    print(f"\n陣列大小: {len(arr)}")
-    print(f"搜尋目標: {target}")
+    print(f"\n【參數設定】")
+    print(f"學號末兩碼：{student_id_last_two_digits}")
+    print(f"搜尋目標 K：100 + {student_id_last_two_digits} = {target}")
+    print(f"\n【搜尋配置】")
+    print(f"陣列大小：{len(arr)}")
+    print(f"陣列範圍：[1, 3, 5, ..., {arr[-1]}]")
 
     # Step 2: 執行搜尋並輸出結果
     print("\n【搜尋結果】")
