@@ -1,0 +1,22 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.9, pytest-8.4.2, pluggy-1.5.0 -- C:\Users\User\anaconda3\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\User\Desktop\0622-3\2026-python\weeks\week-18\solutions\1114405055
+plugins: anyio-4.10.0
+collecting ... collected 0 items / 1 error
+
+=================================== ERRORS ====================================
+____________________ ERROR collecting test_digital_root.py ____________________
+ImportError while importing test module 'C:\Users\User\Desktop\0622-3\2026-python\weeks\week-18\solutions\1114405055\test_digital_root.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Users\User\anaconda3\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test_digital_root.py:10: in <module>
+    from digital_root import digit_sum_in_base, digital_root
+E   ModuleNotFoundError: No module named 'digital_root'
+=========================== short test summary info ===========================
+ERROR test_digital_root.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+============================== 1 error in 0.08s ===============================

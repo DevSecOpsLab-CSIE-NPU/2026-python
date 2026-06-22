@@ -1,0 +1,24 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.9, pytest-8.4.2, pluggy-1.5.0 -- C:\Users\User\anaconda3\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\User\Desktop\0622-3\2026-python\weeks\week-18\solutions\1114405055
+plugins: anyio-4.10.0
+collecting ... collected 15 items
+
+test_digital_root.py::test_zero_is_zero_by_definition PASSED             [  6%]
+test_digital_root.py::test_already_single_digit_no_iteration_needed PASSED [ 13%]
+test_digital_root.py::test_sample_8_one_iteration_to_converge PASSED     [ 20%]
+test_digital_root.py::test_sample_63_needs_two_iterations_to_converge PASSED [ 26%]
+test_digital_root.py::test_needs_multiple_rounds_to_converge_to_single_digit PASSED [ 33%]
+test_digital_root.py::test_large_value_terminates_quickly PASSED         [ 40%]
+test_digital_root.py::test_digital_root_always_single_digit_in_base[0] PASSED [ 46%]
+test_digital_root.py::test_digital_root_always_single_digit_in_base[1] PASSED [ 53%]
+test_digital_root.py::test_digital_root_always_single_digit_in_base[6] PASSED [ 60%]
+test_digital_root.py::test_digital_root_always_single_digit_in_base[7] PASSED [ 66%]
+test_digital_root.py::test_digital_root_always_single_digit_in_base[8] PASSED [ 73%]
+test_digital_root.py::test_digital_root_always_single_digit_in_base[63] PASSED [ 80%]
+test_digital_root.py::test_digital_root_always_single_digit_in_base[1000000] PASSED [ 86%]
+test_digital_root.py::test_digital_root_always_single_digit_in_base[1000000000] PASSED [ 93%]
+test_digital_root.py::test_base_16_conversion_not_hardcoded_for_small_base PASSED [100%]
+
+============================= 15 passed in 0.02s ==============================
