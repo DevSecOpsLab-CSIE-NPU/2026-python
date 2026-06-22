@@ -17,3 +17,14 @@
 ## AI 建議採用 / 修正
 - 採用 set+list 進行去重保序（參考 R10-dedupe.py）。
 - `solve()` 設計成可接收字串輸入，方便測試。
+
+## Git PR SOP（本題）
+- [x] 分支：`0622-1114405007`
+- [x] 先紅後綠：
+	- Red commit：`20cdfd5`（test: add failing tests for task1）
+	- Green commit：`ed04524`（feat: implement task1）
+- [x] PR base:compare：`DevSecOpsLab-CSIE-NPU/2026-python:main <- GuZhe-Yu/2026-python:0622-1114405007`
+- [x] PR 描述三要件：
+	- 題目摘要：已描述題1資料清理目標與參數 `D=5`
+	- 測試結果：已提供測試通過紀錄（見 `TEST_LOG.md`）
+	- 我跟 AI 改了什麼：已在本檔完整記錄

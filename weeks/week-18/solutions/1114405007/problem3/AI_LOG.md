@@ -17,3 +17,14 @@
 ## AI 建議採用 / 修正
 - 採用公式 `1 + (x-1) % (base-1)`。
 - 保留 `x=0` 特判。
+
+## Git PR SOP（本題）
+- [x] 分支：`0622-1114405007`
+- [x] 先紅後綠：
+	- Red commit：`b3f4dc8`（test: add failing tests for digit_root）
+	- Green commit：`60e357b`（feat: implement digit_root）
+- [x] PR base:compare：`DevSecOpsLab-CSIE-NPU/2026-python:main <- GuZhe-Yu/2026-python:0622-1114405007`
+- [x] PR 描述三要件：
+	- 題目摘要：已描述題3數字根與 `base=11`
+	- 測試結果：已提供測試通過紀錄（見 `TEST_LOG.md`）
+	- 我跟 AI 改了什麼：已在本檔完整記錄

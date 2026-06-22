@@ -18,3 +18,14 @@
 - 採用字元區間判斷分開處理大小寫。
 - 以 `%26` 進行循環位移避免越界。
 - 後續修正為與文件一致的公式 `u%25+1`。
+
+## Git PR SOP（本題）
+- [x] 分支：`0622-1114405007`
+- [x] 先紅後綠：
+	- Red commit：`bc55096`（test: add failing tests for caesar）
+	- Green commit：`bf09bf6`（feat: implement caesar）
+- [x] PR base:compare：`DevSecOpsLab-CSIE-NPU/2026-python:main <- GuZhe-Yu/2026-python:0622-1114405007`
+- [x] PR 描述三要件：
+	- 題目摘要：已描述題2凱撒密碼與 `SHIFT=8`
+	- 測試結果：已提供測試通過紀錄（見 `TEST_LOG.md`）
+	- 我跟 AI 改了什麼：已在本檔完整記錄
