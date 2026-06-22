@@ -11,10 +11,24 @@
 """
 
 import unittest
-from search import linear_search, binary_search, set_search
+from search import (
+    linear_search,
+    binary_search,
+    set_search,
+    linear_search_builtin,
+    binary_search_bisect,
+    set_search_optimized,
+)
 
-# 將三個搜尋函式放進 list,每個測試用 subTest 跑一輪
-SEARCH_FUNCTIONS = [linear_search, binary_search, set_search]
+# 將所有搜尋函式放進 list，包含基線與優化版，用同一套正確性測試驗收
+SEARCH_FUNCTIONS = [
+    linear_search,
+    binary_search,
+    set_search,
+    linear_search_builtin,
+    binary_search_bisect,
+    set_search_optimized,
+]
 
 
 class TestSearchFunctions(unittest.TestCase):
@@ -34,7 +48,7 @@ class TestSearchFunctions(unittest.TestCase):
             with self.subTest(func=func.__name__):
                 for target, expected_idx in test_cases:
                     res = func(data, target)
-                    if func.__name__ == "set_search":
+                    if "set" in func.__name__:
                         self.assertIs(res, True, f"{func.__name__} 找不到存在的 {target}")
                     else:
                         # 由於可能有重複值（雖然此例無），我們驗證該位置的值是否確實為 target
@@ -49,7 +63,7 @@ class TestSearchFunctions(unittest.TestCase):
             with self.subTest(func=func.__name__):
                 for target in targets:
                     res = func(data, target)
-                    if func.__name__ == "set_search":
+                    if "set" in func.__name__:
                         self.assertIs(res, False, f"{func.__name__} 誤報不存在的 {target}")
                     else:
                         self.assertEqual(res, -1, f"{func.__name__} 找不到應回傳 -1")
@@ -62,7 +76,7 @@ class TestSearchFunctions(unittest.TestCase):
         for func in SEARCH_FUNCTIONS:
             with self.subTest(func=func.__name__):
                 res = func(data, target)
-                if func.__name__ == "set_search":
+                if "set" in func.__name__:
                     self.assertIs(res, False, f"空 list 時 {func.__name__} 應回傳 False")
                 else:
                     self.assertEqual(res, -1, f"空 list 時 {func.__name__} 應回傳 -1")
